@@ -6,13 +6,13 @@ import { ShieldCheck, Menu, X, ArrowRight } from 'lucide-astro';
   id="main-navbar" 
   class="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 bg-transparent border-b border-transparent py-2"
 >
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-18 sm:h-20">
+  <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 w-full">
+    <div class="relative flex items-center justify-between h-18 sm:h-20">
       
-      <!-- Brand / Logo with hover scaling & animation -->
+      <!-- Brand / Logo (Left) with hover scaling & animation -->
       <a 
         href="#" 
-        class="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-sage-400 rounded-lg p-1 transition-transform duration-300 hover:scale-105 active:scale-95"
+        class="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-sage-400 rounded-lg p-1 transition-transform duration-300 hover:scale-105 active:scale-95 z-10"
       >
         <div class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-sage-300 shadow-soft-sm backdrop-blur-md group-hover:bg-sage-600 group-hover:text-white group-hover:scale-110 group-hover:shadow-glow-sage transition-all duration-300">
           <ShieldCheck class="w-5 h-5" />
@@ -27,8 +27,8 @@ import { ShieldCheck, Menu, X, ArrowRight } from 'lucide-astro';
         </div>
       </a>
 
-      <!-- Desktop Nav with hover scaling & animated underline -->
-      <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium">
+      <!-- Desktop Nav (Exactly Centered) with hover scaling & animated underline -->
+      <nav class="hidden md:flex items-center gap-8 lg:gap-12 text-[15px] font-medium absolute left-1/2 -translate-x-1/2 z-10">
         <a 
           href="#jak-to-funguje" 
           class="nav-link relative py-1 text-stone-200 hover:text-white transition-all duration-300 inline-block hover:scale-110 active:scale-95 group"
@@ -59,8 +59,8 @@ import { ShieldCheck, Menu, X, ArrowRight } from 'lucide-astro';
         </a>
       </nav>
 
-      <!-- Desktop CTA Button with hover scale & glow animation -->
-      <div class="hidden md:flex items-center gap-4">
+      <!-- Desktop CTA Button (Right) with hover scale & glow animation -->
+      <div class="hidden md:flex items-center gap-4 z-10">
         <a 
           href="#objednavka" 
           class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-sage-600 hover:bg-sage-500 active:scale-95 shadow-glow-sage hover:shadow-soft-xl hover:scale-105 transition-all duration-300 group"
@@ -71,7 +71,7 @@ import { ShieldCheck, Menu, X, ArrowRight } from 'lucide-astro';
       </div>
 
       <!-- Mobile Menu Button with hover scale -->
-      <div class="flex items-center md:hidden gap-3">
+      <div class="flex items-center md:hidden gap-3 z-10">
         <a 
           href="#objednavka" 
           class="inline-flex items-center justify-center px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-sage-600 hover:bg-sage-500 shadow-soft-sm hover:scale-105 active:scale-95 transition-all duration-200"
