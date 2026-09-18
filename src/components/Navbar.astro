@@ -1,0 +1,120 @@
+---
+import { ShieldCheck, Menu, X, ArrowRight } from 'lucide-astro';
+---
+
+<header class="sticky top-0 z-50 w-full transition-all duration-300 glass-panel border-b border-sage-100/80">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-18 sm:h-20">
+      
+      <!-- Brand / Logo -->
+      <a href="#" class="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-sage-400 rounded-lg p-1">
+        <div class="w-10 h-10 rounded-xl bg-sage-50 border border-sage-200 flex items-center justify-center text-sage-700 shadow-soft-sm group-hover:bg-sage-100 transition-colors">
+          <ShieldCheck class="w-5 h-5 text-sage-700" />
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-bold font-display tracking-tight text-anthracite-900 leading-none">
+            Vochránka<span class="text-sage-600">.</span>
+          </span>
+          <span class="text-[11px] font-medium tracking-wide text-anthracite-500 uppercase mt-0.5">
+            Diskrétní bezpečí
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium text-anthracite-700">
+        <a href="#jak-to-funguje" class="hover:text-sage-800 transition-colors py-1">Jak to funguje</a>
+        <a href="#instalace" class="hover:text-sage-800 transition-colors py-1">Instalace</a>
+        <a href="#cenik" class="hover:text-sage-800 transition-colors py-1">Ceník</a>
+        <a href="#faq" class="hover:text-sage-800 transition-colors py-1">FAQ</a>
+      </nav>
+
+      <!-- Desktop CTA -->
+      <div class="hidden md:flex items-center gap-4">
+        <a 
+          href="#objednavka" 
+          class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-sage-700 hover:bg-sage-800 active:bg-sage-900 shadow-soft-sm hover:shadow-soft-md transition-all duration-200 group"
+        >
+          <span>Objednat sadu</span>
+          <ArrowRight class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="flex items-center md:hidden gap-3">
+        <a 
+          href="#objednavka" 
+          class="inline-flex items-center justify-center px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-sage-700 hover:bg-sage-800 shadow-soft-sm"
+        >
+          Objednat
+        </a>
+        <button 
+          id="mobile-menu-toggle"
+          type="button" 
+          class="p-2 rounded-lg text-anthracite-700 hover:text-anthracite-950 hover:bg-sage-50 focus:outline-none focus:ring-2 focus:ring-sage-400"
+          aria-label="Otevřít menu"
+        >
+          <Menu class="w-6 h-6" id="menu-open-icon" />
+          <X class="w-6 h-6 hidden" id="menu-close-icon" />
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-sage-100 bg-white/95 backdrop-blur-md px-4 pt-3 pb-6 space-y-3">
+    <a href="#jak-to-funguje" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-anthracite-800 hover:bg-sage-50 hover:text-sage-800">
+      Jak to funguje
+    </a>
+    <a href="#instalace" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-anthracite-800 hover:bg-sage-50 hover:text-sage-800">
+      Instalace za 2 minuty
+    </a>
+    <a href="#cenik" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-anthracite-800 hover:bg-sage-50 hover:text-sage-800">
+      Ceník
+    </a>
+    <a href="#faq" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-anthracite-800 hover:bg-sage-50 hover:text-sage-800">
+      Časté dotazy (FAQ)
+    </a>
+    <div class="pt-2">
+      <a 
+        href="#objednavka" 
+        class="mobile-nav-link flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl text-sm font-semibold text-white bg-sage-700 hover:bg-sage-800 shadow-soft-sm"
+      >
+        <span>Objednat sadu Vochránka</span>
+        <ArrowRight class="w-4 h-4" />
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const openIcon = document.getElementById('menu-open-icon');
+  const closeIcon = document.getElementById('menu-close-icon');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  if (toggleBtn && mobileMenu && openIcon && closeIcon) {
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = !mobileMenu.classList.contains('hidden');
+      if (isExpanded) {
+        mobileMenu.classList.add('hidden');
+        openIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      } else {
+        mobileMenu.classList.remove('hidden');
+        openIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      }
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        openIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+  }
+</script>

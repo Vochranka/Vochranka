@@ -1,0 +1,193 @@
+---
+import { Play, Sparkles, ShieldCheck, Bell, MessageSquare, Check, Radio } from 'lucide-astro';
+---
+
+<section class="relative pt-8 pb-16 md:pt-14 md:pb-24 overflow-hidden">
+  <!-- Subtle ambient background gradients -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-sage-100/60 via-sage-50/30 to-transparent pointer-events-none -z-10 blur-3xl"></div>
+  <div class="absolute -top-24 right-0 w-80 h-80 bg-sage-200/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <div class="absolute top-1/2 left-0 w-72 h-72 bg-cream-200/50 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      
+      <!-- Left Column: Copy & CTAs -->
+      <div class="lg:col-span-7 text-center lg:text-left">
+        
+        <!-- Target Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-100/90 border border-sage-200/80 text-sage-900 text-xs sm:text-sm font-semibold mb-6 shadow-soft-sm">
+          <span class="w-2 h-2 rounded-full bg-sage-600 animate-pulse"></span>
+          <span>Vyvinuto speciálně pro masérky a privátní salóny</span>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold font-display text-anthracite-950 tracking-tight leading-[1.18] mb-6">
+          Bezpečí a klid při práci o samotě. <br class="hidden sm:inline" />
+          <span class="text-sage-700">Na jedno diskrétní kliknutí.</span>
+        </h1>
+
+        <!-- Subheading -->
+        <p class="text-base sm:text-lg text-anthracite-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8 font-normal">
+          Malé bezdrátové tlačítko pod lehátko nebo stůl. Pronikavá siréna k odstrašení na místě a tiché nouzové SMS rodině. Bez vrtání, kabelů a složité montáže.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10">
+          <a 
+            href="#objednavka" 
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-base font-semibold text-white bg-sage-700 hover:bg-sage-800 active:scale-[0.99] transition-all duration-200 shadow-soft-md hover:shadow-soft-xl hover:bg-sage-800"
+          >
+            <span>Chci sadu do salónu</span>
+            <span class="text-xs bg-sage-800/80 py-0.5 px-2 rounded-full font-medium text-sage-100">2 990 Kč</span>
+          </a>
+
+          <a 
+            href="#video" 
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl text-base font-medium text-anthracite-800 bg-white hover:bg-sage-50/80 border border-stone-200/90 active:scale-[0.99] transition-all duration-200 shadow-soft-sm group"
+          >
+            <div class="w-7 h-7 rounded-full bg-sage-100 flex items-center justify-center text-sage-700 group-hover:bg-sage-600 group-hover:text-white transition-colors">
+              <Play class="w-3.5 h-3.5 fill-current ml-0.5" />
+            </div>
+            <span>Přehrát 15s ukázku</span>
+          </a>
+        </div>
+
+        <!-- Trust Badges List -->
+        <div class="pt-6 border-t border-sage-100/90 grid grid-cols-3 gap-2 sm:gap-4 max-w-lg mx-auto lg:mx-0 text-left">
+          <div class="flex items-center gap-2 text-xs sm:text-sm text-anthracite-700 font-medium">
+            <Check class="w-4 h-4 text-sage-600 shrink-0" />
+            <span>Bez vrtání a kabelů</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs sm:text-sm text-anthracite-700 font-medium">
+            <Check class="w-4 h-4 text-sage-600 shrink-0" />
+            <span>100% diskrétní balení</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs sm:text-sm text-anthracite-700 font-medium">
+            <Check class="w-4 h-4 text-sage-600 shrink-0" />
+            <span>Záruka vrácení 14 dní</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive Product Showcase Mockup -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative mx-auto max-w-md lg:max-w-none">
+          
+          <!-- Outer decorative frame -->
+          <div class="relative rounded-3xl p-6 sm:p-7 bg-white/90 backdrop-blur-xl border border-sage-200/70 shadow-soft-xl">
+            
+            <!-- Header bar of the mock -->
+            <div class="flex items-center justify-between pb-5 mb-5 border-b border-sage-100">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-sage-500"></span>
+                <span class="text-xs font-semibold tracking-wider uppercase text-anthracite-600">Sada Vochránka Pro Studio</span>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded-full bg-sage-50 text-sage-800 font-semibold border border-sage-200/60">Aktivní stav</span>
+            </div>
+
+            <!-- Item 1: Diskrétní hmatové tlačítko pod lehátkem -->
+            <div class="bg-[#FAFBF9] rounded-2xl p-4 border border-sage-200/60 mb-4 transition-all hover:border-sage-300">
+              <div class="flex items-center justify-between mb-2.5">
+                <span class="text-xs font-semibold text-anthracite-800">1. Bezdrátový mikro-vysílač</span>
+                <span class="text-[11px] text-sage-700 bg-sage-100/80 px-2 py-0.5 rounded-md font-medium">Průměr 35 mm</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <!-- Button tactile illustration -->
+                <div class="relative w-16 h-16 shrink-0 rounded-2xl bg-gradient-to-b from-stone-50 to-stone-200 border-2 border-stone-300 shadow-inner flex items-center justify-center">
+                  <div class="w-10 h-10 rounded-full bg-white border border-stone-300 shadow-sm flex items-center justify-center">
+                    <div class="w-4 h-4 rounded-full bg-sage-600"></div>
+                  </div>
+                  <span class="absolute -top-1.5 -right-1.5 text-[9px] bg-anthracite-900 text-white px-1.5 py-0.5 rounded-full font-mono">3M</span>
+                </div>
+                <div class="text-xs text-anthracite-600 leading-relaxed">
+                  <p class="font-semibold text-anthracite-900 mb-0.5">Nenápadně nalepeno pod deskou</p>
+                  <p>Hmatová prohlubeň pro jistý stisk poslepu. Klient nic nevidí ani neslyší.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2: Zásuvková siréna -->
+            <div class="bg-[#FAFBF9] rounded-2xl p-4 border border-sage-200/60 mb-4 transition-all hover:border-sage-300">
+              <div class="flex items-center justify-between mb-2.5">
+                <span class="text-xs font-semibold text-anthracite-800">2. Zásuvková siréna & brána</span>
+                <span class="text-[11px] text-sage-800 bg-sage-100/80 px-2 py-0.5 rounded-md font-medium">110 dB okamžitě</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-16 h-16 shrink-0 rounded-2xl bg-sage-700 text-white flex flex-col items-center justify-center shadow-soft-sm">
+                  <Bell class="w-6 h-6 text-sage-200 animate-pulse" />
+                  <span class="text-[9px] font-semibold text-sage-200 mt-1">230V</span>
+                </div>
+                <div class="text-xs text-anthracite-600 leading-relaxed">
+                  <p class="font-semibold text-anthracite-900 mb-0.5">Stačí zapojit do zásuvky</p>
+                  <p>Zvukový šok útočníka okamžitě paralyzuje a upozorní sousedy či okolní salóny.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3: Reálná SMS notifikace karta -->
+            <div class="rounded-2xl p-4 bg-gradient-to-br from-anthracite-900 to-anthracite-950 text-white shadow-soft-md">
+              <div class="flex items-center justify-between text-xs text-stone-300 mb-2">
+                <div class="flex items-center gap-1.5">
+                  <MessageSquare class="w-3.5 h-3.5 text-sage-400" />
+                  <span class="font-medium">Nouzová SMS (do 2 vteřin)</span>
+                </div>
+                <span class="text-[11px] text-stone-400">Před 4s</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-anthracite-800/90 border border-anthracite-700/80 text-[12px] leading-relaxed text-stone-200">
+                <p class="font-semibold text-white mb-0.5 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  TÍSŇOVÝ POPLACH: Studio Klid (Kateřina)
+                </p>
+                <p class="text-stone-300">
+                  Aktivováno tlačítko u lehátka č. 1. Adresa: Vinohradská 42, Praha. Okamžitě prověřte!
+                </p>
+              </div>
+            </div>
+
+            <!-- Micro Interactive Trigger Simulation -->
+            <div class="mt-4 pt-4 border-t border-sage-100 flex items-center justify-between">
+              <span class="text-xs text-anthracite-500">Vyzkoušejte odezvu:</span>
+              <button 
+                id="interactive-demo-btn"
+                type="button"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-sage-800 bg-sage-100 hover:bg-sage-200 px-3 py-1.5 rounded-full transition-colors cursor-pointer"
+              >
+                <span class="w-2 h-2 rounded-full bg-sage-600"></span>
+                <span>Kliknout na tlačítko</span>
+              </button>
+            </div>
+            
+            <div id="demo-feedback-alert" class="hidden mt-3 p-2.5 rounded-xl bg-sage-50 border border-sage-300 text-xs text-sage-900 text-center font-medium animate-fadeIn">
+              ✓ Během 1,4 sekundy odeslána SMS na 3 kontakty a spuštěn odstrašující tón.
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const demoBtn = document.getElementById('interactive-demo-btn');
+  const alertBox = document.getElementById('demo-feedback-alert');
+
+  if (demoBtn && alertBox) {
+    demoBtn.addEventListener('click', () => {
+      demoBtn.classList.add('opacity-50', 'pointer-events-none');
+      demoBtn.innerHTML = '<span>Odesílám signál...</span>';
+      
+      setTimeout(() => {
+        alertBox.classList.remove('hidden');
+        demoBtn.innerHTML = '<span>Vyzkoušeno ✓</span>';
+        setTimeout(() => {
+          demoBtn.classList.remove('opacity-50', 'pointer-events-none');
+          demoBtn.innerHTML = '<span class="w-2 h-2 rounded-full bg-sage-600"></span><span>Kliknout znovu</span>';
+        }, 3000);
+      }, 700);
+    });
+  }
+</script>

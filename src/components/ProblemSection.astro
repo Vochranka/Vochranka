@@ -1,0 +1,109 @@
+---
+import { Moon, Smartphone, ShieldAlert, HeartHandshake, AlertCircle } from 'lucide-astro';
+
+const situations = [
+  {
+    icon: Moon,
+    badge: "19:00 a prázdná budova",
+    title: "Večerní termíny o samotě",
+    situation: "Nikdy nevíte, kdo vejde do dveří.",
+    description: "Nový klient objednaný přes Instagram nebo telefon. Venku je tma, v patře či chodbě domu už nikdo není a vy pracujete za zavřenými dveřmi. Ten nepříjemný pocit v žaludku, když klient začne být dotěrný nebo překročí hranice.",
+    quote: "„Při masáži jsem zády ke klientovi a v místnosti jsme jen my dva. Ten pocit zranitelnosti byl večer vyčerpávající.“"
+  },
+  {
+    icon: Smartphone,
+    badge: "Když rozhodují vteřiny",
+    title: "Není čas vyndat telefon",
+    situation: "Při nátlaku nemůžete ťukat do displeje.",
+    description: "Telefon leží v kabelce nebo na poličce u vstupu. I kdyby byl na dosah, při nepříjemném nátlaku nebo agresivním chování nemáte šanci odemknout obrazovku, vytočit 158 a čekat na operátora, aniž by si toho dotyčný všiml.",
+    quote: "„Sahat v napjaté chvíli po telefonu situaci často ještě vygraduje. Potřebovala jsem řešení, které nikdo neuvidí.“"
+  },
+  {
+    icon: ShieldAlert,
+    badge: "Zlomení agrese",
+    title: "Okamžitý moment překvapení",
+    situation: "Hlasitý alarm agresora paralyzuje.",
+    description: "Útočník spoléhá na to, že jste sama, bezmocná a nikdo vás neuslyší. Pronikavá 110dB siréna během milisekundy obrátí situaci: útočníka psychologicky zaskočí, upozorní okolní sousedy v domě a vám dá bezpečný prostor uniknout.",
+    quote: "„Útočníci nechtějí pozornost. Hluk sirény je okamžitý signál k úprku dřív, než dojde k čemukoliv vážnému.“"
+  }
+];
+---
+
+<section class="py-16 md:py-24 bg-white/70 border-y border-stone-200/70 relative">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="max-w-2xl mx-auto text-center mb-14 md:mb-18">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-100 text-stone-700 text-xs font-semibold mb-4">
+        <HeartHandshake class="w-3.5 h-3.5 text-sage-600" />
+        <span>Chápeme realitu sólo salónů</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-anthracite-950 tracking-tight mb-4">
+        Milujete svou práci. <br />
+        <span class="text-sage-700">Ale strach za zavřenými dveřmi k ní nepatří.</span>
+      </h2>
+      <p class="text-base text-anthracite-600 leading-relaxed">
+        Podle průzkumů se více než 68 % sólo masérek a kosmetiček alespoň jednou setkalo s nevhodným chováním nebo nepříjemnou situací. V krizovém momentu běžné postupy selhávají:
+      </p>
+    </div>
+
+    <!-- 3 Situation Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {situations.map((item, index) => {
+        const Icon = item.icon;
+        return (
+          <div class="flex flex-col justify-between rounded-3xl p-6 sm:p-7 bg-[#FBFBFA] border border-stone-200/80 hover:border-sage-300 hover:shadow-soft-md transition-all duration-300 group">
+            <div>
+              <!-- Badge & Icon -->
+              <div class="flex items-center justify-between mb-5">
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-white text-stone-700 border border-stone-200/60 shadow-soft-sm">
+                  {item.badge}
+                </span>
+                <div class="w-10 h-10 rounded-2xl bg-sage-50 border border-sage-200/80 flex items-center justify-center text-sage-700 group-hover:bg-sage-600 group-hover:text-white transition-colors duration-200">
+                  <Icon class="w-5 h-5" />
+                </div>
+              </div>
+
+              <!-- Title & Situation -->
+              <h3 class="text-lg sm:text-xl font-bold font-display text-anthracite-950 mb-1.5">
+                {item.title}
+              </h3>
+              <p class="text-sm font-semibold text-sage-800 mb-3.5">
+                {item.situation}
+              </p>
+
+              <!-- Description -->
+              <p class="text-sm text-anthracite-600 leading-relaxed mb-6">
+                {item.description}
+              </p>
+            </div>
+
+            <!-- Quote Snippet -->
+            <div class="pt-4 border-t border-stone-200/80 text-xs italic text-stone-500 leading-relaxed">
+              {item.quote}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Empathy Summary Box -->
+    <div class="mt-10 p-5 sm:p-6 rounded-2xl bg-sage-50/70 border border-sage-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-sage-600 text-white flex items-center justify-center shrink-0">
+          <AlertCircle class="w-5 h-5" />
+        </div>
+        <p class="text-xs sm:text-sm text-anthracite-800 font-medium">
+          Cílem Vochránky není vyvolávat strach, ale vrátit vám <strong>klid a sebevědomí</strong> při každém otevření dveří novému klientovi.
+        </p>
+      </div>
+      <a 
+        href="#jak-to-funguje" 
+        class="shrink-0 text-xs sm:text-sm font-semibold text-sage-800 hover:text-sage-950 underline underline-offset-4"
+      >
+        Podívejte se, jak to funguje →
+      </a>
+    </div>
+
+  </div>
+</section>

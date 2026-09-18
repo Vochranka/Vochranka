@@ -1,0 +1,202 @@
+---
+import { Play, Volume2, ShieldCheck, CheckCircle2, RotateCcw } from 'lucide-astro';
+---
+
+<section id="video" class="py-16 md:py-24 relative overflow-hidden">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="max-w-2xl mx-auto text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-100 text-sage-900 text-xs font-semibold mb-4">
+        <Play class="w-3.5 h-3.5 text-sage-700 fill-current" />
+        <span>15vteřinová demonstrace</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-anthracite-950 tracking-tight mb-4">
+        Podívejte se na reálnou reakci v praxi
+      </h2>
+      <p class="text-base text-anthracite-600 leading-relaxed">
+        Jak vypadá stisk tlačítka během běžné procedury a jak rychle systém zalarmuje okolí i vaše nejbližší.
+      </p>
+    </div>
+
+    <!-- Video Container Mockup -->
+    <div class="relative mx-auto rounded-3xl overflow-hidden bg-anthracite-950 border border-stone-800 shadow-2xl">
+      
+      <!-- Video Aspect Ratio Frame -->
+      <div class="relative aspect-video w-full flex items-center justify-center bg-gradient-to-br from-[#1C2420] via-[#151A17] to-[#0E1210] overflow-hidden">
+        
+        <!-- Background Mock Visual (Massage Salon Scene Silhouette) -->
+        <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#4E725C_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <!-- Ambient lighting glow -->
+        <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-1/2 bg-sage-600/20 blur-3xl pointer-events-none"></div>
+
+        <!-- Initial Poster State (Overlay) -->
+        <div id="video-poster" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 transition-opacity duration-300">
+          
+          <!-- Big Play Button with Ripple -->
+          <button 
+            id="play-video-trigger"
+            type="button" 
+            class="relative group w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white text-sage-800 flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-sage-400 cursor-pointer"
+            aria-label="Spustit ukázku"
+          >
+            <div class="absolute inset-0 rounded-full bg-white/40 animate-ping pointer-events-none"></div>
+            <Play class="w-8 h-8 sm:w-10 sm:h-10 fill-current ml-1 text-sage-700 group-hover:text-sage-900 transition-colors" />
+          </button>
+
+          <!-- Label below play button -->
+          <div class="mt-6">
+            <span class="inline-block px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-stone-200 text-xs sm:text-sm font-medium border border-white/10">
+              Přehrát 15s ukázku ze salónu • Zvuk 110 dB
+            </span>
+          </div>
+
+          <!-- Bottom bar of poster -->
+          <div class="absolute bottom-4 left-6 right-6 flex items-center justify-between text-[11px] sm:text-xs text-stone-400">
+            <span class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              Autentická simulace krizového scénáře
+            </span>
+            <span class="font-mono">0:15 / 0:15</span>
+          </div>
+        </div>
+
+        <!-- Interactive Simulated Video Playback State -->
+        <div id="video-simulated-player" class="hidden absolute inset-0 z-20 flex flex-col justify-between p-6 bg-anthracite-950/95 backdrop-blur-sm">
+          
+          <!-- Top bar -->
+          <div class="flex items-center justify-between text-xs text-stone-400">
+            <span class="flex items-center gap-2 text-white font-semibold">
+              <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+              Přehrávání ukázky reakce (15s)
+            </span>
+            <button id="reset-video-btn" class="flex items-center gap-1 text-sage-300 hover:text-white transition-colors cursor-pointer text-xs">
+              <RotateCcw class="w-3.5 h-3.5" />
+              <span>Znovu</span>
+            </button>
+          </div>
+
+          <!-- Central step animator -->
+          <div class="max-w-md mx-auto w-full text-center py-4">
+            <div id="video-step-indicator" class="inline-block px-3 py-1 rounded-full bg-sage-800/80 text-sage-200 text-xs font-mono font-medium mb-3">
+              Čas: 0:02 / 0:15
+            </div>
+            <h3 id="video-step-title" class="text-lg sm:text-xl font-bold text-white font-display mb-2">
+              1. Nenápadný stisk pod hranou lehátka
+            </h3>
+            <p id="video-step-desc" class="text-xs sm:text-sm text-stone-300 leading-relaxed">
+              Masérka zachovává klid a bez očního kontaktu jednoduše nahmatá diskrétní tlačítko 35 mm.
+            </p>
+          </div>
+
+          <!-- Scrubber / Progress Bar -->
+          <div class="w-full">
+            <div class="flex items-center justify-between text-[11px] font-mono text-stone-400 mb-1.5">
+              <span id="current-sim-time">0:02</span>
+              <span>0:15</span>
+            </div>
+            <div class="w-full h-1.5 bg-stone-800 rounded-full overflow-hidden">
+              <div id="video-progress-bar" class="h-full bg-sage-500 w-1/6 transition-all duration-300"></div>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-2 mt-3 text-[10px] sm:text-xs text-stone-400 text-center">
+              <span class="p-1 rounded bg-stone-900/80 border border-stone-800">0-4s: Stisk tlačítka</span>
+              <span class="p-1 rounded bg-stone-900/80 border border-stone-800">5-9s: 110dB šok & úprk</span>
+              <span class="p-1 rounded bg-stone-900/80 border border-stone-800">10-15s: SMS doručena</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const playTrigger = document.getElementById('play-video-trigger');
+  const poster = document.getElementById('video-poster');
+  const player = document.getElementById('video-simulated-player');
+  const resetBtn = document.getElementById('reset-video-btn');
+  const stepIndicator = document.getElementById('video-step-indicator');
+  const stepTitle = document.getElementById('video-step-title');
+  const stepDesc = document.getElementById('video-step-desc');
+  const progressBar = document.getElementById('video-progress-bar');
+  const currentSimTime = document.getElementById('current-sim-time');
+
+  let simTimer: any = null;
+
+  const stepsData = [
+    {
+      timeStr: '0:02',
+      badge: 'Čas: 0:02 / 0:15',
+      title: '1. Nenápadný stisk pod hranou lehátka',
+      desc: 'Masérka zachovává klid a bez očního kontaktu jednoduše nahmatá diskrétní tlačítko 35 mm.',
+      progress: '15%'
+    },
+    {
+      timeStr: '0:05',
+      badge: 'Čas: 0:05 / 0:15',
+      title: '2. Zásuvková siréna spouští 110 dB tón',
+      desc: 'Akustický šok agresora ochromí a vytrhne z afektu. Ztrácí moment anonymity.',
+      progress: '45%'
+    },
+    {
+      timeStr: '0:10',
+      badge: 'Čas: 0:10 / 0:15',
+      title: '3. Útočník se otáčí a prchá ze dveří',
+      desc: 'Hluk se rozléhá celou chodbou a schodištěm. Útočník nechce být dopaden okolím.',
+      progress: '75%'
+    },
+    {
+      timeStr: '0:15',
+      badge: 'Čas: 0:15 / 0:15 ✓',
+      title: '4. Tichá SMS dorazila rodině i partnerovi',
+      desc: 'Zpráva s adresou a jménem salónu doručena. Pomoc je na cestě a vy jste v bezpečí.',
+      progress: '100%'
+    }
+  ];
+
+  function runSimulation() {
+    if (!poster || !player) return;
+    poster.classList.add('hidden');
+    player.classList.remove('hidden');
+
+    let currentStep = 0;
+
+    function applyStep(index: number) {
+      const data = stepsData[index];
+      if (stepIndicator) stepIndicator.textContent = data.badge;
+      if (stepTitle) stepTitle.textContent = data.title;
+      if (stepDesc) stepDesc.textContent = data.desc;
+      if (progressBar) progressBar.style.width = data.progress;
+      if (currentSimTime) currentSimTime.textContent = data.timeStr;
+    }
+
+    applyStep(0);
+
+    if (simTimer) clearInterval(simTimer);
+    simTimer = setInterval(() => {
+      currentStep++;
+      if (currentStep < stepsData.length) {
+        applyStep(currentStep);
+      } else {
+        clearInterval(simTimer);
+      }
+    }, 2800);
+  }
+
+  if (playTrigger) {
+    playTrigger.addEventListener('click', runSimulation);
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (simTimer) clearInterval(simTimer);
+      runSimulation();
+    });
+  }
+</script>

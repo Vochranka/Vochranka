@@ -1,0 +1,71 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Vochránka | Diskrétní tísňové tlačítko pro sólo salóny a masérky",
+  description = "Bezpečí a klid při práci o samotě. Nenápadné tlačítko pod lehátko či stůl, odstrašující siréna a okamžitá tichá SMS rodině. Bez vrtání a kabelů."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="cs" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4E725C" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://vochranka.cz" />
+
+    <!-- Open Graph / Facebook / Instagram -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vochranka.cz" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://vochranka.cz/og-vochranka.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    
+    <!-- Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Vochránka - Tísňové tlačítko pro privátní salóny",
+        "image": "https://vochranka.cz/og-vochranka.jpg",
+        "description": "Diskrétní bezdrátové tísňové tlačítko pod stůl a masérské lehátko pro sólo pracující ženy se sirénou a tichou nouzovou SMS.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Vochránka"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://vochranka.cz",
+          "priceCurrency": "CZK",
+          "price": "2990",
+          "availability": "https://schema.org/InStock",
+          "priceValidUntil": "2027-12-31"
+        }
+      }
+    </script>
+  </head>
+  <body class="min-h-screen bg-[#F8F9F8] text-anthracite-900 selection:bg-sage-200 selection:text-sage-950 font-sans antialiased overflow-x-hidden">
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,115 @@
+---
+import { HelpCircle, ChevronDown, CheckCircle2 } from 'lucide-astro';
+
+const faqs = [
+  {
+    q: "Co když tlačítko zmáčknu omylem?",
+    a: "Tlačítko je ergonomicky navrženo s jemným mechanickým odporem a zapuštěným profilem – při běžném úklidu, posunu prostěradla či dotyku stehnem k nechtěnému sepnutí nedochází. Pokud by se to přesto stalo, sirénu lze ihned ztišit vytažením ze zásuvky nebo stiskem servisního tlačítka a vašim nouzovým kontaktům můžete obratem zaslat zprávu, že šlo o omyl."
+  },
+  {
+    q: "Je v mém salónu potřeba Wi-Fi síť?",
+    a: "Vůbec ne! Centrála Vochránka má integrovanou vlastní zabezpečenou mobilní IoT konektivitu. Funguje všude tam, kde máte v mobilu alespoň základní signál. Nemusíte znát Wi-Fi hesla pronajímatele, konfigurovat routery ani řešit výpadky internetu. Stačí zasunout do zásuvky 230V."
+  },
+  {
+    q: "Lze spárovat více tlačítek k jedné siréně?",
+    a: "Ano. K jedné centrální siréně lze připojit až 5 nezávislých tlačítek. Běžná praxe je mít jedno tlačítko pod hlavním lehátkem, druhé pod recepčním stolkem a třetí v zázemí nebo koupelně. Každé tlačítko lze v nouzové SMS pojmenovat (např. „Lehátko 1“, „Recepce“). Přídavné tlačítko lze doobjednat za 590 Kč."
+  },
+  {
+    q: "Jaká je výdrž baterie v tlačítku a jak poznám, že dochází?",
+    a: "V tlačítku je lithiová baterie typu CR2032, která díky nízkoenergetickému protokolu vydrží 2 až 3 roky nepřetržitého provozu. Nemusíte si psát upomínky do kalendáře – centrála stav baterie hlídá a při poklesu pod 15 % vám automaticky pošle SMS upozornění s dostatečným předstihem několika týdnů. Baterii pak vyměníte sama během 60 vteřin."
+  }
+];
+---
+
+<section id="faq" class="py-16 md:py-24 relative overflow-hidden">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-100 text-sage-900 text-xs font-semibold mb-4">
+        <HelpCircle class="w-3.5 h-3.5 text-sage-700" />
+        <span>Vše, co vás zajímá</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-anthracite-950 tracking-tight mb-4">
+        Často kladené otázky
+      </h2>
+      <p class="text-base text-anthracite-600 leading-relaxed">
+        Odpovědi na nejčastější dotazy masérek a terapeutek před pořízením Vochránky.
+      </p>
+    </div>
+
+    <!-- Accordion List -->
+    <div class="space-y-4" id="faq-accordion-container">
+      {faqs.map((faq, index) => (
+        <div class="faq-item rounded-2xl bg-white border border-stone-200/80 shadow-soft-sm transition-all duration-200 overflow-hidden">
+          <button 
+            type="button" 
+            class="faq-button w-full px-6 py-5 text-left flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-sage-400 cursor-pointer"
+            aria-expanded={index === 0 ? "true" : "false"}
+            aria-controls={`faq-answer-${index}`}
+          >
+            <span class="text-base sm:text-lg font-semibold text-anthracite-900">
+              {faq.q}
+            </span>
+            <div class="w-8 h-8 rounded-full bg-sage-50 text-sage-700 flex items-center justify-center shrink-0 transition-transform duration-200 faq-icon">
+              <ChevronDown class={`w-4 h-4 transition-transform duration-200 ${index === 0 ? 'rotate-180' : ''}`} />
+            </div>
+          </button>
+          
+          <div 
+            id={`faq-answer-${index}`}
+            class={`faq-answer px-6 pb-6 pt-1 text-sm sm:text-base text-anthracite-600 leading-relaxed border-t border-stone-100/60 ${index === 0 ? 'block' : 'hidden'}`}
+          >
+            {faq.a}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Extra assistance card -->
+    <div class="mt-12 text-center p-6 rounded-2xl bg-[#FAFBF9] border border-stone-200/70">
+      <h3 class="text-sm font-bold text-anthracite-900 mb-1">Máte specifický dotaz k vašemu salónu?</h3>
+      <p class="text-xs sm:text-sm text-anthracite-600 mb-3">Rádi vám poradíme individuálně po telefonu nebo na WhatsAppu.</p>
+      <a 
+        href="#objednavka" 
+        class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-sage-800 hover:text-sage-950 underline underline-offset-4"
+      >
+        Napište nám v poptávkovém formuláři níže ↓
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const faqButtons = document.querySelectorAll('.faq-button');
+
+  faqButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      const answer = btn.nextElementSibling;
+      const chevron = btn.querySelector('.faq-icon svg');
+
+      // Close other answers for clean accordion UX
+      faqButtons.forEach((otherBtn) => {
+        if (otherBtn !== btn) {
+          otherBtn.setAttribute('aria-expanded', 'false');
+          const otherAnswer = otherBtn.nextElementSibling;
+          const otherChevron = otherBtn.querySelector('.faq-icon svg');
+          if (otherAnswer) otherAnswer.classList.add('hidden');
+          if (otherChevron) otherChevron.classList.remove('rotate-180');
+        }
+      });
+
+      if (isExpanded) {
+        btn.setAttribute('aria-expanded', 'false');
+        if (answer) answer.classList.add('hidden');
+        if (chevron) chevron.classList.remove('rotate-180');
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        if (answer) answer.classList.remove('hidden');
+        if (chevron) chevron.classList.add('rotate-180');
+      }
+    });
+  });
+</script>

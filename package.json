@@ -1,0 +1,22 @@
+{
+  "name": "vochranka",
+  "version": "1.0.0",
+  "description": "ahoj",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "@lucide/astro": "^1.47.0",
+    "astro": "^5.18.2",
+    "lucide-astro": "^0.556.0",
+    "tailwindcss": "^3.4.19"
+  }
+}
