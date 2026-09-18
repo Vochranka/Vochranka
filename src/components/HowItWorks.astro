@@ -1,120 +1,83 @@
 ---
-import { Fingerprint, Volume2, Send, Clock, ShieldCheck, MapPin } from 'lucide-astro';
+import { Fingerprint, Volume2, Send, ArrowRight, ShieldCheck } from 'lucide-astro';
 
 const steps = [
   {
-    step: "01",
-    time: "Čas: 0,0 s",
+    num: "01",
+    label: "STISKNETE",
+    desc: "Nenápadné tlačítko máte po ruce, například pod stolem nebo lehátkem.",
     icon: Fingerprint,
-    title: "Nenápadný stisk tlačítka",
-    subtitle: "Nalepeno pod deskou či lehátkem",
-    desc: "Tlačítko je umístěno na spodní hraně stolu nebo masérského lůžka. Má jemnou hmatovou prohlubeň, takže jej nahmatáte a stisknete poslepu jedním prstem. Ruka zůstává pod stolem, klient nic nepostřehne.",
-    tag: "100% diskrétní provedení"
   },
   {
-    step: "02",
-    time: "Čas: +0,2 s",
+    num: "02",
+    label: "ALARM",
+    desc: "Okamžitě se spustí hlasitá siréna, která upozorní okolí a může narušitele odradit.",
     icon: Volume2,
-    title: "Okamžitý odstrašující alarm",
-    subtitle: "Zásuvková siréna zaskočí návštěvníka",
-    desc: "Zásuvková siréna (110 dB) umístěná u dveří nebo v chodbě okamžitě spustí hlasitý tón. Zvukový šok útočníka psychologicky zlomí – ztratí anonymitu, ví, že ho slyší celý dům, a snaží se okamžitě utéct.",
-    tag: "110 dB zvukový šok"
   },
   {
-    step: "03",
-    time: "Čas: +1,8 s",
+    num: "03",
+    label: "SOS",
+    desc: "Vaše přednastavené kontakty dostanou SMS s informací o aktivaci a adresou vašeho studia.",
     icon: Send,
-    title: "Tichá SMS záchranné síti",
-    subtitle: "Zpráva se jménem studia a adresou",
-    desc: "Systém paralelně odešle nouzovou SMS až na 3 přednastavená čísla (partner, rodina, kolegyně). Zpráva obsahuje přesný název salónu, adresu a čas aktivace pro okamžitý zásah nebo přivolání pomoci.",
-    tag: "Až 3 nouzové kontakty"
-  }
+  },
 ];
 ---
 
-<section id="jak-to-funguje" class="py-16 md:py-24 relative overflow-hidden">
+<section id="jak-to-funguje" class="py-16 md:py-24 relative overflow-hidden bg-white">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Section Header -->
-    <div class="max-w-2xl mx-auto text-center mb-16">
+    <div class="max-w-2xl mx-auto text-center mb-14 md:mb-16">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-100/90 text-sage-900 text-xs font-semibold mb-4">
-        <Clock class="w-3.5 h-3.5 text-sage-700" />
-        <span>Reakce v řádu vteřin</span>
+        <ShieldCheck class="w-3.5 h-3.5 text-sage-700" />
+        <span>Během 2 vteřin</span>
       </div>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-anthracite-950 tracking-tight mb-4">
-        Jak Vochránka funguje v krizové situaci?
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-anthracite-950 tracking-tight">
+        Tlačítko. Klik. Alarm. SOS.
       </h2>
-      <p class="text-base text-anthracite-600 leading-relaxed">
-        Systém je navržen tak, aby fungoval bez přemýšlení a bez nutnosti brát do ruky mobilní telefon. Od stisku po odeslání pomoci uběhnou necelé 2 vteřiny.
-      </p>
     </div>
 
-    <!-- 3 Steps Grid with connecting line indicator on desktop -->
-    <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8">
-      
-      {steps.map((item, index) => {
+    <!-- 3 Steps Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
+      {steps.map((item) => {
         const Icon = item.icon;
         return (
-          <div class="relative flex flex-col justify-between rounded-3xl p-7 bg-white border border-sage-100 shadow-soft-sm hover:shadow-soft-md transition-all duration-300">
+          <div class="flex flex-col justify-between rounded-3xl p-7 sm:p-8 bg-[#FAFBF9] border border-sage-200/80 hover:border-sage-400 hover:shadow-soft-md transition-all duration-300 group">
             <div>
-              <!-- Step Header -->
               <div class="flex items-center justify-between mb-6">
-                <span class="text-3xl font-extrabold font-display text-sage-200">
-                  {item.step}
+                <span class="text-xs font-bold tracking-wider px-3 py-1 rounded-full bg-white text-sage-800 border border-sage-200 shadow-soft-sm">
+                  {item.num} — {item.label}
                 </span>
-                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-sage-50 text-sage-800 border border-sage-200/70">
-                  {item.time}
-                </span>
+                <div class="w-11 h-11 rounded-2xl bg-sage-100/80 text-sage-800 flex items-center justify-center group-hover:bg-sage-600 group-hover:text-white transition-colors duration-200">
+                  <Icon class="w-5 h-5" />
+                </div>
               </div>
 
-              <!-- Icon & Title -->
-              <div class="w-12 h-12 rounded-2xl bg-sage-50 border border-sage-200/80 flex items-center justify-center text-sage-700 mb-5">
-                <Icon class="w-6 h-6" />
-              </div>
-
-              <h3 class="text-xl font-bold font-display text-anthracite-950 mb-1">
-                {item.title}
+              <h3 class="text-xl sm:text-2xl font-bold font-display text-anthracite-950 mb-3">
+                {item.label}
               </h3>
-              <p class="text-xs font-semibold text-sage-700 uppercase tracking-wider mb-3.5">
-                {item.subtitle}
-              </p>
 
-              <!-- Description -->
-              <p class="text-sm text-anthracite-600 leading-relaxed mb-6">
+              <p class="text-sm sm:text-base text-anthracite-600 leading-relaxed">
                 {item.desc}
               </p>
-            </div>
-
-            <!-- Bottom Tag -->
-            <div class="pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-semibold text-anthracite-800">
-              <ShieldCheck class="w-4 h-4 text-sage-600" />
-              <span>{item.tag}</span>
             </div>
           </div>
         );
       })}
-
     </div>
 
-    <!-- Live Preview SMS Card callout -->
-    <div class="mt-12 max-w-3xl mx-auto rounded-2xl bg-white border border-sage-200/80 p-5 sm:p-6 shadow-soft-sm">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-sage-100 text-sage-800 flex items-center justify-center shrink-0">
-            <MapPin class="w-5 h-5 text-sage-700" />
-          </div>
-          <div>
-            <h4 class="text-sm font-bold text-anthracite-900">Přesná lokalizace studia v každé SMS</h4>
-            <p class="text-xs text-anthracite-600">Při prvním spuštění nastavíte název salónu, patro a kód zvonku. V nouzi není prostor na dohady.</p>
-          </div>
-        </div>
-        <a 
-          href="#cenik" 
-          class="shrink-0 text-xs font-semibold px-4 py-2 rounded-xl bg-sage-50 hover:bg-sage-100 text-sage-800 border border-sage-200 transition-colors"
-        >
-          Prohlédnout ceník →
-        </a>
-      </div>
+    <!-- Bottom Reassurance & CTA -->
+    <div class="max-w-2xl mx-auto text-center pt-6 border-t border-stone-100">
+      <p class="text-base sm:text-lg font-bold text-anthracite-900 mb-4">
+        Jednoduché řešení pro situace, kdy není čas přemýšlet.
+      </p>
+      <a 
+        href="#instalace" 
+        class="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-sage-800 hover:text-sage-950 transition-colors group"
+      >
+        <span>Jak to funguje</span>
+        <ArrowRight class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+      </a>
     </div>
 
   </div>

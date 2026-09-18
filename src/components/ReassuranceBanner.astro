@@ -1,0 +1,48 @@
+---
+import { ShieldCheck, ArrowRight, Heart } from 'lucide-astro';
+---
+
+<section class="py-16 md:py-24 relative overflow-hidden bg-anthracite-950 text-white">
+  <!-- Subtle ambient glow background -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sage-600/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+    
+    <!-- Heart / Shield icon -->
+    <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center mx-auto mb-6 backdrop-blur-md">
+      <ShieldCheck class="w-6 h-6 text-sage-300" />
+    </div>
+
+    <!-- Section Heading -->
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-display tracking-tight mb-6">
+      Klid při každém novém klientovi
+    </h2>
+
+    <!-- Lead Paragraphs -->
+    <div class="space-y-3 max-w-2xl mx-auto mb-8 text-base sm:text-lg text-stone-200 leading-relaxed font-normal">
+      <p>
+        Vochránka není o strachu.
+      </p>
+      <p>
+        Je o vědomí, že když se něco stane, <strong class="text-sage-300 font-bold">máte jednoduchý způsob, jak okamžitě upozornit okolí a přivolat pomoc.</strong>
+      </p>
+    </div>
+
+    <!-- Tagline -->
+    <p class="text-lg sm:text-xl font-bold text-white mb-10 tracking-tight">
+      Mějte ji po ruce. Pro každý případ.
+    </p>
+
+    <!-- CTA Button -->
+    <div>
+      <a 
+        href="#objednavka" 
+        class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-base font-semibold text-white bg-sage-600 hover:bg-sage-500 active:scale-[0.99] transition-all duration-200 shadow-glow-sage hover:shadow-soft-xl group"
+      >
+        <span>Chci Vochránku</span>
+        <ArrowRight class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+      </a>
+    </div>
+
+  </div>
+</section>

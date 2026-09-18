@@ -1,135 +1,89 @@
 ---
-import { Zap, Wrench, Plug, CheckCircle2, PackageCheck, Ban, Sparkles } from 'lucide-astro';
+import { Zap, Check, CheckCircle2, ShieldCheck, Sparkles, Ban, Radio, Smartphone, BellRing } from 'lucide-astro';
+
+const features = [
+  {
+    title: "Plug & Play",
+    desc: "Sirénu stačí zasunout do běžné zásuvky 230V.",
+    icon: Zap,
+  },
+  {
+    title: "Nenápadné provedení",
+    desc: "Diskrétní tlačítko nalepíte pod stůl či lehátko.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Až 3 SOS kontakty",
+    desc: "Okamžitá tichá SMS rodině nebo blízkým.",
+    icon: Smartphone,
+  },
+  {
+    title: "Testovací SMS při instalaci",
+    desc: "Ihned si ověříte, že vše 100% funguje.",
+    icon: CheckCircle2,
+  },
+];
+
+const steps = ["Zapojit", "Nalepit", "Otestovat", "Hotovo"];
 ---
 
 <section id="instalace" class="py-16 md:py-24 bg-[#FAFBF9] border-y border-stone-200/70 relative">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      
-      <!-- Left side: Value proposition -->
-      <div class="lg:col-span-6">
-        
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-100 text-sage-900 text-xs font-semibold mb-4">
-          <Zap class="w-3.5 h-3.5 text-sage-700" />
-          <span>Skutečný Plug & Play</span>
+    <!-- Section Badge -->
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-100 text-sage-900 text-xs font-semibold mb-6">
+      <Zap class="w-3.5 h-3.5 text-sage-700" />
+      <span>Instalace za 120 vteřin</span>
+    </div>
+
+    <!-- Main Heading -->
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-anthracite-950 tracking-tight mb-6">
+      Připravená během 2 minut
+    </h2>
+
+    <!-- Subtexts -->
+    <div class="max-w-2xl mx-auto mb-8 space-y-2 text-base sm:text-lg text-anthracite-600 leading-relaxed">
+      <p class="font-medium text-anthracite-800">
+        Žádné vrtání, kabely ani technici.
+      </p>
+      <p>
+        Sirénu jednoduše zapojíte do zásuvky a tlačítko nalepíte na místo, kam na něj pohodlně dosáhnete.
+      </p>
+    </div>
+
+    <!-- 4-Word Process Sequence Bar -->
+    <div class="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 p-2 sm:p-2.5 rounded-2xl bg-white border border-sage-200/80 shadow-soft-sm mb-12">
+      {steps.map((step, idx) => (
+        <div class="flex items-center gap-2">
+          <span class="px-3.5 py-1.5 rounded-xl bg-sage-50 text-sage-900 text-xs sm:text-sm font-bold">
+            {step}
+          </span>
+          {idx < steps.length - 1 && (
+            <span class="text-sage-400 font-bold text-xs sm:text-sm">•</span>
+          )}
         </div>
+      ))}
+    </div>
 
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-anthracite-950 tracking-tight mb-5">
-          Instalace hotová za 2 minuty. <br />
-          <span class="text-sage-700">Žádní cizí technici ve vašem salónu.</span>
-        </h2>
-
-        <p class="text-base text-anthracite-600 leading-relaxed mb-8">
-          Víme, že privátní salón je vaše bezpečné útočiště pro klienty. Nemusíte zvát montážní firmu, vrtat do zdí ani tahat nevzhledné lišty s kabely. Vše přijde předkonfigurované a spárované přímo z výroby.
-        </p>
-
-        <!-- Comparison badges: Co NEMUSÍTE řešit -->
-        <div class="space-y-3 mb-8">
-          <div class="flex items-center gap-3 p-3 rounded-2xl bg-white border border-stone-200/80 shadow-soft-sm">
-            <div class="w-8 h-8 rounded-xl bg-stone-100 flex items-center justify-center text-stone-600 shrink-0">
-              <Ban class="w-4 h-4 text-stone-500" />
+    <!-- 4 Key Bullets / Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto text-left">
+      {features.map((item) => {
+        const Icon = item.icon;
+        return (
+          <div class="p-6 rounded-2xl bg-white border border-stone-200/80 shadow-soft-sm hover:border-sage-300 hover:shadow-soft-md transition-all">
+            <div class="w-10 h-10 rounded-xl bg-sage-50 text-sage-700 flex items-center justify-center mb-4">
+              <Icon class="w-5 h-5" />
             </div>
-            <span class="text-xs sm:text-sm text-anthracite-800 font-medium">
-              <strong>Žádné vrtání</strong> do zdí ani ničení nábytku či pronajatého prostoru
-            </span>
+            <h3 class="text-base font-bold text-anthracite-950 mb-1 flex items-center gap-2">
+              <Check class="w-4 h-4 text-sage-600 shrink-0" />
+              <span>{item.title}</span>
+            </h3>
+            <p class="text-xs text-anthracite-600 leading-relaxed pl-6">
+              {item.desc}
+            </p>
           </div>
-
-          <div class="flex items-center gap-3 p-3 rounded-2xl bg-white border border-stone-200/80 shadow-soft-sm">
-            <div class="w-8 h-8 rounded-xl bg-stone-100 flex items-center justify-center text-stone-600 shrink-0">
-              <Ban class="w-4 h-4 text-stone-500" />
-            </div>
-            <span class="text-xs sm:text-sm text-anthracite-800 font-medium">
-              <strong>Žádní neznámí technici</strong> procházející vaše soukromé studio
-            </span>
-          </div>
-
-          <div class="flex items-center gap-3 p-3 rounded-2xl bg-white border border-stone-200/80 shadow-soft-sm">
-            <div class="w-8 h-8 rounded-xl bg-stone-100 flex items-center justify-center text-stone-600 shrink-0">
-              <Ban class="w-4 h-4 text-stone-500" />
-            </div>
-            <span class="text-xs sm:text-sm text-anthracite-800 font-medium">
-              <strong>Žádné kabely</strong> vedené po podlaze či pod kobercem
-            </span>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Right side: 3-step visual installation card -->
-      <div class="lg:col-span-6">
-        <div class="rounded-3xl p-6 sm:p-8 bg-white border border-sage-200/80 shadow-soft-xl relative overflow-hidden">
-          
-          <div class="flex items-center justify-between pb-5 mb-6 border-b border-stone-100">
-            <div>
-              <span class="text-xs font-bold uppercase tracking-wider text-sage-800">Průvodce zprovozněním</span>
-              <p class="text-sm font-semibold text-anthracite-900">Zvládne každá žena za 120 vteřin</p>
-            </div>
-            <span class="text-xs font-bold px-3 py-1 rounded-full bg-sage-50 text-sage-800 border border-sage-200">
-              2 minuty
-            </span>
-          </div>
-
-          <div class="space-y-6">
-            
-            <!-- Step A -->
-            <div class="flex items-start gap-4">
-              <div class="w-9 h-9 rounded-xl bg-sage-700 text-white font-bold text-sm flex items-center justify-center shrink-0 shadow-soft-sm">
-                1
-              </div>
-              <div>
-                <h4 class="text-sm font-bold text-anthracite-900 mb-1">
-                  Zasuňte sirénu do libovolné zásuvky
-                </h4>
-                <p class="text-xs text-anthracite-600 leading-relaxed">
-                  Stačí běžná elektrická zásuvka 230V u vchodu nebo recepce. Brána se automaticky přihlásí k síti během 15 vteřin.
-                </p>
-              </div>
-            </div>
-
-            <!-- Step B -->
-            <div class="flex items-start gap-4">
-              <div class="w-9 h-9 rounded-xl bg-sage-700 text-white font-bold text-sm flex items-center justify-center shrink-0 shadow-soft-sm">
-                2
-              </div>
-              <div>
-                <h4 class="text-sm font-bold text-anthracite-900 mb-1">
-                  Sloupněte fólii 3M pásky a nalepte tlačítko
-                </h4>
-                <p class="text-xs text-anthracite-600 leading-relaxed">
-                  Vysoce přilnavá průmyslová páska 3M pevně drží na dřevě, kovu i plastu. Umístíte ji zespodu masérského stolu tam, kam přirozeně sahá vaše ruka.
-                </p>
-              </div>
-            </div>
-
-            <!-- Step C -->
-            <div class="flex items-start gap-4">
-              <div class="w-9 h-9 rounded-xl bg-sage-700 text-white font-bold text-sm flex items-center justify-center shrink-0 shadow-soft-sm">
-                3
-              </div>
-              <div>
-                <h4 class="text-sm font-bold text-anthracite-900 mb-1">
-                  Jednou stiskněte pro zkušební SMS
-                </h4>
-                <p class="text-xs text-anthracite-600 leading-relaxed">
-                  Systém vám a vašim blízkým pošle uvítací testovací SMS s potvrzením, že spojení je 100% aktivní a funkční.
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Bottom reassurance pill -->
-          <div class="mt-8 pt-5 border-t border-stone-100 flex items-center justify-between text-xs text-anthracite-600">
-            <span class="flex items-center gap-1.5 font-medium text-sage-800">
-              <PackageCheck class="w-4 h-4 text-sage-600" />
-              Baterie v tlačítku už je vložena (životnost 3 roky)
-            </span>
-          </div>
-
-        </div>
-      </div>
-
+        );
+      })}
     </div>
 
   </div>
