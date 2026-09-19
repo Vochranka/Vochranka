@@ -4,55 +4,60 @@ import { ShieldCheck, Menu, X, ArrowRight } from 'lucide-astro';
 
 <header 
   id="main-navbar" 
-  class="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 bg-transparent border-b border-transparent py-2"
+  class="fixed top-0 left-0 right-0 z-50 w-full pointer-events-none transition-all duration-500 ease-out pt-3 sm:pt-4 px-4 sm:px-6 lg:px-8"
 >
-  <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 w-full">
-    <div class="relative flex items-center justify-between h-18 sm:h-20">
-      
+  <div 
+    id="navbar-container" 
+    class="mx-auto w-full transition-all duration-500 ease-out pointer-events-auto"
+  >
+    <div 
+      id="navbar-pill"
+      class="relative flex items-center justify-between w-full transition-all duration-500 ease-out px-4 sm:px-6 py-2 sm:py-3 rounded-2xl md:rounded-full"
+    >
       <!-- Brand / Logo (Left) with hover scaling & animation -->
       <a 
         href="#" 
-        class="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-sage-400 rounded-lg p-1 transition-transform duration-300 hover:scale-105 active:scale-95 z-10"
+        class="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-sage-400 rounded-lg p-1 transition-transform duration-300 hover:scale-105 active:scale-95 z-10 shrink-0"
       >
-        <div class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-sage-300 shadow-soft-sm backdrop-blur-md group-hover:bg-sage-600 group-hover:text-white group-hover:scale-110 group-hover:shadow-glow-sage transition-all duration-300">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-sage-300 shadow-soft-sm backdrop-blur-md group-hover:bg-sage-600 group-hover:text-white group-hover:scale-110 group-hover:shadow-glow-sage transition-all duration-300">
           <ShieldCheck class="w-5 h-5" />
         </div>
         <div class="flex flex-col">
-          <span class="text-xl font-bold font-display tracking-tight text-white leading-none group-hover:text-sage-300 transition-colors duration-200">
-            Vochránka<span class="text-sage-400">.</span>
+          <span class="text-lg sm:text-xl font-bold font-display tracking-tight text-white leading-none group-hover:text-sage-300 transition-colors duration-200">
+            Vochranka<span class="text-sage-400">.</span>
           </span>
-          <span class="text-[11px] font-medium tracking-wide text-stone-300 uppercase mt-0.5">
+          <span class="text-[10px] sm:text-[11px] font-medium tracking-wide text-stone-300 uppercase mt-0.5">
             Diskrétní bezpečí
           </span>
         </div>
       </a>
 
-      <!-- Desktop Nav (Exactly Centered) with hover scaling & animated underline -->
-      <nav class="hidden md:flex items-center gap-8 lg:gap-12 text-[15px] font-medium absolute left-1/2 -translate-x-1/2 z-10">
+      <!-- Desktop Nav (Exactly Centered) with animated underline -->
+      <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-[14px] lg:text-[15px] font-medium absolute left-1/2 -translate-x-1/2 z-10 whitespace-nowrap">
         <a 
           href="#jak-to-funguje" 
-          class="nav-link relative py-1 text-stone-200 hover:text-white transition-all duration-300 inline-block hover:scale-110 active:scale-95 group"
+          class="nav-link relative py-1 text-stone-200 hover:text-white transition-all duration-300 inline-block hover:scale-105 active:scale-95 group"
         >
           <span>Jak to funguje</span>
           <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-sage-400 rounded-full transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a 
           href="#instalace" 
-          class="nav-link relative py-1 text-stone-200 hover:text-white transition-all duration-300 inline-block hover:scale-110 active:scale-95 group"
+          class="nav-link relative py-1 text-stone-200 hover:text-white transition-all duration-300 inline-block hover:scale-105 active:scale-95 group"
         >
           <span>Instalace</span>
           <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-sage-400 rounded-full transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a 
           href="#cenik" 
-          class="nav-link relative py-1 text-stone-200 hover:text-white transition-all duration-300 inline-block hover:scale-110 active:scale-95 group"
+          class="nav-link relative py-1 text-stone-200 hover:text-white transition-all duration-300 inline-block hover:scale-105 active:scale-95 group"
         >
           <span>Ceník</span>
           <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-sage-400 rounded-full transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a 
           href="#faq" 
-          class="nav-link relative py-1 text-stone-200 hover:text-white transition-all duration-300 inline-block hover:scale-110 active:scale-95 group"
+          class="nav-link relative py-1 text-stone-200 hover:text-white transition-all duration-300 inline-block hover:scale-105 active:scale-95 group"
         >
           <span>FAQ</span>
           <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-sage-400 rounded-full transition-all duration-300 group-hover:w-full"></span>
@@ -60,18 +65,18 @@ import { ShieldCheck, Menu, X, ArrowRight } from 'lucide-astro';
       </nav>
 
       <!-- Desktop CTA Button (Right) with hover scale & glow animation -->
-      <div class="hidden md:flex items-center gap-4 z-10">
+      <div class="hidden md:flex items-center gap-3 z-10 shrink-0">
         <a 
           href="#objednavka" 
-          class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-sage-600 hover:bg-sage-500 active:scale-95 shadow-glow-sage hover:shadow-soft-xl hover:scale-105 transition-all duration-300 group"
+          class="inline-flex items-center justify-center gap-2 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-sage-600 hover:bg-sage-500 active:scale-95 shadow-glow-sage hover:shadow-soft-xl hover:scale-105 transition-all duration-300 group whitespace-nowrap"
         >
           <span>Objednat sadu</span>
-          <ArrowRight class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110" />
+          <ArrowRight class="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110" />
         </a>
       </div>
 
       <!-- Mobile Menu Button with hover scale -->
-      <div class="flex items-center md:hidden gap-3 z-10">
+      <div class="flex items-center md:hidden gap-2.5 z-10 shrink-0">
         <a 
           href="#objednavka" 
           class="inline-flex items-center justify-center px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-sage-600 hover:bg-sage-500 shadow-soft-sm hover:scale-105 active:scale-95 transition-all duration-200"
@@ -81,7 +86,7 @@ import { ShieldCheck, Menu, X, ArrowRight } from 'lucide-astro';
         <button 
           id="mobile-menu-toggle"
           type="button" 
-          class="p-2 rounded-xl text-stone-200 hover:text-white hover:bg-white/10 hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sage-400"
+          class="p-2 rounded-xl text-stone-200 hover:text-white hover:bg-white/10 hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sage-400 cursor-pointer"
           aria-label="Otevřít menu"
         >
           <Menu class="w-6 h-6" id="menu-open-icon" />
@@ -90,33 +95,72 @@ import { ShieldCheck, Menu, X, ArrowRight } from 'lucide-astro';
       </div>
 
     </div>
-  </div>
 
-  <!-- Mobile Dropdown Navigation -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-anthracite-950/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3">
-    <a href="#jak-to-funguje" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium text-stone-200 hover:bg-white/10 hover:text-white hover:translate-x-2 transition-all duration-200">
-      Jak to funguje
-    </a>
-    <a href="#instalace" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium text-stone-200 hover:bg-white/10 hover:text-white hover:translate-x-2 transition-all duration-200">
-      Instalace za 2 minuty
-    </a>
-    <a href="#cenik" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium text-stone-200 hover:bg-white/10 hover:text-white hover:translate-x-2 transition-all duration-200">
-      Ceník
-    </a>
-    <a href="#faq" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium text-stone-200 hover:bg-white/10 hover:text-white hover:translate-x-2 transition-all duration-200">
-      Časté dotazy (FAQ)
-    </a>
-    <div class="pt-2">
-      <a 
-        href="#objednavka" 
-        class="mobile-nav-link flex items-center justify-center gap-2 w-full px-4 py-3.5 rounded-xl text-sm font-semibold text-white bg-sage-600 hover:bg-sage-500 hover:scale-[1.02] active:scale-98 shadow-soft-sm transition-all"
-      >
-        <span>Objednat sadu Vochránka</span>
-        <ArrowRight class="w-4 h-4" />
+    <!-- Mobile Dropdown Navigation -->
+    <div 
+      id="mobile-menu" 
+      class="hidden md:hidden mt-2 mx-auto w-full max-w-lg rounded-2xl border border-white/15 bg-anthracite-950/95 backdrop-blur-2xl shadow-2xl p-4 space-y-2 pointer-events-auto transition-all duration-300"
+    >
+      <a href="#jak-to-funguje" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium text-stone-200 hover:bg-white/10 hover:text-white hover:translate-x-2 transition-all duration-200">
+        Jak to funguje
       </a>
+      <a href="#instalace" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium text-stone-200 hover:bg-white/10 hover:text-white hover:translate-x-2 transition-all duration-200">
+        Instalace za 2 minuty
+      </a>
+      <a href="#cenik" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium text-stone-200 hover:bg-white/10 hover:text-white hover:translate-x-2 transition-all duration-200">
+        Ceník
+      </a>
+      <a href="#faq" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium text-stone-200 hover:bg-white/10 hover:text-white hover:translate-x-2 transition-all duration-200">
+        Časté dotazy (FAQ)
+      </a>
+      <div class="pt-2">
+        <a 
+          href="#objednavka" 
+          class="mobile-nav-link flex items-center justify-center gap-2 w-full px-4 py-3.5 rounded-xl text-sm font-semibold text-white bg-sage-600 hover:bg-sage-500 hover:scale-[1.02] active:scale-98 shadow-soft-sm transition-all"
+        >
+          <span>Objednat sadu Vochranka</span>
+          <ArrowRight class="w-4 h-4" />
+        </a>
+      </div>
     </div>
   </div>
 </header>
+
+<style>
+  /* Default Hero state: full-width transparent navbar */
+  #navbar-container {
+    max-width: 1720px;
+  }
+  #navbar-pill {
+    background-color: transparent;
+    border: 1px solid transparent;
+    box-shadow: none;
+  }
+
+  /* Scrolled past Hero: Centered floating pill with high-contrast background */
+  :global(#main-navbar.is-scrolled) #navbar-container {
+    max-width: 58rem;
+  }
+
+  :global(#main-navbar.is-scrolled) #navbar-pill {
+    background-color: rgba(17, 19, 21, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    :global(#main-navbar.is-scrolled) #navbar-pill {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+</style>
 
 <script>
   const header = document.getElementById('main-navbar');
@@ -126,19 +170,28 @@ import { ShieldCheck, Menu, X, ArrowRight } from 'lucide-astro';
   const closeIcon = document.getElementById('menu-close-icon');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
-  // Dynamic navbar background transition on scroll
+  // Calculates when the hero section ends
+  function getHeroThreshold() {
+    const hero = document.querySelector('section');
+    if (hero) {
+      return Math.max(hero.offsetHeight - 120, 250);
+    }
+    return window.innerHeight * 0.85;
+  }
+
+  // Dynamic navbar pill transition after hero section
   function updateNavbar() {
     if (!header) return;
-    if (window.scrollY > 30) {
-      header.classList.add('bg-anthracite-950/85', 'backdrop-blur-md', 'border-white/10', 'shadow-soft-lg', 'py-0');
-      header.classList.remove('bg-transparent', 'border-transparent', 'py-2');
+    const isPastHero = window.scrollY > getHeroThreshold();
+    if (isPastHero) {
+      header.classList.add('is-scrolled');
     } else {
-      header.classList.remove('bg-anthracite-950/85', 'backdrop-blur-md', 'border-white/10', 'shadow-soft-lg', 'py-0');
-      header.classList.add('bg-transparent', 'border-transparent', 'py-2');
+      header.classList.remove('is-scrolled');
     }
   }
 
   window.addEventListener('scroll', updateNavbar, { passive: true });
+  window.addEventListener('resize', updateNavbar, { passive: true });
   updateNavbar();
 
   // Mobile menu toggle
