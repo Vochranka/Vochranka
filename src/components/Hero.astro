@@ -28,6 +28,7 @@ import {
       preload="auto"
       class="w-full h-full object-cover opacity-90 transition-opacity duration-700"
     >
+      <source src="/vochranka-video-optimized.mp4" type="video/mp4" />
       <source src="/vochranka-video.mp4" type="video/mp4" />
       Váš prohlížeč nepodporuje přehrávání videa.
     </video>
@@ -54,7 +55,7 @@ import {
       >
         <span class="block">Klik.</span>
         <span class="block text-red-500">Alarm.</span>
-        <span class="block text-green-600">SOS zpráva.</span>
+        <span class="block text-green-500">SOS zpráva.</span>
       </h1>
     </div>
   </div>
@@ -72,10 +73,6 @@ import {
         class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-base font-semibold text-white bg-sage-600 hover:bg-sage-500 active:scale-[0.99] transition-all duration-200 shadow-glow-sage hover:shadow-soft-xl hover:scale-105"
       >
         <span>Chci sadu do salónu</span>
-        <span
-          class="text-xs bg-sage-800/90 py-0.5 px-2 rounded-full font-medium text-sage-100"
-          >2 990 Kč</span
-        >
       </a>
 
       <button
@@ -117,7 +114,8 @@ import {
       title="Pozastavit / Spustit video"
       aria-label="Pozastavit nebo spustit video"
     >
-      <Pause class="w-3.5 h-3.5" id="video-play-icon" />
+      <Pause class="w-3.5 h-3.5" id="video-pause-icon" />
+      <Play class="w-3.5 h-3.5 hidden" id="video-play-icon" />
       <span class="text-[11px]" id="video-play-label">Pozastavit</span>
     </button>
     <span class="text-stone-600">|</span>
@@ -128,7 +126,8 @@ import {
       title="Zapnout / Vypnout zvuk"
       aria-label="Zapnout nebo vypnout zvuk"
     >
-      <VolumeX class="w-3.5 h-3.5" id="video-sound-icon" />
+      <VolumeX class="w-3.5 h-3.5" id="video-sound-muted-icon" />
+      <Volume2 class="w-3.5 h-3.5 hidden" id="video-sound-unmuted-icon" />
       <span class="text-[11px]" id="video-sound-label">Zvuk vypnut</span>
     </button>
   </div>
@@ -142,6 +141,44 @@ import {
   const heroSoundTextBtn = document.getElementById("hero-sound-text-btn");
   const playLabel = document.getElementById("video-play-label");
   const soundLabel = document.getElementById("video-sound-label");
+  const pauseIcon = document.getElementById("video-pause-icon");
+  const playIcon = document.getElementById("video-play-icon");
+  const soundMutedIcon = document.getElementById("video-sound-muted-icon");
+  const soundUnmutedIcon = document.getElementById("video-sound-unmuted-icon");
+
+  // Update play/pause UI (icon and label)
+  function updatePlayUI() {
+    if (!videoEl) return;
+    const isPaused = videoEl.paused;
+    if (pauseIcon) pauseIcon.classList.toggle("hidden", isPaused);
+    if (playIcon) playIcon.classList.toggle("hidden", !isPaused);
+    if (playLabel) playLabel.textContent = isPaused ? "Spustit" : "Pozastavit";
+  }
+
+  // Ensure autoplay starts reliably across all browsers (Safari/Chrome/iOS)
+  if (videoEl) {
+    videoEl.muted = true;
+    const playPromise = videoEl.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay policy prevented playback until user interaction
+        const triggerPlay = () => {
+          videoEl.play();
+          window.removeEventListener("click", triggerPlay);
+          window.removeEventListener("touchstart", triggerPlay);
+          window.removeEventListener("scroll", triggerPlay);
+        };
+        window.addEventListener("click", triggerPlay, { once: true });
+        window.addEventListener("touchstart", triggerPlay, { once: true });
+        window.addEventListener("scroll", triggerPlay, { once: true });
+      });
+    }
+
+    // Keep UI synchronized with video play/pause events
+    videoEl.addEventListener("play", updatePlayUI);
+    videoEl.addEventListener("pause", updatePlayUI);
+    videoEl.addEventListener("volumechange", updateSoundUI);
+  }
 
   // Sound toggle logic
   function toggleAudio() {
@@ -153,6 +190,8 @@ import {
   function updateSoundUI() {
     if (!videoEl) return;
     const isMuted = videoEl.muted;
+    if (soundMutedIcon) soundMutedIcon.classList.toggle("hidden", !isMuted);
+    if (soundUnmutedIcon) soundUnmutedIcon.classList.toggle("hidden", isMuted);
     if (soundLabel) {
       soundLabel.textContent = isMuted ? "Zvuk vypnut" : "Zvuk zapnut";
     }
@@ -176,13 +215,15 @@ import {
     togglePlayBtn.addEventListener("click", () => {
       if (videoEl.paused) {
         videoEl.play();
-        if (playLabel) playLabel.textContent = "Pozastavit";
       } else {
         videoEl.pause();
-        if (playLabel) playLabel.textContent = "Spustit";
       }
     });
   }
+
+  // Initial UI sync
+  updatePlayUI();
+  updateSoundUI();
 
   // Interactive button test
   const demoBtn = document.getElementById("interactive-demo-btn");
