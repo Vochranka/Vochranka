@@ -12,32 +12,34 @@ import { Magnet } from "lucide-astro";
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
       <!-- LEFT COLUMN: Hardware & Ergonomie (7 cols) -->
       <div class="lg:col-span-7 text-left">
-        <span
-          class="text-xs font-mono tracking-[0.2em] text-zinc-400 uppercase font-medium block mb-3"
-          >Hardware & Ergonomie</span
-        >
-
         <h2
           class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-950 leading-[1.15]"
         >
-          Za vámi se zavřou dveře.<br />A s klientem jste sami.
+          Za vámi se zavřou dveře.<br />
+          <span class="text-zinc-600">A s klientem jste sami.</span>
         </h2>
 
+        <!-- Situace / Problém (Napětí) -->
         <p
-          class="text-zinc-500 text-base md:text-lg mt-4 max-w-lg leading-relaxed"
+          class="text-zinc-600 text-base md:text-lg mt-4 max-w-xl leading-relaxed"
         >
-          Přijde nový klient, který začne překračovat hranice. Telefon leží na
-          poličce nebo v kabelce. Nemáte šanci ho vytáhnout, odemknout a někomu
-          volat. Vochranka je malé bezpečnostní tlačítko, na které stačí dvakrát
-          kliknout. Rozhouká se silná siréna a pošle se SOS SMS blízkým.
+          Přijde nový klient, který začne překračovat osobní hranice. Váš
+          telefon leží na poličce nebo v kabelce. Nemáte šanci ho vytáhnout,
+          odemknout a zavolat o pomoc.
         </p>
 
-        <!-- Blok 1 (Aktivace) -->
-        <div class="mt-8 pt-6 border-t border-zinc-100">
+        <p class="text-base font-bold text-zinc-950 leading-snug">
+          Proto vznikla Vochranka. Malé bezpečnostní tlačítko přímo u vaší ruky
+          - v kapce, pod hranou stolu, na konstrukci lehátka.
+        </p>
+
+        <!-- Oddělené představení Vochranky (Řešení) -->
+
+        <div class="mt-6 pt-6 border-t border-zinc-100">
           <div
             class="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold mb-1"
           >
-            Gesto 01 — 2× rychlé stisknutí
+            2x kliknutí
           </div>
           <h3 class="text-lg font-semibold text-zinc-900">
             110 dB siréna na místě + nouzová SMS
@@ -53,7 +55,7 @@ import { Magnet } from "lucide-astro";
           <div
             class="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold mb-1"
           >
-            Gesto 02 — Podržení na 3 sekundy
+            Podržení na 3 sekundy
           </div>
           <h3 class="text-lg font-semibold text-zinc-900">
             Okamžité umlčení sirény
