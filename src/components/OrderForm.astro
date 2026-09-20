@@ -1,441 +1,275 @@
 ---
 // src/components/OrderForm.astro
 import {
-  Send,
-  ShieldCheck,
-  CheckCircle2,
-  Lock,
-  Sparkles,
   Phone,
   Mail,
   MapPin,
-  Clock,
-  MessageCircle,
-  Truck,
-  RotateCcw,
-  BadgePercent,
-  HelpCircle,
   ArrowRight,
-  Plus,
+  CheckCircle2,
 } from "lucide-astro";
 ---
 
 <section
   id="kontakt"
-  class="py-20 md:py-28 bg-white border-t border-zinc-200/80 relative scroll-mt-10"
+  class="py-24 md:py-32 bg-white border-t border-zinc-200/80 relative scroll-mt-10"
 >
-  <!-- Invisible anchor for legacy links -->
   <div id="objednavka" class="absolute -top-16 left-0 pointer-events-none"></div>
   <div id="objednat" class="absolute -top-16 left-0 pointer-events-none"></div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <!-- Top Header -->
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <div
-        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold mb-4 border border-zinc-200"
-      >
-        <Sparkles class="w-3.5 h-3.5 text-zinc-800" />
-        <span>NEZÁVAZNÁ OBJEDNÁVKA & KONTAKT</span>
-      </div>
+    <!-- Section Header -->
+    <div class="max-w-2xl mx-auto text-center mb-16">
+      <p class="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-3">
+        Nezávazná objednávka & kontakt
+      </p>
       <h2
         class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-zinc-950 tracking-tight"
       >
-        Získejte bezpečí pro svůj salón ještě dnes.
+        Objednejte si sadu do salónu.
       </h2>
-      <p class="text-base sm:text-lg text-zinc-600 mt-4 leading-relaxed max-w-2xl mx-auto">
-        Vyberte si složení sady, spočítejte si okamžitou cenu a odešlete nezávaznou poptávku. Neplatíte nic předem – zboží hradíte až při převzetí nebo po odzkoušení.
+      <p class="text-base sm:text-lg text-zinc-600 mt-4 leading-relaxed">
+        Neplatíte nic předem. Před odesláním se vám ozveme a vše potvrdíme. Máte 14 dní na to si sadu v klidu vyzkoušet přímo ve své praxi.
       </p>
     </div>
 
-    <!-- 2-Column Layout: Left Form & Price Calculator, Right Direct Contacts & Trust -->
+    <!-- 2 Columns: Order Form + Calculator (Left) & Direct Contacts (Right) -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
       
       <!-- ========================================== -->
-      <!-- LEFT COLUMN (7 cols): Order Form + Live Calc -->
+      <!-- LEFT: Order Form & Live Price Calculator   -->
       <!-- ========================================== -->
-      <div class="lg:col-span-7 bg-zinc-50 rounded-3xl p-6 sm:p-10 border border-zinc-200 shadow-xl relative">
+      <div class="lg:col-span-7 bg-zinc-50 rounded-3xl p-6 sm:p-9 border border-zinc-200/90 relative">
         
-        <!-- Live Feedback Alert (hidden by default) -->
+        <!-- Success Confirmation State -->
         <div id="form-success-state" class="hidden text-center py-12">
           <div
-            class="w-16 h-16 rounded-full bg-zinc-950 text-white flex items-center justify-center mx-auto mb-5 shadow-md"
+            class="w-12 h-12 rounded-full bg-zinc-950 text-white flex items-center justify-center mx-auto mb-4"
           >
-            <CheckCircle2 class="w-9 h-9 text-white" />
+            <CheckCircle2 class="w-6 h-6 text-white" />
           </div>
-          <h3 class="text-2xl sm:text-3xl font-bold font-display text-zinc-950 mb-3">
-            Děkujeme za vaši objednávku!
+          <h3 class="text-2xl font-bold font-display text-zinc-950 mb-2">
+            Objednávka přijata
           </h3>
-          <p class="text-sm sm:text-base text-zinc-600 max-w-md mx-auto mb-6 leading-relaxed">
-            Vaši nezávaznou objednávku jsme v pořádku přijali. Ozveme se vám do 2 hodin (v pracovní dny) pro potvrzení doručení a diskrétní odeslání.
+          <p class="text-sm text-zinc-600 max-w-sm mx-auto mb-6">
+            Děkujeme. Ozveme se vám do 2 hodin pro potvrzení doručení a sadu vám diskrétně odešleme.
           </p>
           <button
             id="form-reset-btn"
             type="button"
-            class="inline-flex items-center justify-center px-6 py-3 rounded-xl text-xs font-semibold text-zinc-900 bg-white hover:bg-zinc-100 border border-zinc-200 transition-colors shadow-xs cursor-pointer"
+            class="px-5 py-2.5 rounded-xl text-xs font-semibold text-zinc-900 bg-white border border-zinc-200 cursor-pointer hover:bg-zinc-100"
           >
             Zadat další požadavek
           </button>
         </div>
 
-        <!-- The Interactive Form -->
-        <form id="order-inquiry-form" class="space-y-7">
+        <!-- The Form -->
+        <form id="order-inquiry-form" class="space-y-6">
           
-          <!-- KROK 1: VÝBĚR HARDWARU & PŘÍDAVNÝCH TLAČÍTEK -->
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <label class="block text-xs font-bold uppercase tracking-wider text-zinc-900">
-                1. Sestavení sady Vochranka
-              </label>
-              <span class="text-[11px] font-semibold text-zinc-600 bg-white border border-zinc-200 px-2 py-0.5 rounded-full">
-                Základní sada v ceně
-              </span>
-            </div>
-
-            <!-- Základní balíček (vždy aktivní) -->
-            <div class="p-4 rounded-2xl bg-white border-2 border-zinc-950 shadow-xs mb-3 flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-xl bg-zinc-100 flex items-center justify-center text-zinc-950 shrink-0 font-bold text-sm">
-                  1×
-                </div>
-                <div>
-                  <h4 class="text-sm font-bold text-zinc-950">Sada Vochranka (Siréna + 1× Tlačítko)</h4>
-                  <p class="text-xs text-zinc-500">Siréna 110 dB do zásuvky, magnetické tísňové tlačítko, baterie, 3M páska</p>
-                </div>
-              </div>
-              <div class="text-right shrink-0 pl-3">
-                <span class="text-sm font-bold text-zinc-950">2 990 Kč</span>
-                <span class="block text-[10px] text-zinc-500">vč. DPH</span>
-              </div>
-            </div>
-
-            <!-- Volba přídavných tlačítek -->
-            <div class="p-4 rounded-2xl bg-white border border-zinc-200">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
-                <div>
-                  <span class="text-xs font-bold text-zinc-900 block">Přejete si další tlačítka navíc?</span>
-                  <span class="text-[11px] text-zinc-500 block">Např. jedno pod masérský stůl a druhé do kapsy nebo na recepci (+690 Kč/ks)</span>
-                </div>
-                <!-- Buttons selector -->
-                <div class="flex items-center gap-1.5 bg-zinc-100 p-1 rounded-xl shrink-0 self-start sm:self-auto">
-                  <button
-                    type="button"
-                    class="extra-btn-opt px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-zinc-950 shadow-xs transition-all cursor-pointer"
-                    data-count="0"
-                  >
-                    0 ks
-                  </button>
-                  <button
-                    type="button"
-                    class="extra-btn-opt px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-600 hover:text-zinc-950 transition-all cursor-pointer"
-                    data-count="1"
-                  >
-                    +1 ks
-                  </button>
-                  <button
-                    type="button"
-                    class="extra-btn-opt px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-600 hover:text-zinc-950 transition-all cursor-pointer"
-                    data-count="2"
-                  >
-                    +2 ks
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- KROK 2: ŽIVÝ KALKULÁTOR CENY (Live Calculation Summary Box) -->
-          <div class="p-5 rounded-2xl bg-white border border-zinc-300 shadow-sm space-y-3">
-            <div class="flex items-center justify-between pb-2 border-b border-zinc-100">
-              <span class="text-xs font-bold uppercase tracking-wider text-zinc-700">
-                Přehled a kalkulace ceny
-              </span>
-              <span class="text-[10px] uppercase font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                Žádná platba předem
-              </span>
-            </div>
-
-            <!-- Rozpad položek -->
-            <div class="space-y-1.5 text-xs text-zinc-600">
-              <div class="flex items-center justify-between">
-                <span>Základní sada (Hardware do trvalého vlastnictví):</span>
-                <span class="font-medium text-zinc-900">2 990 Kč</span>
-              </div>
-              <div class="flex items-center justify-between" id="row-extra-buttons">
-                <span>Přídavná tlačítka (<span id="label-extra-count">0 ks</span>):</span>
-                <span class="font-medium text-zinc-900" id="label-extra-price">0 Kč</span>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="flex items-center gap-1">
-                  <span>Roční provoz & neomezené SOS SMS (cca 82 Kč/měsíc):</span>
-                </span>
-                <span class="font-medium text-zinc-900">990 Kč / rok</span>
-              </div>
-              <div class="flex items-center justify-between text-zinc-900">
-                <span>Diskrétní doručení (Zásilkovna / kurýr po ČR):</span>
-                <span class="font-bold text-emerald-600">ZDARMA</span>
-              </div>
-            </div>
-
-            <!-- Celkový součet -->
-            <div class="pt-3 border-t border-zinc-200 flex items-baseline justify-between">
+          <!-- Extra Button Selector -->
+          <div class="p-4 rounded-2xl bg-white border border-zinc-200/80">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <span class="text-xs font-bold uppercase tracking-wider text-zinc-900 block">Celková částka</span>
-                <span class="text-[11px] text-zinc-500">včetně DPH, dopravy a ročního provozu</span>
+                <span class="text-sm font-bold text-zinc-950 block">Sada Vochranka (2 990 Kč)</span>
+                <span class="text-xs text-zinc-500 block mt-0.5">1× siréna do zásuvky, 1× tísňové tlačítko, baterie, 3M páska</span>
               </div>
-              <div class="text-right">
-                <span
-                  id="calc-total-display"
-                  class="text-2xl sm:text-3xl font-extrabold font-display text-zinc-950 tracking-tight"
+              <div class="flex items-center gap-1 bg-zinc-100 p-1 rounded-xl shrink-0">
+                <button
+                  type="button"
+                  class="extra-btn-opt px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-zinc-950 shadow-xs cursor-pointer"
+                  data-count="0"
                 >
-                  3 980 Kč
-                </span>
+                  Základ
+                </button>
+                <button
+                  type="button"
+                  class="extra-btn-opt px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-500 hover:text-zinc-950 cursor-pointer"
+                  data-count="1"
+                >
+                  +1 tlačítko
+                </button>
+                <button
+                  type="button"
+                  class="extra-btn-opt px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-500 hover:text-zinc-950 cursor-pointer"
+                  data-count="2"
+                >
+                  +2 tlačítka
+                </button>
               </div>
             </div>
           </div>
 
-          <!-- KROK 3: DORUČOVACÍ & KONTAKTNÍ ÚDAJE -->
-          <div class="space-y-4">
-            <label class="block text-xs font-bold uppercase tracking-wider text-zinc-900">
-              2. Kam a komu sadu doručit
-            </label>
-
-            <!-- Jméno & Salón -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Live Price Breakdown -->
+          <div class="p-4 rounded-2xl bg-white border border-zinc-200/80 space-y-2 text-xs">
+            <div class="flex justify-between text-zinc-600">
+              <span>Hardware (siréna + tísňové tlačítko):</span>
+              <span class="text-zinc-950 font-medium">2 990 Kč</span>
+            </div>
+            <div class="flex justify-between text-zinc-600" id="extra-calc-row">
+              <span>Přídavná tlačítka (<span id="label-extra-count">0 ks</span>):</span>
+              <span class="text-zinc-950 font-medium" id="label-extra-price">0 Kč</span>
+            </div>
+            <div class="flex justify-between text-zinc-600">
+              <span>Roční SIM & neomezené nouzové SMS:</span>
+              <span class="text-zinc-950 font-medium">990 Kč / rok</span>
+            </div>
+            <div class="flex justify-between text-zinc-600">
+              <span>Diskrétní doručení Zásilkovnou:</span>
+              <span class="text-zinc-950 font-bold">Zdarma</span>
+            </div>
+            <div class="pt-3 border-t border-zinc-100 flex items-baseline justify-between">
               <div>
-                <label for="name" class="block text-xs font-semibold text-zinc-800 mb-1">
-                  Vaše jméno a příjmení *
-                </label>
+                <span class="text-xs font-bold text-zinc-950 block">Celkem k úhradě</span>
+                <span class="text-[11px] text-zinc-400">Platíte až při převzetí (dobírkou nebo na fakturu)</span>
+              </div>
+              <span id="calc-total-display" class="text-2xl font-bold font-display text-zinc-950">
+                3 980 Kč
+              </span>
+            </div>
+          </div>
+
+          <!-- Input Fields -->
+          <div class="space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="name" class="block text-xs font-medium text-zinc-700 mb-1">Jméno a příjmení *</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   required
-                  placeholder="Např. Lenka Dvořáková"
-                  class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-300 focus:border-zinc-950 focus:ring-2 focus:ring-zinc-200 outline-none text-sm text-zinc-900 bg-white transition-all"
+                  placeholder="Lenka Dvořáková"
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:border-zinc-950 outline-none text-sm bg-white"
                 />
               </div>
-
               <div>
-                <label for="salon" class="block text-xs font-semibold text-zinc-800 mb-1">
-                  Název salónu / studia *
-                </label>
+                <label for="salon" class="block text-xs font-medium text-zinc-700 mb-1">Název salónu / studia *</label>
                 <input
                   type="text"
                   id="salon"
                   name="salon"
                   required
-                  placeholder="Např. Masáže Harmonie"
-                  class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-300 focus:border-zinc-950 focus:ring-2 focus:ring-zinc-200 outline-none text-sm text-zinc-900 bg-white transition-all"
+                  placeholder="Masáže Harmonie"
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:border-zinc-950 outline-none text-sm bg-white"
                 />
               </div>
             </div>
 
-            <!-- Telefon & E-mail -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label for="phone" class="block text-xs font-semibold text-zinc-800 mb-1">
-                  Telefonní číslo (pro potvrzení) *
-                </label>
+                <label for="phone" class="block text-xs font-medium text-zinc-700 mb-1">Telefonní číslo *</label>
                 <input
                   type="tel"
                   id="phone"
                   name="phone"
                   required
                   placeholder="+420 777 123 456"
-                  class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-300 focus:border-zinc-950 focus:ring-2 focus:ring-zinc-200 outline-none text-sm text-zinc-900 bg-white transition-all"
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:border-zinc-950 outline-none text-sm bg-white"
                 />
               </div>
-
               <div>
-                <label for="email" class="block text-xs font-semibold text-zinc-800 mb-1">
-                  E-mailová adresa *
-                </label>
+                <label for="email" class="block text-xs font-medium text-zinc-700 mb-1">E-mail *</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   required
-                  placeholder="lenka@studio-harmonie.cz"
-                  class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-300 focus:border-zinc-950 focus:ring-2 focus:ring-zinc-200 outline-none text-sm text-zinc-900 bg-white transition-all"
+                  placeholder="lenka@harmonie.cz"
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:border-zinc-950 outline-none text-sm bg-white"
                 />
               </div>
             </div>
 
-            <!-- Doručovací adresa / Poznámka -->
             <div>
-              <label for="address" class="block text-xs font-semibold text-zinc-800 mb-1">
-                Doručovací adresa nebo výdejní místo Zásilkovny
-              </label>
-              <textarea
+              <label for="address" class="block text-xs font-medium text-zinc-700 mb-1">Doručovací adresa nebo výdejní místo Zásilkovny</label>
+              <input
+                type="text"
                 id="address"
                 name="address"
-                rows="2"
-                placeholder="Uveďte adresu salónu nebo název výdejního místa Zásilkovny. Zde můžete připsat i případný dotaz..."
-                class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-300 focus:border-zinc-950 focus:ring-2 focus:ring-zinc-200 outline-none text-sm text-zinc-900 bg-white transition-all resize-none"
-              ></textarea>
-            </div>
-
-            <!-- Checkbox: Osobní předvedení v Praze -->
-            <label class="flex items-start gap-3 p-3 rounded-xl bg-white border border-zinc-200 cursor-pointer hover:bg-zinc-50 transition-colors">
-              <input
-                type="checkbox"
-                id="trial-checkbox"
-                name="trial_request"
-                class="mt-1 rounded text-zinc-950 focus:ring-zinc-400"
+                placeholder="Ulice, město nebo název Zásilkovny..."
+                class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:border-zinc-950 outline-none text-sm bg-white"
               />
-              <div class="text-xs leading-relaxed">
-                <strong class="text-zinc-950 block">Mám zájem o bezplatné předvedení přímo v salónu (pouze Praha a okolí)</strong>
-                <span class="text-zinc-500">Přijedeme za vámi, sadu ukážeme v praxi na 5 minut a sami se rozhodnete.</span>
-              </div>
-            </label>
+            </div>
           </div>
 
-          <!-- Diskrétní balení garance -->
-          <div class="p-3.5 rounded-xl bg-white border border-zinc-200 flex items-start gap-2.5 text-xs text-zinc-600">
-            <Lock class="w-4 h-4 text-zinc-900 shrink-0 mt-0.5" />
-            <p>
-              <strong class="text-zinc-950">100% diskrétní balení:</strong> Zboží odesíláme v neutrální krabici bez potisku. Kurýr ani zákazníci nepoznají, co balíček obsahuje.
-            </p>
-          </div>
-
-          <!-- Odesílací tlačítko s dynamickou cenou -->
+          <!-- Submit Button -->
           <div>
             <button
               type="submit"
               id="submit-form-btn"
-              class="w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-base font-bold text-white bg-zinc-950 hover:bg-zinc-800 active:scale-[0.99] transition-all duration-200 shadow-xl hover:scale-[1.01] cursor-pointer"
+              class="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white bg-zinc-950 hover:bg-zinc-800 active:scale-[0.99] transition-all cursor-pointer shadow-sm hover:scale-[1.01]"
             >
-              <span id="submit-btn-label">Nezávazně objednat sadu (3 980 Kč)</span>
+              <span id="submit-btn-label">Odeslat nezávaznou objednávku (3 980 Kč)</span>
               <ArrowRight class="w-4 h-4" />
             </button>
-            <p class="text-[11px] text-zinc-500 text-center mt-2.5">
-              Odesláním objednávky souhlasíte se zpracováním údajů pro doručení. 14 dní záruka vrácení peněz.
+            <p class="text-[11px] text-zinc-400 text-center mt-3">
+              14 dní záruka vrácení peněz • 100% diskrétní balení v neutrální krabici • Neplatíte nic předem
             </p>
           </div>
 
         </form>
-
       </div>
 
       <!-- ========================================== -->
-      <!-- RIGHT COLUMN (5 cols): Direct Contacts & Trust -->
+      <!-- RIGHT: Human Contacts & Personal Trial     -->
       <!-- ========================================== -->
       <div class="lg:col-span-5 space-y-6 text-left">
         
-        <!-- DIRECT CONTACT CARD -->
-        <div class="rounded-3xl bg-zinc-950 text-white p-6 sm:p-8 shadow-xl relative overflow-hidden">
-          <div class="relative z-10 space-y-6">
+        <div class="space-y-2">
+          <h3 class="text-xl font-bold font-display text-zinc-950">
+            Máte dotaz nebo chcete sadu předvést?
+          </h3>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            Zavolejte nám nebo napište. Zvedáme to my, žádný automat.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <!-- Telefon -->
+          <a
+            href="tel:+420777123456"
+            class="flex items-center gap-3.5 p-4 rounded-2xl bg-zinc-50 border border-zinc-200/80 hover:border-zinc-300 transition-colors group"
+          >
+            <div class="w-10 h-10 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-zinc-950 shrink-0">
+              <Phone class="w-4 h-4 text-zinc-950" />
+            </div>
             <div>
-              <span class="text-[10px] font-mono font-bold tracking-widest text-zinc-400 uppercase block mb-1">
-                PŘÍMÝ KONTAKT & PODPORA
-              </span>
-              <h3 class="text-2xl font-bold font-display text-white">
-                Rádi vám poradíme nebo sadu předvedeme.
-              </h3>
-              <p class="text-xs sm:text-sm text-zinc-400 mt-2 leading-relaxed">
-                Máte dotaz ke kompatibilitě nebo chcete poradit s umístěním? Ozvěte se nám přímo – mluvíte vždy přímo s naším českým týmem.
-              </p>
+              <span class="text-[11px] text-zinc-400 block font-medium">Telefonní linka (Po–Pá 9:00–18:00)</span>
+              <span class="text-sm font-bold text-zinc-950 group-hover:text-zinc-600 transition-colors">+420 777 123 456</span>
             </div>
+          </a>
 
-            <div class="space-y-3 pt-2">
-              <!-- Telefon -->
-              <a
-                href="tel:+420777123456"
-                class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/10 transition-colors group"
-              >
-                <div class="w-10 h-10 rounded-xl bg-white text-zinc-950 flex items-center justify-center shrink-0">
-                  <Phone class="w-5 h-5 text-zinc-950" />
-                </div>
-                <div>
-                  <span class="text-[11px] text-zinc-400 block font-medium">Telefonní linka (Po–Pá 9–18h)</span>
-                  <span class="text-base font-bold text-white group-hover:text-zinc-200 transition-colors">
-                    +420 777 123 456
-                  </span>
-                </div>
-              </a>
-
-              <!-- E-mail -->
-              <a
-                href="mailto:info@vochranka.cz"
-                class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/10 transition-colors group"
-              >
-                <div class="w-10 h-10 rounded-xl bg-white text-zinc-950 flex items-center justify-center shrink-0">
-                  <Mail class="w-5 h-5 text-zinc-950" />
-                </div>
-                <div>
-                  <span class="text-[11px] text-zinc-400 block font-medium">Oficiální e-mail</span>
-                  <span class="text-base font-bold text-white group-hover:text-zinc-200 transition-colors">
-                    info@vochranka.cz
-                  </span>
-                </div>
-              </a>
-
-              <!-- Osobní zkouška v Praze -->
-              <div class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/5 border border-white/10">
-                <div class="w-10 h-10 rounded-xl bg-white/10 text-white flex items-center justify-center shrink-0">
-                  <MapPin class="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <span class="text-[11px] text-zinc-400 block font-medium">Osobní zkoušky v salónech</span>
-                  <span class="text-sm font-semibold text-white">
-                    Praha a Středočeský kraj (přijedeme k vám)
-                  </span>
-                </div>
-              </div>
+          <!-- E-mail -->
+          <a
+            href="mailto:info@vochranka.cz"
+            class="flex items-center gap-3.5 p-4 rounded-2xl bg-zinc-50 border border-zinc-200/80 hover:border-zinc-300 transition-colors group"
+          >
+            <div class="w-10 h-10 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-zinc-950 shrink-0">
+              <Mail class="w-4 h-4 text-zinc-950" />
             </div>
-
-            <!-- Provozní doba -->
-            <div class="pt-2 border-t border-zinc-800 text-xs text-zinc-400 flex items-center gap-2">
-              <Clock class="w-4 h-4 text-zinc-500" />
-              <span>Odpovídáme v průměru do 2 hodin v pracovní dny</span>
+            <div>
+              <span class="text-[11px] text-zinc-400 block font-medium">E-mail</span>
+              <span class="text-sm font-bold text-zinc-950 group-hover:text-zinc-600 transition-colors">info@vochranka.cz</span>
             </div>
+          </a>
+
+          <!-- Osobní vyzkoušení po Praze -->
+          <div class="p-4 rounded-2xl bg-zinc-50 border border-zinc-200/80 space-y-1">
+            <div class="flex items-center gap-2 text-zinc-950 font-bold text-xs">
+              <MapPin class="w-3.5 h-3.5 text-zinc-950 shrink-0" />
+              <span>Osobní předvedení po Praze</span>
+            </div>
+            <p class="text-xs text-zinc-600 leading-relaxed pl-5">
+              Pokud máte salón v Praze a okolí, rádi se za vámi na 5 minut zastavíme a tlačítko vám nezávazně předvedeme přímo na vašem lehátku nebo stolku.
+            </p>
           </div>
         </div>
 
-        <!-- 4 SILNÉ DŮVODY PROČ OBJEDNAT HNED -->
-        <div class="rounded-3xl bg-zinc-50 p-6 sm:p-7 border border-zinc-200/90 shadow-sm space-y-4">
-          <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-900">
-            Proč si Vochranku pořídit ještě dnes:
-          </h4>
-
-          <div class="space-y-3 text-xs sm:text-sm text-zinc-700">
-            <div class="flex items-start gap-3">
-              <div class="w-7 h-7 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 mt-0.5">
-                <RotateCcw class="w-4 h-4 text-zinc-950" />
-              </div>
-              <div>
-                <strong class="text-zinc-950 block">14 dní na vyzkoušení bez rizika</strong>
-                <p class="text-zinc-500 text-xs mt-0.5">Nainstalujte si ji do salónu. Pokud nebudete 100% spokojena, vrátíme vám plnou částku.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <div class="w-7 h-7 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 mt-0.5">
-                <Truck class="w-4 h-4 text-zinc-950" />
-              </div>
-              <div>
-                <strong class="text-zinc-950 block">Doručení do 24–48 hodin</strong>
-                <p class="text-zinc-500 text-xs mt-0.5">Sady máme skladem v ČR. Odesíláme obratem Zásilkovnou i kurýrem zdarma.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <div class="w-7 h-7 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 mt-0.5">
-                <ShieldCheck class="w-4 h-4 text-zinc-950" />
-              </div>
-              <div>
-                <strong class="text-zinc-950 block">Žádné skryté poplatky</strong>
-                <p class="text-zinc-500 text-xs mt-0.5">Hardware je trvale váš. Provoz zahrnuje neomezené SMS a nepřetržitý monitoring.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Firemní fakturační údaje -->
-        <div class="px-3 text-[11px] text-zinc-400 space-y-1">
-          <p><strong>Provozovatel:</strong> Vochranka • IČO: 19842531</p>
-          <p>Sídlo v Praze, Česká republika. Zboží s plnou 2letou zárukou.</p>
+        <!-- Direct assurances -->
+        <div class="pt-2 text-xs text-zinc-500 space-y-2 border-t border-zinc-100">
+          <p>✓ <strong>Expedice do 24 hodin</strong> – Sady máme skladem v ČR.</p>
+          <p>✓ <strong>Plná 2letá záruka</strong> – V případě jakéhokoliv problému okamžitá výměna kus za kus.</p>
+          <p>✓ <strong>14denní zkušební lhůta</strong> – Pokud vám tlačítko nesedne, vrátíme vám 100 % peněz.</p>
         </div>
 
       </div>
@@ -446,7 +280,6 @@ import {
 </section>
 
 <script>
-  // Price Calculator Logic
   const BASE_KIT_PRICE = 2990;
   const ANNUAL_SERVICE_PRICE = 990;
   const EXTRA_BUTTON_PRICE = 690;
@@ -458,7 +291,6 @@ import {
   const labelExtraPrice = document.getElementById("label-extra-price");
   const calcTotalDisplay = document.getElementById("calc-total-display");
   const submitBtnLabel = document.getElementById("submit-btn-label");
-  const trialCheckbox = document.getElementById("trial-checkbox") as HTMLInputElement;
 
   function updatePrice() {
     const hardwareTotal = BASE_KIT_PRICE + (extraCount * EXTRA_BUTTON_PRICE);
@@ -472,11 +304,7 @@ import {
     }
 
     if (submitBtnLabel) {
-      if (trialCheckbox && trialCheckbox.checked) {
-        submitBtnLabel.textContent = "Objednat bezplatné předvedení v Praze";
-      } else {
-        submitBtnLabel.textContent = `Nezávazně objednat sadu (${grandTotal.toLocaleString("cs-CZ")} Kč)`;
-      }
+      submitBtnLabel.textContent = `Odeslat nezávaznou objednávku (${grandTotal.toLocaleString("cs-CZ")} Kč)`;
     }
   }
 
@@ -484,10 +312,10 @@ import {
     btn.addEventListener("click", () => {
       extraBtnOptions.forEach((b) => {
         b.classList.remove("bg-white", "text-zinc-950", "shadow-xs", "font-bold");
-        b.classList.add("text-zinc-600", "font-medium");
+        b.classList.add("text-zinc-500", "font-medium");
       });
 
-      btn.classList.remove("text-zinc-600", "font-medium");
+      btn.classList.remove("text-zinc-500", "font-medium");
       btn.classList.add("bg-white", "text-zinc-950", "shadow-xs", "font-bold");
 
       extraCount = parseInt(btn.getAttribute("data-count") || "0", 10);
@@ -495,11 +323,7 @@ import {
     });
   });
 
-  trialCheckbox?.addEventListener("change", () => {
-    updatePrice();
-  });
-
-  // Form Submission
+  // Form submit
   const orderForm = document.getElementById("order-inquiry-form") as HTMLFormElement;
   const successState = document.getElementById("form-success-state");
   const resetBtn = document.getElementById("form-reset-btn");
@@ -517,7 +341,7 @@ import {
         orderForm.classList.add("hidden");
         successState.classList.remove("hidden");
         successState.scrollIntoView({ behavior: "smooth", block: "center" });
-      }, 500);
+      }, 400);
     });
   }
 
@@ -528,10 +352,10 @@ import {
       extraBtnOptions.forEach((b, idx) => {
         if (idx === 0) {
           b.classList.add("bg-white", "text-zinc-950", "shadow-xs", "font-bold");
-          b.classList.remove("text-zinc-600", "font-medium");
+          b.classList.remove("text-zinc-500", "font-medium");
         } else {
           b.classList.remove("bg-white", "text-zinc-950", "shadow-xs", "font-bold");
-          b.classList.add("text-zinc-600", "font-medium");
+          b.classList.add("text-zinc-500", "font-medium");
         }
       });
       updatePrice();

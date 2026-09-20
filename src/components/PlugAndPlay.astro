@@ -1,197 +1,96 @@
 ---
 // src/components/PlugAndPlay.astro
 import {
-  Zap,
-  Check,
-  CheckCircle2,
-  ShieldCheck,
-  Sparkles,
-  Magnet,
-  Layers,
-  Sparkle,
-  ArrowRight,
-  EyeOff,
-  Pocket,
   Armchair,
-  Radio,
+  Pocket,
+  EyeOff,
+  Magnet,
+  Check,
 } from "lucide-astro";
 
-const placementCards = [
+const placements = [
   {
     icon: Armchair,
-    badge: "Nejoblíbenější u masérek",
-    title: "Pod masérský stůl & lehátko",
-    desc: "Magneticky přímo na kovovou konstrukci rámu nebo 3M páskou pod desku. Během masáže nahmatáte tlačítko poslepu a bez sebemenšího pohybu těla.",
-    tag: "Magnet / 3M páska",
+    title: "Pod masérským stolem či lehátkem",
+    desc: "Silný magnet drží na spodní kovové konstrukci. Během masáže k němu vaše ruka sklouzne poslepu, aniž by si klient čehokoliv všiml.",
+    tag: "Na kovový rám lehátka",
   },
   {
     icon: Pocket,
-    badge: "Stálá mobilita",
     title: "V kapse zástěry nebo kalhot",
-    desc: "S průměrem 4,5 cm a váhou pouhých 28 g ho můžete mít stále u sebe. Chrání vás při vítání nového klienta, u věšáku i při placení.",
-    tag: "Vždy po ruce",
+    desc: "Váží 28 gramů. Nosíte ho u sebe jako minci – máte ho po ruce, i když stojíte u věšáku, vítáte nového klienta nebo stojíte u pokladny.",
+    tag: "Stále při sobě",
   },
   {
     icon: EyeOff,
-    badge: "100% diskrétnost",
-    title: "Potají pod hranu stolku či recepce",
-    desc: "Skryté pod spodní hranou pracovního stolu, recepčního pultu nebo poličky. Pro nikoho zvenčí neviditelné, pro vaše prsty okamžitě dostupné.",
-    tag: "Neviditelné pro klienta",
+    title: "Potají pod hranou stolku či recepce",
+    desc: "Přilepené tenkou 3M páskou zespodu desky. Pro kohokoliv zvenčí je stůl prázdný, vy na tlačítko dosáhnete pouhým natažením prstů.",
+    tag: "Neviditelné pro okolí",
   },
   {
     icon: Magnet,
-    badge: "Flexibilní přesun",
-    title: "Na kovovou nohu či vozík s pomůckami",
-    desc: "Silný neodymový magnet drží jako přibitý na jakémkoliv kovu. Můžete ho kdykoliv během sekundy přemístit podle toho, kde zrovna pracujete.",
-    tag: "Bez vrtání a lepidla",
-  },
-];
-
-const installSteps = [
-  {
-    num: "1",
-    title: "Zapojit sirénu",
-    desc: "Zasune se do běžné 230V zásuvky v salónu.",
-  },
-  {
-    num: "2",
-    title: "Umístit tlačítko",
-    desc: "Přicvaknete magnetem nebo nalepíte 3M páskou.",
-  },
-  {
-    num: "3",
-    title: "Otestovat zkušební SMS",
-    desc: "Ověříte, že siréna i nouzové SMS 100% fungují.",
-  },
-  {
-    num: "4",
-    title: "Hotovo & bezpečí",
-    desc: "Od této chvíle nikdy nejste na salónu bez ochrany.",
+    title: "Na kovovém vozíku či stojanu",
+    desc: "Neodymový magnet drží na jakémkoliv kovu bez vrtání a nářadí. Kdykoliv si tlačítko přecvaknete tam, kde zrovna stojíte.",
+    tag: "Přemístění za sekundu",
   },
 ];
 ---
 
 <section
   id="instalace"
-  class="py-20 md:py-28 bg-zinc-50 border-b border-zinc-200/80 relative"
+  class="py-24 md:py-32 bg-zinc-50 border-b border-zinc-200/80 relative"
 >
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <!-- 1. Header sekce: Rychlost instalace -->
-    <div class="max-w-3xl mx-auto text-center mb-16">
-      <div
-        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold mb-4 border border-zinc-200"
-      >
-        <Zap class="w-3.5 h-3.5 text-zinc-800" />
-        <span>INSTALACE BĚHEM 2 MINUT</span>
-      </div>
+    <!-- Section Header -->
+    <div class="max-w-2xl mx-auto text-center mb-16">
+      <p class="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-3">
+        Zprovoznění bez techniků
+      </p>
       <h2
         class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-zinc-950 tracking-tight"
       >
-        Žádné vrtání, žádné kabely. <br />
-        <span class="text-zinc-600">Zvládnete to sama za 120 vteřin.</span>
+        Žádná montáž. Žádné vrtání.
       </h2>
-      <p class="text-base sm:text-lg text-zinc-600 mt-4 leading-relaxed max-w-2xl mx-auto">
-        K instalaci nepotřebujete nářadí, techniky ani složité nastavování. Vše dodáváme předem spárované a připravené k okamžitému provozu.
+      <p class="text-base sm:text-lg text-zinc-600 mt-4 leading-relaxed">
+        Sirénu zasunete do běžné zásuvky v salónu a tlačítko přicvaknete magnetem. Všechno je spárované už z dílny – funguje okamžitě po rozbalení.
       </p>
     </div>
 
-    <!-- 2. 4 KROKY INSTALACE (Čistý proces) -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
+    <!-- 4 Real-world placement scenarios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       {
-        installSteps.map((step) => (
-          <div class="p-6 rounded-2xl bg-white border border-zinc-200/90 shadow-sm relative flex flex-col justify-between hover:border-zinc-300 transition-all">
-            <div>
-              <div class="w-8 h-8 rounded-full bg-zinc-950 text-white flex items-center justify-center text-xs font-bold font-mono mb-4">
-                0{step.num}
-              </div>
-              <h3 class="text-base font-bold text-zinc-950 mb-1">
-                {step.title}
-              </h3>
-              <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
-                {step.desc}
-              </p>
-            </div>
-            <div class="pt-4 mt-4 border-t border-zinc-100 flex items-center gap-1.5 text-xs font-medium text-zinc-500">
-              <Check class="w-3.5 h-3.5 text-zinc-950" />
-              <span>Bez asistence technika</span>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-
-    <!-- 3. DRUHÁ ČÁST: KAM SE DÁ TLAČÍTKO DÁT (Magnetická & diskrétní flexibilita) -->
-    <div class="rounded-3xl bg-white border border-zinc-200 p-8 sm:p-12 lg:p-14 shadow-lg">
-      <div class="max-w-3xl mb-12 text-left">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold mb-3 border border-zinc-200">
-          <Magnet class="w-3.5 h-3.5 text-zinc-900" />
-          <span>MAGNETICKÉ UCHYCENÍ & 3M VRSTVA</span>
-        </div>
-        <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-zinc-950 tracking-tight">
-          Kam všude se dá tlačítko umístit?
-        </h3>
-        <p class="text-sm sm:text-base text-zinc-600 mt-2 leading-relaxed">
-          Tlačítko má v zadní části zabudovaný silný neodymový magnet a dodává se také s průmyslovou 3M lepicí podložkou. Vyberte si místo, kde ho budete mít nejblíže a zcela potají.
-        </p>
-      </div>
-
-      <!-- Grid 4 scénářů umístění -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {
-          placementCards.map((card) => {
-            const Icon = card.icon;
-            return (
-              <div class="p-6 sm:p-7 rounded-2xl bg-zinc-50 border border-zinc-200/80 hover:border-zinc-300 hover:shadow-md transition-all flex flex-col justify-between">
-                <div>
-                  <div class="flex items-center justify-between mb-4">
-                    <div class="w-11 h-11 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-zinc-950 shadow-xs">
-                      <Icon class="w-5 h-5 text-zinc-950" />
-                    </div>
-                    <span class="text-[11px] font-semibold px-3 py-1 rounded-full bg-white text-zinc-700 border border-zinc-200 shadow-2xs">
-                      {card.badge}
-                    </span>
+        placements.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div class="p-6 sm:p-7 rounded-2xl bg-white border border-zinc-200/80 hover:border-zinc-300 transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center text-zinc-950">
+                    <Icon class="w-5 h-5 text-zinc-950" />
                   </div>
-
-                  <h4 class="text-lg sm:text-xl font-bold text-zinc-950 mb-2">
-                    {card.title}
-                  </h4>
-
-                  <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed mb-4">
-                    {card.desc}
-                  </p>
-                </div>
-
-                <div class="pt-3 border-t border-zinc-200/60 flex items-center justify-between text-xs">
-                  <span class="font-medium text-zinc-900 flex items-center gap-1.5">
-                    <CheckCircle2 class="w-3.5 h-3.5 text-zinc-950" />
-                    <span>{card.tag}</span>
+                  <span class="text-[11px] font-medium text-zinc-500 bg-zinc-50 px-2.5 py-1 rounded-md border border-zinc-200/60">
+                    {item.tag}
                   </span>
-                  <span class="text-zinc-500">Okamžitě připraveno</span>
                 </div>
+
+                <h3 class="text-lg font-bold text-zinc-950 mb-2">
+                  {item.title}
+                </h3>
+
+                <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
-            );
-          })
-        }
-      </div>
 
-      <!-- Banner s výzvou přejít k objednávce -->
-      <div class="mt-10 p-6 rounded-2xl bg-zinc-950 text-white flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div>
-          <h4 class="text-lg font-bold text-white">Chcete si tlačítko vyzkoušet přímo na svém stolečku?</h4>
-          <p class="text-xs sm:text-sm text-zinc-400 mt-0.5">
-            Po Praze vám ho rádi ukážeme osobně, nebo vám sadu pošleme s 14denní zárukou vrácení peněz.
-          </p>
-        </div>
-        <a
-          href="#objednavka"
-          class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-zinc-950 text-xs sm:text-sm font-bold hover:bg-zinc-100 transition-all shrink-0 hover:scale-105 active:scale-95 shadow-md"
-        >
-          <span>Spočítat cenu a objednat</span>
-          <ArrowRight class="w-4 h-4" />
-        </a>
-      </div>
-
+              <div class="pt-4 mt-5 border-t border-zinc-100 flex items-center gap-1.5 text-xs text-zinc-800 font-medium">
+                <Check class="w-3.5 h-3.5 text-zinc-950 shrink-0" />
+                <span>Bez poškození nábytku a zdí</span>
+              </div>
+            </div>
+          );
+        })
+      }
     </div>
 
   </div>

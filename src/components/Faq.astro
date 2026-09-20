@@ -1,71 +1,66 @@
 ---
-import { HelpCircle, ChevronDown, CheckCircle2 } from "lucide-astro";
+// src/components/Faq.astro
+import { ChevronDown } from "lucide-astro";
 
 const faqs = [
   {
     q: "Co když tlačítko zmáčknu omylem?",
-    a: "Tlačítko je ergonomicky navrženo s jemným mechanickým odporem a zapuštěným profilem – při běžném úklidu, posunu prostěradla či dotyku stehnem k nechtěnému sepnutí nedochází. Pokud by se to přesto stalo, sirénu lze ihned ztišit vytažením ze zásuvky nebo stiskem servisního tlačítka a vašim nouzovým kontaktům můžete obratem zaslat zprávu, že šlo o omyl.",
+    a: "Aby se alarm spustil, musíte tlačítko stisknout dvakrát rychle za sebou (dvojklik). Běžné zavadění stehnem nebo úklid prostěradla poplach nespustí. Pokud byste ho přesto omylem spustila, podržením na 3 sekundy sirénu ihned umlčíte.",
   },
   {
-    q: "Je v mém salónu potřeba Wi-Fi síť?",
-    a: "Vůbec ne! Centrála Vochranka má integrovanou vlastní zabezpečenou mobilní IoT konektivitu. Funguje všude tam, kde máte v mobilu alespoň základní signál. Nemusíte znát Wi-Fi hesla pronajímatele, konfigurovat routery ani řešit výpadky internetu. Stačí zasunout do zásuvky 230V.",
+    q: "Potřebuji v salónu Wi-Fi připojení?",
+    a: "Ne. Siréna má v sobě vlastní zabezpečenou mobilní IoT SIM kartu. Funguje všude, kde máte alespoň základní signál v telefonu. Nemusíte řešit Wi-Fi hesla majitele budovy ani výpadky internetu.",
   },
   {
-    q: "Lze spárovat více tlačítek k jedné siréně?",
-    a: "Ano. K jedné centrální siréně lze připojit až 5 nezávislých tlačítek. Běžná praxe je mít jedno tlačítko pod hlavním lehátkem, druhé pod recepčním stolkem a třetí v zázemí nebo koupelně. Každé tlačítko lze v nouzové SMS pojmenovat (např. „Lehátko 1“, „Recepce“). Přídavné tlačítko lze doobjednat za 590 Kč.",
+    q: "Můžu mít více tlačítek k jedné siréně?",
+    a: "Ano. K jedné siréně lze připojit až 5 tlačítek. Často si masérky berou jedno tlačítko pod lehátko a druhé do kapsy nebo na recepční stolek. Přídavné tlačítko stojí 690 Kč a můžete si ho rovnou navolit ve formuláři.",
   },
   {
-    q: "Jaká je výdrž baterie v tlačítku a jak poznám, že dochází?",
-    a: "V tlačítku je lithiová baterie typu CR2032, která díky nízkoenergetickému protokolu vydrží 2 až 3 roky nepřetržitého provozu. Nemusíte si psát upomínky do kalendáře – centrála stav baterie hlídá a při poklesu pod 15 % vám automaticky pošle SMS upozornění s dostatečným předstihem několika týdnů. Baterii pak vyměníte sama během 60 vteřin.",
+    q: "Jak často se mění baterie a jak poznám, že dochází?",
+    a: "V tlačítku je lithiová baterie CR2477 s výdrží až 5 let. Nemusíte na nic myslet – systém stav baterie hlídá a včas vám pošle SMS upozornění několik týdnů dopředu. Baterii pak sama vyměníte za minutu.",
   },
 ];
 ---
 
-<section id="faq" class="py-16 md:py-24 relative overflow-hidden bg-white border-b border-zinc-200/80">
+<section id="faq" class="py-20 md:py-28 relative overflow-hidden bg-white border-b border-zinc-200/80">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
     <!-- Section Header -->
-    <div class="text-center max-w-2xl mx-auto mb-14">
-      <div
-        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold mb-4 border border-zinc-200"
-      >
-        <HelpCircle class="w-3.5 h-3.5 text-zinc-800" />
-        <span>Vše, co vás zajímá</span>
-      </div>
-      <h2
-        class="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-zinc-950 tracking-tight mb-4"
-      >
-        Často kladené otázky
-      </h2>
-      <p class="text-base text-zinc-600 leading-relaxed">
-        Odpovědi na nejčastější dotazy masérek a terapeutek před pořízením
-        Vochranky.
+    <div class="text-center max-w-xl mx-auto mb-14">
+      <p class="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-3">
+        Časté dotazy
       </p>
+      <h2
+        class="text-3xl sm:text-4xl font-bold font-display text-zinc-950 tracking-tight"
+      >
+        Co vás nejčastěji zajímá
+      </h2>
     </div>
 
     <!-- Accordion List -->
-    <div class="space-y-4" id="faq-accordion-container">
+    <div class="space-y-3 max-w-3xl mx-auto" id="faq-accordion-container">
       {
         faqs.map((faq, index) => (
-          <div class="faq-item rounded-2xl bg-zinc-50 border border-zinc-200 shadow-sm transition-all duration-200 overflow-hidden">
+          <div class="faq-item rounded-2xl bg-zinc-50 border border-zinc-200/80 transition-all overflow-hidden">
             <button
               type="button"
-              class="faq-button w-full px-6 py-5 text-left flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-zinc-400 cursor-pointer"
+              class="faq-button w-full px-6 py-4 sm:py-5 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
               aria-expanded={index === 0 ? "true" : "false"}
               aria-controls={`faq-answer-${index}`}
             >
-              <span class="text-base sm:text-lg font-semibold text-zinc-950">
+              <span class="text-base font-semibold text-zinc-950">
                 {faq.q}
               </span>
-              <div class="w-8 h-8 rounded-full bg-white border border-zinc-200 text-zinc-800 flex items-center justify-center shrink-0 transition-transform duration-200 faq-icon shadow-xs">
+              <div class="w-7 h-7 rounded-full bg-white border border-zinc-200 flex items-center justify-center shrink-0 faq-icon">
                 <ChevronDown
-                  class={`w-4 h-4 transition-transform duration-200 ${index === 0 ? "rotate-180" : ""}`}
+                  class={`w-3.5 h-3.5 text-zinc-600 transition-transform duration-200 ${index === 0 ? "rotate-180" : ""}`}
                 />
               </div>
             </button>
 
             <div
               id={`faq-answer-${index}`}
-              class={`faq-answer px-6 pb-6 pt-1 text-sm sm:text-base text-zinc-600 leading-relaxed border-t border-zinc-200 ${index === 0 ? "block" : "hidden"}`}
+              class={`faq-answer px-6 pb-5 pt-1 text-sm text-zinc-600 leading-relaxed border-t border-zinc-200/60 ${index === 0 ? "block" : "hidden"}`}
             >
               {faq.a}
             </div>
@@ -74,23 +69,6 @@ const faqs = [
       }
     </div>
 
-    <!-- Extra assistance card -->
-    <div
-      class="mt-12 text-center p-6 rounded-2xl bg-zinc-50 border border-zinc-200"
-    >
-      <h3 class="text-sm font-bold text-zinc-950 mb-1">
-        Máte specifický dotaz k vašemu salónu?
-      </h3>
-      <p class="text-xs sm:text-sm text-zinc-600 mb-3">
-        Rádi vám poradíme individuálně po telefonu nebo na WhatsAppu.
-      </p>
-      <a
-        href="#objednavka"
-        class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-zinc-950 hover:text-zinc-700 underline underline-offset-4"
-      >
-        Napište nám v poptávkovém formuláři níže ↓
-      </a>
-    </div>
   </div>
 </section>
 

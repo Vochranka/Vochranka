@@ -1,194 +1,119 @@
 ---
 // src/components/ProductShowcase.astro
 import {
-  ShieldAlert,
-  BellRing,
-  Smartphone,
-  CheckCircle2,
-  Sparkles,
-  MapPin,
-  HeartHandshake,
-  Layers,
-  Magnet,
   Volume2,
+  Smartphone,
+  ArrowRight,
 } from "lucide-astro";
-
-const useCases = [
-  {
-    title: "Masérské salóny & fyzioterapie",
-    desc: "Diskrétní stisknutí přímo pod lehátkem během masáže, aniž by si klient čehokoliv všiml.",
-  },
-  {
-    title: "Kosmetika, lash & brow studia",
-    desc: "Ochrana za zavřenými dveřmi studia při práci s novými či neprověřenými klienty.",
-  },
-  {
-    title: "Manikúra, nehty & pedikúra",
-    desc: "Okamžitá jistota pod hranou pracovního stolu – ruka je u tlačítka dřív, než dojde k eskalaci.",
-  },
-  {
-    title: "Privátní ordinace & sólo praxe",
-    desc: "Rychlý přivolávač pomoci a hlasitý odstrašující alarm, když v čekárně či studiu nikdo další není.",
-  },
-];
 ---
 
 <section
   id="vyuziti"
-  class="bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8 border-b border-zinc-200/80 overflow-hidden relative"
+  class="bg-white py-24 md:py-32 px-4 sm:px-6 lg:px-8 border-b border-zinc-200/80 overflow-hidden relative"
 >
-  <div class="max-w-7xl mx-auto">
-    <!-- Subtle top tag -->
-    <div class="flex items-center justify-center md:justify-start mb-4">
-      <div
-        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold border border-zinc-200"
-      >
-        <Sparkles class="w-3.5 h-3.5 text-zinc-800" />
-        <span>K ČEMU PRODUKT JE & KDE SE VYUŽÍVÁ</span>
-      </div>
-    </div>
-
-    <!-- Main 2-Column Grid: Left Copy & Right Interactive Button -->
+  <div class="max-w-6xl mx-auto">
+    
+    <!-- 2-Column Editorial Layout -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
       
-      <!-- LEFT COLUMN: K čemu to je & Kde se využívá (7 cols) -->
+      <!-- LEFT: Honest, grounded storytelling (7 cols) -->
       <div class="lg:col-span-7 space-y-8 text-left">
-        <div>
+        
+        <div class="space-y-4">
+          <p class="text-xs font-mono uppercase tracking-widest text-zinc-400">
+            K čemu Vochranka slouží
+          </p>
           <h2
-            class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-zinc-950 tracking-tight leading-[1.15]"
+            class="text-3xl sm:text-4xl md:text-[2.75rem] font-bold font-display text-zinc-950 tracking-tight leading-[1.12]"
           >
-            Diskrétní jistota, <br class="hidden sm:inline" />
-            <span class="text-zinc-600">když pracujete v salónu sama.</span>
+            Za vámi se zavřou dveře. <br />
+            <span class="text-zinc-400 font-normal">A na salónu jste úplně sama.</span>
           </h2>
-          <p class="text-base sm:text-lg text-zinc-600 mt-4 leading-relaxed max-w-2xl">
-            Vochranka je bezdrátové nouzové tlačítko navržené speciálně pro ženy, které poskytují služby za zavřenými dveřmi. V krizovém momentu není čas hledat mobil, odemykat obrazovku a vytáčet čísla. 
-            <strong class="text-zinc-950 font-semibold"> Stačí jediné nenápadné dvojité stisknutí poslepu.</strong>
+          <p class="text-base sm:text-lg text-zinc-600 leading-relaxed pt-1">
+            Přijde nový klient, který začne překračovat hranice. Telefon leží na poličce nebo v kabelce. Nemáte šanci ho vytáhnout, odemknout a někou volat.
+          </p>
+          <p class="text-base text-zinc-600 leading-relaxed">
+            Vochranka je malé tlačítko schované na dosah prstů. Stačí po paměti dvakrát kliknout:
           </p>
         </div>
 
-        <!-- 2 Co se stane za 2 vteřiny -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="p-4 sm:p-5 rounded-2xl bg-zinc-50 border border-zinc-200/90 shadow-sm">
-            <div class="w-9 h-9 rounded-xl bg-zinc-950 text-white flex items-center justify-center mb-3">
-              <Volume2 class="w-4 h-4 text-white" />
+        <!-- 2 Authentic Actions (No buzzwords, just what happens) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          
+          <div class="p-5 rounded-2xl bg-zinc-50 border border-zinc-200/70">
+            <div class="text-zinc-950 font-bold text-base mb-1.5 flex items-center gap-2">
+              <Volume2 class="w-4 h-4 text-zinc-950 shrink-0" />
+              <span>110 dB siréna na místě</span>
             </div>
-            <h3 class="text-base font-bold text-zinc-950">
-              110 dB siréna na místě
-            </h3>
-            <p class="text-xs sm:text-sm text-zinc-600 mt-1 leading-relaxed">
-              Pronikavý zvuk okamžitě šokuje narušitele, odradí ho a zalarmuje sousední provozovny v domě.
+            <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+              Zásuvková siréna začne okamžitě houkat. Pro agresora je to šok a jasný signál, že o něm ví celá budova.
             </p>
           </div>
 
-          <div class="p-4 sm:p-5 rounded-2xl bg-zinc-50 border border-zinc-200/90 shadow-sm">
-            <div class="w-9 h-9 rounded-xl bg-zinc-950 text-white flex items-center justify-center mb-3">
-              <Smartphone class="w-4 h-4 text-white" />
+          <div class="p-5 rounded-2xl bg-zinc-50 border border-zinc-200/70">
+            <div class="text-zinc-950 font-bold text-base mb-1.5 flex items-center gap-2">
+              <Smartphone class="w-4 h-4 text-zinc-950 shrink-0" />
+              <span>Tichá SMS rodině s adresou</span>
             </div>
-            <h3 class="text-base font-bold text-zinc-950">
-              Tichá nouzová SMS
-            </h3>
-            <p class="text-xs sm:text-sm text-zinc-600 mt-1 leading-relaxed">
-              Během 2 vteřin odejde zpráva s přesnou adresou salónu až 3 vybraným blízkým kontaktům.
+            <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+              Do 2 vteřin odejde zpráva na až 3 kontakty (partner, rodina, kolegyně) s přesnou adresou vašeho salónu.
             </p>
           </div>
+
         </div>
 
-        <!-- Kde všude se Vochranka využívá -->
+        <!-- Real situations where it protects -->
         <div class="pt-2">
-          <p class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-3.5">
-            Kde se Vochranka nejčastěji využívá:
+          <p class="text-xs font-mono uppercase tracking-wider text-zinc-400 mb-3">
+            Kde všude pomáhá:
           </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {
-              useCases.map((item) => (
-                <div class="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-zinc-200/70 hover:border-zinc-300 transition-colors">
-                  <CheckCircle2 class="w-4 h-4 text-zinc-950 shrink-0 mt-0.5" />
-                  <div>
-                    <h4 class="text-xs sm:text-sm font-bold text-zinc-900 leading-snug">
-                      {item.title}
-                    </h4>
-                    <p class="text-xs text-zinc-500 mt-0.5 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              ))
-            }
+          <div class="flex flex-wrap gap-2 text-xs text-zinc-700">
+            <span class="px-3 py-1.5 rounded-lg bg-zinc-100 border border-zinc-200/70 font-medium">
+              Masérská lehátka
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-zinc-100 border border-zinc-200/70 font-medium">
+              Kosmetická & lash studia
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-zinc-100 border border-zinc-200/70 font-medium">
+              Manikúra & nehtový design
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-zinc-100 border border-zinc-200/70 font-medium">
+              Fyzioterapie & sólo praxe
+            </span>
           </div>
         </div>
 
-        <!-- Gesta ovládání (2x klik / podržení) -->
-        <div class="p-4 sm:p-5 rounded-2xl bg-zinc-950 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
-          <div class="flex items-center gap-3.5">
-            <span class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-xs font-mono font-bold text-white border border-white/20">
-              2×
-            </span>
-            <div>
-              <p class="text-sm font-bold text-white leading-tight">Rychlé dvojkliknutí</p>
-              <p class="text-xs text-zinc-400">Spustí poplach & okamžitou SMS (chrání před nechtěným stiskem)</p>
-            </div>
+        <!-- Gestures -->
+        <div class="pt-4 border-t border-zinc-100 flex flex-wrap items-center gap-6 text-xs text-zinc-500">
+          <div>
+            <strong class="font-mono text-zinc-900 bg-zinc-100 px-2 py-0.5 rounded border border-zinc-200 mr-1.5">2× klik</strong>
+            Spustí sirénu & odešle SMS
           </div>
-          <div class="hidden sm:block w-px h-8 bg-zinc-800"></div>
-          <div class="flex items-center gap-3.5">
-            <span class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-xs font-mono font-bold text-white border border-white/20">
-              3s
-            </span>
-            <div>
-              <p class="text-sm font-bold text-white leading-tight">Podržení na 3 sekundy</p>
-              <p class="text-xs text-zinc-400">Umlčí sirénu po zkoušce nebo pominutí rizika</p>
-            </div>
+          <div>
+            <strong class="font-mono text-zinc-900 bg-zinc-100 px-2 py-0.5 rounded border border-zinc-200 mr-1.5">3 sekundy</strong>
+            Umlčí sirénu po zkoušce
           </div>
         </div>
 
       </div>
 
-      <!-- RIGHT COLUMN: Interactive Button Showcase with Toggle (5 cols) -->
-      <div class="lg:col-span-5 flex flex-col items-center justify-center">
-        <!-- Card Container with subtle border & background for contrast -->
+      <!-- RIGHT: Tactile Button Stage (5 cols) -->
+      <div class="lg:col-span-5 flex flex-col items-center">
+        
         <div
-          class="w-full max-w-md rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-zinc-50 to-zinc-100/70 border border-zinc-200/90 shadow-lg relative flex flex-col items-center text-center"
+          class="w-full max-w-sm rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-zinc-50 to-zinc-100/50 border border-zinc-200 shadow-sm relative flex flex-col items-center text-center"
         >
-          <!-- Badge on top of card -->
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-zinc-900 text-[11px] font-semibold border border-zinc-200 shadow-xs mb-6">
-            <Magnet class="w-3.5 h-3.5 text-zinc-950" />
-            <span id="card-mode-badge">Přední strana tlačítka</span>
-          </div>
-
-          <!-- Interactive Button Stage with Cross-Fade Images -->
+          <!-- Minimalist Toggle Switch -->
           <div
-            class="relative w-full h-64 sm:h-72 md:h-80 flex items-center justify-center my-2"
-          >
-            <!-- View 1: Button 1 (Přední strana) -->
-            <img
-              id="btn-view-1"
-              src="/button1.png"
-              alt="Tlačítko Vochranka - přední strana s logem"
-              class="absolute inset-0 m-auto max-h-64 sm:max-h-72 md:max-h-80 object-contain transition-all duration-500 ease-out drop-shadow-[0_20px_35px_rgba(0,0,0,0.12)] opacity-100 scale-100"
-              loading="eager"
-            />
-
-            <!-- View 2: Button 2 (Magnetický profil) -->
-            <img
-              id="btn-view-2"
-              src="/button2.png"
-              alt="Tlačítko Vochranka - magnetický profil"
-              class="absolute inset-0 m-auto max-h-64 sm:max-h-72 md:max-h-80 object-contain transition-all duration-500 ease-out drop-shadow-[0_20px_35px_rgba(0,0,0,0.12)] opacity-0 scale-95 pointer-events-none"
-              loading="eager"
-            />
-          </div>
-
-          <!-- Pill Toggle Switch (Přední strana / Magnetický profil) -->
-          <div
-            class="bg-zinc-200/80 rounded-full p-1 inline-flex items-center gap-1 mt-6 border border-zinc-300/60 shadow-inner"
+            class="bg-zinc-200/60 p-1 rounded-full inline-flex items-center gap-1 mb-6 border border-zinc-300/50"
             role="tablist"
-            aria-label="Přepínač pohledu na tísňové tlačítko"
           >
             <button
               type="button"
               id="toggle-btn-1"
               role="tab"
               aria-selected="true"
-              class="px-4 py-2 rounded-full text-xs font-bold bg-white text-zinc-950 shadow-sm transition-all duration-200 cursor-pointer"
+              class="px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-zinc-950 shadow-xs transition-all cursor-pointer"
             >
               Přední strana
             </button>
@@ -197,46 +122,62 @@ const useCases = [
               id="toggle-btn-2"
               role="tab"
               aria-selected="false"
-              class="px-4 py-2 rounded-full text-xs font-medium text-zinc-600 hover:text-zinc-950 transition-all duration-200 cursor-pointer"
+              class="px-4 py-1.5 rounded-full text-xs font-medium text-zinc-500 hover:text-zinc-950 transition-all cursor-pointer"
             >
               Magnetický profil
             </button>
           </div>
 
-          <!-- Dynamic Caption below Switcher -->
-          <div class="mt-5 min-h-[48px] flex items-center justify-center">
-            <p id="view-caption-1" class="text-xs text-zinc-600 max-w-xs transition-opacity duration-300">
-              Diskrétní rozměr 45 mm s hmatovým prolisem pro jisté stisknutí bez dívání.
-            </p>
-            <p id="view-caption-2" class="text-xs text-zinc-600 max-w-xs hidden transition-opacity duration-300">
-              Silný neodymový magnet a 3M samolepicí plocha. Drží na kovovém lehátku i dřevěné desce.
-            </p>
+          <!-- Product Image Viewport -->
+          <div
+            class="relative w-full h-60 sm:h-64 flex items-center justify-center my-1"
+          >
+            <img
+              id="btn-view-1"
+              src="/button1.png"
+              alt="Tlačítko Vochranka zepředu"
+              class="absolute inset-0 m-auto max-h-56 sm:max-h-64 object-contain transition-all duration-300 ease-out drop-shadow-[0_12px_24px_rgba(0,0,0,0.08)] opacity-100 scale-100"
+              loading="eager"
+            />
+
+            <img
+              id="btn-view-2"
+              src="/button2.png"
+              alt="Tlačítko Vochranka magnetická zadní strana"
+              class="absolute inset-0 m-auto max-h-56 sm:max-h-64 object-contain transition-all duration-300 ease-out drop-shadow-[0_12px_24px_rgba(0,0,0,0.08)] opacity-0 scale-95 pointer-events-none"
+              loading="eager"
+            />
           </div>
 
-          <!-- Spec Pills -->
-          <div class="grid grid-cols-3 gap-2 w-full pt-4 mt-2 border-t border-zinc-200/80 text-center">
-            <div class="bg-white/80 rounded-xl p-2 border border-zinc-200/70">
-              <span class="text-sm font-bold text-zinc-950 block">4,5 cm</span>
-              <span class="text-[10px] text-zinc-500 uppercase tracking-wider block">Rozměr</span>
+          <!-- Specs row -->
+          <div class="grid grid-cols-3 gap-2 w-full pt-6 mt-4 border-t border-zinc-200/80 text-center">
+            <div>
+              <span class="text-sm font-bold text-zinc-950 block">45 mm</span>
+              <span class="text-[10px] text-zinc-400 block mt-0.5">Do dlaně</span>
             </div>
-            <div class="bg-white/80 rounded-xl p-2 border border-zinc-200/70">
-              <span class="text-sm font-bold text-zinc-950 block">Až 5 let</span>
-              <span class="text-[10px] text-zinc-500 uppercase tracking-wider block">Baterie</span>
+            <div>
+              <span class="text-sm font-bold text-zinc-950 block">5 let</span>
+              <span class="text-[10px] text-zinc-400 block mt-0.5">Bez nabíjení</span>
             </div>
-            <div class="bg-white/80 rounded-xl p-2 border border-zinc-200/70">
+            <div>
               <span class="text-sm font-bold text-zinc-950 block">Magnet & 3M</span>
-              <span class="text-[10px] text-zinc-500 uppercase tracking-wider block">Uchycení</span>
+              <span class="text-[10px] text-zinc-400 block mt-0.5">Bez vrtání</span>
             </div>
           </div>
         </div>
 
-        <!-- Subtext below card with link to installation -->
-        <p class="text-xs text-zinc-500 mt-4 text-center">
-          Připraveno k okamžitému použití • <a href="#instalace" class="text-zinc-900 font-semibold underline underline-offset-2 hover:text-zinc-600">Podívejte se, kam ho umístit ↓</a>
-        </p>
+        <a
+          href="#instalace"
+          class="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-600 hover:text-zinc-950 transition-colors mt-4"
+        >
+          <span>Kam všude se dá tlačítko dát</span>
+          <ArrowRight class="w-3.5 h-3.5" />
+        </a>
+
       </div>
 
     </div>
+
   </div>
 </section>
 
@@ -245,65 +186,38 @@ const useCases = [
   const toggleBtn2 = document.getElementById("toggle-btn-2");
   const img1 = document.getElementById("btn-view-1");
   const img2 = document.getElementById("btn-view-2");
-  const caption1 = document.getElementById("view-caption-1");
-  const caption2 = document.getElementById("view-caption-2");
-  const modeBadge = document.getElementById("card-mode-badge");
 
   function setView(isFirst: boolean) {
     if (!toggleBtn1 || !toggleBtn2 || !img1 || !img2) return;
 
     if (isFirst) {
-      // Show view 1
       img1.classList.remove("opacity-0", "scale-95", "pointer-events-none");
       img1.classList.add("opacity-100", "scale-100");
 
       img2.classList.remove("opacity-100", "scale-100");
       img2.classList.add("opacity-0", "scale-95", "pointer-events-none");
 
-      if (caption1 && caption2) {
-        caption1.classList.remove("hidden");
-        caption2.classList.add("hidden");
-      }
-
-      if (modeBadge) {
-        modeBadge.textContent = "Přední strana tlačítka";
-      }
-
-      // Active state for button 1
       toggleBtn1.setAttribute("aria-selected", "true");
       toggleBtn1.className =
-        "px-4 py-2 rounded-full text-xs font-bold bg-white text-zinc-950 shadow-sm transition-all duration-200 cursor-pointer";
+        "px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-zinc-950 shadow-xs transition-all cursor-pointer";
 
-      // Inactive state for button 2
       toggleBtn2.setAttribute("aria-selected", "false");
       toggleBtn2.className =
-        "px-4 py-2 rounded-full text-xs font-medium text-zinc-600 hover:text-zinc-950 transition-all duration-200 cursor-pointer";
+        "px-4 py-1.5 rounded-full text-xs font-medium text-zinc-500 hover:text-zinc-950 transition-all cursor-pointer";
     } else {
-      // Show view 2
       img1.classList.remove("opacity-100", "scale-100");
       img1.classList.add("opacity-0", "scale-95", "pointer-events-none");
 
       img2.classList.remove("opacity-0", "scale-95", "pointer-events-none");
       img2.classList.add("opacity-100", "scale-100");
 
-      if (caption1 && caption2) {
-        caption1.classList.add("hidden");
-        caption2.classList.remove("hidden");
-      }
-
-      if (modeBadge) {
-        modeBadge.textContent = "Magnetický zadní profil";
-      }
-
-      // Inactive state for button 1
       toggleBtn1.setAttribute("aria-selected", "false");
       toggleBtn1.className =
-        "px-4 py-2 rounded-full text-xs font-medium text-zinc-600 hover:text-zinc-950 transition-all duration-200 cursor-pointer";
+        "px-4 py-1.5 rounded-full text-xs font-medium text-zinc-500 hover:text-zinc-950 transition-all cursor-pointer";
 
-      // Active state for button 2
       toggleBtn2.setAttribute("aria-selected", "true");
       toggleBtn2.className =
-        "px-4 py-2 rounded-full text-xs font-bold bg-white text-zinc-950 shadow-sm transition-all duration-200 cursor-pointer";
+        "px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-zinc-950 shadow-xs transition-all cursor-pointer";
     }
   }
 
