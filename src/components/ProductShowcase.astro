@@ -10,31 +10,58 @@ import { Magnet } from "lucide-astro";
   <div class="max-w-7xl mx-auto">
     <!-- Main 2-Column Grid: Left Copy & Right Interactive Button -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-      
       <!-- LEFT COLUMN: Hardware & Ergonomie (7 cols) -->
       <div class="lg:col-span-7 text-left">
-        <span class="text-xs font-mono tracking-[0.2em] text-zinc-400 uppercase font-medium block mb-3">Hardware & Ergonomie</span>
+        <span
+          class="text-xs font-mono tracking-[0.2em] text-zinc-400 uppercase font-medium block mb-3"
+          >Hardware & Ergonomie</span
+        >
 
-        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-950 leading-[1.15]">
-          Diskrétní jistota,<br />když pracujete v salónu sama.
+        <h2
+          class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-950 leading-[1.15]"
+        >
+          Za vámi se zavřou dveře.<br />A s klientem jste sami.
         </h2>
 
-        <p class="text-zinc-500 text-base md:text-lg mt-4 max-w-lg leading-relaxed">
-          V krizovém momentu nerozhoduje mobil v kabelce, ale hmatový reflex pod rukou. Stačí jediné nenápadné gesto poslepu bez odemykání obrazovky.
+        <p
+          class="text-zinc-500 text-base md:text-lg mt-4 max-w-lg leading-relaxed"
+        >
+          Přijde nový klient, který začne překračovat hranice. Telefon leží na
+          poličce nebo v kabelce. Nemáte šanci ho vytáhnout, odemknout a někomu
+          volat. Vochranka je malé bezpečnostní tlačítko, na které stačí dvakrát
+          kliknout. Rozhouká se silná siréna a pošle se SOS SMS blízkým.
         </p>
 
         <!-- Blok 1 (Aktivace) -->
         <div class="mt-8 pt-6 border-t border-zinc-100">
-          <div class="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold mb-1">Gesto 01 — 2× rychlé stisknutí</div>
-          <h3 class="text-lg font-semibold text-zinc-900">110 dB siréna na místě + tichá nouzová SMS</h3>
-          <p class="text-sm text-zinc-500 mt-1 leading-relaxed">Dvojklik eliminuje náhodný dotek rukou či nohou při práci. Okamžitě odešle přesnou adresu kontaktům a hlasitým tónem odradí narušitele.</p>
+          <div
+            class="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold mb-1"
+          >
+            Gesto 01 — 2× rychlé stisknutí
+          </div>
+          <h3 class="text-lg font-semibold text-zinc-900">
+            110 dB siréna na místě + nouzová SMS
+          </h3>
+          <p class="text-sm text-zinc-500 mt-1 leading-relaxed">
+            Dvojklik eliminuje náhodný dotek rukou či nohou při práci. Okamžitě
+            odešle přesnou adresu kontaktům a hlasitým tónem odradí narušitele.
+          </p>
         </div>
 
         <!-- Blok 2 (Deaktivace) -->
         <div class="mt-6 pt-6 border-t border-zinc-100">
-          <div class="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold mb-1">Gesto 02 — Podržení na 3 sekundy</div>
-          <h3 class="text-lg font-semibold text-zinc-900">Okamžité umlčení sirény</h3>
-          <p class="text-sm text-zinc-500 mt-1 leading-relaxed">Pokud incident odezní nebo šlo o nácvik, alarm diskrétně vypnete na dálku přímo z tlačítka bez manipulace se zásuvkou.</p>
+          <div
+            class="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold mb-1"
+          >
+            Gesto 02 — Podržení na 3 sekundy
+          </div>
+          <h3 class="text-lg font-semibold text-zinc-900">
+            Okamžité umlčení sirény
+          </h3>
+          <p class="text-sm text-zinc-500 mt-1 leading-relaxed">
+            Pokud incident odezní nebo šlo o nácvik, alarm diskrétně vypnete na
+            dálku přímo z tlačítka bez manipulace se zásuvkou.
+          </p>
         </div>
       </div>
 
@@ -45,7 +72,9 @@ import { Magnet } from "lucide-astro";
           class="w-full max-w-md rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-zinc-50 to-zinc-100/70 border border-zinc-200/90 shadow-lg relative flex flex-col items-center text-center"
         >
           <!-- Badge on top of card -->
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-zinc-900 text-[11px] font-semibold border border-zinc-200 shadow-xs mb-6">
+          <div
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-zinc-900 text-[11px] font-semibold border border-zinc-200 shadow-xs mb-6"
+          >
             <Magnet class="w-3.5 h-3.5 text-zinc-950" />
             <span id="card-mode-badge">Přední strana tlačítka</span>
           </div>
@@ -101,37 +130,62 @@ import { Magnet } from "lucide-astro";
 
           <!-- Dynamic Caption below Switcher -->
           <div class="mt-5 min-h-[48px] flex items-center justify-center">
-            <p id="view-caption-1" class="text-xs text-zinc-600 max-w-xs transition-opacity duration-300">
-              Diskrétní rozměr 45 mm s hmatovým prolisem pro jisté stisknutí bez dívání.
+            <p
+              id="view-caption-1"
+              class="text-xs text-zinc-600 max-w-xs transition-opacity duration-300"
+            >
+              Diskrétní rozměr 45 mm s hmatovým prolisem pro jisté stisknutí bez
+              dívání.
             </p>
-            <p id="view-caption-2" class="text-xs text-zinc-600 max-w-xs hidden transition-opacity duration-300">
-              Silný neodymový magnet a 3M samolepicí plocha. Drží na kovovém lehátku i dřevěné desce.
+            <p
+              id="view-caption-2"
+              class="text-xs text-zinc-600 max-w-xs hidden transition-opacity duration-300"
+            >
+              Silný neodymový magnet a 3M samolepicí plocha. Drží na kovovém
+              lehátku i dřevěné desce.
             </p>
           </div>
 
           <!-- Spec Pills -->
-          <div class="grid grid-cols-3 gap-2 w-full pt-4 mt-2 border-t border-zinc-200/80 text-center">
+          <div
+            class="grid grid-cols-3 gap-2 w-full pt-4 mt-2 border-t border-zinc-200/80 text-center"
+          >
             <div class="bg-white/80 rounded-xl p-2 border border-zinc-200/70">
               <span class="text-sm font-bold text-zinc-950 block">4,5 cm</span>
-              <span class="text-[10px] text-zinc-500 uppercase tracking-wider block">Rozměr</span>
+              <span
+                class="text-[10px] text-zinc-500 uppercase tracking-wider block"
+                >Rozměr</span
+              >
             </div>
             <div class="bg-white/80 rounded-xl p-2 border border-zinc-200/70">
-              <span class="text-sm font-bold text-zinc-950 block">Až 5 let</span>
-              <span class="text-[10px] text-zinc-500 uppercase tracking-wider block">Baterie</span>
+              <span class="text-sm font-bold text-zinc-950 block">Až 5 let</span
+              >
+              <span
+                class="text-[10px] text-zinc-500 uppercase tracking-wider block"
+                >Baterie</span
+              >
             </div>
             <div class="bg-white/80 rounded-xl p-2 border border-zinc-200/70">
-              <span class="text-sm font-bold text-zinc-950 block">Magnet & 3M</span>
-              <span class="text-[10px] text-zinc-500 uppercase tracking-wider block">Uchycení</span>
+              <span class="text-sm font-bold text-zinc-950 block"
+                >Magnet & 3M</span
+              >
+              <span
+                class="text-[10px] text-zinc-500 uppercase tracking-wider block"
+                >Uchycení</span
+              >
             </div>
           </div>
         </div>
 
         <!-- Subtext below card with link to installation -->
         <p class="text-xs text-zinc-500 mt-4 text-center">
-          Připraveno k okamžitému použití • <a href="#instalace" class="text-zinc-900 font-semibold underline underline-offset-2 hover:text-zinc-600">Podívejte se, kam ho umístit ↓</a>
+          Připraveno k okamžitému použití • <a
+            href="#instalace"
+            class="text-zinc-900 font-semibold underline underline-offset-2 hover:text-zinc-600"
+            >Podívejte se, kam ho umístit ↓</a
+          >
         </p>
       </div>
-
     </div>
   </div>
 </section>
