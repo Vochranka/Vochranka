@@ -2,12 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
-import ProblemSection from "../components/ProblemSection.astro";
-import HowItWorks from "../components/HowItWorks.astro";
 import ProductShowcase from "../components/ProductShowcase.astro";
 import PlugAndPlay from "../components/PlugAndPlay.astro";
-import ReassuranceBanner from "../components/ReassuranceBanner.astro";
-import Pricing from "../components/Pricing.astro";
 import Faq from "../components/Faq.astro";
 import OrderForm from "../components/OrderForm.astro";
 import Footer from "../components/Footer.astro";
@@ -23,31 +19,19 @@ import { ArrowRight, ShieldCheck } from "lucide-astro";
 
   <!-- Main landing page content -->
   <main>
-    <!-- 1. Hero Section -->
+    <!-- 1. Hero Section (Představení produktu s videem a hesly) -->
     <Hero />
 
-    <!-- 2. Problem & Empathy (Bezpečí za zavřenými dveřmi) -->
-    <ProblemSection />
-
-    <!-- 3. How It Works (Tlačítko. Klik. Alarm. SOS.) -->
-    <HowItWorks />
-
-    <!-- 4. Product Showcase (Hardware & Gesta) -->
+    <!-- 2. K čemu produkt je & Kde se využívá (s interaktivním tlačítkem napravo) -->
     <ProductShowcase />
 
-    <!-- 5. Plug & Play (Připravená během 2 minut) -->
+    <!-- 3. Rychlá instalace za 2 minuty & Kam se dá tlačítko dát (Magnet pod stůl, v kapse, potají) -->
     <PlugAndPlay />
 
-    <!-- 6. Reassurance Banner (Klid při každém novém klientovi) -->
-    <ReassuranceBanner />
-
-    <!-- 6. Transparent Pricing Card -->
-    <Pricing />
-
-    <!-- 7. FAQ Accordion -->
+    <!-- 4. Časté dotazy a odpovědi (FAQ) -->
     <Faq />
 
-    <!-- 8. Order & Inquiry Form -->
+    <!-- 5. Nezávazná objednávka s kalkulátorem ceny vlevo & Přímé kontakty vpravo -->
     <OrderForm />
   </main>
 
@@ -70,14 +54,13 @@ import { ArrowRight, ShieldCheck } from "lucide-astro";
           Sada Vochranka
         </p>
         <p class="text-[11px] font-semibold text-zinc-950">
-          2 990 Kč <span class="font-normal text-zinc-500">• 14 dní záruka</span
-          >
+          2 990 Kč <span class="font-normal text-zinc-500">• 14 dní záruka</span>
         </p>
       </div>
     </div>
 
     <a
-      href="#objednavka"
+      href="#kontakt"
       class="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full bg-zinc-950 text-white text-xs font-semibold shadow-md hover:bg-zinc-800 active:scale-95 transition-all shrink-0"
     >
       <span>Objednat</span>
