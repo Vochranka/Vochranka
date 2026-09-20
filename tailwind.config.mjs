@@ -37,8 +37,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
-        display: ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        display: ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'soft-sm': '0 2px 8px -2px rgba(28, 35, 30, 0.05), 0 1px 4px -1px rgba(28, 35, 30, 0.03)',

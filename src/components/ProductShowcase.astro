@@ -1,36 +1,6 @@
 ---
 // src/components/ProductShowcase.astro
-import {
-  ShieldAlert,
-  BellRing,
-  Smartphone,
-  CheckCircle2,
-  Sparkles,
-  MapPin,
-  HeartHandshake,
-  Layers,
-  Magnet,
-  Volume2,
-} from "lucide-astro";
-
-const useCases = [
-  {
-    title: "Masérské salóny & fyzioterapie",
-    desc: "Diskrétní stisknutí přímo pod lehátkem během masáže, aniž by si klient čehokoliv všiml.",
-  },
-  {
-    title: "Kosmetika, lash & brow studia",
-    desc: "Ochrana za zavřenými dveřmi studia při práci s novými či neprověřenými klienty.",
-  },
-  {
-    title: "Manikúra, nehty & pedikúra",
-    desc: "Okamžitá jistota pod hranou pracovního stolu – ruka je u tlačítka dřív, než dojde k eskalaci.",
-  },
-  {
-    title: "Privátní ordinace & sólo praxe",
-    desc: "Rychlý přivolávač pomoci a hlasitý odstrašující alarm, když v čekárně či studiu nikdo další není.",
-  },
-];
+import { Magnet } from "lucide-astro";
 ---
 
 <section
@@ -38,108 +8,34 @@ const useCases = [
   class="bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8 border-b border-zinc-200/80 overflow-hidden relative"
 >
   <div class="max-w-7xl mx-auto">
-    <!-- Subtle top tag -->
-    <div class="flex items-center justify-center md:justify-start mb-4">
-      <div
-        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold border border-zinc-200"
-      >
-        <Sparkles class="w-3.5 h-3.5 text-zinc-800" />
-        <span>K ČEMU PRODUKT JE & KDE SE VYUŽÍVÁ</span>
-      </div>
-    </div>
-
     <!-- Main 2-Column Grid: Left Copy & Right Interactive Button -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
       
-      <!-- LEFT COLUMN: K čemu to je & Kde se využívá (7 cols) -->
-      <div class="lg:col-span-7 space-y-8 text-left">
-        <div>
-          <h2
-            class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-zinc-950 tracking-tight leading-[1.15]"
-          >
-            Diskrétní jistota, <br class="hidden sm:inline" />
-            <span class="text-zinc-600">když pracujete v salónu sama.</span>
-          </h2>
-          <p class="text-base sm:text-lg text-zinc-600 mt-4 leading-relaxed max-w-2xl">
-            Vochranka je bezdrátové nouzové tlačítko navržené speciálně pro ženy, které poskytují služby za zavřenými dveřmi. V krizovém momentu není čas hledat mobil, odemykat obrazovku a vytáčet čísla. 
-            <strong class="text-zinc-950 font-semibold"> Stačí jediné nenápadné dvojité stisknutí poslepu.</strong>
-          </p>
+      <!-- LEFT COLUMN: Hardware & Ergonomie (7 cols) -->
+      <div class="lg:col-span-7 text-left">
+        <span class="text-xs font-mono tracking-[0.2em] text-zinc-400 uppercase font-medium block mb-3">Hardware & Ergonomie</span>
+
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-950 leading-[1.15]">
+          Diskrétní jistota,<br />když pracujete v salónu sama.
+        </h2>
+
+        <p class="text-zinc-500 text-base md:text-lg mt-4 max-w-lg leading-relaxed">
+          V krizovém momentu nerozhoduje mobil v kabelce, ale hmatový reflex pod rukou. Stačí jediné nenápadné gesto poslepu bez odemykání obrazovky.
+        </p>
+
+        <!-- Blok 1 (Aktivace) -->
+        <div class="mt-8 pt-6 border-t border-zinc-100">
+          <div class="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold mb-1">Gesto 01 — 2× rychlé stisknutí</div>
+          <h3 class="text-lg font-semibold text-zinc-900">110 dB siréna na místě + tichá nouzová SMS</h3>
+          <p class="text-sm text-zinc-500 mt-1 leading-relaxed">Dvojklik eliminuje náhodný dotek rukou či nohou při práci. Okamžitě odešle přesnou adresu kontaktům a hlasitým tónem odradí narušitele.</p>
         </div>
 
-        <!-- 2 Co se stane za 2 vteřiny -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="p-4 sm:p-5 rounded-2xl bg-zinc-50 border border-zinc-200/90 shadow-sm">
-            <div class="w-9 h-9 rounded-xl bg-zinc-950 text-white flex items-center justify-center mb-3">
-              <Volume2 class="w-4 h-4 text-white" />
-            </div>
-            <h3 class="text-base font-bold text-zinc-950">
-              110 dB siréna na místě
-            </h3>
-            <p class="text-xs sm:text-sm text-zinc-600 mt-1 leading-relaxed">
-              Pronikavý zvuk okamžitě šokuje narušitele, odradí ho a zalarmuje sousední provozovny v domě.
-            </p>
-          </div>
-
-          <div class="p-4 sm:p-5 rounded-2xl bg-zinc-50 border border-zinc-200/90 shadow-sm">
-            <div class="w-9 h-9 rounded-xl bg-zinc-950 text-white flex items-center justify-center mb-3">
-              <Smartphone class="w-4 h-4 text-white" />
-            </div>
-            <h3 class="text-base font-bold text-zinc-950">
-              Tichá nouzová SMS
-            </h3>
-            <p class="text-xs sm:text-sm text-zinc-600 mt-1 leading-relaxed">
-              Během 2 vteřin odejde zpráva s přesnou adresou salónu až 3 vybraným blízkým kontaktům.
-            </p>
-          </div>
+        <!-- Blok 2 (Deaktivace) -->
+        <div class="mt-6 pt-6 border-t border-zinc-100">
+          <div class="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold mb-1">Gesto 02 — Podržení na 3 sekundy</div>
+          <h3 class="text-lg font-semibold text-zinc-900">Okamžité umlčení sirény</h3>
+          <p class="text-sm text-zinc-500 mt-1 leading-relaxed">Pokud incident odezní nebo šlo o nácvik, alarm diskrétně vypnete na dálku přímo z tlačítka bez manipulace se zásuvkou.</p>
         </div>
-
-        <!-- Kde všude se Vochranka využívá -->
-        <div class="pt-2">
-          <p class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-3.5">
-            Kde se Vochranka nejčastěji využívá:
-          </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {
-              useCases.map((item) => (
-                <div class="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-zinc-200/70 hover:border-zinc-300 transition-colors">
-                  <CheckCircle2 class="w-4 h-4 text-zinc-950 shrink-0 mt-0.5" />
-                  <div>
-                    <h4 class="text-xs sm:text-sm font-bold text-zinc-900 leading-snug">
-                      {item.title}
-                    </h4>
-                    <p class="text-xs text-zinc-500 mt-0.5 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-
-        <!-- Gesta ovládání (2x klik / podržení) -->
-        <div class="p-4 sm:p-5 rounded-2xl bg-zinc-950 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
-          <div class="flex items-center gap-3.5">
-            <span class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-xs font-mono font-bold text-white border border-white/20">
-              2×
-            </span>
-            <div>
-              <p class="text-sm font-bold text-white leading-tight">Rychlé dvojkliknutí</p>
-              <p class="text-xs text-zinc-400">Spustí poplach & okamžitou SMS (chrání před nechtěným stiskem)</p>
-            </div>
-          </div>
-          <div class="hidden sm:block w-px h-8 bg-zinc-800"></div>
-          <div class="flex items-center gap-3.5">
-            <span class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-xs font-mono font-bold text-white border border-white/20">
-              3s
-            </span>
-            <div>
-              <p class="text-sm font-bold text-white leading-tight">Podržení na 3 sekundy</p>
-              <p class="text-xs text-zinc-400">Umlčí sirénu po zkoušce nebo pominutí rizika</p>
-            </div>
-          </div>
-        </div>
-
       </div>
 
       <!-- RIGHT COLUMN: Interactive Button Showcase with Toggle (5 cols) -->
