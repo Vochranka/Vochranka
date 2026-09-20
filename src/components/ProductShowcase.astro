@@ -5,32 +5,36 @@ import { Magnet } from "lucide-astro";
 
 <section
   id="vyuziti"
-  class="bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8 border-b border-zinc-200/80 overflow-hidden relative"
+  class="bg-white py-10 md:py-14 px-4 sm:px-6 lg:px-8 border-b border-zinc-200/80 overflow-hidden relative"
 >
   <div class="max-w-7xl mx-auto">
     <!-- Main 2-Column Grid: Left Copy & Right Interactive Button -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
       <!-- LEFT COLUMN: Hardware & Ergonomie (7 cols) -->
       <div class="lg:col-span-7 text-left">
+        <span
+          class="text-xs font-mono tracking-[0.2em] text-zinc-400 uppercase font-medium block mb-3"
+        >
+          Hardware & Funkce
+        </span>
         <h2
           class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-950 leading-[1.15]"
         >
-          Za vámi se zavřou dveře.<br />
-          <span class="text-zinc-600">A s klientem jste sami.</span>
+          Okamžitá reakce<br />
+          <span class="text-zinc-600">Bez jediného slova.</span>
         </h2>
 
         <!-- Situace / Problém (Napětí) -->
         <p
           class="text-zinc-600 text-base md:text-lg mt-4 max-w-xl leading-relaxed"
         >
-          Přijde nový klient, který začne překračovat osobní hranice. Váš
-          telefon leží na poličce nebo v kabelce. Nemáte šanci ho vytáhnout,
-          odemknout a zavolat o pomoc.
+          Ať jste ve svém salónu nebo stojíte za pultem večerky či v kavárně,
+          pomoc máte vždy na dosah.
         </p>
 
         <p class="text-base font-bold text-zinc-950 leading-snug">
-          Proto vznikla Vochranka. Malé bezpečnostní tlačítko přímo u vaší ruky
-          - v kapce, pod hranou stolu, na konstrukci lehátka.
+          Proto vznikla Vochranka. Kompletní ochrana pro chvíle, kdy jste v
+          provozu sami.
         </p>
 
         <!-- Oddělené představení Vochranky (Řešení) -->
@@ -39,15 +43,12 @@ import { Magnet } from "lucide-astro";
           <div
             class="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold mb-1"
           >
-            2x kliknutí
+            Dvoukliknete
           </div>
           <h3 class="text-lg font-semibold text-zinc-900">
-            110 dB siréna na místě + nouzová SMS
+            Spouští se hlasitá siréna a odesílá se nouzová SMS
           </h3>
-          <p class="text-sm text-zinc-500 mt-1 leading-relaxed">
-            Dvojklik eliminuje náhodný dotek rukou či nohou při práci. Okamžitě
-            odešle přesnou adresu kontaktům a hlasitým tónem odradí narušitele.
-          </p>
+          <p class="text-sm text-zinc-500 mt-1 leading-relaxed"></p>
         </div>
 
         <!-- Blok 2 (Deaktivace) -->
@@ -55,15 +56,12 @@ import { Magnet } from "lucide-astro";
           <div
             class="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold mb-1"
           >
-            Podržení na 3 sekundy
+            Podržíte na 3 sekundy
           </div>
           <h3 class="text-lg font-semibold text-zinc-900">
-            Okamžité umlčení sirény
+            Siréna se okamžitě umlčí.
           </h3>
-          <p class="text-sm text-zinc-500 mt-1 leading-relaxed">
-            Pokud incident odezní nebo šlo o nácvik, alarm diskrétně vypnete na
-            dálku přímo z tlačítka bez manipulace se zásuvkou.
-          </p>
+          <p class="text-sm text-zinc-500 mt-1 leading-relaxed"></p>
         </div>
       </div>
 
@@ -130,27 +128,9 @@ import { Magnet } from "lucide-astro";
             </button>
           </div>
 
-          <!-- Dynamic Caption below Switcher -->
-          <div class="mt-5 min-h-[48px] flex items-center justify-center">
-            <p
-              id="view-caption-1"
-              class="text-xs text-zinc-600 max-w-xs transition-opacity duration-300"
-            >
-              Diskrétní rozměr 45 mm s hmatovým prolisem pro jisté stisknutí bez
-              dívání.
-            </p>
-            <p
-              id="view-caption-2"
-              class="text-xs text-zinc-600 max-w-xs hidden transition-opacity duration-300"
-            >
-              Silný neodymový magnet a 3M samolepicí plocha. Drží na kovovém
-              lehátku i dřevěné desce.
-            </p>
-          </div>
-
           <!-- Spec Pills -->
           <div
-            class="grid grid-cols-3 gap-2 w-full pt-4 mt-2 border-t border-zinc-200/80 text-center"
+            class="grid grid-cols-3 gap-2 w-full pt-4 mt-3 border-t border-zinc-200/80 text-center"
           >
             <div class="bg-white/80 rounded-xl p-2 border border-zinc-200/70">
               <span class="text-sm font-bold text-zinc-950 block">4,5 cm</span>
@@ -160,7 +140,8 @@ import { Magnet } from "lucide-astro";
               >
             </div>
             <div class="bg-white/80 rounded-xl p-2 border border-zinc-200/70">
-              <span class="text-sm font-bold text-zinc-950 block">Až 5 let</span
+              <span class="text-sm font-bold text-zinc-950 block"
+                >Až 3 roky</span
               >
               <span
                 class="text-[10px] text-zinc-500 uppercase tracking-wider block"
@@ -168,9 +149,7 @@ import { Magnet } from "lucide-astro";
               >
             </div>
             <div class="bg-white/80 rounded-xl p-2 border border-zinc-200/70">
-              <span class="text-sm font-bold text-zinc-950 block"
-                >Magnet & 3M</span
-              >
+              <span class="text-sm font-bold text-zinc-950 block">Magnet</span>
               <span
                 class="text-[10px] text-zinc-500 uppercase tracking-wider block"
                 >Uchycení</span
