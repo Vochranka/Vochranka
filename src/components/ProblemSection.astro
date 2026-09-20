@@ -1,49 +1,60 @@
 ---
-import { ShieldCheck, ArrowRight, Lock } from 'lucide-astro';
+import { ShieldCheck, ArrowRight, Lock } from "lucide-astro";
 ---
 
-<section class="py-16 md:py-24 bg-[#FAFBF9] border-y border-stone-200/70 relative">
+<section
+  class="py-16 md:py-24 bg-white border-y border-zinc-200/80 relative"
+>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    
     <!-- Subtle Tag -->
-    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-100 text-sage-900 text-xs font-semibold mb-6">
-      <Lock class="w-3.5 h-3.5 text-sage-700" />
+    <div
+      class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold mb-6 border border-zinc-200"
+    >
+      <Lock class="w-3.5 h-3.5 text-zinc-800" />
       <span>Diskrétní ochrana sólo salónů</span>
     </div>
 
     <!-- Main Heading -->
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-anthracite-950 tracking-tight mb-6">
+    <h2
+      class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-zinc-950 tracking-tight mb-6"
+    >
       Bezpečí za zavřenými dveřmi
     </h2>
 
     <!-- Lead Paragraphs -->
-    <div class="space-y-4 max-w-2xl mx-auto mb-8 text-base sm:text-lg text-anthracite-600 leading-relaxed">
+    <div
+      class="space-y-4 max-w-2xl mx-auto mb-8 text-base sm:text-lg text-zinc-600 leading-relaxed"
+    >
+      <p>Pracujete sama a nikdy nevíte, kdo přijde na objednaný termín.</p>
       <p>
-        Pracujete sama a nikdy nevíte, kdo přijde na objednaný termín.
-      </p>
-      <p>
-        Když se situace začne vyhrocovat, není čas hledat telefon, odemykat ho a volat o pomoc.
+        Když se situace začne vyhrocovat, není čas hledat telefon, odemykat ho a
+        volat o pomoc.
       </p>
     </div>
 
     <!-- Key Highlight Callout -->
-    <div class="max-w-xl mx-auto p-5 sm:p-6 rounded-2xl bg-white border border-sage-200/80 shadow-soft-md mb-8 flex items-center justify-center gap-3.5 text-center">
-      <ShieldCheck class="w-6 h-6 text-sage-600 shrink-0" />
-      <p class="text-base sm:text-lg font-bold text-anthracite-900 leading-snug">
+    <div
+      class="max-w-xl mx-auto p-5 sm:p-6 rounded-2xl bg-zinc-50 border border-zinc-200 shadow-sm mb-8 flex items-center justify-center gap-3.5 text-center"
+    >
+      <ShieldCheck class="w-6 h-6 text-zinc-950 shrink-0" />
+      <p
+        class="text-base sm:text-lg font-bold text-zinc-950 leading-snug"
+      >
         Vochranka vám umožní reagovat jediným nenápadným stisknutím.
       </p>
     </div>
 
     <!-- CTA Link -->
     <div class="flex justify-center">
-      <a 
-        href="#jak-to-funguje" 
-        class="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-sage-800 hover:text-sage-950 transition-colors group"
+      <a
+        href="#jak-to-funguje"
+        class="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-zinc-950 hover:text-zinc-600 transition-colors group"
       >
         <span>Jak to funguje</span>
-        <ArrowRight class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        <ArrowRight
+          class="w-4 h-4 transition-transform group-hover:translate-x-1"
+        />
       </a>
     </div>
-
   </div>
 </section>

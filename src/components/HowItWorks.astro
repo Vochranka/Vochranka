@@ -1,5 +1,11 @@
 ---
-import { Fingerprint, Volume2, Send, ArrowRight, ShieldCheck } from 'lucide-astro';
+import {
+  Fingerprint,
+  Volume2,
+  Send,
+  ArrowRight,
+  ShieldCheck,
+} from "lucide-astro";
 
 const steps = [
   {
@@ -23,62 +29,71 @@ const steps = [
 ];
 ---
 
-<section id="jak-to-funguje" class="py-16 md:py-24 relative overflow-hidden bg-white">
+<section
+  id="jak-to-funguje"
+  class="py-16 md:py-24 relative overflow-hidden bg-zinc-50 border-b border-zinc-200/80"
+>
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    
     <!-- Section Header -->
     <div class="max-w-2xl mx-auto text-center mb-14 md:mb-16">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-100/90 text-sage-900 text-xs font-semibold mb-4">
-        <ShieldCheck class="w-3.5 h-3.5 text-sage-700" />
+      <div
+        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold mb-4 border border-zinc-200"
+      >
+        <ShieldCheck class="w-3.5 h-3.5 text-zinc-800" />
         <span>Během 2 vteřin</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-anthracite-950 tracking-tight">
+      <h2
+        class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-zinc-950 tracking-tight"
+      >
         Tlačítko. Klik. Alarm. SOS.
       </h2>
     </div>
 
     <!-- 3 Steps Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
-      {steps.map((item) => {
-        const Icon = item.icon;
-        return (
-          <div class="flex flex-col justify-between rounded-3xl p-7 sm:p-8 bg-[#FAFBF9] border border-sage-200/80 hover:border-sage-400 hover:shadow-soft-md transition-all duration-300 group">
-            <div>
-              <div class="flex items-center justify-between mb-6">
-                <span class="text-xs font-bold tracking-wider px-3 py-1 rounded-full bg-white text-sage-800 border border-sage-200 shadow-soft-sm">
-                  {item.num} — {item.label}
-                </span>
-                <div class="w-11 h-11 rounded-2xl bg-sage-100/80 text-sage-800 flex items-center justify-center group-hover:bg-sage-600 group-hover:text-white transition-colors duration-200">
-                  <Icon class="w-5 h-5" />
+      {
+        steps.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div class="flex flex-col justify-between rounded-3xl p-7 sm:p-8 bg-white border border-zinc-200 hover:border-zinc-400 hover:shadow-md transition-all duration-300 group">
+              <div>
+                <div class="flex items-center justify-between mb-6">
+                  <span class="text-xs font-bold tracking-wider px-3 py-1 rounded-full bg-zinc-50 text-zinc-800 border border-zinc-200">
+                    {item.num} — {item.label}
+                  </span>
+                  <div class="w-11 h-11 rounded-2xl bg-zinc-100 text-zinc-800 flex items-center justify-center group-hover:bg-zinc-950 group-hover:text-white transition-colors duration-200">
+                    <Icon class="w-5 h-5" />
+                  </div>
                 </div>
+
+                <h3 class="text-xl sm:text-2xl font-bold font-display text-zinc-950 mb-3">
+                  {item.label}
+                </h3>
+
+                <p class="text-sm sm:text-base text-zinc-600 leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
-
-              <h3 class="text-xl sm:text-2xl font-bold font-display text-anthracite-950 mb-3">
-                {item.label}
-              </h3>
-
-              <p class="text-sm sm:text-base text-anthracite-600 leading-relaxed">
-                {item.desc}
-              </p>
             </div>
-          </div>
-        );
-      })}
+          );
+        })
+      }
     </div>
 
     <!-- Bottom Reassurance & CTA -->
-    <div class="max-w-2xl mx-auto text-center pt-6 border-t border-stone-100">
-      <p class="text-base sm:text-lg font-bold text-anthracite-900 mb-4">
+    <div class="max-w-2xl mx-auto text-center pt-6 border-t border-zinc-200">
+      <p class="text-base sm:text-lg font-bold text-zinc-950 mb-4">
         Jednoduché řešení pro situace, kdy není čas přemýšlet.
       </p>
-      <a 
-        href="#instalace" 
-        class="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-sage-800 hover:text-sage-950 transition-colors group"
+      <a
+        href="#instalace"
+        class="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-zinc-950 hover:text-zinc-600 transition-colors group"
       >
         <span>Jak to funguje</span>
-        <ArrowRight class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        <ArrowRight
+          class="w-4 h-4 transition-transform group-hover:translate-x-1"
+        />
       </a>
     </div>
-
   </div>
 </section>

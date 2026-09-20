@@ -1,5 +1,13 @@
 ---
-import { Check, ShieldCheck, Sparkles, HelpCircle, ArrowRight, Heart, MapPin } from 'lucide-astro';
+import {
+  Check,
+  ShieldCheck,
+  Sparkles,
+  HelpCircle,
+  ArrowRight,
+  Heart,
+  MapPin,
+} from "lucide-astro";
 
 const hardwareIncludes = [
   "1× Diskrétní bezdrátové tlačítko (průměr 35 mm)",
@@ -7,7 +15,7 @@ const hardwareIncludes = [
   "1× Výkonná zásuvková siréna (110 dB) a brána",
   "Průmyslová 3M oboustranná páska pro pevnou montáž",
   "Český obrázkový manuál (zprovoznění do 2 minut)",
-  "Záruka 24 měsíců + okamžitá výměna kus za kus"
+  "Záruka 24 měsíců + okamžitá výměna kus za kus",
 ];
 
 const serviceIncludes = [
@@ -15,154 +23,197 @@ const serviceIncludes = [
   "Nepřetržitý automatický monitoring spojení 24/7",
   "Včasné SMS upozornění, když baterie klesne pod 15 %",
   "Prioritní česká telefonická a e-mailová podpora",
-  "Žádné měsíční faktury – platí se jednou ročně"
+  "Žádné měsíční faktury – platí se jednou ročně",
 ];
 ---
 
-<section id="cenik" class="py-16 md:py-24 bg-white/60 border-y border-stone-200/70 relative">
+<section
+  id="cenik"
+  class="py-16 md:py-24 bg-zinc-50 border-b border-zinc-200/80 relative"
+>
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    
     <!-- Section Header -->
     <div class="max-w-2xl mx-auto text-center mb-14 md:mb-18">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-100 text-sage-900 text-xs font-semibold mb-4">
-        <ShieldCheck class="w-3.5 h-3.5 text-sage-700" />
+      <div
+        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold mb-4 border border-zinc-200"
+      >
+        <ShieldCheck class="w-3.5 h-3.5 text-zinc-800" />
         <span>Férové a transparentní podmínky</span>
       </div>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-anthracite-950 tracking-tight mb-4">
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-zinc-950 tracking-tight mb-4"
+      >
         Jedna kompletní sada. <br />
-        <span class="text-sage-700">Klid a bezpečí na každý pracovní den.</span>
+        <span class="text-zinc-600">Klid a bezpečí na každý pracovní den.</span>
       </h2>
-      <p class="text-base text-anthracite-600 leading-relaxed">
-        Žádné skryté poplatky za instalaci ani drahé montážní firmy. Jednorázový nákup spolehlivého hardwaru a roční provoz za cenu jedné kávy měsíčně.
+      <p class="text-base text-zinc-600 leading-relaxed">
+        Žádné skryté poplatky za instalaci ani drahé montážní firmy. Jednorázový
+        nákup spolehlivého hardwaru a roční provoz za cenu jedné kávy měsíčně.
       </p>
     </div>
 
     <!-- Featured Pricing Box -->
-    <div class="max-w-3xl mx-auto rounded-3xl bg-[#FAFBF9] border-2 border-sage-300/80 shadow-soft-xl overflow-hidden relative">
-      
+    <div
+      class="max-w-3xl mx-auto rounded-3xl bg-white border border-zinc-300 shadow-xl overflow-hidden relative"
+    >
       <!-- Top banner badge -->
-      <div class="bg-sage-700 text-white px-6 py-2.5 text-center text-xs sm:text-sm font-semibold tracking-wide flex items-center justify-center gap-2">
-        <Sparkles class="w-4 h-4 text-sage-200" />
+      <div
+        class="bg-zinc-950 text-white px-6 py-2.5 text-center text-xs sm:text-sm font-semibold tracking-wide flex items-center justify-center gap-2"
+      >
+        <Sparkles class="w-4 h-4 text-zinc-300" />
         <span>Kompletní balíček Vochranka pro sólo salóny & praxe</span>
       </div>
 
       <div class="p-6 sm:p-10">
-        
         <!-- Price headline split -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-8 border-b border-stone-200">
-          
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-8 border-b border-zinc-200"
+        >
           <!-- Hardware price -->
-          <div class="bg-white p-5 rounded-2xl border border-stone-200/90 shadow-soft-sm">
-            <span class="text-xs font-bold uppercase tracking-wider text-anthracite-500">
+          <div
+            class="bg-zinc-50 p-5 rounded-2xl border border-zinc-200 shadow-sm"
+          >
+            <span
+              class="text-xs font-bold uppercase tracking-wider text-zinc-500"
+            >
               Hardware (jednorázově)
             </span>
             <div class="mt-2 flex items-baseline gap-1.5">
-              <span class="text-3xl sm:text-4xl font-extrabold font-display text-anthracite-950">
+              <span
+                class="text-3xl sm:text-4xl font-extrabold font-display text-zinc-950"
+              >
                 2 990 Kč
               </span>
-              <span class="text-xs text-anthracite-500 font-medium">vč. DPH</span>
+              <span class="text-xs text-zinc-500 font-medium"
+                >vč. DPH</span
+              >
             </div>
-            <p class="text-xs text-anthracite-600 mt-2">
+            <p class="text-xs text-zinc-600 mt-2">
               Celá sada je vaším trvalým majetkem. Žádný pronájem.
             </p>
           </div>
 
           <!-- Service price -->
-          <div class="bg-white p-5 rounded-2xl border border-sage-200 shadow-soft-sm relative">
-            <span class="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider bg-sage-100 text-sage-800 px-2 py-0.5 rounded-full">
+          <div
+            class="bg-zinc-50 p-5 rounded-2xl border border-zinc-200 shadow-sm relative"
+          >
+            <span
+              class="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider bg-zinc-200 text-zinc-800 px-2 py-0.5 rounded-full"
+            >
               cca 82 Kč / měsíc
             </span>
-            <span class="text-xs font-bold uppercase tracking-wider text-sage-800">
+            <span
+              class="text-xs font-bold uppercase tracking-wider text-zinc-800"
+            >
               Provoz & Spojení (ročně)
             </span>
             <div class="mt-2 flex items-baseline gap-1.5">
-              <span class="text-3xl sm:text-4xl font-extrabold font-display text-sage-800">
+              <span
+                class="text-3xl sm:text-4xl font-extrabold font-display text-zinc-950"
+              >
                 990 Kč
               </span>
-              <span class="text-xs text-anthracite-500 font-medium">/ rok</span>
+              <span class="text-xs text-zinc-500 font-medium">/ rok</span>
             </div>
-            <p class="text-xs text-anthracite-600 mt-2">
+            <p class="text-xs text-zinc-600 mt-2">
               Neomezené tísňové SMS, stálý dohled a podpora.
             </p>
           </div>
-
         </div>
 
         <!-- Features list: Hardware + Provoz -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 py-8 border-b border-stone-200">
-          
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 gap-8 py-8 border-b border-zinc-200"
+        >
           <!-- Left column -->
           <div>
-            <h4 class="text-xs font-bold uppercase tracking-wider text-anthracite-900 mb-4 flex items-center gap-1.5">
+            <h4
+              class="text-xs font-bold uppercase tracking-wider text-zinc-900 mb-4 flex items-center gap-1.5"
+            >
               <span>Co obsahuje fyzická sada</span>
             </h4>
-            <ul class="space-y-3 text-xs sm:text-sm text-anthracite-700">
-              {hardwareIncludes.map((item) => (
-                <li class="flex items-start gap-2.5">
-                  <Check class="w-4 h-4 text-sage-700 shrink-0 mt-0.5" />
-                  <span>{item}</span>
-                </li>
-              ))}
+            <ul class="space-y-3 text-xs sm:text-sm text-zinc-700">
+              {
+                hardwareIncludes.map((item) => (
+                  <li class="flex items-start gap-2.5">
+                    <Check class="w-4 h-4 text-zinc-950 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
             </ul>
           </div>
 
           <!-- Right column -->
           <div>
-            <h4 class="text-xs font-bold uppercase tracking-wider text-sage-900 mb-4 flex items-center gap-1.5">
+            <h4
+              class="text-xs font-bold uppercase tracking-wider text-zinc-900 mb-4 flex items-center gap-1.5"
+            >
               <span>Co zahrnuje roční provoz</span>
             </h4>
-            <ul class="space-y-3 text-xs sm:text-sm text-anthracite-700">
-              {serviceIncludes.map((item) => (
-                <li class="flex items-start gap-2.5">
-                  <Check class="w-4 h-4 text-sage-700 shrink-0 mt-0.5" />
-                  <span>{item}</span>
-                </li>
-              ))}
+            <ul class="space-y-3 text-xs sm:text-sm text-zinc-700">
+              {
+                serviceIncludes.map((item) => (
+                  <li class="flex items-start gap-2.5">
+                    <Check class="w-4 h-4 text-zinc-950 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
             </ul>
           </div>
-
         </div>
 
         <!-- Key guarantees & benefits -->
         <div class="pt-8 pb-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="flex items-center gap-3 p-3.5 rounded-xl bg-sage-50/80 border border-sage-200/80">
-            <div class="w-8 h-8 rounded-lg bg-sage-700 text-white flex items-center justify-center shrink-0">
+          <div
+            class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-50 border border-zinc-200"
+          >
+            <div
+              class="w-8 h-8 rounded-lg bg-zinc-950 text-white flex items-center justify-center shrink-0"
+            >
               <ShieldCheck class="w-4 h-4" />
             </div>
-            <div class="text-xs text-anthracite-800">
+            <div class="text-xs text-zinc-800">
               <strong>14 dní na vrácení peněz</strong>
-              <p class="text-stone-500">Vyzkoušejte v salónu. Pokud vám nesedne, vrátíme 100 % částky.</p>
+              <p class="text-zinc-500">
+                Vyzkoušejte v salónu. Pokud vám nesedne, vrátíme 100 % částky.
+              </p>
             </div>
           </div>
 
-          <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-stone-200/90">
-            <div class="w-8 h-8 rounded-lg bg-stone-100 text-anthracite-800 flex items-center justify-center shrink-0">
-              <MapPin class="w-4 h-4 text-sage-700" />
+          <div
+            class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-50 border border-zinc-200"
+          >
+            <div
+              class="w-8 h-8 rounded-lg bg-zinc-950 text-white flex items-center justify-center shrink-0"
+            >
+              <MapPin class="w-4 h-4 text-white" />
             </div>
-            <div class="text-xs text-anthracite-800">
+            <div class="text-xs text-zinc-800">
               <strong>Osobní vyzkoušení po Praze</strong>
-              <p class="text-stone-500">Rádi vám sadu předvedeme osobně přímo ve vašem studiu.</p>
+              <p class="text-zinc-500">
+                Rádi vám sadu předvedeme osobně přímo ve vašem studiu.
+              </p>
             </div>
           </div>
         </div>
 
         <!-- Action Button -->
         <div class="mt-8 text-center">
-          <a 
-            href="#objednavka" 
-            class="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-10 py-4 rounded-2xl text-base font-semibold text-white bg-sage-700 hover:bg-sage-800 active:scale-[0.99] transition-all duration-200 shadow-soft-md hover:shadow-soft-xl"
+          <a
+            href="#objednavka"
+            class="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-10 py-4 rounded-full text-base font-semibold text-white bg-zinc-950 hover:bg-zinc-800 active:scale-[0.99] transition-all duration-200 shadow-lg hover:scale-105"
           >
             <span>Přejít k nezávazné objednávce</span>
             <ArrowRight class="w-4 h-4" />
           </a>
-          <p class="text-xs text-stone-500 mt-3">
-            Odesláním formuláře neplatíte předem. Zboží platíte až při převzetí nebo po dohodě.
+          <p class="text-xs text-zinc-500 mt-3">
+            Odesláním formuláře neplatíte předem. Zboží platíte až při převzetí
+            nebo po dohodě.
           </p>
         </div>
-
       </div>
-
     </div>
-
   </div>
 </section>

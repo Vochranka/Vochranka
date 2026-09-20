@@ -1,0 +1,208 @@
+---
+// src/components/ProductShowcase.astro
+---
+
+<section
+  id="hardware"
+  class="bg-white py-24 md:py-28 px-6 border-b border-zinc-100 overflow-hidden relative"
+>
+  <div class="max-w-4xl mx-auto">
+    <!-- 1. Header -->
+    <div class="text-center mb-12 md:mb-16">
+      <p
+        class="text-xs tracking-[0.2em] font-medium text-zinc-400 uppercase text-center mb-4"
+      >
+        HARDWARE VOCHRANKA
+      </p>
+      <h2
+        class="text-3xl md:text-5xl font-semibold tracking-tight text-zinc-950 text-center"
+      >
+        Jednoduchost v krizovém momentu.
+      </h2>
+      <p
+        class="text-zinc-500 text-center max-w-md mx-auto mt-3 text-base leading-relaxed"
+      >
+        Žádné odemykání mobilu. Žádné hledání aplikací. Jen hmatová jistota pod
+        rukou.
+      </p>
+    </div>
+
+    <!-- 2. Interactive Button Showcase (Center) -->
+    <div class="flex flex-col items-center justify-center">
+      <!-- Container for both views with cross-fade -->
+      <div
+        class="relative w-full max-w-md h-72 sm:h-80 md:h-96 flex items-center justify-center"
+      >
+        <!-- View 1: Button 1 (Přední strana) -->
+        <img
+          id="btn-view-1"
+          src="/button1.png"
+          alt="Tlačítko Vochranka - přední strana"
+          class="absolute inset-0 m-auto max-h-72 sm:max-h-80 md:max-h-96 object-contain transition-all duration-500 ease-out drop-shadow-[0_20px_40px_rgba(0,0,0,0.06)] opacity-100 scale-100"
+          loading="eager"
+        />
+
+        <!-- View 2: Button 2 (Magnetický profil) -->
+        <img
+          id="btn-view-2"
+          src="/button2.png"
+          alt="Tlačítko Vochranka - magnetický profil"
+          class="absolute inset-0 m-auto max-h-72 sm:max-h-80 md:max-h-96 object-contain transition-all duration-500 ease-out drop-shadow-[0_20px_40px_rgba(0,0,0,0.06)] opacity-0 scale-95 pointer-events-none"
+          loading="eager"
+        />
+      </div>
+
+      <!-- Pill toggle switch -->
+      <div
+        class="bg-zinc-100 rounded-full p-1 inline-flex items-center gap-1 mx-auto mt-6"
+        role="tablist"
+        aria-label="Přepínač úhlu pohledu na tlačítko"
+      >
+        <button
+          type="button"
+          id="toggle-btn-1"
+          role="tab"
+          aria-selected="true"
+          class="px-4 py-1.5 rounded-full text-xs font-medium bg-white text-zinc-950 shadow-xs transition-all duration-200 cursor-pointer"
+        >
+          Přední strana
+        </button>
+        <button
+          type="button"
+          id="toggle-btn-2"
+          role="tab"
+          aria-selected="false"
+          class="px-4 py-1.5 rounded-full text-xs font-medium text-zinc-500 hover:text-zinc-900 transition-all duration-200 cursor-pointer"
+        >
+          Magnetický profil
+        </button>
+      </div>
+    </div>
+
+    <!-- 3. Gesture Controls (2 columns, pure typography on white) -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-2xl mx-auto text-center md:text-left mt-14 md:mt-18"
+    >
+      <!-- Gesture 1 -->
+      <div>
+        <span
+          class="font-mono text-xs uppercase tracking-wider text-zinc-400 block mb-1"
+        >
+          2× Rychlý klik
+        </span>
+        <h3 class="text-lg md:text-xl font-medium text-zinc-900">
+          Spustí poplach & odešle SMS
+        </h3>
+        <p class="text-sm text-zinc-500 mt-1 leading-relaxed">
+          Chrání před nechtěným stisknutím při práci.
+        </p>
+      </div>
+
+      <!-- Gesture 2 -->
+      <div>
+        <span
+          class="font-mono text-xs uppercase tracking-wider text-zinc-400 block mb-1"
+        >
+          Podržení na 3 sekundy
+        </span>
+        <h3 class="text-lg md:text-xl font-medium text-zinc-900">
+          Umlčí sirénu
+        </h3>
+        <p class="text-sm text-zinc-500 mt-1 leading-relaxed">
+          Když nebezpečí pomine nebo šlo o zkoušku.
+        </p>
+      </div>
+    </div>
+
+    <!-- 4. Micro-specifications (One thin separator line, 3 equal columns) -->
+    <div class="border-t border-zinc-100 mt-20 pt-10 max-w-3xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+        <!-- Spec 1 -->
+        <div>
+          <span
+            class="text-2xl md:text-3xl font-semibold text-zinc-950 tracking-tight block"
+          >
+            4,5 cm
+          </span>
+          <span class="text-xs md:text-sm text-zinc-500 mt-1 block">
+            Diskrétní rozměr pod stůl
+          </span>
+        </div>
+
+        <!-- Spec 2 -->
+        <div>
+          <span
+            class="text-2xl md:text-3xl font-semibold text-zinc-950 tracking-tight block"
+          >
+            Až 5 let
+          </span>
+          <span class="text-xs md:text-sm text-zinc-500 mt-1 block">
+            Na jednu baterii CR2477
+          </span>
+        </div>
+
+        <!-- Spec 3 -->
+        <div>
+          <span
+            class="text-2xl md:text-3xl font-semibold text-zinc-950 tracking-tight block"
+          >
+            Magnet & 3M
+          </span>
+          <span class="text-xs md:text-sm text-zinc-500 mt-1 block">
+            Uchycení bez jediného šroubu
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const toggleBtn1 = document.getElementById("toggle-btn-1");
+  const toggleBtn2 = document.getElementById("toggle-btn-2");
+  const img1 = document.getElementById("btn-view-1");
+  const img2 = document.getElementById("btn-view-2");
+
+  function setView(isFirst: boolean) {
+    if (!toggleBtn1 || !toggleBtn2 || !img1 || !img2) return;
+
+    if (isFirst) {
+      // Show view 1
+      img1.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+      img1.classList.add("opacity-100", "scale-100");
+
+      img2.classList.remove("opacity-100", "scale-100");
+      img2.classList.add("opacity-0", "scale-95", "pointer-events-none");
+
+      // Active state for button 1
+      toggleBtn1.setAttribute("aria-selected", "true");
+      toggleBtn1.className =
+        "px-4 py-1.5 rounded-full text-xs font-medium bg-white text-zinc-950 shadow-xs transition-all duration-200 cursor-pointer";
+
+      // Inactive state for button 2
+      toggleBtn2.setAttribute("aria-selected", "false");
+      toggleBtn2.className =
+        "px-4 py-1.5 rounded-full text-xs font-medium text-zinc-500 hover:text-zinc-900 transition-all duration-200 cursor-pointer";
+    } else {
+      // Show view 2
+      img1.classList.remove("opacity-100", "scale-100");
+      img1.classList.add("opacity-0", "scale-95", "pointer-events-none");
+
+      img2.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+      img2.classList.add("opacity-100", "scale-100");
+
+      // Inactive state for button 1
+      toggleBtn1.setAttribute("aria-selected", "false");
+      toggleBtn1.className =
+        "px-4 py-1.5 rounded-full text-xs font-medium text-zinc-500 hover:text-zinc-900 transition-all duration-200 cursor-pointer";
+
+      // Active state for button 2
+      toggleBtn2.setAttribute("aria-selected", "true");
+      toggleBtn2.className =
+        "px-4 py-1.5 rounded-full text-xs font-medium bg-white text-zinc-950 shadow-xs transition-all duration-200 cursor-pointer";
+    }
+  }
+
+  toggleBtn1?.addEventListener("click", () => setView(true));
+  toggleBtn2?.addEventListener("click", () => setView(false));
+</script>

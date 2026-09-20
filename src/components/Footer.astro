@@ -1,108 +1,148 @@
 ---
-import { ShieldCheck, Mail, Phone, Instagram, Heart, MapPin } from 'lucide-astro';
+import {
+  ShieldCheck,
+  Mail,
+  Phone,
+  Instagram,
+  Heart,
+  MapPin,
+} from "lucide-astro";
 ---
 
-<footer class="bg-anthracite-950 text-stone-300 pt-16 pb-12 border-t border-stone-800">
+<footer
+  class="bg-white text-zinc-600 pt-16 pb-12 border-t border-zinc-200/80"
+>
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-stone-800/80">
-      
+    <div
+      class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-zinc-200"
+    >
       <!-- Brand & Mission column -->
       <div class="md:col-span-5 space-y-4">
         <div class="flex items-center gap-2.5">
-          <div class="w-9 h-9 rounded-xl bg-sage-800/90 border border-sage-700 flex items-center justify-center text-sage-200">
-            <ShieldCheck class="w-5 h-5 text-sage-300" />
+          <div
+            class="w-9 h-9 rounded-xl bg-zinc-950 text-white flex items-center justify-center"
+          >
+            <ShieldCheck class="w-5 h-5 text-white" />
           </div>
-          <span class="text-xl font-bold font-display tracking-tight text-white">
-            Vochranka<span class="text-sage-400">.</span>
+          <span
+            class="text-xl font-bold font-display tracking-tight text-zinc-950"
+          >
+            Vochranka<span class="text-zinc-950">.</span>
           </span>
         </div>
-        
-        <p class="text-xs sm:text-sm text-stone-400 leading-relaxed max-w-sm">
-          Diskrétní bezpečnostní technologie navržená s empatií pro sólo masérky, kosmetičky a terapeutky. Klid při každém klientském setkání.
+
+        <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed max-w-sm">
+          Diskrétní bezpečnostní technologie navržená s empatií pro sólo
+          masérky, kosmetičky a terapeutky. Klid při každém klientském setkání.
         </p>
 
         <div class="flex items-center gap-3 pt-2">
-          <a 
-            href="https://instagram.com/vochranka.cz" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-stone-900 border border-stone-800 text-xs text-stone-300 hover:text-white hover:border-sage-500 transition-colors"
+          <a
+            href="https://instagram.com/vochranka.cz"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-xs text-zinc-800 hover:text-zinc-950 hover:border-zinc-400 transition-colors"
           >
-            <Instagram class="w-4 h-4 text-pink-400" />
+            <Instagram class="w-4 h-4 text-zinc-700" />
             <span>@vochranka.cz</span>
           </a>
-          <span class="text-xs text-stone-500">Sledujte nás na Instagramu</span>
+          <span class="text-xs text-zinc-500">Sledujte nás na Instagramu</span>
         </div>
       </div>
 
       <!-- Fast links -->
       <div class="md:col-span-3 space-y-3">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-white">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-950">
           Rychlá navigace
         </h4>
-        <ul class="space-y-2 text-xs sm:text-sm text-stone-400">
+        <ul class="space-y-2 text-xs sm:text-sm text-zinc-600">
           <li>
-            <a href="#jak-to-funguje" class="hover:text-sage-300 transition-colors">Jak systém funguje</a>
+            <a
+              href="#jak-to-funguje"
+              class="hover:text-zinc-950 transition-colors"
+              >Jak systém funguje</a
+            >
           </li>
           <li>
-            <a href="#instalace" class="hover:text-sage-300 transition-colors">Plug & Play instalace</a>
+            <a href="#instalace" class="hover:text-zinc-950 transition-colors"
+              >Plug & Play instalace</a
+            >
           </li>
           <li>
-            <a href="#video" class="hover:text-sage-300 transition-colors">15s video ukázka v praxi</a>
+            <a href="#hardware" class="hover:text-zinc-950 transition-colors"
+              >Tlačítko a hardware</a
+            >
           </li>
           <li>
-            <a href="#cenik" class="hover:text-sage-300 transition-colors">Transparentní ceník</a>
+            <a href="#cenik" class="hover:text-zinc-950 transition-colors"
+              >Transparentní ceník</a
+            >
           </li>
           <li>
-            <a href="#faq" class="hover:text-sage-300 transition-colors">Časté otázky a odpovědi</a>
+            <a href="#faq" class="hover:text-zinc-950 transition-colors"
+              >Časté otázky a odpovědi</a
+            >
           </li>
           <li>
-            <a href="#objednavka" class="hover:text-sage-300 transition-colors">Poptávkový formulář</a>
+            <a href="#objednavka" class="hover:text-zinc-950 transition-colors"
+              >Poptávkový formulář</a
+            >
           </li>
         </ul>
       </div>
 
       <!-- Legal & Contact -->
       <div class="md:col-span-4 space-y-3">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-white">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-950">
           Kontakt & Provozovatel
         </h4>
-        
-        <div class="space-y-2 text-xs sm:text-sm text-stone-400">
+
+        <div class="space-y-2 text-xs sm:text-sm text-zinc-600">
           <p class="flex items-center gap-2">
-            <Phone class="w-4 h-4 text-sage-400 shrink-0" />
-            <a href="tel:+420777123456" class="hover:text-white transition-colors">+420 777 123 456</a>
-            <span class="text-[10px] text-stone-500">(Po–Pá 9:00–18:00)</span>
+            <Phone class="w-4 h-4 text-zinc-800 shrink-0" />
+            <a
+              href="tel:+420777123456"
+              class="hover:text-zinc-950 transition-colors">+420 777 123 456</a
+            >
+            <span class="text-[10px] text-zinc-500">(Po–Pá 9:00–18:00)</span>
           </p>
 
           <p class="flex items-center gap-2">
-            <Mail class="w-4 h-4 text-sage-400 shrink-0" />
-            <a href="mailto:info@vochranka.cz" class="hover:text-white transition-colors">info@vochranka.cz</a>
+            <Mail class="w-4 h-4 text-zinc-800 shrink-0" />
+            <a
+              href="mailto:info@vochranka.cz"
+              class="hover:text-zinc-950 transition-colors">info@vochranka.cz</a
+            >
           </p>
 
           <p class="flex items-center gap-2">
-            <MapPin class="w-4 h-4 text-sage-400 shrink-0" />
+            <MapPin class="w-4 h-4 text-zinc-800 shrink-0" />
             <span>Praha, Česká republika (osobní zkoušky v salónech)</span>
           </p>
         </div>
 
-        <div class="pt-3 border-t border-stone-800 text-[11px] text-stone-400 leading-relaxed">
+        <div
+          class="pt-3 border-t border-zinc-200 text-[11px] text-zinc-500 leading-relaxed"
+        >
           <p><strong>IČO:</strong> 19842531</p>
           <p>Zapsáno u Městského soudu v Praze.</p>
         </div>
       </div>
-
     </div>
 
     <!-- Bottom copyright -->
-    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
+    <div
+      class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500"
+    >
       <p>© {new Date().getFullYear()} Vochranka. Všechna práva vyhrazena.</p>
       <div class="flex items-center gap-6">
-        <a href="#" class="hover:text-stone-300 transition-colors">Ochrana osobních údajů (GDPR)</a>
-        <a href="#" class="hover:text-stone-300 transition-colors">Obchodní podmínky</a>
+        <a href="#" class="hover:text-zinc-800 transition-colors"
+          >Ochrana osobních údajů (GDPR)</a
+        >
+        <a href="#" class="hover:text-zinc-800 transition-colors"
+          >Obchodní podmínky</a
+        >
       </div>
     </div>
-
   </div>
 </footer>

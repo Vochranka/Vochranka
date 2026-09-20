@@ -71,15 +71,10 @@ import {
           <span id="hero-alarm" class="inline-block transition-all duration-300"
             >Alarm.</span
           >
-          <span
-            id="hero-alarm-badge"
-            class="hidden md:inline-block text-xs sm:text-sm font-sans font-semibold tracking-normal px-2.5 sm:px-3 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/30 ml-3 sm:ml-4 align-middle opacity-0 scale-90 transition-all duration-300 pointer-events-none whitespace-nowrap"
-            >siréna spuštěna</span
-          >
         </span>
         <span
           id="word-sos"
-          class="block text-green-500 transition-all duration-500 opacity-0 translate-y-2"
+          class="block text-white transition-all duration-500 opacity-0 translate-y-2"
         >
           SOS zpráva.
         </span>
@@ -109,14 +104,14 @@ import {
     >
       <a
         href="#objednavka"
-        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full text-base font-semibold text-white bg-sage-600 hover:bg-sage-500 active:scale-[0.99] transition-all duration-200 shadow-glow-sage hover:shadow-soft-xl hover:scale-105"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full text-base font-semibold text-zinc-950 bg-white hover:bg-zinc-100 active:scale-[0.99] transition-all duration-200 shadow-lg hover:scale-105"
       >
         <span>Chci sadu do salónu</span>
       </a>
 
       <a
         href="#jak-to-funguje"
-        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full text-base font-medium text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 active:scale-[0.99] transition-all duration-200 group cursor-pointer shadow-soft-sm hover:scale-105"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-base font-medium text-white bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/20 active:scale-[0.99] transition-all duration-200 group cursor-pointer shadow-sm hover:scale-105"
       >
         <span>Chci vědět víc</span>
       </a>
@@ -197,7 +192,6 @@ import {
   const wordAlarm = document.getElementById("word-alarm");
   const wordSos = document.getElementById("word-sos");
   const heroAlarm = document.getElementById("hero-alarm");
-  const heroAlarmBadge = document.getElementById("hero-alarm-badge");
 
   // Helper to show/hide animated words
   function setWordVisible(el: HTMLElement | null, visible: boolean) {
@@ -230,15 +224,11 @@ import {
         "drop-shadow-[0_0_15px_rgba(239,68,68,0.9)]",
       );
     }
-    if (heroAlarmBadge) {
-      heroAlarmBadge.classList.remove("opacity-100", "scale-100");
-      heroAlarmBadge.classList.add("opacity-0", "scale-90");
-    }
   }
 
   // Dynamic video sequence:
   // 0.3s+: "Klik." se objeví
-  // 1.1s+: "Alarm." se objeví se sirénou (pulzující červené slovo + stabilní štítek "siréna spuštěna")
+  // 1.1s+: "Alarm." se objeví se sirénou (pulzující červené slovo)
   // 2.0s+: "SOS zpráva." se objeví pod ním -> všechny 3 jsou vidět najednou
   // 4.0s+: celý blok hesel zmizí nahoru a uprostřed naskočí "Buď vždy v bezpečí."
   let lastTime = 0;
@@ -258,7 +248,7 @@ import {
       setWordVisible(wordAlarm, t >= 1.1);
       setWordVisible(wordSos, t >= 2.0);
 
-      // Zvýraznění Alarm. + štítek sirény při aktivaci (t >= 1.1s)
+      // Zvýraznění Alarm. při aktivaci (t >= 1.1s)
       if (t >= 1.1 && t < 4.0) {
         if (heroAlarm) {
           heroAlarm.classList.add(
@@ -266,20 +256,12 @@ import {
             "drop-shadow-[0_0_15px_rgba(239,68,68,0.9)]",
           );
         }
-        if (heroAlarmBadge) {
-          heroAlarmBadge.classList.remove("opacity-0", "scale-90");
-          heroAlarmBadge.classList.add("opacity-100", "scale-100");
-        }
       } else if (t < 1.1) {
         if (heroAlarm) {
           heroAlarm.classList.remove(
             "alarm-pulse-fast",
             "drop-shadow-[0_0_15px_rgba(239,68,68,0.9)]",
           );
-        }
-        if (heroAlarmBadge) {
-          heroAlarmBadge.classList.remove("opacity-100", "scale-100");
-          heroAlarmBadge.classList.add("opacity-0", "scale-90");
         }
       }
 
@@ -425,7 +407,7 @@ import {
         setTimeout(() => {
           demoBtn.classList.remove("opacity-50", "pointer-events-none");
           demoBtn.innerHTML =
-            '<span class="w-2 h-2 rounded-full bg-sage-600"></span><span>Kliknout znovu</span>';
+            '<span class="w-2 h-2 rounded-full bg-zinc-950"></span><span>Kliknout znovu</span>';
         }, 3000);
       }, 700);
     });

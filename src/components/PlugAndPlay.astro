@@ -1,5 +1,15 @@
 ---
-import { Zap, Check, CheckCircle2, ShieldCheck, Sparkles, Ban, Radio, Smartphone, BellRing } from 'lucide-astro';
+import {
+  Zap,
+  Check,
+  CheckCircle2,
+  ShieldCheck,
+  Sparkles,
+  Ban,
+  Radio,
+  Smartphone,
+  BellRing,
+} from "lucide-astro";
 
 const features = [
   {
@@ -27,64 +37,80 @@ const features = [
 const steps = ["Zapojit", "Nalepit", "Otestovat", "Hotovo"];
 ---
 
-<section id="instalace" class="py-16 md:py-24 bg-[#FAFBF9] border-y border-stone-200/70 relative">
+<section
+  id="instalace"
+  class="py-16 md:py-24 bg-white border-y border-zinc-200/80 relative"
+>
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    
     <!-- Section Badge -->
-    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-100 text-sage-900 text-xs font-semibold mb-6">
-      <Zap class="w-3.5 h-3.5 text-sage-700" />
+    <div
+      class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold mb-6 border border-zinc-200"
+    >
+      <Zap class="w-3.5 h-3.5 text-zinc-800" />
       <span>Instalace za 120 vteřin</span>
     </div>
 
     <!-- Main Heading -->
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-anthracite-950 tracking-tight mb-6">
+    <h2
+      class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-zinc-950 tracking-tight mb-6"
+    >
       Připravená během 2 minut
     </h2>
 
     <!-- Subtexts -->
-    <div class="max-w-2xl mx-auto mb-8 space-y-2 text-base sm:text-lg text-anthracite-600 leading-relaxed">
-      <p class="font-medium text-anthracite-800">
+    <div
+      class="max-w-2xl mx-auto mb-8 space-y-2 text-base sm:text-lg text-zinc-600 leading-relaxed"
+    >
+      <p class="font-medium text-zinc-900">
         Žádné vrtání, kabely ani technici.
       </p>
       <p>
-        Sirénu jednoduše zapojíte do zásuvky a tlačítko nalepíte na místo, kam na něj pohodlně dosáhnete.
+        Sirénu jednoduše zapojíte do zásuvky a tlačítko nalepíte na místo, kam
+        na něj pohodlně dosáhnete.
       </p>
     </div>
 
     <!-- 4-Word Process Sequence Bar -->
-    <div class="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 p-2 sm:p-2.5 rounded-2xl bg-white border border-sage-200/80 shadow-soft-sm mb-12">
-      {steps.map((step, idx) => (
-        <div class="flex items-center gap-2">
-          <span class="px-3.5 py-1.5 rounded-xl bg-sage-50 text-sage-900 text-xs sm:text-sm font-bold">
-            {step}
-          </span>
-          {idx < steps.length - 1 && (
-            <span class="text-sage-400 font-bold text-xs sm:text-sm">•</span>
-          )}
-        </div>
-      ))}
+    <div
+      class="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 p-2 sm:p-2.5 rounded-2xl bg-zinc-50 border border-zinc-200 shadow-sm mb-12"
+    >
+      {
+        steps.map((step, idx) => (
+          <div class="flex items-center gap-2">
+            <span class="px-3.5 py-1.5 rounded-xl bg-white text-zinc-900 text-xs sm:text-sm font-bold border border-zinc-200 shadow-xs">
+              {step}
+            </span>
+            {idx < steps.length - 1 && (
+              <span class="text-zinc-400 font-bold text-xs sm:text-sm">•</span>
+            )}
+          </div>
+        ))
+      }
     </div>
 
     <!-- 4 Key Bullets / Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto text-left">
-      {features.map((item) => {
-        const Icon = item.icon;
-        return (
-          <div class="p-6 rounded-2xl bg-white border border-stone-200/80 shadow-soft-sm hover:border-sage-300 hover:shadow-soft-md transition-all">
-            <div class="w-10 h-10 rounded-xl bg-sage-50 text-sage-700 flex items-center justify-center mb-4">
-              <Icon class="w-5 h-5" />
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto text-left"
+    >
+      {
+        features.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div class="p-6 rounded-2xl bg-zinc-50 border border-zinc-200 shadow-sm hover:border-zinc-300 hover:shadow-md transition-all">
+              <div class="w-10 h-10 rounded-xl bg-white border border-zinc-200 text-zinc-800 flex items-center justify-center mb-4">
+                <Icon class="w-5 h-5" />
+              </div>
+              <h3 class="text-base font-bold text-zinc-950 mb-1 flex items-center gap-2">
+                <Check class="w-4 h-4 text-zinc-950 shrink-0" />
+                <span>{item.title}</span>
+              </h3>
+              <p class="text-xs text-zinc-600 leading-relaxed pl-6">
+                {item.desc}
+              </p>
             </div>
-            <h3 class="text-base font-bold text-anthracite-950 mb-1 flex items-center gap-2">
-              <Check class="w-4 h-4 text-sage-600 shrink-0" />
-              <span>{item.title}</span>
-            </h3>
-            <p class="text-xs text-anthracite-600 leading-relaxed pl-6">
-              {item.desc}
-            </p>
-          </div>
-        );
-      })}
+          );
+        })
+      }
     </div>
-
   </div>
 </section>

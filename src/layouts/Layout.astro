@@ -6,7 +6,7 @@ interface Props {
 
 const {
   title = "Vochranka | Diskrétní tísňové tlačítko pro sólo salóny a masérky",
-  description = "Bezpečí a klid při práci o samotě. Nenápadné tlačítko pod lehátko či stůl, odstrašující siréna a okamžitá tichá SMS rodině. Bez vrtání a kabelů."
+  description = "Bezpečí a klid při práci o samotě. Nenápadné tlačítko pod lehátko či stůl, odstrašující siréna a okamžitá tichá SMS rodině. Bez vrtání a kabelů.",
 } = Astro.props;
 ---
 
@@ -15,9 +15,9 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#4E725C" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
+
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
@@ -36,11 +36,14 @@ const {
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    
+
     <!-- Fonts preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -65,7 +68,9 @@ const {
       }
     </script>
   </head>
-  <body class="min-h-screen bg-[#F8F9F8] text-anthracite-900 selection:bg-sage-200 selection:text-sage-950 font-sans antialiased overflow-x-hidden">
+  <body
+    class="min-h-screen bg-zinc-50 text-zinc-950 selection:bg-zinc-200 selection:text-zinc-900 font-sans antialiased overflow-x-hidden"
+  >
     <slot />
   </body>
 </html>

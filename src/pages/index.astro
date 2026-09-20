@@ -1,19 +1,20 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import ProblemSection from '../components/ProblemSection.astro';
-import HowItWorks from '../components/HowItWorks.astro';
-import PlugAndPlay from '../components/PlugAndPlay.astro';
-import ReassuranceBanner from '../components/ReassuranceBanner.astro';
-import Pricing from '../components/Pricing.astro';
-import Faq from '../components/Faq.astro';
-import OrderForm from '../components/OrderForm.astro';
-import Footer from '../components/Footer.astro';
-import { ArrowRight, ShieldCheck } from 'lucide-astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import ProblemSection from "../components/ProblemSection.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import ProductShowcase from "../components/ProductShowcase.astro";
+import PlugAndPlay from "../components/PlugAndPlay.astro";
+import ReassuranceBanner from "../components/ReassuranceBanner.astro";
+import Pricing from "../components/Pricing.astro";
+import Faq from "../components/Faq.astro";
+import OrderForm from "../components/OrderForm.astro";
+import Footer from "../components/Footer.astro";
+import { ArrowRight, ShieldCheck } from "lucide-astro";
 ---
 
-<Layout 
+<Layout
   title="Vochranka | Diskrétní tísňové tlačítko pro masérky, kosmetičky a sólo salóny"
   description="Diskrétní bezdrátové tísňové tlačítko pod stůl a masérské lehátko. Hlasitá odstrašující siréna na místě a tichá nouzová SMS rodině do 2 vteřin. Bez vrtání a kabelů."
 >
@@ -31,10 +32,13 @@ import { ArrowRight, ShieldCheck } from 'lucide-astro';
     <!-- 3. How It Works (Tlačítko. Klik. Alarm. SOS.) -->
     <HowItWorks />
 
-    <!-- 4. Plug & Play (Připravená během 2 minut) -->
+    <!-- 4. Product Showcase (Hardware & Gesta) -->
+    <ProductShowcase />
+
+    <!-- 5. Plug & Play (Připravená během 2 minut) -->
     <PlugAndPlay />
 
-    <!-- 5. Reassurance Banner (Klid při každém novém klientovi) -->
+    <!-- 6. Reassurance Banner (Klid při každém novém klientovi) -->
     <ReassuranceBanner />
 
     <!-- 6. Transparent Pricing Card -->
@@ -51,23 +55,30 @@ import { ArrowRight, ShieldCheck } from 'lucide-astro';
   <Footer />
 
   <!-- Mobile Sticky Conversion Bar (Visible only on mobile scroll) -->
-  <div 
-    id="mobile-sticky-bar" 
-    class="fixed bottom-0 left-0 right-0 z-40 p-3 bg-white/95 backdrop-blur-md border-t border-sage-200/80 shadow-soft-xl transform translate-y-full transition-transform duration-300 md:hidden flex items-center justify-between gap-3"
+  <div
+    id="mobile-sticky-bar"
+    class="fixed bottom-0 left-0 right-0 z-40 p-3 bg-white/95 backdrop-blur-md border-t border-zinc-200 shadow-xl transform translate-y-full transition-transform duration-300 md:hidden flex items-center justify-between gap-3"
   >
     <div class="flex items-center gap-2">
-      <div class="w-8 h-8 rounded-lg bg-sage-100 text-sage-800 flex items-center justify-center shrink-0">
+      <div
+        class="w-8 h-8 rounded-lg bg-zinc-100 text-zinc-900 border border-zinc-200 flex items-center justify-center shrink-0"
+      >
         <ShieldCheck class="w-4 h-4" />
       </div>
       <div>
-        <p class="text-xs font-bold text-anthracite-950 leading-tight">Sada Vochranka</p>
-        <p class="text-[11px] font-semibold text-sage-800">2 990 Kč <span class="font-normal text-stone-500">• 14 dní záruka</span></p>
+        <p class="text-xs font-bold text-zinc-950 leading-tight">
+          Sada Vochranka
+        </p>
+        <p class="text-[11px] font-semibold text-zinc-950">
+          2 990 Kč <span class="font-normal text-zinc-500">• 14 dní záruka</span
+          >
+        </p>
       </div>
     </div>
 
-    <a 
-      href="#objednavka" 
-      class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-sage-700 text-white text-xs font-bold shadow-soft-sm hover:bg-sage-800 active:scale-95 transition-all shrink-0"
+    <a
+      href="#objednavka"
+      class="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full bg-zinc-950 text-white text-xs font-semibold shadow-md hover:bg-zinc-800 active:scale-95 transition-all shrink-0"
     >
       <span>Objednat</span>
       <ArrowRight class="w-3.5 h-3.5" />
@@ -77,14 +88,18 @@ import { ArrowRight, ShieldCheck } from 'lucide-astro';
 
 <script>
   // Show mobile sticky CTA after scrolling past hero
-  const stickyBar = document.getElementById('mobile-sticky-bar');
+  const stickyBar = document.getElementById("mobile-sticky-bar");
   if (stickyBar) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 450) {
-        stickyBar.classList.remove('translate-y-full');
-      } else {
-        stickyBar.classList.add('translate-y-full');
-      }
-    }, { passive: true });
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (window.scrollY > 450) {
+          stickyBar.classList.remove("translate-y-full");
+        } else {
+          stickyBar.classList.add("translate-y-full");
+        }
+      },
+      { passive: true },
+    );
   }
 </script>
