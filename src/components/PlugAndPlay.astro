@@ -50,13 +50,13 @@ const placementCards = [
 const installSteps = [
   {
     num: "1",
-    title: "Zapojit sirénu",
-    desc: "Zasune se do běžné 230V zásuvky v salónu.",
+    title: "Zapojit sirénu a bránu",
+    desc: "Zasunete do běžné zásuvky.",
   },
   {
     num: "2",
     title: "Umístit tlačítko",
-    desc: "Přicvaknete magnetem nebo nalepíte 3M páskou.",
+    desc: "Přicvaknete na kovový rám nebo použijete magnetický profil.",
   },
   {
     num: "3",
@@ -66,7 +66,7 @@ const installSteps = [
   {
     num: "4",
     title: "Hotovo & bezpečí",
-    desc: "Od této chvíle nikdy nejste na salónu bez ochrany.",
+    desc: "Od této chvíle jste vždy pod ochranou.",
   },
 ];
 ---
@@ -76,23 +76,27 @@ const installSteps = [
   class="py-20 md:py-28 bg-zinc-50 border-b border-zinc-200/80 relative"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
     <!-- 1. Header sekce: Rychlost instalace -->
     <div class="max-w-3xl mx-auto text-center mb-16">
-      <div
-        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold mb-4 border border-zinc-200"
-      >
-        <Zap class="w-3.5 h-3.5 text-zinc-800" />
-        <span>INSTALACE BĚHEM 2 MINUT</span>
+      <div class="inline-flex items-center">
+        <span
+          class="text-xs font-mono tracking-[0.2em] text-zinc-400 uppercase font-medium block mb-3"
+        >
+          INSTALACE BĚHEM 2 MINUT
+        </span>
       </div>
       <h2
         class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-zinc-950 tracking-tight"
       >
         Žádné vrtání, žádné kabely. <br />
-        <span class="text-zinc-600">Zvládnete to sama za 120 vteřin.</span>
       </h2>
-      <p class="text-base sm:text-lg text-zinc-600 mt-4 leading-relaxed max-w-2xl mx-auto">
-        K instalaci nepotřebujete nářadí, techniky ani složité nastavování. Vše dodáváme předem spárované a připravené k okamžitému provozu.
+      <p
+        class="text-base sm:text-lg text-zinc-600 mt-4 leading-relaxed max-w-2xl mx-auto"
+      >
+        K instalaci nepotřebujete nářadí, techniky ani složité nastavování.
+        <span class="font-bold"
+          >Vše dodáváme připravené k okamžitému provozu.</span
+        >
       </p>
     </div>
 
@@ -102,7 +106,7 @@ const installSteps = [
         installSteps.map((step) => (
           <div class="p-6 rounded-2xl bg-white border border-zinc-200/90 shadow-sm relative flex flex-col justify-between hover:border-zinc-300 transition-all">
             <div>
-              <div class="w-8 h-8 rounded-full bg-zinc-950 text-white flex items-center justify-center text-xs font-bold font-mono mb-4">
+              <div class="w-8 h-8 rounded-full bg-zinc-700 text-white flex items-center justify-center text-xs font-bold font-mono mb-4">
                 0{step.num}
               </div>
               <h3 class="text-base font-bold text-zinc-950 mb-1">
@@ -112,27 +116,31 @@ const installSteps = [
                 {step.desc}
               </p>
             </div>
-            <div class="pt-4 mt-4 border-t border-zinc-100 flex items-center gap-1.5 text-xs font-medium text-zinc-500">
-              <Check class="w-3.5 h-3.5 text-zinc-950" />
-              <span>Bez asistence technika</span>
-            </div>
           </div>
         ))
       }
     </div>
 
     <!-- 3. DRUHÁ ČÁST: KAM SE DÁ TLAČÍTKO DÁT (Magnetická & diskrétní flexibilita) -->
-    <div class="rounded-3xl bg-white border border-zinc-200 p-8 sm:p-12 lg:p-14 shadow-lg">
+    <div
+      class="rounded-3xl bg-white border border-zinc-200 p-8 sm:p-12 lg:p-14 shadow-lg"
+    >
       <div class="max-w-3xl mb-12 text-left">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold mb-3 border border-zinc-200">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 text-zinc-900 text-xs font-semibold mb-3 border border-zinc-200"
+        >
           <Magnet class="w-3.5 h-3.5 text-zinc-900" />
           <span>MAGNETICKÉ UCHYCENÍ & 3M VRSTVA</span>
         </div>
-        <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-zinc-950 tracking-tight">
+        <h3
+          class="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-zinc-950 tracking-tight"
+        >
           Kam všude se dá tlačítko umístit?
         </h3>
         <p class="text-sm sm:text-base text-zinc-600 mt-2 leading-relaxed">
-          Tlačítko má v zadní části zabudovaný silný neodymový magnet a dodává se také s průmyslovou 3M lepicí podložkou. Vyberte si místo, kde ho budete mít nejblíže a zcela potají.
+          Tlačítko má v zadní části zabudovaný silný neodymový magnet a dodává
+          se také s průmyslovou 3M lepicí podložkou. Vyberte si místo, kde ho
+          budete mít nejblíže a zcela potají.
         </p>
       </div>
 
@@ -176,11 +184,16 @@ const installSteps = [
       </div>
 
       <!-- Banner s výzvou přejít k objednávce -->
-      <div class="mt-10 p-6 rounded-2xl bg-zinc-950 text-white flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div
+        class="mt-10 p-6 rounded-2xl bg-zinc-950 text-white flex flex-col sm:flex-row items-center justify-between gap-6"
+      >
         <div>
-          <h4 class="text-lg font-bold text-white">Chcete si tlačítko vyzkoušet přímo na svém stolečku?</h4>
+          <h4 class="text-lg font-bold text-white">
+            Chcete si tlačítko vyzkoušet přímo na svém stolečku?
+          </h4>
           <p class="text-xs sm:text-sm text-zinc-400 mt-0.5">
-            Po Praze vám ho rádi ukážeme osobně, nebo vám sadu pošleme s 14denní zárukou vrácení peněz.
+            Po Praze vám ho rádi ukážeme osobně, nebo vám sadu pošleme s 14denní
+            zárukou vrácení peněz.
           </p>
         </div>
         <a
@@ -191,8 +204,6 @@ const installSteps = [
           <ArrowRight class="w-4 h-4" />
         </a>
       </div>
-
     </div>
-
   </div>
 </section>
