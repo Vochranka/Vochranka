@@ -21,15 +21,16 @@ import { Magnet } from "lucide-astro";
           class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-950 leading-[1.15]"
         >
           Okamžitá pomoc<br />
-          <span class="text-zinc-600">Jedním dvojklikem</span>
+          <span class="text-zinc-600">Na dva kliky</span>
         </h2>
 
         <!-- Situace / Problém (Napětí) -->
         <p
           class="text-zinc-600 text-base md:text-lg mt-7 md:mt-9 max-w-xl leading-relaxed"
         >
-          Zákazník se začne chovat divně. Jste sami, telefon leží na druhém
-          konci pultu a každá vteřina je dlouhá.
+          Jste sami ve svém salonu, kavárně či večerce a zákazník se začne
+          chovat divně? Stisknutím tlačítka spustíte výstražnou sirénu a pošlete
+          nouzovou SMS.
         </p>
 
         <!-- Minimalistický slogan bez rámečků a boxů -->
@@ -37,7 +38,7 @@ import { Magnet } from "lucide-astro";
           class="text-xl md:text-2xl font-bold tracking-tight text-zinc-950 mt-6"
         >
           VOCHRANKA. <span class="text-zinc-400 font-normal"
-            >Aby vás nikdo nezaskočil.</span
+            >Stále v bezpečí</span
           >
         </p>
 
@@ -51,12 +52,10 @@ import { Magnet } from "lucide-astro";
             >
               2x
             </span>
-            <h3 class="text-base font-bold text-zinc-950 mt-1">
-              Dva rychlé kliky
-            </h3>
+            <h3 class="text-base font-bold text-zinc-950 mt-1">Kliknutí</h3>
             <p class="text-sm text-zinc-600 mt-1 leading-relaxed">
-              Rozezní se hlasitá 110 dB siréna a vašim blízkým se okamžitě
-              odesílá nouzová SMS.
+              Rozezní se hlasitá siréna a vašim blízkým se okamžitě odesílá
+              nouzová SMS.
             </p>
           </div>
 
@@ -66,11 +65,9 @@ import { Magnet } from "lucide-astro";
             >
               3s
             </span>
-            <h3 class="text-base font-bold text-zinc-950 mt-1">
-              Podržení tlačítka
-            </h3>
+            <h3 class="text-base font-bold text-zinc-950 mt-1">Podržení</h3>
             <p class="text-sm text-zinc-600 mt-1 leading-relaxed">
-              Byl to omyl? Sirénu ztišíte přímo na tlačítku.
+              Byl to omyl? Sirénu ztišíte pomocí tlačítka.
             </p>
           </div>
         </div>
@@ -81,9 +78,9 @@ import { Magnet } from "lucide-astro";
         class="lg:col-span-5 flex flex-col items-center justify-center relative"
       >
         <div
-          class="w-full max-w-md relative flex flex-col items-center text-center"
+          class="w-full max-w-md sm:max-w-lg lg:max-w-[480px] relative flex flex-col items-center text-center"
         >
-          <!-- Pill Toggle Switch NAHOŘE (Tlačítko / Magnetický profil) -->
+          <!-- Pill Toggle Switch NAHOŘE (Tlačítko / Magnetický profil) 
           <div
             class="bg-zinc-100 rounded-full p-1 inline-flex items-center gap-1 mb-4 shadow-sm"
             role="tablist"
@@ -98,6 +95,8 @@ import { Magnet } from "lucide-astro";
             >
               Tlačítko
             </button>
+
+            
             <button
               type="button"
               id="toggle-btn-2"
@@ -108,6 +107,7 @@ import { Magnet } from "lucide-astro";
               Magnetický profil
             </button>
           </div>
+          -->
 
           <!-- Interactive Button Stage with Warm Orange Radiant Glow (Oranžové ozáření bez boxu) -->
           <div
@@ -128,7 +128,7 @@ import { Magnet } from "lucide-astro";
               loading="eager"
             />
 
-            <!-- View 2: Button 2 (Magnetický profil) -->
+            <!-- View 2: Button 2 (Magnetický profil) 
             <img
               id="btn-view-2"
               src="/button2.png"
@@ -136,9 +136,10 @@ import { Magnet } from "lucide-astro";
               class="absolute inset-0 m-auto max-h-64 sm:max-h-72 md:max-h-80 object-contain transition-all duration-500 ease-out drop-shadow-[0_20px_40px_rgba(0,0,0,0.14)] opacity-0 scale-95 pointer-events-none"
               loading="eager"
             />
+            -->
           </div>
 
-          <!-- Dynamic Caption below Switcher (vždy na 1 řádce) -->
+          <!-- Dynamic Caption below Switcher (vždy na 1 řádce) 
           <div
             class="mt-3 min-h-[24px] flex items-center justify-center w-full px-2"
           >
@@ -155,36 +156,39 @@ import { Magnet } from "lucide-astro";
               Zadní profil na přilepení
             </p>
           </div>
+          -->
 
           <!-- 3 popisky dole: větší text, vždy na jedné řádce bez zalamování -->
-          <div class="grid grid-cols-3 gap-2 w-full pt-5 mt-4 text-center">
-            <div class="whitespace-nowrap">
+          <div
+            class="grid grid-cols-3 w-full mt-10 sm:mt-14 md:mt-16 text-center"
+          >
+            <div class="px-1 sm:px-2.5">
               <span
-                class="text-base sm:text-lg font-bold text-zinc-950 block leading-tight"
-                >Malý</span
+                class="text-sm sm:text-base font-bold text-zinc-950 block leading-tight tracking-tight whitespace-nowrap"
+                >Kompaktní</span
               >
               <span
-                class="text-xs sm:text-sm text-zinc-500 font-medium block mt-0.5 whitespace-nowrap"
+                class="text-[11px] sm:text-xs text-zinc-500 font-medium block mt-1 whitespace-nowrap"
                 >4,5 cm</span
               >
             </div>
-            <div class="dots-x whitespace-nowrap">
+            <div class="dots-x px-1 sm:px-2.5">
               <span
-                class="text-base sm:text-lg font-bold text-zinc-950 block leading-tight"
-                >Vydrží</span
+                class="text-sm sm:text-base font-bold text-zinc-950 block leading-tight tracking-tight whitespace-nowrap"
+                >Bezstarostné</span
               >
               <span
-                class="text-xs sm:text-sm text-zinc-500 font-medium block mt-0.5 whitespace-nowrap"
+                class="text-[11px] sm:text-xs text-zinc-500 font-medium block mt-1 whitespace-nowrap"
                 >až 3 roky</span
               >
             </div>
-            <div class="whitespace-nowrap">
+            <div class="px-1 sm:px-2.5">
               <span
-                class="text-base sm:text-lg font-bold text-zinc-950 block leading-tight"
+                class="text-sm sm:text-base font-bold text-zinc-950 block leading-tight tracking-tight whitespace-nowrap"
                 >Kamkoliv</span
               >
               <span
-                class="text-xs sm:text-sm text-zinc-500 font-medium block mt-0.5 whitespace-nowrap"
+                class="text-[11px] sm:text-xs text-zinc-500 font-medium block mt-1 whitespace-nowrap"
                 >magnet i přilepení</span
               >
             </div>
