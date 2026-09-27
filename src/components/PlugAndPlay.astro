@@ -92,7 +92,7 @@ const installSteps = [
 </section>
 
 <!-- 3. VARIABILITA UCHYCENÍ -->
-<section class="py-14 bg-zinc-50/70 border-t border-zinc-200/70 relative">
+<section class="py-14 bg-zinc-50/70 dots-t dots-b relative">
   <div class="max-w-6xl mx-auto px-6">
     
     <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-end mb-10">
@@ -111,7 +111,8 @@ const installSteps = [
       </div>
     </div>
 
-    <div class="pt-8 border-t border-zinc-200/70 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-zinc-200/70">
+    <!-- Dělicí tečkovaná linka nad 3 sloupci -->
+    <div class="pt-8 dots-t grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-zinc-200/70">
       
       <!-- 01 -->
       <div class="py-5 md:py-0 md:pr-8">
@@ -150,3 +151,25 @@ const installSteps = [
 
   </div>
 </section>
+
+<style>
+  /* Jemné tečkované oddělovače (drobné technické tečky) */
+  section {
+    --dot: #a1a1aa;
+    --dots: radial-gradient(circle, var(--dot) 0.75px, transparent 1.1px);
+  }
+
+  .dots-t {
+    background-image: var(--dots);
+    background-size: 8px 3px;
+    background-repeat: repeat-x;
+    background-position: top left;
+  }
+
+  .dots-b {
+    background-image: var(--dots);
+    background-size: 8px 3px;
+    background-repeat: repeat-x;
+    background-position: bottom left;
+  }
+</style>

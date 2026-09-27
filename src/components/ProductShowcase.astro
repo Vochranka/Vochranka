@@ -5,7 +5,7 @@ import { Magnet } from "lucide-astro";
 
 <section
   id="vyuziti"
-  class="bg-white min-h-screen flex flex-col justify-center py-16 md:py-24 px-6 sm:px-10 lg:px-16 xl:px-24 overflow-hidden relative"
+  class="bg-white min-h-screen flex flex-col justify-center py-16 md:py-24 px-6 sm:px-10 lg:px-16 xl:px-24 overflow-hidden relative dots-b"
 >
   <div class="max-w-5xl mx-auto w-full my-auto">
     <!-- Main 2-Column Grid: Left Copy & Right Interactive Button -->
@@ -200,18 +200,17 @@ import { Magnet } from "lucide-astro";
 </section>
 
 <style>
-  /* Tečkované čáry z kulatých teček (místo border-dotted).
-     Velikost tečky: poloměr 1.75px. Rozestup: 16px.
-     Chcete větší/menší? Změňte 1.75px / 2.25px a 16px. Barvu měňte v --dot. */
+  /* Tečkované čáry z drobných kulatých teček (technický styl).
+     Velikost tečky: poloměr 0.75px (~1.5px průměr). Rozestup: 8px. */
   section {
     --dot: #a1a1aa;
-    --dots: radial-gradient(circle, var(--dot) 1.75px, transparent 2.25px);
+    --dots: radial-gradient(circle, var(--dot) 0.75px, transparent 1.1px);
   }
 
   /* horní čára */
   .dots-t {
     background-image: var(--dots);
-    background-size: 16px 6px;
+    background-size: 8px 3px;
     background-repeat: repeat-x;
     background-position: top left;
   }
@@ -219,7 +218,7 @@ import { Magnet } from "lucide-astro";
   /* dolní čára (spodek sekce) */
   .dots-b {
     background-image: var(--dots);
-    background-size: 16px 6px;
+    background-size: 8px 3px;
     background-repeat: repeat-x;
     background-position: bottom left;
   }
@@ -228,8 +227,8 @@ import { Magnet } from "lucide-astro";
   .dots-x {
     background-image: var(--dots), var(--dots);
     background-size:
-      6px 16px,
-      6px 16px;
+      3px 8px,
+      3px 8px;
     background-repeat: repeat-y, repeat-y;
     background-position:
       left top,
