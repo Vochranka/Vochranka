@@ -92,61 +92,128 @@ const installSteps = [
 </section>
 
 <!-- 3. VARIABILITA UCHYCENÍ -->
-<section class="py-14 bg-zinc-50/70 dots-t dots-b relative">
-  <div class="max-w-6xl mx-auto px-6">
+<section id="variabilita" class="py-16 md:py-20 bg-zinc-50/70 dots-t dots-b relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
     
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-end mb-10">
-      <div class="md:col-span-7">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 md:mb-12">
+      <div class="max-w-xl">
         <span class="text-[11px] font-mono uppercase tracking-[0.18em] text-zinc-400 font-semibold mb-2 block">
           Variabilita uchycení
         </span>
         <h3 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-950">
           Drží pevně. Zůstává stále mobilní.
         </h3>
-      </div>
-      <div class="md:col-span-5">
-        <p class="text-xs text-zinc-600 leading-relaxed">
+        <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed mt-2">
           3M páskou nalepíte pouze tenkou kovovou destičku. Samotné tlačítko na ní drží silným magnetem a můžete ho kdykoliv vzít s sebou.
         </p>
       </div>
+
+      <!-- Přepínací tlačítko pro pozici textu -->
+      <div class="self-start md:self-end shrink-0 flex flex-col items-start md:items-end">
+        <div class="inline-flex items-center gap-2">
+          <span class="text-xs font-medium text-zinc-500 hidden sm:inline-block">
+            Rozvržení karty:
+          </span>
+          <div
+            class="bg-zinc-200/80 p-1 rounded-full inline-flex items-center gap-1 shadow-inner border border-zinc-200"
+            role="group"
+            aria-label="Přepínač pozice textu karty"
+          >
+            <!-- Možnost A: Text dole pod fotkou -->
+            <button
+              type="button"
+              id="layout-bottom-btn"
+              data-active="true"
+              class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 shadow-sm bg-white text-zinc-950 cursor-pointer"
+              aria-pressed="true"
+            >
+              <svg class="w-3.5 h-3.5 text-zinc-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="3" rx="2" />
+                <line x1="3" x2="21" y1="14" y2="14" />
+              </svg>
+              <span>Text dole</span>
+            </button>
+
+            <!-- Možnost B: Text napravo vedle fotky -->
+            <button
+              type="button"
+              id="layout-side-btn"
+              data-active="false"
+              class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 text-zinc-600 hover:text-zinc-950 hover:bg-white/50 cursor-pointer"
+              aria-pressed="false"
+            >
+              <svg class="w-3.5 h-3.5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="3" rx="2" />
+                <line x1="14" x2="14" y1="3" y2="21" />
+              </svg>
+              <span>Text vpravo</span>
+            </button>
+          </div>
+        </div>
+        <span class="text-[11px] text-zinc-400 mt-1.5 hidden md:block">
+          Plynulé přepnutí rozvržení karty
+        </span>
+      </div>
     </div>
 
-    <!-- Dělicí tečkovaná linka nad 3 sloupci -->
-    <div class="pt-8 dots-t grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-zinc-200/70">
-      
-      <!-- 01 -->
-      <div class="py-5 md:py-0 md:pr-8">
-        <span class="text-[11px] font-mono font-medium text-zinc-400 tracking-wider uppercase block mb-1">
-          01 / Pult & stůl
-        </span>
-        <h4 class="text-base font-bold tracking-tight text-zinc-900 mb-1.5">Skryté pod hranou desky</h4>
-        <p class="text-xs text-zinc-600 leading-relaxed">
-          Kovová destička ze spodní strany stolu. Tlačítko na ni magneticky přicvaknete — zvenčí zcela neviditelné, pro vaši ruku přirozeně dostupné.
-        </p>
+    <!-- JEDINÁ KARTA V SEKCI -->
+    <div
+      id="variability-card"
+      data-layout="bottom"
+      class="mx-auto rounded-3xl bg-white border border-zinc-200/90 shadow-sm overflow-hidden flex flex-col group hover:border-zinc-300 hover:shadow-md"
+    >
+      <!-- Fotka (s jemným badge) -->
+      <div
+        id="variability-img-wrap"
+        class="relative w-full overflow-hidden bg-zinc-100 shrink-0"
+      >
+        <img
+          src="/step2-umistit.jpg"
+          alt="Umístění tísňového tlačítka pod stůl či lehátko na magnetickou destičku"
+          class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+          loading="lazy"
+        />
+
+        <!-- Štítek na fotce -->
+        <div class="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-950/80 backdrop-blur-md text-white text-xs font-medium shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>Magnetické uchycení 3M</span>
+        </div>
       </div>
 
-      <!-- 02 -->
-      <div class="py-5 md:py-0 md:px-8">
-        <span class="text-[11px] font-mono font-medium text-zinc-400 tracking-wider uppercase block mb-1">
-          02 / Lehátko & vozík
-        </span>
-        <h4 class="text-base font-bold tracking-tight text-zinc-900 mb-1.5">Přímo na kovový rám</h4>
-        <p class="text-xs text-zinc-600 leading-relaxed">
-          Bez vrtání a lepidla. Silný neodymový magnet okamžitě přilne k noze stolu, rámu lehátka nebo manipulačnímu vozíku.
-        </p>
-      </div>
+      <!-- Text karty: Nadpis + Popis + Přehledné body -->
+      <div
+        id="variability-text-wrap"
+        class="p-6 sm:p-8 md:p-10 flex flex-col justify-between flex-1"
+      >
+        <div>
+          <span class="text-[11px] font-mono font-semibold tracking-wider text-zinc-400 block mb-2 uppercase">
+            01 / Pult, lehátko & kapsa
+          </span>
+          <h4 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-zinc-950 mb-3.5 leading-snug">
+            Skryté pod hranou stolu nebo v kapse u sebe
+          </h4>
+          <p class="text-sm sm:text-base text-zinc-600 leading-relaxed">
+            3M páskou nalepíte pouze tenkou kovovou destičku na spodní stranu stolu, pultu či rámu lehátka. Samotné tlačítko na ní drží silným neodymovým magnetem — zvenčí je zcela neviditelné, pro vaši ruku přirozeně dostupné. V případě potřeby ho bleskově sejmete a s váhou pouhých 28 g o něm v kapse či zástěře ani nevíte.
+          </p>
 
-      <!-- 03 -->
-      <div class="py-5 md:py-0 md:pl-8">
-        <span class="text-[11px] font-mono font-medium text-zinc-400 tracking-wider uppercase block mb-1">
-          03 / Pohyb po prostoru
-        </span>
-        <h4 class="text-base font-bold tracking-tight text-zinc-900 mb-1.5">V kapse u sebe</h4>
-        <p class="text-xs text-zinc-600 leading-relaxed">
-          Při vítání klienta nebo přebírání zboží tlačítko bleskově sejmete z magnetu. S váhou 28 g o něm v zástěře ani nevíte.
-        </p>
+          <!-- 3 doplňkové výhody -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-6 mt-6 border-t border-zinc-100">
+            <div class="bg-zinc-50/80 rounded-2xl p-3.5 border border-zinc-100">
+              <span class="text-[10px] font-mono font-bold text-zinc-400 uppercase block mb-1">Pult & stůl</span>
+              <p class="text-xs font-semibold text-zinc-900 leading-tight">Skryté pod hranou desky</p>
+            </div>
+            <div class="bg-zinc-50/80 rounded-2xl p-3.5 border border-zinc-100">
+              <span class="text-[10px] font-mono font-bold text-zinc-400 uppercase block mb-1">Lehátko & vozík</span>
+              <p class="text-xs font-semibold text-zinc-900 leading-tight">Přímo na kovový rám</p>
+            </div>
+            <div class="bg-zinc-50/80 rounded-2xl p-3.5 border border-zinc-100">
+              <span class="text-[10px] font-mono font-bold text-zinc-400 uppercase block mb-1">Pohyb po prostoru</span>
+              <p class="text-xs font-semibold text-zinc-900 leading-tight">V kapse u sebe (28 g)</p>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
 
   </div>
@@ -172,4 +239,107 @@ const installSteps = [
     background-repeat: repeat-x;
     background-position: bottom left;
   }
+
+  /* Plynulá změna rozvržení karty a optimalizace pro mobil */
+  #variability-card {
+    transition: max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+  }
+
+  #variability-img-wrap {
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                aspect-ratio 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #variability-text-wrap {
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Desktop Možnost A: Text dole (výchozí) */
+  @media (min-width: 768px) {
+    #variability-card[data-layout="bottom"] {
+      max-width: 48rem; /* max-w-3xl */
+      flex-direction: column;
+    }
+    #variability-card[data-layout="bottom"] #variability-img-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+    }
+    #variability-card[data-layout="bottom"] #variability-text-wrap {
+      width: 100%;
+    }
+
+    /* Desktop Možnost B: Text napravo vedle fotky */
+    #variability-card[data-layout="side"] {
+      max-width: 64rem; /* max-w-5xl */
+      flex-direction: row;
+      align-items: stretch;
+    }
+    #variability-card[data-layout="side"] #variability-img-wrap {
+      width: 48%;
+      min-height: 420px;
+      aspect-ratio: auto;
+    }
+    #variability-card[data-layout="side"] #variability-text-wrap {
+      width: 52%;
+    }
+  }
+
+  /* Mobilní zařízení: Text vždy zůstává pod fotkou pro zachování dobré čitelnosti */
+  @media (max-width: 767px) {
+    #variability-card {
+      flex-direction: column !important;
+      max-width: 100% !important;
+    }
+    #variability-img-wrap {
+      width: 100% !important;
+      aspect-ratio: 16 / 10 !important;
+      min-height: unset !important;
+    }
+    #variability-text-wrap {
+      width: 100% !important;
+    }
+  }
 </style>
+
+<script>
+  function initVariabilityToggle() {
+    const card = document.getElementById("variability-card");
+    const btnBottom = document.getElementById("layout-bottom-btn");
+    const btnSide = document.getElementById("layout-side-btn");
+
+    if (!card || !btnBottom || !btnSide) return;
+
+    function applyLayout(layout: "bottom" | "side") {
+      card.setAttribute("data-layout", layout);
+
+      if (layout === "bottom") {
+        btnBottom.setAttribute("aria-pressed", "true");
+        btnBottom.classList.add("bg-white", "text-zinc-950", "shadow-sm");
+        btnBottom.classList.remove("text-zinc-600", "hover:text-zinc-950", "hover:bg-white/50");
+
+        btnSide.setAttribute("aria-pressed", "false");
+        btnSide.classList.remove("bg-white", "text-zinc-950", "shadow-sm");
+        btnSide.classList.add("text-zinc-600", "hover:text-zinc-950", "hover:bg-white/50");
+      } else {
+        btnSide.setAttribute("aria-pressed", "true");
+        btnSide.classList.add("bg-white", "text-zinc-950", "shadow-sm");
+        btnSide.classList.remove("text-zinc-600", "hover:text-zinc-950", "hover:bg-white/50");
+
+        btnBottom.setAttribute("aria-pressed", "false");
+        btnBottom.classList.remove("bg-white", "text-zinc-950", "shadow-sm");
+        btnBottom.classList.add("text-zinc-600", "hover:text-zinc-950", "hover:bg-white/50");
+      }
+    }
+
+    btnBottom.addEventListener("click", () => applyLayout("bottom"));
+    btnSide.addEventListener("click", () => applyLayout("side"));
+  }
+
+  // Inicializace po načtení stránky
+  initVariabilityToggle();
+  document.addEventListener("astro:page-load", initVariabilityToggle);
+</script>
