@@ -164,10 +164,10 @@ const placementItems = [
         }
       </div>
 
-      <!-- Mobilní verze: plynulý vertikální tok s vlnitými spojnicemi -->
-      <div class="md:hidden flex flex-col space-y-2 max-w-sm mx-auto px-4">
+      <!-- Mobilní verze: vycentrované kroky pod sebou s plynulým vykreslováním na scroll -->
+      <div class="md:hidden flex flex-col items-center max-w-sm mx-auto px-4 text-center">
         <!-- Krok 1 -->
-        <div class="flex flex-col items-start pl-6">
+        <div id="mob-step-1" class="mobile-scroll-reveal flex flex-col items-center text-center">
           <div class="w-3.5 h-3.5 rounded-full bg-[#f97316] mb-3 shadow-sm" />
           <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
             Zapojit
@@ -177,27 +177,36 @@ const placementItems = [
           </p>
         </div>
 
-        <!-- Propojovací křivka 1 -> 2 (ze světlé do středně šedé) -->
-        <div class="py-1 pl-4">
-          <svg class="w-8 h-12 text-zinc-400" viewBox="0 0 32 48" fill="none">
-            <defs>
-              <linearGradient id="mob-dash-1" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#cbd5e1" />
-                <stop offset="100%" stop-color="#64748b" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M 4 2 C 4 24, 28 24, 28 46"
-              stroke="url(#mob-dash-1)"
-              stroke-width="1.75"
-              stroke-dasharray="4 4"
-              fill="none"
+        <!-- Propojovací čára 1 -> 2: plynule se vykresluje podle scrollu -->
+        <div id="mob-line-1" class="py-3 flex justify-center">
+          <svg class="w-[2px] h-11 overflow-visible" viewBox="0 0 2 44" fill="none">
+            <!-- Podkladová jemná stopa -->
+            <line
+              x1="1"
+              y1="0"
+              x2="1"
+              y2="44"
+              stroke="#e4e4e7"
+              stroke-width="2"
+              stroke-dasharray="3 3"
+            />
+            <!-- Vykreslující se linie -->
+            <line
+              class="line-progress-fill"
+              x1="1"
+              y1="0"
+              x2="1"
+              y2="44"
+              stroke="#64748b"
+              stroke-width="2"
+              stroke-dasharray="3 3"
+              style="clip-path: inset(0 0 100% 0);"
             />
           </svg>
         </div>
 
         <!-- Krok 2 -->
-        <div class="flex flex-col items-start pl-6">
+        <div id="mob-step-2" class="mobile-scroll-reveal flex flex-col items-center text-center">
           <div class="w-3.5 h-3.5 rounded-full bg-[#fbb03b] mb-3 shadow-sm" />
           <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
             Přicvaknout
@@ -207,27 +216,36 @@ const placementItems = [
           </p>
         </div>
 
-        <!-- Propojovací křivka 2 -> 3 (ze středně šedé do tmavé) -->
-        <div class="py-1 pl-10">
-          <svg class="w-8 h-12 text-zinc-400" viewBox="0 0 32 48" fill="none">
-            <defs>
-              <linearGradient id="mob-dash-2" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#64748b" />
-                <stop offset="100%" stop-color="#0f172a" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M 28 2 C 28 24, 4 24, 4 46"
-              stroke="url(#mob-dash-2)"
-              stroke-width="1.75"
-              stroke-dasharray="4 4"
-              fill="none"
+        <!-- Propojovací čára 2 -> 3: plynule se vykresluje podle scrollu -->
+        <div id="mob-line-2" class="py-3 flex justify-center">
+          <svg class="w-[2px] h-11 overflow-visible" viewBox="0 0 2 44" fill="none">
+            <!-- Podkladová jemná stopa -->
+            <line
+              x1="1"
+              y1="0"
+              x2="1"
+              y2="44"
+              stroke="#e4e4e7"
+              stroke-width="2"
+              stroke-dasharray="3 3"
+            />
+            <!-- Vykreslující se linie -->
+            <line
+              class="line-progress-fill"
+              x1="1"
+              y1="0"
+              x2="1"
+              y2="44"
+              stroke="#334155"
+              stroke-width="2"
+              stroke-dasharray="3 3"
+              style="clip-path: inset(0 0 100% 0);"
             />
           </svg>
         </div>
 
         <!-- Krok 3 -->
-        <div class="flex flex-col items-start">
+        <div id="mob-step-3" class="mobile-scroll-reveal flex flex-col items-center text-center">
           <div class="w-3.5 h-3.5 rounded-full bg-[#86efac] mb-3 shadow-sm" />
           <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
             Otestovat
@@ -465,6 +483,25 @@ const placementItems = [
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* Plynulejší a pomalejší animace postupného objevování na mobilu */
+  .mobile-scroll-reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .mobile-scroll-reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Plynulé vykreslování spojovací linie na scroll */
+  .line-progress-fill {
+    transition: clip-path 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: clip-path;
   }
 </style>
 
@@ -740,10 +777,92 @@ const placementItems = [
     updateDots();
   }
 
+  function initMobileStepReveal() {
+    const step1 = document.getElementById("mob-step-1");
+    const line1 = document.getElementById("mob-line-1");
+    const step2 = document.getElementById("mob-step-2");
+    const line2 = document.getElementById("mob-line-2");
+    const step3 = document.getElementById("mob-step-3");
+
+    if (!step1) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.querySelectorAll(".mobile-scroll-reveal").forEach((el) => el.classList.add("is-revealed"));
+      document.querySelectorAll(".line-progress-fill").forEach((el) => (el.style.clipPath = "inset(0 0 0% 0)"));
+      return;
+    }
+
+    let ticking = false;
+
+    function updateScrollProgress() {
+      ticking = false;
+      const vh = window.innerHeight;
+      // Trigger line at 78% of viewport height (ideal reading position when scrolling down)
+      const triggerY = vh * 0.78;
+
+      // Krok 1
+      const r1 = step1.getBoundingClientRect();
+      if (r1.top < triggerY) {
+        step1.classList.add("is-revealed");
+      } else {
+        step1.classList.remove("is-revealed");
+      }
+
+      // Čára 1 -> 2
+      if (line1 && step2) {
+        const rLine1 = line1.getBoundingClientRect();
+        // Linie se plynule vykresluje od chvíle, kdy její vrchol dosáhne triggeru, až po její spodní konec
+        const progress1 = Math.max(0, Math.min(1, (triggerY - rLine1.top) / (rLine1.height + 25)));
+        const fill1 = line1.querySelector(".line-progress-fill");
+        if (fill1) {
+          fill1.style.clipPath = `inset(0 0 ${(1 - progress1) * 100}% 0)`;
+        }
+
+        // Krok 2 se objeví po čáře, a zmizí když scrollneme nahoru
+        const r2 = step2.getBoundingClientRect();
+        if (r2.top < triggerY && progress1 >= 0.4) {
+          step2.classList.add("is-revealed");
+        } else {
+          step2.classList.remove("is-revealed");
+        }
+      }
+
+      // Čára 2 -> 3
+      if (line2 && step3) {
+        const rLine2 = line2.getBoundingClientRect();
+        const progress2 = Math.max(0, Math.min(1, (triggerY - rLine2.top) / (rLine2.height + 25)));
+        const fill2 = line2.querySelector(".line-progress-fill");
+        if (fill2) {
+          fill2.style.clipPath = `inset(0 0 ${(1 - progress2) * 100}% 0)`;
+        }
+
+        // Krok 3 se objeví, a zmizí když scrollneme nahoru
+        const r3 = step3.getBoundingClientRect();
+        if (r3.top < triggerY && progress2 >= 0.4) {
+          step3.classList.add("is-revealed");
+        } else {
+          step3.classList.remove("is-revealed");
+        }
+      }
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateScrollProgress);
+      }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    onScroll();
+  }
+
   function initAll() {
     initPlacementModal();
     initStrikeAnimation();
     initSliderIndicator();
+    initMobileStepReveal();
   }
 
   if (document.readyState === "loading") {
