@@ -25,7 +25,27 @@ const faqs = [
   id="faq"
   class="py-16 md:py-24 relative overflow-hidden bg-white border-b border-zinc-200/80"
 >
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- Horní rohová světle žlutá záře navazující ze sekce Variabilita -->
+  <div
+    class="absolute -top-20 -left-20 sm:-top-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-amber-400/25 via-yellow-300/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="absolute -top-20 -right-20 sm:-top-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-bl from-amber-400/25 via-yellow-300/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Spodní rohová zelená záře navazující do sekce Objednávka -->
+  <div
+    class="absolute -bottom-20 -left-20 sm:-bottom-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-emerald-400/25 via-emerald-300/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="absolute -bottom-20 -right-20 sm:-bottom-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tl from-emerald-400/25 via-emerald-300/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    aria-hidden="true"
+  ></div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <!-- Section Header -->
     <div class="text-center max-w-2xl mx-auto mb-14">
       <span
