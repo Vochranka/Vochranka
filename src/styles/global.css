@@ -8,15 +8,15 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Cantarell', system-ui, -apple-system, sans-serif;
-    color: #09090b;
-    background-color: #fafafa;
+    color: #0f172a;
+    background-color: #f8fafc;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    background-color: #e4e4e7;
-    color: #09090b;
+    background-color: #dbeafe;
+    color: #1e3a8a;
   }
 }
 
@@ -26,31 +26,31 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #fafafa;
+  background: #f8fafc;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d4d4d8;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1aa;
+  background: #93c5fd;
 }
 
 /* Glassmorphism utility */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(228, 228, 231, 0.8);
+  border: 1px solid rgba(219, 234, 254, 0.85);
 }
 
 .glass-card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(228, 228, 231, 0.7);
+  border: 1px solid rgba(219, 234, 254, 0.75);
 }
 
 /* Details summary remove marker */
