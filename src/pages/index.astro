@@ -8,6 +8,7 @@ import Faq from "../components/Faq.astro";
 import OrderForm from "../components/OrderForm.astro";
 import Footer from "../components/Footer.astro";
 import { ArrowRight, ShieldCheck } from "lucide-astro";
+import Pricing from "../components/Pricing.astro";
 ---
 
 <Layout
@@ -31,8 +32,7 @@ import { ArrowRight, ShieldCheck } from "lucide-astro";
     <!-- 4. Časté dotazy a odpovědi (FAQ) -->
     <Faq />
 
-    <!-- 5. Nezávazná objednávka s kalkulátorem ceny vlevo & Přímé kontakty vpravo -->
-    <OrderForm />
+    <Pricing />
   </main>
 
   <!-- Footer -->
@@ -54,7 +54,8 @@ import { ArrowRight, ShieldCheck } from "lucide-astro";
           Sada Vochranka
         </p>
         <p class="text-[11px] font-semibold text-zinc-950">
-          2 990 Kč <span class="font-normal text-zinc-500">• 14 dní záruka</span>
+          2 990 Kč <span class="font-normal text-zinc-500">• 14 dní záruka</span
+          >
         </p>
       </div>
     </div>

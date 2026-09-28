@@ -5,18 +5,13 @@ import { Magnet } from "lucide-astro";
 
 <section
   id="vyuziti"
-  class="bg-white min-h-screen flex flex-col justify-center py-16 md:py-24 px-6 sm:px-10 lg:px-16 xl:px-24 overflow-hidden relative dots-b"
+  class="bg-white min-h-screen flex flex-col justify-center py-16 md:py-24 px-6 sm:px-10 lg:px-16 xl:px-24 overflow-hidden relative"
 >
   <div class="max-w-5xl mx-auto w-full my-auto relative z-10">
     <!-- Main 2-Column Grid: Left Copy & Right Interactive Button -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-15 items-center">
       <!-- LEFT COLUMN: Hardware & Ergonomie (7 cols) -->
       <div class="lg:col-span-7 text-left">
-        <span
-          class="text-xs font-mono tracking-[0.2em] text-zinc-400 uppercase font-medium block mb-3"
-        >
-          K čemu slouží
-        </span>
         <h2
           class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-950 leading-[1.15]"
         >
@@ -44,7 +39,7 @@ import { Magnet } from "lucide-astro";
 
         <!-- Jak funguje v praxi: 2 přirozené akce -->
         <div
-          class="dots-t mt-16 md:mt-24 pt-10 md:pt-12 grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-xl"
+          class="dots-t mt-12 pt-10 md:pt-12 grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-xl"
         >
           <div>
             <span
@@ -202,11 +197,13 @@ import { Magnet } from "lucide-astro";
   <div
     class="absolute -bottom-20 -left-20 sm:-bottom-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-amber-400/25 via-yellow-300/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
     aria-hidden="true"
-  ></div>
+  >
+  </div>
   <div
     class="absolute -bottom-20 -right-20 sm:-bottom-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tl from-amber-400/25 via-yellow-300/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
     aria-hidden="true"
-  ></div>
+  >
+  </div>
 </section>
 
 <style>
@@ -223,14 +220,6 @@ import { Magnet } from "lucide-astro";
     background-size: 8px 3px;
     background-repeat: repeat-x;
     background-position: top left;
-  }
-
-  /* dolní čára (spodek sekce) */
-  .dots-b {
-    background-image: var(--dots);
-    background-size: 8px 3px;
-    background-repeat: repeat-x;
-    background-position: bottom left;
   }
 
   /* svislé čáry vlevo a vpravo */

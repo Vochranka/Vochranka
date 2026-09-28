@@ -59,7 +59,7 @@ const placementItems = [
 <!-- 1. INSTALACE / ŽÁDNÉ VRTÁNÍ -->
 <section
   id="instalace"
-  class="pt-16 pb-20 sm:pt-20 sm:pb-28 md:pt-28 md:pb-36 bg-white relative overflow-hidden"
+  class="py-16 md:py-24 bg-white relative overflow-hidden"
 >
   <!-- Horní rohová světle žlutá záře navazující ze sekce Využití -->
   <div
@@ -279,11 +279,14 @@ const placementItems = [
   </div>
 </section>
 
-<!-- 2. VARIABILITA UCHYCENÍ -->
+<!-- 2. UMÍSTĚNÍ / VARIABILITA UCHYCENÍ -->
 <section
-  id="variabilita"
-  class="pt-16 pb-20 sm:pt-20 sm:pb-28 md:pt-28 md:pb-36 bg-white border-t border-zinc-200/70 relative overflow-hidden"
+  id="umisteni"
+  class="py-16 md:py-24 bg-white relative overflow-hidden"
 >
+  <!-- Kotva pro případné starší odkazy -->
+  <div id="variabilita" class="absolute -top-16 left-0 pointer-events-none"></div>
+
   <!-- Rohová zelená záře -->
   <div
     class="absolute -top-20 -left-20 sm:-top-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-emerald-400/25 via-emerald-300/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
@@ -293,15 +296,15 @@ const placementItems = [
     class="absolute -top-20 -right-20 sm:-top-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-bl from-emerald-400/25 via-emerald-300/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
     aria-hidden="true"
   ></div>
-
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <!-- Hlavička sekce -->
     <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-14 md:mb-20">
       <h2
-        class="text-center text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold md:font-extrabold tracking-tight text-zinc-950 font-display leading-[1.15] md:leading-[1.12]"
+        class="text-center text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold md:font-extrabold tracking-tight text-zinc-950 font-display leading-[1.15] md:leading-[1.12]"
       >
-        Vždy tam, kam<br class="hidden sm:inline" /> přirozeně sáhnete.
+        Vždy na dosah
       </h2>
+      
       <p
         class="text-center text-base sm:text-base md:text-lg text-zinc-600 mt-4 leading-relaxed max-w-sm sm:max-w-xl md:max-w-2xl mx-auto"
       >
@@ -319,11 +322,7 @@ const placementItems = [
       {
         placementItems.map((item, index) => (
           <div
-            class={`flex flex-col group cursor-pointer select-none w-[85vw] shrink-0 snap-center md:w-auto ${index === 1 ? 'md:mt-12 lg:mt-16' : ''}`}
-            data-placement-card={index}
-            tabindex="0"
-            role="button"
-            aria-label={`Zobrazit detail pro ${item.title}`}
+            class={`flex flex-col select-none w-[85vw] shrink-0 snap-center md:w-auto ${index === 1 ? 'md:mt-12 lg:mt-16' : ''}`}
           >
             <!-- Text nad fotkou -->
             <div class="pb-3 sm:pb-4 md:pb-5 flex flex-col items-center text-center md:items-start md:text-left flex-1">
@@ -391,100 +390,6 @@ const placementItems = [
   ></div>
 </section>
 
-<!-- MODAL / LIGHTBOX PRO ZVĚTŠENÍ NA KLIKNUTÍ -->
-<div
-  id="placement-modal"
-  class="fixed inset-0 z-50 bg-zinc-950/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 sm:p-6"
-  role="dialog"
-  aria-modal="true"
-  aria-label="Detail umístění tlačítka"
->
-  <!-- Vnitřní karta modalu -->
-  <div
-    id="placement-modal-card"
-    class="relative w-full max-w-lg bg-white rounded-3xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300 max-h-[92vh] flex flex-col"
-  >
-    <!-- Tlačítko zavřít ✕ -->
-    <button
-      type="button"
-      id="placement-modal-close"
-      class="absolute top-3.5 right-3.5 z-30 w-9 h-9 rounded-full bg-zinc-950/70 hover:bg-zinc-950 text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-sm shadow-md"
-      aria-label="Zavřít detail"
-    >
-      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
-
-    <!-- Tlačítko předchozí v modalu -->
-    <button
-      type="button"
-      id="placement-modal-prev"
-      class="absolute left-3 top-[38%] -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/95 hover:bg-zinc-950 text-zinc-800 hover:text-white border border-zinc-200 shadow-md flex items-center justify-center transition-all cursor-pointer"
-      aria-label="Předchozí možnost"
-    >
-      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"></polyline>
-      </svg>
-    </button>
-
-    <!-- Tlačítko další v modalu -->
-    <button
-      type="button"
-      id="placement-modal-next"
-      class="absolute right-3 top-[38%] -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/95 hover:bg-zinc-950 text-zinc-800 hover:text-white border border-zinc-200 shadow-md flex items-center justify-center transition-all cursor-pointer"
-      aria-label="Další možnost"
-    >
-      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    </button>
-
-    <!-- Velká fotka -->
-    <div class="relative w-full aspect-[4/3] bg-zinc-100 shrink-0 overflow-hidden">
-      <img
-        id="modal-img"
-        src=""
-        alt=""
-        class="w-full h-full object-cover"
-      />
-      <!-- Číslo v rohu -->
-      <div
-        id="modal-badge"
-        class="absolute top-4 left-4 z-10 w-9 h-9 rounded-full bg-zinc-950 text-white font-mono text-xs font-bold flex items-center justify-center shadow-md"
-      >
-        01
-      </div>
-    </div>
-
-    <!-- Text detailu -->
-    <div class="p-5 sm:p-7 flex flex-col overflow-y-auto">
-      <div class="flex items-center gap-2.5 mb-2">
-        <span
-          id="modal-left-meta"
-          class="text-xs font-mono tracking-widest text-zinc-400 uppercase font-semibold shrink-0"
-        ></span>
-        <span class="h-px bg-zinc-200/90 flex-1 min-w-[20px]"></span>
-        <span
-          id="modal-right-meta"
-          class="text-xs font-mono tracking-widest text-zinc-400 uppercase font-semibold shrink-0"
-        ></span>
-      </div>
-
-      <h3
-        id="modal-title"
-        class="text-xl sm:text-2xl font-bold tracking-tight text-zinc-950 mb-2 leading-snug"
-      ></h3>
-
-      <p
-        id="modal-desc"
-        class="text-sm sm:text-base text-zinc-600 leading-relaxed"
-      ></p>
-    </div>
-  </div>
-</div>
-
 <style>
   /* Jemné tečkované oddělovače (drobné technické tečky) */
   section {
@@ -535,122 +440,7 @@ const placementItems = [
   }
 </style>
 
-<script define:vars={{ placementItems }}>
-  function initPlacementModal() {
-    const modal = document.getElementById("placement-modal");
-    const modalCard = document.getElementById("placement-modal-card");
-    const closeBtn = document.getElementById("placement-modal-close");
-    const prevBtn = document.getElementById("placement-modal-prev");
-    const nextBtn = document.getElementById("placement-modal-next");
-    const modalImg = document.getElementById("modal-img");
-    const modalBadge = document.getElementById("modal-badge");
-    const modalLeftMeta = document.getElementById("modal-left-meta");
-    const modalRightMeta = document.getElementById("modal-right-meta");
-    const modalTitle = document.getElementById("modal-title");
-    const modalDesc = document.getElementById("modal-desc");
-    const cards = document.querySelectorAll("[data-placement-card]");
-
-    if (!modal) return;
-
-    let currentIndex = 0;
-
-    function renderModal(index) {
-      const item = placementItems[index];
-      if (!item) return;
-      currentIndex = index;
-
-      if (modalImg) {
-        modalImg.src = item.image;
-        modalImg.alt = item.alt;
-      }
-      if (modalBadge) modalBadge.textContent = item.num;
-      if (modalLeftMeta) modalLeftMeta.textContent = item.leftMeta;
-      if (modalRightMeta) modalRightMeta.textContent = item.rightMeta;
-      if (modalTitle) modalTitle.textContent = item.title;
-      if (modalDesc) modalDesc.textContent = item.desc;
-    }
-
-    function openModal(index) {
-      renderModal(index);
-      modal.classList.remove("hidden");
-      document.body.style.overflow = "hidden";
-      setTimeout(() => {
-        modal.classList.remove("opacity-0");
-        modalCard?.classList.remove("scale-95");
-        modalCard?.classList.add("scale-100");
-      }, 10);
-    }
-
-    function closeModal() {
-      modal.classList.add("opacity-0");
-      modalCard?.classList.remove("scale-100");
-      modalCard?.classList.add("scale-95");
-      setTimeout(() => {
-        modal.classList.add("hidden");
-        document.body.style.overflow = "";
-      }, 250);
-    }
-
-    cards.forEach((card, i) => {
-      card.addEventListener("click", () => openModal(i));
-      card.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          openModal(i);
-        }
-      });
-    });
-
-    closeBtn?.addEventListener("click", closeModal);
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
-    });
-
-    prevBtn?.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const prevIdx = (currentIndex - 1 + placementItems.length) % placementItems.length;
-      renderModal(prevIdx);
-    });
-
-    nextBtn?.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const nextIdx = (currentIndex + 1) % placementItems.length;
-      renderModal(nextIdx);
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (modal.classList.contains("hidden")) return;
-      if (e.key === "Escape") closeModal();
-      if (e.key === "ArrowLeft") {
-        const prevIdx = (currentIndex - 1 + placementItems.length) % placementItems.length;
-        renderModal(prevIdx);
-      }
-      if (e.key === "ArrowRight") {
-        const nextIdx = (currentIndex + 1) % placementItems.length;
-        renderModal(nextIdx);
-      }
-    });
-
-    // Touch swipe support in modal
-    let touchStartX = 0;
-    modalCard?.addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    modalCard?.addEventListener("touchend", (e) => {
-      const diff = touchStartX - e.changedTouches[0].screenX;
-      if (Math.abs(diff) > 40) {
-        if (diff > 0) {
-          const nextIdx = (currentIndex + 1) % placementItems.length;
-          renderModal(nextIdx);
-        } else {
-          const prevIdx = (currentIndex - 1 + placementItems.length) % placementItems.length;
-          renderModal(prevIdx);
-        }
-      }
-    }, { passive: true });
-  }
-
+<script>
   function initStrikeAnimation() {
     const headingWrap = document.getElementById("install-heading-wrap");
     const section = document.getElementById("instalace");
@@ -889,7 +679,6 @@ const placementItems = [
   }
 
   function initAll() {
-    initPlacementModal();
     initStrikeAnimation();
     initSliderIndicator();
     initMobileStepReveal();
