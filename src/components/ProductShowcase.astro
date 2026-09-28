@@ -13,15 +13,15 @@ import { Magnet } from "lucide-astro";
       <!-- LEFT COLUMN: Hardware & Ergonomie (7 cols) -->
       <div class="lg:col-span-7 text-left">
         <h2
-          class="text-3xl md:text-5xl font-bold tracking-tight text-slate-950 leading-[1.15]"
+          class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-950 leading-[1.15]"
         >
           Okamžitá pomoc<br />
-          <span class="text-blue-600">Na dva kliky</span>
+          <span class="text-zinc-600">Na dva kliky</span>
         </h2>
 
         <!-- Situace / Problém (Napětí) -->
         <p
-          class="text-slate-600 text-base md:text-lg mt-7 md:mt-9 max-w-xl leading-relaxed"
+          class="text-zinc-600 text-base md:text-lg mt-7 md:mt-9 max-w-xl leading-relaxed"
         >
           Jste sami ve svém salonu, kavárně či večerce a zákazník se začne
           chovat divně? Stisknutím tlačítka spustíte výstražnou sirénu a pošlete
@@ -30,9 +30,9 @@ import { Magnet } from "lucide-astro";
 
         <!-- Minimalistický slogan bez rámečků a boxů -->
         <p
-          class="text-xl md:text-2xl font-bold tracking-tight text-slate-950 mt-6"
+          class="text-xl md:text-2xl font-bold tracking-tight text-zinc-950 mt-6"
         >
-          VOCHRANKA. <span class="text-blue-600 font-medium"
+          VOCHRANKA. <span class="text-zinc-400 font-normal"
             >Stále v bezpečí</span
           >
         </p>
@@ -43,12 +43,12 @@ import { Magnet } from "lucide-astro";
         >
           <div>
             <span
-              class="text-2xl sm:text-3xl font-extrabold text-blue-600 tracking-tight block"
+              class="text-2xl sm:text-3xl font-extrabold text-red-500 tracking-tight block"
             >
               2x
             </span>
-            <h3 class="text-base font-bold text-slate-950 mt-1">Kliknutí</h3>
-            <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+            <h3 class="text-base font-bold text-zinc-950 mt-1">Kliknutí</h3>
+            <p class="text-sm text-zinc-600 mt-1 leading-relaxed">
               Rozezní se hlasitá siréna a vašim blízkým se okamžitě odesílá
               nouzová SMS.
             </p>
@@ -56,32 +56,61 @@ import { Magnet } from "lucide-astro";
 
           <div>
             <span
-              class="text-2xl sm:text-3xl font-extrabold text-slate-400 tracking-tight block"
+              class="text-2xl sm:text-3xl font-extrabold text-zinc-400 tracking-tight block"
             >
               3s
             </span>
-            <h3 class="text-base font-bold text-slate-950 mt-1">Podržení</h3>
-            <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+            <h3 class="text-base font-bold text-zinc-950 mt-1">Podržení</h3>
+            <p class="text-sm text-zinc-600 mt-1 leading-relaxed">
               Byl to omyl? Sirénu ztišíte pomocí tlačítka.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- RIGHT COLUMN: Frameless Interactive Button with Blue Glow (5 cols) -->
+      <!-- RIGHT COLUMN: Frameless Interactive Button with Orange Glow (5 cols) -->
       <div
         class="lg:col-span-5 flex flex-col items-center justify-center relative"
       >
         <div
           class="w-full max-w-md sm:max-w-lg lg:max-w-[480px] relative flex flex-col items-center text-center"
         >
-          <!-- Interactive Button Stage with Radiant Blue Glow -->
+          <!-- Pill Toggle Switch NAHOŘE (Tlačítko / Magnetický profil) 
+          <div
+            class="bg-zinc-100 rounded-full p-1 inline-flex items-center gap-1 mb-4 shadow-sm"
+            role="tablist"
+            aria-label="Přepínač pohledu na tísňové tlačítko"
+          >
+            <button
+              type="button"
+              id="toggle-btn-1"
+              role="tab"
+              aria-selected="true"
+              class="px-4 py-2 rounded-full text-xs font-bold bg-white text-zinc-950 shadow-sm transition-all duration-200 cursor-pointer"
+            >
+              Tlačítko
+            </button>
+
+            
+            <button
+              type="button"
+              id="toggle-btn-2"
+              role="tab"
+              aria-selected="false"
+              class="px-4 py-2 rounded-full text-xs font-medium text-zinc-600 hover:text-zinc-950 transition-all duration-200 cursor-pointer"
+            >
+              Magnetický profil
+            </button>
+          </div>
+          -->
+
+          <!-- Interactive Button Stage with Warm Orange Radiant Glow (Oranžové ozáření bez boxu) -->
           <div
             class="relative w-full h-64 sm:h-72 md:h-80 flex items-center justify-center my-2 select-none"
           >
-            <!-- Modré pozadí jako zářivé ozáření -->
+            <!-- Oranžové pozadí jako ozáření -->
             <div
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-3xl pointer-events-none opacity-85 bg-gradient-to-tr from-blue-600/40 via-sky-400/35 to-indigo-400/25"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-3xl pointer-events-none opacity-85 bg-gradient-to-tr from-orange-500/35 via-amber-500/30 to-yellow-500/15"
             >
             </div>
 
@@ -90,10 +119,39 @@ import { Magnet } from "lucide-astro";
               id="btn-view-1"
               src="/button1.png"
               alt="Tlačítko Vochranka - přední strana s logem"
-              class="absolute inset-0 m-auto max-h-64 sm:max-h-72 md:max-h-80 object-contain transition-all duration-500 ease-out drop-shadow-[0_20px_40px_rgba(2,106,194,0.18)] opacity-100 scale-100"
+              class="absolute inset-0 m-auto max-h-64 sm:max-h-72 md:max-h-80 object-contain transition-all duration-500 ease-out drop-shadow-[0_20px_40px_rgba(0,0,0,0.14)] opacity-100 scale-100"
               loading="eager"
             />
+
+            <!-- View 2: Button 2 (Magnetický profil) 
+            <img
+              id="btn-view-2"
+              src="/button2.png"
+              alt="Tlačítko Vochranka - magnetický profil"
+              class="absolute inset-0 m-auto max-h-64 sm:max-h-72 md:max-h-80 object-contain transition-all duration-500 ease-out drop-shadow-[0_20px_40px_rgba(0,0,0,0.14)] opacity-0 scale-95 pointer-events-none"
+              loading="eager"
+            />
+            -->
           </div>
+
+          <!-- Dynamic Caption below Switcher (vždy na 1 řádce) 
+          <div
+            class="mt-3 min-h-[24px] flex items-center justify-center w-full px-2"
+          >
+            <p
+              id="view-caption-1"
+              class="text-xs sm:text-sm text-zinc-500 whitespace-nowrap transition-opacity duration-300"
+            >
+              Přední strana
+            </p>
+            <p
+              id="view-caption-2"
+              class="text-xs sm:text-sm text-zinc-500 whitespace-nowrap hidden transition-opacity duration-300"
+            >
+              Zadní profil na přilepení
+            </p>
+          </div>
+          -->
 
           <!-- 3 popisky dole: větší text, vždy na jedné řádce bez zalamování -->
           <div
@@ -101,31 +159,31 @@ import { Magnet } from "lucide-astro";
           >
             <div class="px-1 sm:px-2.5">
               <span
-                class="text-sm sm:text-base font-bold text-slate-950 block leading-tight tracking-tight whitespace-nowrap"
+                class="text-sm sm:text-base font-bold text-zinc-950 block leading-tight tracking-tight whitespace-nowrap"
                 >Kompaktní</span
               >
               <span
-                class="text-[11px] sm:text-xs text-slate-500 font-medium block mt-1 whitespace-nowrap"
+                class="text-[11px] sm:text-xs text-zinc-500 font-medium block mt-1 whitespace-nowrap"
                 >4,5 cm</span
               >
             </div>
             <div class="dots-x px-1 sm:px-2.5">
               <span
-                class="text-sm sm:text-base font-bold text-slate-950 block leading-tight tracking-tight whitespace-nowrap"
+                class="text-sm sm:text-base font-bold text-zinc-950 block leading-tight tracking-tight whitespace-nowrap"
                 >Bezstarostné</span
               >
               <span
-                class="text-[11px] sm:text-xs text-slate-500 font-medium block mt-1 whitespace-nowrap"
+                class="text-[11px] sm:text-xs text-zinc-500 font-medium block mt-1 whitespace-nowrap"
                 >až 3 roky</span
               >
             </div>
             <div class="px-1 sm:px-2.5">
               <span
-                class="text-sm sm:text-base font-bold text-slate-950 block leading-tight tracking-tight whitespace-nowrap"
+                class="text-sm sm:text-base font-bold text-zinc-950 block leading-tight tracking-tight whitespace-nowrap"
                 >Kamkoliv</span
               >
               <span
-                class="text-[11px] sm:text-xs text-slate-500 font-medium block mt-1 whitespace-nowrap"
+                class="text-[11px] sm:text-xs text-zinc-500 font-medium block mt-1 whitespace-nowrap"
                 >magnet i přilepení</span
               >
             </div>
@@ -135,14 +193,14 @@ import { Magnet } from "lucide-astro";
     </div>
   </div>
 
-  <!-- Spodní rohová modrá záře navazující do sekce Instalace -->
+  <!-- Spodní rohová světle žlutá záře navazující do sekce Instalace -->
   <div
-    class="absolute -bottom-20 -left-20 sm:-bottom-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-blue-500/20 via-sky-400/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    class="absolute -bottom-20 -left-20 sm:-bottom-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-amber-400/25 via-yellow-300/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
     aria-hidden="true"
   >
   </div>
   <div
-    class="absolute -bottom-20 -right-20 sm:-bottom-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tl from-blue-500/20 via-sky-400/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    class="absolute -bottom-20 -right-20 sm:-bottom-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tl from-amber-400/25 via-yellow-300/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
     aria-hidden="true"
   >
   </div>

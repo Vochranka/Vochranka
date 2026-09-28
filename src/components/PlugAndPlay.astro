@@ -4,21 +4,21 @@
 const installSteps = [
   {
     num: "1",
-    dotClass: "bg-blue-600 shadow-blue-500/30",
+    dotClass: "bg-[#f97316]", // Vibrant orange
     title: "Zapojit",
     lines: ["Zasuňte sirénu a bránu do zásuvky.", "Spárují se samy."],
     desktopClass: "",
   },
   {
     num: "2",
-    dotClass: "bg-sky-400 shadow-sky-400/30",
+    dotClass: "bg-[#fbb03b]", // Warm amber / peach
     title: "Přicvaknout",
     lines: ["Tlačítko drží pod stolem magnetem,", "nebo na tenké destičce."],
     desktopClass: "md:mt-20 lg:mt-24 md:mx-auto",
   },
   {
     num: "3",
-    dotClass: "bg-indigo-500 shadow-indigo-500/30",
+    dotClass: "bg-[#86efac]", // Mint green
     title: "Otestovat",
     lines: ["Dvojklikem vyzkoušíte sirénu i", "doručení SMS."],
     desktopClass: "md:mt-0 md:ml-auto md:translate-x-6 lg:translate-x-12",
@@ -61,23 +61,23 @@ const placementItems = [
   id="instalace"
   class="py-16 md:py-24 bg-white relative overflow-hidden"
 >
-  <!-- Horní rohová modrá záře navazující ze sekce Využití -->
+  <!-- Horní rohová světle žlutá záře navazující ze sekce Využití -->
   <div
-    class="absolute -top-20 -left-20 sm:-top-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-blue-500/20 via-sky-400/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    class="absolute -top-20 -left-20 sm:-top-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-amber-400/25 via-yellow-300/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
     aria-hidden="true"
   ></div>
   <div
-    class="absolute -top-20 -right-20 sm:-top-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-bl from-blue-500/20 via-sky-400/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    class="absolute -top-20 -right-20 sm:-top-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-bl from-amber-400/25 via-yellow-300/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
     aria-hidden="true"
   ></div>
 
-  <!-- Spodní rohová azurová záře navazující do sekce Variabilita -->
+  <!-- Spodní rohová zelená záře navazující do sekce Variabilita -->
   <div
-    class="absolute -bottom-20 -left-20 sm:-bottom-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-sky-400/20 via-blue-500/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    class="absolute -bottom-20 -left-20 sm:-bottom-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-emerald-400/25 via-emerald-300/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
     aria-hidden="true"
   ></div>
   <div
-    class="absolute -bottom-20 -right-20 sm:-bottom-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tl from-sky-400/20 via-blue-500/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    class="absolute -bottom-20 -right-20 sm:-bottom-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tl from-emerald-400/25 via-emerald-300/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
     aria-hidden="true"
   ></div>
 
@@ -87,7 +87,7 @@ const placementItems = [
       <h2
         class="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-extrabold tracking-tight font-display leading-[1.08]"
       >
-        <span class="block text-slate-950">
+        <span class="block text-zinc-950">
           Žádné <span class="relative inline-block">
             vrtání.
             <span
@@ -96,7 +96,7 @@ const placementItems = [
             ></span>
           </span>
         </span>
-        <span class="block text-slate-400 mt-1 sm:mt-2">
+        <span class="block text-zinc-400 mt-1 sm:mt-2">
           Žádné <span class="relative inline-block">
             kabely.
             <span
@@ -107,7 +107,7 @@ const placementItems = [
         </span>
       </h2>
       <p
-        class="text-base sm:text-lg md:text-xl text-slate-600 mt-6 sm:mt-8 font-normal leading-relaxed max-w-xl mx-auto"
+        class="text-base sm:text-lg md:text-xl text-zinc-600 mt-6 sm:mt-8 font-normal leading-relaxed max-w-xl mx-auto"
       >
         Instalace zabere 2 minuty a nepotřebujete žádné nářadí.
       </p>
@@ -115,7 +115,7 @@ const placementItems = [
 
     <!-- 3 kroky vlnovky / timeline (Přicvaknout uprostřed, Zapojit posunuto vpravo) -->
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6">
-      <!-- Desktop křivky (propojovací čárkované linie s plynulým postupným přechodem modrých tónů) -->
+      <!-- Desktop křivky (propojovací čárkované linie s plynulým postupným ztmavováním) -->
       <svg
         class="hidden md:block absolute inset-0 w-full h-full pointer-events-none overflow-visible"
         viewBox="0 0 1000 240"
@@ -124,17 +124,17 @@ const placementItems = [
         aria-hidden="true"
       >
         <defs>
-          <!-- 1. křivka: ze světlé modré do syté královské modré -->
+          <!-- 1. křivka: ze světlé stříbřitě šedé (Zapojit) do středně šedé (Přicvaknout) -->
           <linearGradient id="dash-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#93c5fd" />
-            <stop offset="50%" stop-color="#60a5fa" />
-            <stop offset="100%" stop-color="#2563eb" />
+            <stop offset="0%" stop-color="#cbd5e1" />
+            <stop offset="50%" stop-color="#94a3b8" />
+            <stop offset="100%" stop-color="#64748b" />
           </linearGradient>
 
-          <!-- 2. křivka: z královské modré do tmavého safíru -->
+          <!-- 2. křivka: ze středně šedé (Přicvaknout) plynule navazuje do tmavého grafitu (Otestovat) -->
           <linearGradient id="dash-grad-2" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#2563eb" />
-            <stop offset="50%" stop-color="#1d4ed8" />
+            <stop offset="0%" stop-color="#64748b" />
+            <stop offset="50%" stop-color="#475569" />
             <stop offset="100%" stop-color="#0f172a" />
           </linearGradient>
         </defs>
@@ -166,12 +166,12 @@ const placementItems = [
               <div class={`w-3.5 h-3.5 rounded-full ${step.dotClass} mb-4 shadow-sm`} />
 
               <!-- Název -->
-              <h3 class="text-2xl lg:text-[1.7rem] font-bold text-slate-950 font-display mb-2.5 tracking-tight">
+              <h3 class="text-2xl lg:text-[1.7rem] font-bold text-zinc-950 font-display mb-2.5 tracking-tight">
                 {step.title}
               </h3>
 
               <!-- Popis s přesným zalamováním -->
-              <p class="text-sm lg:text-base text-slate-600 leading-relaxed">
+              <p class="text-sm lg:text-base text-zinc-600 leading-relaxed">
                 {step.lines.map((line, i) => (
                   <span>
                     {line}
@@ -188,11 +188,11 @@ const placementItems = [
       <div class="md:hidden flex flex-col items-center max-w-sm mx-auto px-4 text-center">
         <!-- Krok 1 -->
         <div id="mob-step-1" class="mobile-scroll-reveal flex flex-col items-center text-center">
-          <div class="w-3.5 h-3.5 rounded-full bg-blue-600 mb-3 shadow-sm shadow-blue-500/30" />
-          <h3 class="text-xl font-bold text-slate-950 font-display mb-1.5 tracking-tight">
+          <div class="w-3.5 h-3.5 rounded-full bg-[#f97316] mb-3 shadow-sm" />
+          <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
             Zapojit
           </h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
+          <p class="text-sm text-zinc-600 leading-relaxed">
             Zasuňte sirénu a bránu do zásuvky.<br />Spárují se samy.
           </p>
         </div>
@@ -206,7 +206,7 @@ const placementItems = [
               y1="0"
               x2="1"
               y2="44"
-              stroke="#e2e8f0"
+              stroke="#e4e4e7"
               stroke-width="2"
               stroke-dasharray="3 3"
             />
@@ -217,7 +217,7 @@ const placementItems = [
               y1="0"
               x2="1"
               y2="44"
-              stroke="#3b82f6"
+              stroke="#64748b"
               stroke-width="2"
               stroke-dasharray="3 3"
               style="clip-path: inset(0 0 100% 0);"
@@ -227,11 +227,11 @@ const placementItems = [
 
         <!-- Krok 2 -->
         <div id="mob-step-2" class="mobile-scroll-reveal flex flex-col items-center text-center">
-          <div class="w-3.5 h-3.5 rounded-full bg-sky-400 mb-3 shadow-sm shadow-sky-400/30" />
-          <h3 class="text-xl font-bold text-slate-950 font-display mb-1.5 tracking-tight">
+          <div class="w-3.5 h-3.5 rounded-full bg-[#fbb03b] mb-3 shadow-sm" />
+          <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
             Přicvaknout
           </h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
+          <p class="text-sm text-zinc-600 leading-relaxed">
             Tlačítko drží pod stolem magnetem,<br />nebo na tenké destičce.
           </p>
         </div>
@@ -245,7 +245,7 @@ const placementItems = [
               y1="0"
               x2="1"
               y2="44"
-              stroke="#e2e8f0"
+              stroke="#e4e4e7"
               stroke-width="2"
               stroke-dasharray="3 3"
             />
@@ -256,7 +256,7 @@ const placementItems = [
               y1="0"
               x2="1"
               y2="44"
-              stroke="#1d4ed8"
+              stroke="#334155"
               stroke-width="2"
               stroke-dasharray="3 3"
               style="clip-path: inset(0 0 100% 0);"
@@ -266,11 +266,11 @@ const placementItems = [
 
         <!-- Krok 3 -->
         <div id="mob-step-3" class="mobile-scroll-reveal flex flex-col items-center text-center">
-          <div class="w-3.5 h-3.5 rounded-full bg-indigo-500 mb-3 shadow-sm shadow-indigo-500/30" />
-          <h3 class="text-xl font-bold text-slate-950 font-display mb-1.5 tracking-tight">
+          <div class="w-3.5 h-3.5 rounded-full bg-[#86efac] mb-3 shadow-sm" />
+          <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
             Otestovat
           </h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
+          <p class="text-sm text-zinc-600 leading-relaxed">
             Dvojklikem vyzkoušíte sirénu i<br />doručení SMS.
           </p>
         </div>
@@ -287,26 +287,26 @@ const placementItems = [
   <!-- Kotva pro případné starší odkazy -->
   <div id="variabilita" class="absolute -top-16 left-0 pointer-events-none"></div>
 
-  <!-- Rohová azurová záře -->
+  <!-- Rohová zelená záře -->
   <div
-    class="absolute -top-20 -left-20 sm:-top-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-sky-400/20 via-blue-500/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    class="absolute -top-20 -left-20 sm:-top-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-emerald-400/25 via-emerald-300/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
     aria-hidden="true"
   ></div>
   <div
-    class="absolute -top-20 -right-20 sm:-top-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-bl from-sky-400/20 via-blue-500/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    class="absolute -top-20 -right-20 sm:-top-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-bl from-emerald-400/25 via-emerald-300/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
     aria-hidden="true"
   ></div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <!-- Hlavička sekce -->
     <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-14 md:mb-20">
       <h2
-        class="text-center text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold md:font-extrabold tracking-tight text-slate-950 font-display leading-[1.15] md:leading-[1.12]"
+        class="text-center text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold md:font-extrabold tracking-tight text-zinc-950 font-display leading-[1.15] md:leading-[1.12]"
       >
         Vždy na dosah
       </h2>
       
       <p
-        class="text-center text-base sm:text-base md:text-lg text-slate-600 mt-4 leading-relaxed max-w-sm sm:max-w-xl md:max-w-2xl mx-auto"
+        class="text-center text-base sm:text-base md:text-lg text-zinc-600 mt-4 leading-relaxed max-w-sm sm:max-w-xl md:max-w-2xl mx-auto"
       >
         Na kov drží samo. Jinam nalepíte tenkou destičku. Umístění můžete
         kdykoliv změnit podle toho, kde se právě cítíte nejjistěji.
@@ -327,23 +327,23 @@ const placementItems = [
             <!-- Text nad fotkou -->
             <div class="pb-3 sm:pb-4 md:pb-5 flex flex-col items-center text-center md:items-start md:text-left flex-1">
               <!-- Nadpis -->
-              <h3 class="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-slate-950 mb-1.5 md:mb-2.5 leading-snug">
+              <h3 class="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-zinc-950 mb-1.5 md:mb-2.5 leading-snug">
                 {item.title}
               </h3>
 
               <!-- Popis -->
-              <p class="text-sm sm:text-base text-slate-600 leading-relaxed max-w-sm md:max-w-none">
+              <p class="text-sm sm:text-base text-zinc-600 leading-relaxed max-w-sm md:max-w-none">
                 {item.desc}
               </p>
             </div>
 
             <!-- Obrázek -->
-            <div class="relative w-full aspect-[4/3] sm:aspect-[4/5] md:aspect-[3/4] rounded-2xl md:rounded-[2rem] overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition-all duration-500">
+            <div class="relative w-full aspect-[4/3] sm:aspect-[4/5] md:aspect-[3/4] rounded-2xl md:rounded-[2rem] overflow-hidden bg-zinc-100 shadow-sm group-hover:shadow-md transition-all duration-500">
               <!-- Fotka -->
               <img
                 src={item.image}
                 alt={item.alt}
-                class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700 ease-out"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 loading="lazy"
               />
             </div>
@@ -356,7 +356,7 @@ const placementItems = [
     <div class="flex md:hidden justify-center mt-6">
       <div
         id="slider-indicator"
-        class="flex items-center gap-2.5 py-2 px-4 bg-slate-200/90 rounded-full border border-slate-300/40 shadow-inner"
+        class="flex items-center gap-2.5 py-2 px-4 bg-zinc-200/90 rounded-full border border-zinc-300/40 shadow-inner"
         role="tablist"
         aria-label="Pozice v carouselu"
       >
@@ -366,8 +366,8 @@ const placementItems = [
               type="button"
               class={`dot h-2 rounded-full cursor-pointer transition-all duration-300 p-0 border-0 ${
                 index === 0
-                  ? "w-6 bg-blue-600"
-                  : "w-2 bg-slate-400 hover:bg-slate-600"
+                  ? "w-6 bg-zinc-950"
+                  : "w-2 bg-zinc-400 hover:bg-zinc-600"
               }`}
               data-index={index}
               aria-label={`Přejít na kartu ${index + 1}`}
@@ -379,13 +379,13 @@ const placementItems = [
 
   </div>
 
-  <!-- Spodní rohová modrá záře navazující do sekce FAQ -->
+  <!-- Spodní rohová světle žlutá záře navazující do sekce FAQ -->
   <div
-    class="absolute -bottom-20 -left-20 sm:-bottom-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-blue-500/20 via-sky-400/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    class="absolute -bottom-20 -left-20 sm:-bottom-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-amber-400/25 via-yellow-300/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
     aria-hidden="true"
   ></div>
   <div
-    class="absolute -bottom-20 -right-20 sm:-bottom-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tl from-blue-500/20 via-sky-400/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    class="absolute -bottom-20 -right-20 sm:-bottom-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tl from-amber-400/25 via-yellow-300/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
     aria-hidden="true"
   ></div>
 </section>
@@ -544,11 +544,11 @@ const placementItems = [
     function setActive(activeIndex) {
       dots.forEach((dot, index) => {
         if (index === activeIndex) {
-          dot.classList.remove('w-2', 'bg-slate-400');
-          dot.classList.add('w-6', 'bg-blue-600');
+          dot.classList.remove('w-2', 'bg-zinc-400');
+          dot.classList.add('w-6', 'bg-zinc-950');
         } else {
-          dot.classList.remove('w-6', 'bg-blue-600');
-          dot.classList.add('w-2', 'bg-slate-400');
+          dot.classList.remove('w-6', 'bg-zinc-950');
+          dot.classList.add('w-2', 'bg-zinc-400');
         }
       });
     }

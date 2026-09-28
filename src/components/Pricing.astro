@@ -173,11 +173,10 @@
 
 <style>
   :root {
-    --ink: #0f172a;
-    --mute: #475569;
-    --line: #e2e8f0;
-    --soft: #f8fafc;
-    --brand-blue: #026ac2;
+    --ink: #0a0a0a;
+    --mute: #5f5f68;
+    --line: #ececf0;
+    --soft: #f7f7f9;
   }
 
   .cenik-section {
@@ -185,10 +184,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #f8faff;
+    background: #fffdf8;
     background-image:
-      radial-gradient(60% 50% at 0% 0%, #e0f2fe, transparent 70%),
-      radial-gradient(60% 50% at 100% 100%, #ede9fe, transparent 70%);
+      radial-gradient(60% 50% at 0% 0%, #fff1d6, transparent 70%),
+      radial-gradient(60% 50% at 100% 100%, #e9fbf3, transparent 70%);
     background-attachment: scroll;
     font-family:
       "Cantarell",
@@ -261,8 +260,8 @@
     background: #fff;
     border-radius: 28px;
     box-shadow:
-      0 20px 60px rgba(2, 106, 194, 0.08),
-      0 0 0 1px #dbeafe;
+      0 20px 60px rgba(0, 0, 0, 0.08),
+      0 0 0 1px var(--line);
     overflow: hidden;
   }
 
@@ -308,15 +307,14 @@
   }
 
   .hero {
-    background: linear-gradient(145deg, #071328 0%, #0c234a 100%);
+    background: var(--ink);
     color: #fff;
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .hero .label,
   .hero .note,
   .hero .amount small {
-    color: #93c5fd;
+    color: #b9b9c2;
   }
 
   .badge {
@@ -326,9 +324,8 @@
     margin-bottom: 12px;
     padding: 6px 12px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background: #fff;
+    color: var(--ink);
     font-size: 13px;
     font-weight: 700;
   }
@@ -337,8 +334,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #38bdf8;
-    box-shadow: 0 0 8px #38bdf8;
+    background: #22c55e;
     display: inline-block;
   }
 
@@ -349,7 +345,7 @@
   .yearly {
     margin-top: 10px;
     font-size: 14px;
-    color: #dbeafe;
+    color: #d8d8de;
   }
 
   .lists {
@@ -414,7 +410,7 @@
 
   li svg {
     margin-top: 2px;
-    stroke: #026ac2;
+    stroke: var(--ink);
   }
 
   .foot {
@@ -434,7 +430,7 @@
   }
 
   .total b {
-    color: #026ac2;
+    color: var(--ink);
     font-size: 17px;
     margin-left: 6px;
     font-weight: 700;
@@ -446,7 +442,7 @@
     gap: 10px;
     padding: 14px 26px;
     border-radius: 999px;
-    background: #026ac2;
+    background: var(--ink);
     color: #fff;
     font:
       700 15px "Cantarell",
@@ -455,19 +451,15 @@
     text-decoration: none;
     transition:
       transform 0.2s,
-      background-color 0.2s,
-      box-shadow 0.2s;
-    box-shadow: 0 4px 14px rgba(2, 106, 194, 0.35);
+      background-color 0.2s;
   }
 
   .btn:hover {
-    background: #03549e;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(2, 106, 194, 0.45);
+    background: #27272a;
   }
 
   .btn:focus-visible {
-    outline: 3px solid #026ac2;
+    outline: 3px solid var(--ink);
     outline-offset: 3px;
   }
 
