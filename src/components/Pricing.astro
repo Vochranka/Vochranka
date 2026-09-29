@@ -1,547 +1,317 @@
 ---
 // src/components/Pricing.astro
+import {
+  ChevronDown,
+  Battery,
+  BookOpen,
+  MessageSquare,
+  Activity,
+  BatteryWarning,
+  Headphones,
+  Signal,
+  ArrowRight,
+} from "lucide-astro";
+
+const hardwareItems = [
+  {
+    image: "/button1.png",
+    alt: "Tísňové tlačítko",
+    label: "1× Tlačítko",
+  },
+  {
+    image: "/siren.png",
+    alt: "Brána se sirénou",
+    label: "1× Siréna",
+  },
+  {
+    image: "/button2.png",
+    alt: "Magnetické uchycení a 3M destička",
+    label: "1× Magnetické uchycení",
+    desc: "Drží na kovu samo. Na dřevěný stůl nalepíte tenkou kovovou 3M destičku z balení.",
+  },
+  {
+    icon: Battery,
+    alt: "Baterie",
+    label: "1× Baterie",
+  },
+];
+
+const serviceItems = [
+  {
+    tag: "SMS",
+    title: "Neomezené tísňové SMS",
+    subtitle: "Až 3 vybrané kontakty",
+    detail: "Okamžité doručení rodině nebo kolegům do 2 vteřin od stisku.",
+    icon: MessageSquare,
+    badge: "Neomezeně",
+  },
+  {
+    tag: "Dohled",
+    title: "24/7 monitoring spojení",
+    subtitle: "Nepřetržitá kontrola",
+    detail: "Automatický dohled nad funkčností brány a dostupností sítě.",
+    icon: Activity,
+    badge: "24/7",
+  },
+  {
+    tag: "Baterie",
+    title: "Hlídání stavu baterie",
+    subtitle: "Upozornění pod 15 %",
+    detail: "Včasná SMS zpráva s předstihem několika týdnů před vybitím.",
+    icon: BatteryWarning,
+    badge: "Automaticky",
+  },
+  {
+    tag: "Data",
+    title: "Zabezpečená SIM a data",
+    subtitle: "Šifrovaný přenos",
+    detail: "Bezstarostné spojení bez nutnosti řešit vlastní mobilní tarif.",
+    icon: Signal,
+    badge: "V ceně",
+  },
+  {
+    tag: "Podpora",
+    title: "Česká telefonická podpora",
+    subtitle: "Osobní přístup",
+    detail: "Rychlá pomoc na telefonu i e-mailu kdykoliv potřebujete.",
+    icon: Headphones,
+    badge: "V češtině",
+  },
+];
 ---
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="ck" viewBox="0 0 24 24">
-    <path
-      d="M5 12l5 5 9-10"
-      fill="none"
-      stroke-width="2.2"
-      stroke-linecap="round"
-      stroke-linejoin="round"></path>
-  </symbol>
-</svg>
-
-<section id="cenik" class="cenik-section">
-  <div class="wrap">
-    <header class="head">
-      <h2>
-        Jedna kompletní sada.<br />
-        <span>Klid a bezpečí na každý pracovní den.</span>
+<section
+  id="cenik"
+  class="py-16 sm:py-24 lg:py-28 bg-[#f4f3f0] relative overflow-hidden"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+      <h2
+        class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-950 font-display leading-[1.12]"
+      >
+        Jednoduchá cena.<br />
+        <span class="text-[#63625C]">Bez skrytých kliček.</span>
       </h2>
-      <p class="lead">
-        Žádné skryté poplatky za instalaci ani drahé montážní firmy. Jednorázový
-        nákup hardwaru a roční provoz za cenu jedné kávy měsíčně.
+      <p class="text-sm sm:text-base text-zinc-600 mt-3 leading-relaxed">
+        Hardware navždy ve vašem vlastnictví. Žádné pronájmy ani montážní
+        poplatky.
       </p>
-    </header>
+    </div>
 
-    <div class="card" aria-label="Ceník">
-      <div class="prices">
-        <div class="price">
-          <p class="label">Hardware (jednorázově)</p>
-          <div class="amount"><b>2 000 Kč</b><small>vč. DPH</small></div>
-          <p class="note">
-            Celá sada je vaším trvalým majetkem. Žádný pronájem.
-          </p>
-        </div>
-        <div class="price hero">
-          <span class="badge"><i></i>Provoz pod 100 Kč měsíčně</span>
-          <p class="label">Provoz &amp; spojení</p>
-          <div class="amount"><b>82 Kč</b><small>/ měsíc</small></div>
-          <p class="yearly">
-            Platí se jednou ročně: <strong>990 Kč</strong> · neomezené tísňové SMS,
-            dohled a podpora.
-          </p>
-        </div>
-      </div>
-
-      <div class="lists">
-        <div class="col">
-          <button
-            type="button"
-            class="col-header"
-            aria-expanded="false"
-            aria-controls="hardware-list"
-          >
-            <h3>Co obsahuje fyzická sada</h3>
-            <svg
-              class="col-chevron"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+    <!-- Apple-style minimalistická karta -->
+    <div
+      class="bg-white rounded-3xl p-6 sm:p-10 md:p-12 border border-zinc-200/90 shadow-sm transition-all duration-300"
+    >
+      <div class="max-w-2xl mx-auto space-y-9">
+        <!-- 1. Hardware 1 999 Kč / jednorázově -->
+        <div>
+          <div class="flex items-baseline flex-wrap gap-x-2.5 gap-y-1">
+            <span
+              class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-950 font-display"
             >
-              <path d="M6 9l6 6 6-6"></path>
-            </svg>
-          </button>
-          <div class="col-content" id="hardware-list">
-            <ul>
-              <li>
-                <svg width="18" height="18"><use href="#ck"></use></svg>
-                1× Diskrétní bezdrátové tlačítko (průměr 35 mm)
-              </li>
-              <li>
-                <svg width="18" height="18"><use href="#ck"></use></svg>
-                Předinstalovaná baterie s výdrží 2–3 roky
-              </li>
-              <li>
-                <svg width="18" height="18"><use href="#ck"></use></svg>
-                1× Výkonná zásuvková siréna (110 dB) a brána
-              </li>
-              <li>
-                <svg width="18" height="18"><use href="#ck"></use></svg>
-                Průmyslová 3M oboustranná páska pro pevnou montáž
-              </li>
-              <li>
-                <svg width="18" height="18"><use href="#ck"></use></svg>
-                Český obrázkový manuál (zprovoznění do 2 minut)
-              </li>
-              <li>
-                <svg width="18" height="18"><use href="#ck"></use></svg>
-                Záruka 24 měsíců + okamžitá výměna kus za kus
-              </li>
-            </ul>
+              1 999 Kč
+            </span>
+            <span
+              class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#63625C] font-display"
+            >
+              / jednorázově
+            </span>
+            <span class="text-xs text-zinc-400 font-medium ml-1">vč. DPH</span>
+          </div>
+          <p class="text-xs sm:text-sm text-zinc-600 mt-1.5">
+            Celá fyzická sada Vochranka je váš trvalý majetek.
+          </p>
+          <div class="mt-4">
+            <button
+              type="button"
+              id="toggle-hardware-drawer"
+              aria-expanded="false"
+              class="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200/80 active:scale-[0.98] text-xs font-semibold text-zinc-800 transition-all cursor-pointer"
+            >
+              <span>Co sada obsahuje</span>
+              <ChevronDown
+                class="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-900 transition-transform duration-300"
+                id="hardware-chevron"
+              />
+            </button>
+          </div>
+
+          <!-- Výsuvný blok: Hardware položky (přehledná mřížka bez scrollování) -->
+          <div
+            id="hardware-drawer"
+            class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out"
+          >
+            <div class="overflow-hidden">
+              <div class="pt-6">
+                <div
+                  class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 items-start"
+                >
+                  {
+                    hardwareItems.map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <div class="flex flex-col items-center text-center">
+                          <div class="h-24 sm:h-28 w-full flex items-center justify-center mb-2.5">
+                            {item.image ? (
+                              <img
+                                src={item.image}
+                                alt={item.alt}
+                                class="max-h-24 sm:max-h-28 max-w-full object-contain drop-shadow-sm select-none"
+                                loading="lazy"
+                              />
+                            ) : (
+                              <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-zinc-100/90 flex items-center justify-center text-zinc-800">
+                                <Icon class="w-6 h-6 sm:w-7 sm:h-7 stroke-[1.8]" />
+                              </div>
+                            )}
+                          </div>
+                          <span class="text-xs sm:text-sm font-bold text-zinc-950 font-display">
+                            {item.label}
+                          </span>
+                          {item.desc && (
+                            <p class="text-[11px] text-zinc-500 mt-1 leading-snug">
+                              {item.desc}
+                            </p>
+                          )}
+                        </div>
+                      );
+                    })
+                  }
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col">
-          <button
-            type="button"
-            class="col-header"
-            aria-expanded="false"
-            aria-controls="service-list"
-          >
-            <h3>Co zahrnuje roční provoz</h3>
-            <svg
-              class="col-chevron"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+
+        <!-- 2. Provoz 990 Kč / ročně -->
+        <div>
+          <div class="flex items-baseline flex-wrap gap-x-2.5 gap-y-1">
+            <span
+              class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-950 font-display"
             >
-              <path d="M6 9l6 6 6-6"></path>
-            </svg>
-          </button>
-          <div class="col-content" id="service-list">
-            <ul>
-              <li>
-                <svg width="18" height="18"><use href="#ck"></use></svg>
-                Neomezené nouzové SMS na až 3 zvolené kontakty
-              </li>
-              <li>
-                <svg width="18" height="18"><use href="#ck"></use></svg>
-                Nepřetržitý automatický monitoring spojení 24/7
-              </li>
-              <li>
-                <svg width="18" height="18"><use href="#ck"></use></svg>
-                Včasné SMS upozornění, když baterie klesne pod 15 %
-              </li>
-              <li>
-                <svg width="18" height="18"><use href="#ck"></use></svg>
-                Prioritní česká telefonická a e-mailová podpora
-              </li>
-              <li>
-                <svg width="18" height="18"><use href="#ck"></use></svg>
-                Žádné měsíční faktury – platí se jednou ročně
-              </li>
-            </ul>
+              990 Kč
+            </span>
+            <span
+              class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#63625C] font-display"
+            >
+              / ročně
+            </span>
+            <span class="text-xs text-zinc-400 font-medium ml-1"
+              >vč. DPH (82 Kč / měsíc)</span
+            >
+          </div>
+          <p class="text-xs sm:text-sm text-zinc-600 mt-1.5">
+            Neomezené tísňové SMS rodině, 24/7 monitoring a datové přenosy.
+          </p>
+          <div class="mt-4">
+            <button
+              type="button"
+              id="toggle-service-drawer"
+              aria-expanded="false"
+              class="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200/80 active:scale-[0.98] text-xs font-semibold text-zinc-800 transition-all cursor-pointer"
+            >
+              <span>Co provoz zahrnuje</span>
+              <ChevronDown
+                class="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-900 transition-transform duration-300"
+                id="service-chevron"
+              />
+            </button>
+          </div>
+
+          <!-- Výsuvný blok: Provoz položky (přehledný seznam/mřížka bez scrollování) -->
+          <div
+            id="service-drawer"
+            class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out"
+          >
+            <div class="overflow-hidden">
+              <div class="pt-6">
+                <div
+                  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 items-start text-left"
+                >
+                  {
+                    serviceItems.map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <div class="flex items-start gap-3">
+                          <div class="w-9 h-9 rounded-xl bg-zinc-100 flex items-center justify-center shrink-0 text-zinc-900 mt-0.5">
+                            <Icon class="w-4 h-4 stroke-[1.8]" />
+                          </div>
+                          <div>
+                            <h4 class="text-xs sm:text-sm font-bold text-zinc-950 font-display">
+                              {item.title}
+                            </h4>
+                            <p class="text-[11px] text-zinc-500 leading-snug mt-0.5">
+                              {item.detail}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    })
+                  }
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="foot">
-        <div class="total">
-          První rok celkem<b>2 990 Kč vč. DPH</b>
-        </div>
-        <a class="btn" href="#kontakt">
-          Kontaktovat
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+        <!-- Tlačítko Kontaktovat přímo dole -->
+        <div class="pt-6 flex flex-col items-center justify-center gap-3">
+          <a
+            href="#kontakt"
+            class="w-full sm:w-auto min-w-[260px] inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-zinc-950 text-white font-semibold text-base hover:bg-zinc-800 active:scale-[0.99] transition-all shadow-md hover:shadow-lg"
           >
-            <path d="M5 12h14M13 6l6 6-6 6"></path>
-          </svg>
-        </a>
+            <span>Kontaktovat</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <p class="text-xs text-zinc-400 text-center">
+            Nezávazná poptávka • Rádi vám vše předvedeme nebo zodpovíme dotazy
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<style>
-  :root {
-    --ink: #0a0a0a;
-    --mute: #5f5f68;
-    --line: #ececf0;
-    --soft: #f7f7f9;
-  }
-
-  .cenik-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #fffdf8;
-    background-image:
-      radial-gradient(60% 50% at 0% 0%, #fff1d6, transparent 70%),
-      radial-gradient(60% 50% at 100% 100%, #e9fbf3, transparent 70%);
-    background-attachment: scroll;
-    font-family:
-      "Cantarell",
-      system-ui,
-      -apple-system,
-      "Segoe UI",
-      sans-serif;
-    color: var(--ink);
-    padding: 4rem 1rem;
-    box-sizing: border-box;
-    position: relative;
-    width: 100%;
-  }
-
-  @media (min-width: 768px) {
-    .cenik-section {
-      padding: 6rem 1.5rem;
-    }
-  }
-
-  .wrap {
-    width: 100%;
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: clamp(14px, 3vh, 28px);
-    box-sizing: border-box;
-  }
-
-  .head {
-    text-align: center;
-  }
-
-  .pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 14px;
-    border: 1px solid var(--line);
-    background: #fff;
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 700;
-  }
-
-  h2 {
-    font-size: clamp(28px, 4.6vw, 44px);
-    line-height: 1.05;
-    letter-spacing: -0.04em;
-    margin: 14px 0 0;
-    font-weight: 700;
-  }
-
-  h2 span {
-    color: var(--mute);
-  }
-
-  .lead {
-    color: var(--mute);
-    font-size: 16px;
-    line-height: 1.5;
-    max-width: 560px;
-    margin: 12px auto 0;
-  }
-
-  .card {
-    background: #fff;
-    border-radius: 28px;
-    box-shadow:
-      0 20px 60px rgba(0, 0, 0, 0.08),
-      0 0 0 1px var(--line);
-    overflow: hidden;
-  }
-
-  .prices {
-    display: grid;
-    grid-template-columns: 1fr 1.15fr;
-  }
-
-  .price {
-    padding: 26px 34px;
-  }
-
-  .label {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--mute);
-    margin: 0 0 8px;
-  }
-
-  .amount {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .amount b {
-    font-size: clamp(36px, 5vw, 48px);
-    letter-spacing: -0.04em;
-    line-height: 1;
-  }
-
-  .amount small {
-    font-size: 14px;
-    color: var(--mute);
-  }
-
-  .note {
-    margin: 10px 0 0;
-    font-size: 14px;
-    line-height: 1.45;
-    color: var(--mute);
-  }
-
-  .hero {
-    background: var(--ink);
-    color: #fff;
-  }
-
-  .hero .label,
-  .hero .note,
-  .hero .amount small {
-    color: #b9b9c2;
-  }
-
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 12px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: #fff;
-    color: var(--ink);
-    font-size: 13px;
-    font-weight: 700;
-  }
-
-  .badge i {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #22c55e;
-    display: inline-block;
-  }
-
-  .hero .amount b {
-    font-size: clamp(44px, 6.4vw, 64px);
-  }
-
-  .yearly {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #d8d8de;
-  }
-
-  .lists {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-top: 1px solid var(--line);
-  }
-
-  .col {
-    padding: 22px 34px;
-  }
-
-  .col + .col {
-    border-left: 1px solid var(--line);
-  }
-
-  .col-header {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    color: inherit;
-    text-align: left;
-    width: 100%;
-    cursor: default;
-    pointer-events: none;
-    display: block;
-  }
-
-  .col-chevron {
-    display: none;
-  }
-
-  .col-content {
-    display: block !important;
-  }
-
-  .col h3 {
-    font-size: 16px;
-    margin: 0 0 12px;
-    font-weight: 700;
-    color: var(--ink);
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 9px;
-  }
-
-  li {
-    display: grid;
-    grid-template-columns: 18px 1fr;
-    gap: 10px;
-    font-size: 14.5px;
-    line-height: 1.4;
-    color: var(--mute);
-  }
-
-  li svg {
-    margin-top: 2px;
-    stroke: var(--ink);
-  }
-
-  .foot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-    padding: 18px 34px;
-    background: var(--soft);
-    border-top: 1px solid var(--line);
-  }
-
-  .total {
-    font-size: 14px;
-    color: var(--mute);
-  }
-
-  .total b {
-    color: var(--ink);
-    font-size: 17px;
-    margin-left: 6px;
-    font-weight: 700;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 26px;
-    border-radius: 999px;
-    background: var(--ink);
-    color: #fff;
-    font:
-      700 15px "Cantarell",
-      system-ui,
-      sans-serif;
-    text-decoration: none;
-    transition:
-      transform 0.2s,
-      background-color 0.2s;
-  }
-
-  .btn:hover {
-    background: #27272a;
-  }
-
-  .btn:focus-visible {
-    outline: 3px solid var(--ink);
-    outline-offset: 3px;
-  }
-
-  @media (max-width: 760px) {
-    .prices,
-    .lists {
-      grid-template-columns: 1fr;
-    }
-    .col + .col {
-      border-left: 0;
-      border-top: 1px solid var(--line);
-    }
-    .price,
-    .col,
-    .foot {
-      padding-left: 22px;
-      padding-right: 22px;
-    }
-    .col {
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-    .col-header {
-      pointer-events: auto;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 0;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .col-header h3 {
-      margin: 0;
-      font-size: 15.5px;
-    }
-    .col-chevron {
-      display: block;
-      stroke: var(--mute);
-      transition: transform 0.25s ease;
-      flex-shrink: 0;
-    }
-    .col-header[aria-expanded="true"] .col-chevron {
-      transform: rotate(180deg);
-      stroke: var(--ink);
-    }
-    .col-content {
-      display: none !important;
-      padding-bottom: 20px;
-    }
-    .col-header[aria-expanded="true"] + .col-content {
-      display: block !important;
-    }
-    .foot {
-      flex-direction: column;
-      align-items: stretch;
-      text-align: center;
-    }
-    .btn {
-      justify-content: center;
-    }
-  }
-</style>
-
 <script>
-  function initPricingAccordion() {
-    const headers = document.querySelectorAll<HTMLButtonElement>(".col-header");
-    headers.forEach((header) => {
-      if (header.dataset.accordionInit) return;
-      header.dataset.accordionInit = "true";
+  function setupDrawer(btnId: string, drawerId: string, chevronId: string) {
+    const btn = document.getElementById(btnId);
+    const drawer = document.getElementById(drawerId);
+    const chevron = document.getElementById(chevronId);
 
-      header.addEventListener("click", () => {
-        const isExpanded = header.getAttribute("aria-expanded") === "true";
-        header.setAttribute("aria-expanded", String(!isExpanded));
-      });
+    if (!btn || !drawer || btn.dataset.drawerInit) return;
+    btn.dataset.drawerInit = "true";
+
+    btn.addEventListener("click", () => {
+      const isExpanded = btn.getAttribute("aria-expanded") === "true";
+      const nextState = !isExpanded;
+      btn.setAttribute("aria-expanded", String(nextState));
+
+      if (nextState) {
+        drawer.classList.remove("grid-rows-[0fr]");
+        drawer.classList.add("grid-rows-[1fr]");
+        if (chevron) chevron.classList.add("rotate-180");
+      } else {
+        drawer.classList.remove("grid-rows-[1fr]");
+        drawer.classList.add("grid-rows-[0fr]");
+        if (chevron) chevron.classList.remove("rotate-180");
+      }
     });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initPricingAccordion);
-  } else {
-    initPricingAccordion();
+  function initPricingDrawers() {
+    setupDrawer(
+      "toggle-hardware-drawer",
+      "hardware-drawer",
+      "hardware-chevron",
+    );
+    setupDrawer("toggle-service-drawer", "service-drawer", "service-chevron");
   }
-  document.addEventListener("astro:page-load", initPricingAccordion);
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPricingDrawers);
+  } else {
+    initPricingDrawers();
+  }
+  document.addEventListener("astro:page-load", initPricingDrawers);
 </script>
