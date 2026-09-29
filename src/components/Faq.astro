@@ -47,72 +47,70 @@ const faqs = [
   </div>
 
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <!-- Section Header -->
-    <div class="text-center max-w-2xl mx-auto mb-14">
-      <span
-        class="text-xs font-mono tracking-[0.2em] text-zinc-400 uppercase font-medium block mb-3"
-      >
-        Časté dotazy
-      </span>
+    <!-- Section Header (Podle předlohy: velký čistý nadpis a decentní podtitul) -->
+    <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
       <h2
-        class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-950 mb-4"
+        class="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold tracking-tight text-zinc-950 font-display leading-[1.08] uppercase"
       >
         Často kladené otázky
       </h2>
-      <p class="text-base sm:text-lg text-zinc-600 leading-relaxed">
-        Odpovědi na nejčastější dotazy masérek a terapeutek před pořízením
-        Vochranky.
+      <p class="text-base sm:text-lg md:text-xl text-zinc-500 mt-4 font-normal leading-relaxed">
+        Rychlé odpovědi na nejčastější dotazy.
       </p>
     </div>
 
-    <!-- Accordion List -->
-    <div class="space-y-4" id="faq-accordion-container">
+    <!-- Accordion List v minimalistickém stylu s fialovým "+" vlevo a jemnými dělícími linkami -->
+    <div class="border-t border-zinc-200/90 divide-y divide-zinc-200/90" id="faq-accordion-container">
       {
         faqs.map((faq, index) => (
-          <div class="faq-item rounded-2xl bg-zinc-50 border border-zinc-200 shadow-sm transition-all duration-200 overflow-hidden">
+          <div class="faq-item group">
             <button
               type="button"
-              class="faq-button w-full px-6 py-5 text-left flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-zinc-400 cursor-pointer"
-              aria-expanded={index === 0 ? "true" : "false"}
+              class="faq-button w-full py-6 sm:py-7 text-left flex items-start gap-4 sm:gap-5 focus:outline-none cursor-pointer transition-colors duration-200 select-none"
+              aria-expanded="false"
               aria-controls={`faq-answer-${index}`}
             >
-              <span class="text-base sm:text-lg font-semibold text-zinc-950">
+              <!-- Fialový + symbol, který se při otevření plynule otočí do x -->
+              <span
+                class="faq-icon text-[#8b5cf6] text-2xl sm:text-3xl font-light leading-none select-none shrink-0 transition-transform duration-300 ease-out inline-block w-6 text-center"
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+              <!-- Text otázky -->
+              <span class="text-lg sm:text-xl md:text-[1.35rem] font-semibold text-zinc-950 tracking-tight leading-snug group-hover:text-zinc-800 transition-colors">
                 {faq.q}
               </span>
-              <div class="w-8 h-8 rounded-full bg-white border border-zinc-200 text-zinc-800 flex items-center justify-center shrink-0 transition-transform duration-200 faq-icon shadow-xs">
-                <ChevronDown
-                  class={`w-4 h-4 transition-transform duration-200 ${index === 0 ? "rotate-180" : ""}`}
-                />
-              </div>
             </button>
 
+            <!-- Hladce vysouvací kontejner s CSS grid animací -->
             <div
               id={`faq-answer-${index}`}
-              class={`faq-answer px-6 pb-6 pt-1 text-sm sm:text-base text-zinc-600 leading-relaxed border-t border-zinc-200 ${index === 0 ? "block" : "hidden"}`}
+              class="faq-drawer grid grid-rows-[0fr] transition-[grid-template-rows] duration-350 ease-out"
             >
-              {faq.a}
+              <div class="overflow-hidden">
+                <div class="faq-content opacity-0 -translate-y-1.5 transition-all duration-300 ease-out pb-7 pl-10 sm:pl-11 pr-2 sm:pr-8 text-base sm:text-lg text-zinc-500 leading-relaxed font-normal">
+                  {faq.a}
+                </div>
+              </div>
             </div>
           </div>
         ))
       }
     </div>
 
-    <!-- Extra assistance card -->
-    <div
-      class="mt-12 text-center p-6 rounded-2xl bg-zinc-50 border border-zinc-200"
-    >
-      <h3 class="text-sm font-bold text-zinc-950 mb-1">
-        Máte specifický dotaz k vašemu salónu?
-      </h3>
-      <p class="text-xs sm:text-sm text-zinc-600 mb-3">
-        Rádi vám poradíme individuálně po telefonu nebo na WhatsAppu.
+    <!-- Spodní doplňující text -->
+    <div class="mt-14 text-center">
+      <p class="text-sm sm:text-base text-zinc-500">
+        Máte jiný dotaz?{" "}
+        <a
+          href="#kontakt"
+          class="text-zinc-950 font-semibold underline underline-offset-4 hover:text-zinc-700 transition-colors"
+        >
+          Napište nám v poptávkovém formuláři
+        </a>
       </p>
-      <a
-        href="#objednavka"
-        class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-zinc-950 hover:text-zinc-700 underline underline-offset-4"
-      >
-        Napište nám v poptávkovém formuláři níže ↓
-      </a>
     </div>
   </div>
 </section>
@@ -123,28 +121,58 @@ const faqs = [
   faqButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const isExpanded = btn.getAttribute("aria-expanded") === "true";
-      const answer = btn.nextElementSibling;
-      const chevron = btn.querySelector(".faq-icon svg");
+      const drawer = btn.nextElementSibling as HTMLElement | null;
+      const content = drawer?.querySelector(".faq-content") as HTMLElement | null;
+      const icon = btn.querySelector(".faq-icon") as HTMLElement | null;
 
-      // Close other answers for clean accordion UX
+      // Zavřít ostatní otevřené položky s plynulou animací
       faqButtons.forEach((otherBtn) => {
         if (otherBtn !== btn) {
           otherBtn.setAttribute("aria-expanded", "false");
-          const otherAnswer = otherBtn.nextElementSibling;
-          const otherChevron = otherBtn.querySelector(".faq-icon svg");
-          if (otherAnswer) otherAnswer.classList.add("hidden");
-          if (otherChevron) otherChevron.classList.remove("rotate-180");
+          const otherDrawer = otherBtn.nextElementSibling as HTMLElement | null;
+          const otherContent = otherDrawer?.querySelector(".faq-content") as HTMLElement | null;
+          const otherIcon = otherBtn.querySelector(".faq-icon") as HTMLElement | null;
+
+          if (otherDrawer) {
+            otherDrawer.classList.remove("grid-rows-[1fr]");
+            otherDrawer.classList.add("grid-rows-[0fr]");
+          }
+          if (otherContent) {
+            otherContent.classList.remove("opacity-100", "translate-y-0");
+            otherContent.classList.add("opacity-0", "-translate-y-1.5");
+          }
+          if (otherIcon) {
+            otherIcon.classList.remove("rotate-45");
+          }
         }
       });
 
       if (isExpanded) {
         btn.setAttribute("aria-expanded", "false");
-        if (answer) answer.classList.add("hidden");
-        if (chevron) chevron.classList.remove("rotate-180");
+        if (drawer) {
+          drawer.classList.remove("grid-rows-[1fr]");
+          drawer.classList.add("grid-rows-[0fr]");
+        }
+        if (content) {
+          content.classList.remove("opacity-100", "translate-y-0");
+          content.classList.add("opacity-0", "-translate-y-1.5");
+        }
+        if (icon) {
+          icon.classList.remove("rotate-45");
+        }
       } else {
         btn.setAttribute("aria-expanded", "true");
-        if (answer) answer.classList.remove("hidden");
-        if (chevron) chevron.classList.add("rotate-180");
+        if (drawer) {
+          drawer.classList.remove("grid-rows-[0fr]");
+          drawer.classList.add("grid-rows-[1fr]");
+        }
+        if (content) {
+          content.classList.remove("opacity-0", "-translate-y-1.5");
+          content.classList.add("opacity-100", "translate-y-0");
+        }
+        if (icon) {
+          icon.classList.add("rotate-45");
+        }
       }
     });
   });
