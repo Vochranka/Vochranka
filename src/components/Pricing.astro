@@ -82,16 +82,29 @@ const serviceItems = [
 
 <section
   id="cenik"
-  class="py-16 sm:py-24 lg:py-28 bg-[#f4f3f0] relative overflow-hidden"
+  class="py-24 sm:py-32 md:py-36 bg-white relative overflow-hidden"
 >
+  <!-- Fialová záře na levé straně -->
+  <div
+    class="absolute top-1/2 -left-32 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-r from-purple-500/20 via-violet-400/10 to-transparent blur-[80px] sm:blur-[100px] pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
+
+  <!-- Fialová záře na pravé straně -->
+  <div
+    class="absolute top-1/2 -right-32 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-l from-purple-500/20 via-violet-400/10 to-transparent blur-[80px] sm:blur-[100px] pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
+
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <!-- Header -->
     <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
       <h2
         class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-950 font-display leading-[1.12]"
       >
-        Jednoduchá cena.<br />
-        <span class="text-[#63625C]">Bez skrytých kliček.</span>
+        Ceník<br />
       </h2>
       <p class="text-sm sm:text-base text-zinc-600 mt-3 leading-relaxed">
         Hardware navždy ve vašem vlastnictví. Žádné pronájmy ani montážní
@@ -117,7 +130,6 @@ const serviceItems = [
             >
               / jednorázově
             </span>
-            <span class="text-xs text-zinc-400 font-medium ml-1">vč. DPH</span>
           </div>
           <p class="text-xs sm:text-sm text-zinc-600 mt-1.5">
             Celá fyzická sada Vochranka je váš trvalý majetek.
@@ -197,8 +209,8 @@ const serviceItems = [
             >
               / ročně
             </span>
-            <span class="text-xs text-zinc-400 font-medium ml-1"
-              >vč. DPH (82 Kč / měsíc)</span
+            <span class="text-s text-[#c1471e] font-medium ml-1">
+              (82 Kč / měsíc)</span
             >
           </div>
           <p class="text-xs sm:text-sm text-zinc-600 mt-1.5">
