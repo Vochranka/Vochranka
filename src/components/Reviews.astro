@@ -1,0 +1,84 @@
+---
+// src/components/Reviews.astro
+
+interface Review {
+  author: string;
+  role: string;
+  salon: string;
+  text: string;
+  rating: number;
+  tag: string;
+}
+
+const reviews: Review[] = [
+  {
+    author: "Lenka M.",
+    role: "Masérka, Praha 2",
+    salon: "Studio Relax & Tělo",
+    text: "Pracuji sama do večerních hodin. Tlačítko mám přímo zespodu rámu lehátka, nahmatám ho poslepu. Už jen to vědomí, že stačí 2x kliknout a manželovi pípne SMS a v salonu začne řvát siréna, mi dává neuvěřitelný klid.",
+    rating: 5,
+    tag: "Ověřená masérka",
+  },
+  {
+    author: "Barbora K.",
+    role: "Kosmetička a lash stylistka",
+    salon: "Beauty Privé, Brno",
+    text: "Bála jsem se složitého nastavování a vrtání do nábytku. Tlačítko jsem jen přicvakla na magnet a bránu píchla do zásuvky. Za 3 minuty hotovo. Skvělý minimalistický design, který klient vůbec nevidí.",
+    rating: 5,
+    tag: "Rychlá instalace",
+  },
+  {
+    author: "MUDr. Klára V.",
+    role: "Fyzioterapeutka v privátní praxi",
+    salon: "Fyzio Balance",
+    text: "Oceňuji diskrétnost. Klienti si ničeho nevšimnou a já mám jistotu, že i kdyby došlo k nepříjemné či vyhrocené situaci, mám okamžité spojení s rodinou bez vytahování mobilu.",
+    rating: 5,
+    tag: "Diskrétní bezpečí",
+  },
+];
+---
+
+<div class="mt-20 sm:mt-24 md:mt-28 pt-12 sm:pt-16 border-t border-zinc-200/80">
+
+  <!-- Karty recenzí -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+    {
+      reviews.map((rev) => (
+        <div class="bg-white border-2 border-zinc-950 p-6 sm:p-7 flex flex-col justify-between">
+          <div>
+            <!-- Hvězdičky & tag -->
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <div class="flex items-center gap-1 text-zinc-950">
+                {Array.from({ length: rev.rating }).map(() => (
+                  <svg class="w-4 h-4 fill-zinc-950 text-zinc-950" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
+
+            <!-- Text recenze -->
+            <p class="text-sm text-zinc-800 leading-relaxed">
+              „{rev.text}“
+            </p>
+          </div>
+
+          <!-- Autor & salón -->
+          <div class="pt-5 mt-5 border-t border-zinc-200 flex items-center gap-3">
+            <div class="w-8 h-8 bg-zinc-950 text-white font-bold text-xs flex items-center justify-center font-display shrink-0">
+              {rev.author.charAt(0)}
+            </div>
+            <div>
+              <h4 class="text-xs sm:text-sm font-bold text-zinc-950 font-display leading-tight">
+                {rev.author}
+              </h4>
+              <p class="text-[11px] text-zinc-600 leading-tight mt-0.5">
+                {rev.role} • <span class="text-zinc-950 font-medium">{rev.salon}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
