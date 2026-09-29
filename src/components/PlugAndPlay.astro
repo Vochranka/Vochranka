@@ -83,35 +83,61 @@ const placementItems = [
   ></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <!-- Header sekce podle grafického návrhu -->
-    <div id="install-heading-wrap" class="max-w-3xl mx-auto text-center mb-16 sm:mb-20 md:mb-28 cursor-pointer select-none group/heading">
-      <h2
-        class="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-extrabold tracking-tight font-display leading-[1.08]"
-      >
-        <span class="block text-zinc-950">
-          Žádné <span class="relative inline-block">
-            vrtání.
-            <span
-              class="strike-line absolute left-[-4px] right-[-6px] top-[56%] -translate-y-1/2 h-[3.5px] sm:h-[4.5px] md:h-[5.5px] bg-[#ef4444] rounded-full -rotate-[1deg] pointer-events-none origin-left scale-x-100 transition-transform duration-500 ease-out"
-              data-strike="1"
-            ></span>
-          </span>
-        </span>
-        <span class="block text-[#63625C] mt-1 sm:mt-2">
-          Žádné <span class="relative inline-block">
-            kabely.
-            <span
-              class="strike-line absolute left-[-4px] right-[-6px] top-[56%] -translate-y-1/2 h-[3.5px] sm:h-[4.5px] md:h-[5.5px] bg-[#ef4444] rounded-full -rotate-[1deg] pointer-events-none origin-left scale-x-100 transition-transform duration-500 ease-out"
-              data-strike="2"
-            ></span>
-          </span>
-        </span>
-      </h2>
-      <p
-        class="text-base sm:text-lg md:text-xl text-zinc-600 mt-6 sm:mt-8 font-normal leading-relaxed max-w-xl mx-auto"
-      >
-        Instalace zabere 2 minuty a nepotřebujete žádné nářadí.
-      </p>
+    <!-- Header sekce podle grafického návrhu s většími obrázky výrazně dál po stranách -->
+    <div id="install-heading-wrap" class="relative max-w-7xl mx-auto text-center mb-16 sm:mb-20 md:mb-28 cursor-pointer select-none group/heading">
+      <div class="flex items-center justify-between gap-4 sm:gap-8 md:gap-12">
+        <!-- Levý obrázek: zrcadlově otočený, zvětšený a na levém kraji -->
+        <div class="hidden sm:block shrink-0 w-28 sm:w-36 md:w-48 lg:w-60 xl:w-64 pointer-events-none -ml-4 sm:-ml-8 md:-ml-12 lg:-ml-16">
+          <img
+            src="/doleva.png"
+            alt="Tísňové tlačítko Vochranka"
+            class="w-full h-auto drop-shadow-xl select-none transform -scale-x-100 -rotate-12 hover:rotate-[-6deg] transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Nadpis uprostřed -->
+        <div class="flex-1 max-w-2xl mx-auto">
+          <h2
+            class="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-extrabold tracking-tight font-display leading-[1.08]"
+          >
+            <span class="block text-zinc-950">
+              Žádné <span class="relative inline-block">
+                vrtání.
+                <span
+                  class="strike-line absolute left-[-4px] right-[-6px] top-[56%] -translate-y-1/2 h-[3.5px] sm:h-[4.5px] md:h-[5.5px] bg-[#ef4444] rounded-full -rotate-[1deg] pointer-events-none origin-left scale-x-100 transition-transform duration-500 ease-out"
+                  data-strike="1"
+                ></span>
+              </span>
+            </span>
+            <span class="block text-[#63625C] mt-1 sm:mt-2">
+              Žádné <span class="relative inline-block">
+                kabely.
+                <span
+                  class="strike-line absolute left-[-4px] right-[-6px] top-[56%] -translate-y-1/2 h-[3.5px] sm:h-[4.5px] md:h-[5.5px] bg-[#ef4444] rounded-full -rotate-[1deg] pointer-events-none origin-left scale-x-100 transition-transform duration-500 ease-out"
+                  data-strike="2"
+                ></span>
+              </span>
+            </span>
+          </h2>
+
+          <p
+            class="text-base sm:text-lg md:text-xl text-zinc-600 mt-6 sm:mt-8 font-normal leading-relaxed max-w-xl mx-auto"
+          >
+            Instalace zabere 2 minuty a nepotřebujete žádné nářadí.
+          </p>
+        </div>
+
+        <!-- Pravý obrázek: zvětšený a na pravém kraji -->
+        <div class="hidden sm:block shrink-0 w-28 sm:w-36 md:w-48 lg:w-60 xl:w-64 pointer-events-none -mr-4 sm:-mr-8 md:-mr-12 lg:-mr-16">
+          <img
+            src="/doleva.png"
+            alt="Tísňové tlačítko Vochranka"
+            class="w-full h-auto drop-shadow-xl select-none transform rotate-12 hover:rotate-[6deg] transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+      </div>
     </div>
 
     <!-- 3 kroky vlnovky / timeline (Přicvaknout uprostřed, Zapojit posunuto vpravo) -->
