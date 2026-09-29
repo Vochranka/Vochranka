@@ -1,0 +1,501 @@
+---
+// src/components/Installation.astro
+
+const installSteps = [
+  {
+    num: "1",
+    dotClass: "bg-[#f97316]", // Vibrant orange
+    title: "Zapojit",
+    lines: ["Zasuňte sirénu a bránu do zásuvky.", "Spárují se samy."],
+    desktopClass: "",
+  },
+  {
+    num: "2",
+    dotClass: "bg-[#fbb03b]", // Warm amber / peach
+    title: "Přicvaknout",
+    lines: ["Tlačítko drží pod stolem magnetem,", "nebo na tenké destičce."],
+    desktopClass: "md:mt-20 lg:mt-24 md:mx-auto",
+  },
+  {
+    num: "3",
+    dotClass: "bg-[#86efac]", // Mint green
+    title: "Otestovat",
+    lines: ["Dvojklikem vyzkoušíte sirénu i", "doručení SMS."],
+    desktopClass: "md:mt-0 md:ml-auto md:translate-x-6 lg:translate-x-12",
+  },
+];
+---
+
+<!-- 1. INSTALACE / ŽÁDNÉ VRTÁNÍ -->
+<section
+  id="instalace"
+  class="py-24 sm:py-32 md:py-36 bg-white relative overflow-hidden"
+>
+  <!-- Horní rohová světle žlutá záře navazující ze sekce Využití -->
+  <div
+    class="absolute -top-20 -left-20 sm:-top-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-amber-400/25 via-yellow-300/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="absolute -top-20 -right-20 sm:-top-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-bl from-amber-400/25 via-yellow-300/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Spodní rohová zelená záře navazující do sekce Umístění -->
+  <div
+    class="absolute -bottom-20 -left-20 sm:-bottom-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-emerald-400/25 via-emerald-300/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="absolute -bottom-20 -right-20 sm:-bottom-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tl from-emerald-400/25 via-emerald-300/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    aria-hidden="true"
+  ></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Header sekce podle grafického návrhu s většími obrázky výrazně dál po stranách -->
+    <div id="install-heading-wrap" class="relative max-w-7xl mx-auto text-center mb-16 sm:mb-20 md:mb-28 cursor-pointer select-none group/heading">
+      <div class="flex items-center justify-between gap-4 sm:gap-8 md:gap-12">
+        <!-- Levý obrázek: zrcadlově otočený, zvětšený a na levém kraji -->
+        <div class="hidden sm:block shrink-0 w-28 sm:w-36 md:w-48 lg:w-60 xl:w-64 pointer-events-none -ml-4 sm:-ml-8 md:-ml-12 lg:-ml-16">
+          <img
+            src="/doleva.png"
+            alt="Tísňové tlačítko Vochranka"
+            class="w-full h-auto drop-shadow-xl select-none transform -scale-x-100 -rotate-12 hover:rotate-[-6deg] transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Nadpis uprostřed -->
+        <div class="flex-1 max-w-2xl mx-auto">
+          <h2
+            class="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-extrabold tracking-tight font-display leading-[1.08]"
+          >
+            <span class="block text-zinc-950">
+              Žádné <span class="relative inline-block">
+                vrtání.
+                <span
+                  class="strike-line absolute left-[-4px] right-[-6px] top-[56%] -translate-y-1/2 h-[3.5px] sm:h-[4.5px] md:h-[5.5px] bg-[#ef4444] rounded-full -rotate-[1deg] pointer-events-none origin-left scale-x-100 transition-transform duration-500 ease-out"
+                  data-strike="1"
+                ></span>
+              </span>
+            </span>
+            <span class="block text-[#63625C] mt-1 sm:mt-2">
+              Žádné <span class="relative inline-block">
+                kabely.
+                <span
+                  class="strike-line absolute left-[-4px] right-[-6px] top-[56%] -translate-y-1/2 h-[3.5px] sm:h-[4.5px] md:h-[5.5px] bg-[#ef4444] rounded-full -rotate-[1deg] pointer-events-none origin-left scale-x-100 transition-transform duration-500 ease-out"
+                  data-strike="2"
+                ></span>
+              </span>
+            </span>
+          </h2>
+
+          <p
+            class="text-base sm:text-lg md:text-xl text-zinc-600 mt-6 sm:mt-8 font-normal leading-relaxed max-w-xl mx-auto"
+          >
+            Instalace zabere 2 minuty a nepotřebujete žádné nářadí.
+          </p>
+        </div>
+
+        <!-- Pravý obrázek: zvětšený a na pravém kraji -->
+        <div class="hidden sm:block shrink-0 w-28 sm:w-36 md:w-48 lg:w-60 xl:w-64 pointer-events-none -mr-4 sm:-mr-8 md:-mr-12 lg:-mr-16">
+          <img
+            src="/doleva.png"
+            alt="Tísňové tlačítko Vochranka"
+            class="w-full h-auto drop-shadow-xl select-none transform rotate-12 hover:rotate-[6deg] transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 KROKY INSTALACE (Desktop i Mobil) -->
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6">
+      <!-- Desktop křivky (propojovací čárkované linie s plynulým postupným ztmavováním) -->
+      <svg
+        class="hidden md:block absolute inset-0 w-full h-full pointer-events-none overflow-visible"
+        viewBox="0 0 1000 240"
+        preserveAspectRatio="none"
+        fill="none"
+        aria-hidden="true"
+      >
+        <defs>
+          <!-- 1. křivka: ze světlé stříbřitě šedé (Zapojit) do středně šedé (Přicvaknout) -->
+          <linearGradient id="dash-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#cbd5e1" />
+            <stop offset="50%" stop-color="#94a3b8" />
+            <stop offset="100%" stop-color="#64748b" />
+          </linearGradient>
+
+          <!-- 2. křivka: ze středně šedé (Přicvaknout) plynule navazuje do tmavého grafitu (Otestovat) -->
+          <linearGradient id="dash-grad-2" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#64748b" />
+            <stop offset="50%" stop-color="#475569" />
+            <stop offset="100%" stop-color="#0f172a" />
+          </linearGradient>
+        </defs>
+
+        <!-- Křivka z kroku 1 dolů do kroku 2 -->
+        <path
+          d="M 265 50 C 315 50, 355 65, 370 80"
+          stroke="url(#dash-grad-1)"
+          stroke-width="1.75"
+          stroke-dasharray="4 4"
+          vector-effect="non-scaling-stroke"
+        />
+        <!-- Křivka z kroku 2 nahoru do kroku 3 -->
+        <path
+          d="M 630 160 C 685 160, 745 110, 780 45"
+          stroke="url(#dash-grad-2)"
+          stroke-width="1.75"
+          stroke-dasharray="4 4"
+          vector-effect="non-scaling-stroke"
+        />
+      </svg>
+
+      <!-- Desktop: 3 sloupce rozprostřené do šířky se střídavým odsazením -->
+      <div class="hidden md:grid md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 relative z-10 items-start">
+        {
+          installSteps.map((step) => (
+            <div class={`flex flex-col items-start ${step.desktopClass}`}>
+              <!-- Tečka -->
+              <div class={`w-3.5 h-3.5 rounded-full ${step.dotClass} mb-4 shadow-sm`} />
+
+              <!-- Název -->
+              <h3 class="text-2xl lg:text-[1.7rem] font-bold text-zinc-950 font-display mb-2.5 tracking-tight">
+                {step.title}
+              </h3>
+
+              <!-- Popis s přesným zalamováním -->
+              <p class="text-sm lg:text-base text-zinc-600 leading-relaxed">
+                {step.lines.map((line, i) => (
+                  <span>
+                    {line}
+                    {i < step.lines.length - 1 && <br />}
+                  </span>
+                ))}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Mobilní verze: rozložení vlevo (Zapojit), vpravo (Přicvaknout), vlevo (Otestovat) s křivkami ve tvaru -log(x) -->
+      <div class="md:hidden relative w-full max-w-sm mx-auto px-4 py-4">
+        <!-- SVG křivky se zaoblením -log(x) -->
+        <svg
+          class="absolute inset-0 w-full h-full pointer-events-none overflow-visible"
+          viewBox="0 0 340 520"
+          preserveAspectRatio="none"
+          fill="none"
+          aria-hidden="true"
+        >
+          <defs>
+            <linearGradient id="mob-curve-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#cbd5e1" />
+              <stop offset="50%" stop-color="#94a3b8" />
+              <stop offset="100%" stop-color="#64748b" />
+            </linearGradient>
+            <linearGradient id="mob-curve-grad-2" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#64748b" />
+              <stop offset="50%" stop-color="#475569" />
+              <stop offset="100%" stop-color="#0f172a" />
+            </linearGradient>
+          </defs>
+
+          <!-- 1. Křivka: Průběh jako -log(x) se zastřiženým začátkem i koncem (kratší) -->
+          <!-- Podkladová jemná stopa -->
+          <path
+            d="M 75 140 C 75 185, 160 215, 235 215"
+            stroke="#e4e4e7"
+            stroke-width="1.75"
+            stroke-dasharray="4 4"
+            fill="none"
+          />
+          <!-- Animovaná linie 1 -->
+          <path
+            id="mob-path-1"
+            class="mob-curve-line"
+            d="M 75 140 C 75 185, 160 215, 235 215"
+            stroke="url(#mob-curve-grad-1)"
+            stroke-width="1.75"
+            stroke-dasharray="4 4"
+            fill="none"
+          />
+
+          <!-- 2. Křivka: Zrcadlový průběh jako -log(x) se zastřiženým začátkem i koncem (kratší) -->
+          <!-- Podkladová jemná stopa -->
+          <path
+            d="M 265 300 C 265 345, 180 375, 105 375"
+            stroke="#e4e4e7"
+            stroke-width="1.75"
+            stroke-dasharray="4 4"
+            fill="none"
+          />
+          <!-- Animovaná linie 2 -->
+          <path
+            id="mob-path-2"
+            class="mob-curve-line"
+            d="M 265 300 C 265 345, 180 375, 105 375"
+            stroke="url(#mob-curve-grad-2)"
+            stroke-width="1.75"
+            stroke-dasharray="4 4"
+            fill="none"
+          />
+        </svg>
+
+        <!-- Krok 1 (VLEVO) -->
+        <div id="mob-step-1" class="mobile-scroll-reveal relative z-10 flex flex-col items-start text-left max-w-[230px] mb-24">
+          <div class="w-3.5 h-3.5 rounded-full bg-[#f97316] mb-3 shadow-sm" />
+          <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
+            Zapojit
+          </h3>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            Zasuňte sirénu a bránu do zásuvky.<br />
+            <span>Spárují se samy.</span>
+          </p>
+        </div>
+
+        <!-- Krok 2 (VPRAVO) -->
+        <div id="mob-step-2" class="mobile-scroll-reveal relative z-10 flex flex-col items-end text-right max-w-[245px] ml-auto mb-24">
+          <div class="w-3.5 h-3.5 rounded-full bg-[#fbb03b] mb-3 shadow-sm" />
+          <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
+            Přicvaknout
+          </h3>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            Tlačítko drží pod stolem magnetem,<br />
+            nebo na tenké destičce.
+          </p>
+        </div>
+
+        <!-- Krok 3 (VLEVO) -->
+        <div id="mob-step-3" class="mobile-scroll-reveal relative z-10 flex flex-col items-start text-left max-w-[230px]">
+          <div class="w-3.5 h-3.5 rounded-full bg-[#86efac] mb-3 shadow-sm" />
+          <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
+            Otestovat
+          </h3>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            Dvojklikem vyzkoušíte sirénu i<br />doručení SMS.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Plynulejší a pomalejší animace postupného objevování na mobilu */
+  .mobile-scroll-reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .mobile-scroll-reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Plynulé vykreslování zakřivených linií na scroll pomocí strokeDashoffset */
+  .mob-curve-line {
+    transition: stroke-dashoffset 0.25s ease-out;
+    will-change: stroke-dashoffset;
+  }
+</style>
+
+<script>
+  function initStrikeAnimation() {
+    const headingWrap = document.getElementById("install-heading-wrap");
+    const section = document.getElementById("instalace");
+    const strikes = document.querySelectorAll(".strike-line");
+
+    if (!strikes.length) return;
+
+    let isAnimating = false;
+    let timer1: NodeJS.Timeout | null = null;
+    let timer2: NodeJS.Timeout | null = null;
+
+    function playStrikeAnimation() {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      if (timer1) clearTimeout(timer1);
+      if (timer2) clearTimeout(timer2);
+
+      // Okamžitý reset do výchozího stavu bez přechodové animace
+      strikes.forEach((strike) => {
+        (strike as HTMLElement).style.transition = "none";
+        strike.classList.remove("scale-x-100");
+        strike.classList.add("scale-x-0");
+      });
+
+      // Vynucení reflow pro aplikaci nulové šířky před opětovným zapnutím transition
+      if (headingWrap) void headingWrap.offsetWidth;
+
+      // Znovupovolení plynulé CSS transition
+      strikes.forEach((strike) => {
+        (strike as HTMLElement).style.transition = "";
+      });
+
+      // 1. škrtnutí: vrtání.
+      timer1 = setTimeout(() => {
+        const s1 = document.querySelector('.strike-line[data-strike="1"]');
+        if (s1) {
+          s1.classList.remove("scale-x-0");
+          s1.classList.add("scale-x-100");
+        }
+      }, 50);
+
+      // 2. škrtnutí: kabely.
+      timer2 = setTimeout(() => {
+        const s2 = document.querySelector('.strike-line[data-strike="2"]');
+        if (s2) {
+          s2.classList.remove("scale-x-0");
+          s2.classList.add("scale-x-100");
+        }
+      }, 260);
+
+      // Odemknutí po dokončení tahu pro další najetí myší
+      setTimeout(() => {
+        isAnimating = false;
+      }, 650);
+    }
+
+    // Spuštění při prvním nascrollování do sekce
+    if (section) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              playStrikeAnimation();
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      observer.observe(section);
+    }
+
+    // Přehrání při každém najetí myší na Žádné vrtání / Žádné kabely
+    if (headingWrap) {
+      headingWrap.addEventListener("mouseenter", () => {
+        playStrikeAnimation();
+      });
+
+      // Přehrání i na kliknutí / tapnutí (pro mobilní telefony)
+      headingWrap.addEventListener("click", () => {
+        isAnimating = false;
+        playStrikeAnimation();
+      });
+
+      const h2 = headingWrap.querySelector("h2");
+      if (h2) {
+        h2.addEventListener("mouseenter", () => {
+          playStrikeAnimation();
+        });
+      }
+    }
+  }
+
+  function initMobileCurvesReveal() {
+    const step1 = document.getElementById("mob-step-1");
+    const path1 = document.getElementById("mob-path-1") as SVGGeometryElement | null;
+    const step2 = document.getElementById("mob-step-2");
+    const path2 = document.getElementById("mob-path-2") as SVGGeometryElement | null;
+    const step3 = document.getElementById("mob-step-3");
+
+    if (!step1) return;
+
+    let len1 = 0;
+    let len2 = 0;
+
+    if (path1 && typeof path1.getTotalLength === "function") {
+      len1 = path1.getTotalLength();
+      path1.style.strokeDasharray = `${len1}`;
+      path1.style.strokeDashoffset = `${len1}`;
+    }
+    if (path2 && typeof path2.getTotalLength === "function") {
+      len2 = path2.getTotalLength();
+      path2.style.strokeDasharray = `${len2}`;
+      path2.style.strokeDashoffset = `${len2}`;
+    }
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.querySelectorAll(".mobile-scroll-reveal").forEach((el) => el.classList.add("is-revealed"));
+      if (path1) path1.style.strokeDashoffset = "0";
+      if (path2) path2.style.strokeDashoffset = "0";
+      return;
+    }
+
+    let ticking = false;
+
+    function updateScrollProgress() {
+      ticking = false;
+      const vh = window.innerHeight;
+      const triggerY = vh * 0.90;
+
+      // Krok 1
+      const r1 = step1.getBoundingClientRect();
+      if (r1.top < triggerY) {
+        step1.classList.add("is-revealed");
+      }
+
+      // Křivka 1 (Zapojit -> Přicvaknout)
+      if (path1 && step2) {
+        const r2 = step2.getBoundingClientRect();
+        const startY = r1.bottom;
+        const totalDist = r2.top - startY;
+        const currentDist = triggerY - startY;
+        const progress1 = Math.max(0, Math.min(1, currentDist / (totalDist + 20)));
+
+        path1.style.strokeDashoffset = `${len1 * (1 - progress1)}`;
+
+        // Krok 2
+        if (r2.top < triggerY) {
+          step2.classList.add("is-revealed");
+        }
+
+        // Křivka 2 (Přicvaknout -> Otestovat)
+        if (path2 && step3) {
+          const r3 = step3.getBoundingClientRect();
+          const startY2 = r2.bottom;
+          const totalDist2 = r3.top - startY2;
+          const currentDist2 = triggerY - startY2;
+          const progress2 = Math.max(0, Math.min(1, currentDist2 / (totalDist2 + 20)));
+
+          path2.style.strokeDashoffset = `${len2 * (1 - progress2)}`;
+
+          // Krok 3
+          if (r3.top < triggerY) {
+            step3.classList.add("is-revealed");
+          }
+        }
+      }
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateScrollProgress);
+      }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    onScroll();
+  }
+
+  function initAll() {
+    initStrikeAnimation();
+    initMobileCurvesReveal();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAll);
+  } else {
+    initAll();
+  }
+  document.addEventListener("astro:page-load", initAll);
+</script>
