@@ -180,72 +180,10 @@ const installSteps = [
         }
       </div>
 
-      <!-- Mobilní verze: rozložení vlevo (Zapojit), vpravo (Přicvaknout), vlevo (Otestovat) s křivkami ve tvaru -log(x) -->
-      <div class="md:hidden relative w-full max-w-sm mx-auto px-4 py-4">
-        <!-- SVG křivky se zaoblením -log(x) -->
-        <svg
-          class="absolute inset-0 w-full h-full pointer-events-none overflow-visible"
-          viewBox="0 0 340 520"
-          preserveAspectRatio="none"
-          fill="none"
-          aria-hidden="true"
-        >
-          <defs>
-            <linearGradient id="mob-curve-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#cbd5e1" />
-              <stop offset="50%" stop-color="#94a3b8" />
-              <stop offset="100%" stop-color="#64748b" />
-            </linearGradient>
-            <linearGradient id="mob-curve-grad-2" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#64748b" />
-              <stop offset="50%" stop-color="#475569" />
-              <stop offset="100%" stop-color="#0f172a" />
-            </linearGradient>
-          </defs>
-
-          <!-- 1. Křivka: Průběh jako -log(x) se zastřiženým začátkem i koncem (kratší) -->
-          <!-- Podkladová jemná stopa -->
-          <path
-            d="M 75 140 C 75 185, 160 215, 235 215"
-            stroke="#e4e4e7"
-            stroke-width="1.75"
-            stroke-dasharray="4 4"
-            fill="none"
-          />
-          <!-- Animovaná linie 1 -->
-          <path
-            id="mob-path-1"
-            class="mob-curve-line"
-            d="M 75 140 C 75 185, 160 215, 235 215"
-            stroke="url(#mob-curve-grad-1)"
-            stroke-width="1.75"
-            stroke-dasharray="4 4"
-            fill="none"
-          />
-
-          <!-- 2. Křivka: Zrcadlový průběh jako -log(x) se zastřiženým začátkem i koncem (kratší) -->
-          <!-- Podkladová jemná stopa -->
-          <path
-            d="M 265 300 C 265 345, 180 375, 105 375"
-            stroke="#e4e4e7"
-            stroke-width="1.75"
-            stroke-dasharray="4 4"
-            fill="none"
-          />
-          <!-- Animovaná linie 2 -->
-          <path
-            id="mob-path-2"
-            class="mob-curve-line"
-            d="M 265 300 C 265 345, 180 375, 105 375"
-            stroke="url(#mob-curve-grad-2)"
-            stroke-width="1.75"
-            stroke-dasharray="4 4"
-            fill="none"
-          />
-        </svg>
-
+      <!-- Mobilní verze: rozložení vlevo (Zapojit), vpravo (Přicvaknout), vlevo (Otestovat) s centrovanými čarami a postupným vyplněním -->
+      <div class="md:hidden relative w-full max-w-sm mx-auto px-4 py-4 flex flex-col items-center">
         <!-- Krok 1 (VLEVO) -->
-        <div id="mob-step-1" class="mobile-scroll-reveal relative z-10 flex flex-col items-start text-left max-w-[230px] mb-24">
+        <div id="mob-step-1" class="mobile-scroll-reveal relative z-10 flex flex-col items-start text-left w-full max-w-[240px] mr-auto">
           <div class="w-3.5 h-3.5 rounded-full bg-[#f97316] mb-3 shadow-sm" />
           <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
             Zapojit
@@ -256,8 +194,36 @@ const installSteps = [
           </p>
         </div>
 
+        <!-- 1. Vertikální propojovací čára uprostřed (mezi krokem 1 a 2, umístěná níže) -->
+        <div id="mob-line-1" class="py-5 flex justify-center w-full">
+          <svg class="w-[2px] h-14 overflow-visible" viewBox="0 0 2 56" fill="none">
+            <!-- Podkladová světlá stopa -->
+            <line
+              x1="1"
+              y1="0"
+              x2="1"
+              y2="56"
+              stroke="#e4e4e7"
+              stroke-width="2"
+              stroke-dasharray="3 3"
+            />
+            <!-- Vykreslující se linie s animací vyplnění -->
+            <line
+              class="line-progress-fill"
+              x1="1"
+              y1="0"
+              x2="1"
+              y2="56"
+              stroke="#64748b"
+              stroke-width="2"
+              stroke-dasharray="3 3"
+              style="clip-path: inset(0 0 100% 0);"
+            />
+          </svg>
+        </div>
+
         <!-- Krok 2 (VPRAVO) -->
-        <div id="mob-step-2" class="mobile-scroll-reveal relative z-10 flex flex-col items-end text-right max-w-[245px] ml-auto mb-24">
+        <div id="mob-step-2" class="mobile-scroll-reveal relative z-10 flex flex-col items-end text-right w-full max-w-[245px] ml-auto">
           <div class="w-3.5 h-3.5 rounded-full bg-[#fbb03b] mb-3 shadow-sm" />
           <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
             Přicvaknout
@@ -268,8 +234,36 @@ const installSteps = [
           </p>
         </div>
 
+        <!-- 2. Vertikální propojovací čára uprostřed (mezi krokem 2 a 3) -->
+        <div id="mob-line-2" class="py-5 flex justify-center w-full">
+          <svg class="w-[2px] h-14 overflow-visible" viewBox="0 0 2 56" fill="none">
+            <!-- Podkladová světlá stopa -->
+            <line
+              x1="1"
+              y1="0"
+              x2="1"
+              y2="56"
+              stroke="#e4e4e7"
+              stroke-width="2"
+              stroke-dasharray="3 3"
+            />
+            <!-- Vykreslující se linie s animací vyplnění -->
+            <line
+              class="line-progress-fill"
+              x1="1"
+              y1="0"
+              x2="1"
+              y2="56"
+              stroke="#0f172a"
+              stroke-width="2"
+              stroke-dasharray="3 3"
+              style="clip-path: inset(0 0 100% 0);"
+            />
+          </svg>
+        </div>
+
         <!-- Krok 3 (VLEVO) -->
-        <div id="mob-step-3" class="mobile-scroll-reveal relative z-10 flex flex-col items-start text-left max-w-[230px]">
+        <div id="mob-step-3" class="mobile-scroll-reveal relative z-10 flex flex-col items-start text-left w-full max-w-[240px] mr-auto">
           <div class="w-3.5 h-3.5 rounded-full bg-[#86efac] mb-3 shadow-sm" />
           <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
             Otestovat
@@ -297,10 +291,10 @@ const installSteps = [
     transform: translateY(0);
   }
 
-  /* Plynulé vykreslování zakřivených linií na scroll pomocí strokeDashoffset */
-  .mob-curve-line {
-    transition: stroke-dashoffset 0.25s ease-out;
-    will-change: stroke-dashoffset;
+  /* Plynulé a pomalé vyplňování spojovací linie na scroll shora dolů */
+  .line-progress-fill {
+    transition: clip-path 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: clip-path;
   }
 </style>
 
@@ -399,33 +393,18 @@ const installSteps = [
     }
   }
 
-  function initMobileCurvesReveal() {
+  function initMobileFillReveal() {
     const step1 = document.getElementById("mob-step-1");
-    const path1 = document.getElementById("mob-path-1") as SVGGeometryElement | null;
+    const line1 = document.getElementById("mob-line-1");
     const step2 = document.getElementById("mob-step-2");
-    const path2 = document.getElementById("mob-path-2") as SVGGeometryElement | null;
+    const line2 = document.getElementById("mob-line-2");
     const step3 = document.getElementById("mob-step-3");
 
     if (!step1) return;
 
-    let len1 = 0;
-    let len2 = 0;
-
-    if (path1 && typeof path1.getTotalLength === "function") {
-      len1 = path1.getTotalLength();
-      path1.style.strokeDasharray = `${len1}`;
-      path1.style.strokeDashoffset = `${len1}`;
-    }
-    if (path2 && typeof path2.getTotalLength === "function") {
-      len2 = path2.getTotalLength();
-      path2.style.strokeDasharray = `${len2}`;
-      path2.style.strokeDashoffset = `${len2}`;
-    }
-
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       document.querySelectorAll(".mobile-scroll-reveal").forEach((el) => el.classList.add("is-revealed"));
-      if (path1) path1.style.strokeDashoffset = "0";
-      if (path2) path2.style.strokeDashoffset = "0";
+      document.querySelectorAll(".line-progress-fill").forEach((el) => ((el as HTMLElement).style.clipPath = "inset(0 0 0% 0)"));
       return;
     }
 
@@ -434,7 +413,7 @@ const installSteps = [
     function updateScrollProgress() {
       ticking = false;
       const vh = window.innerHeight;
-      const triggerY = vh * 0.90;
+      const triggerY = vh * 0.82;
 
       // Krok 1
       const r1 = step1.getBoundingClientRect();
@@ -442,35 +421,35 @@ const installSteps = [
         step1.classList.add("is-revealed");
       }
 
-      // Křivka 1 (Zapojit -> Přicvaknout)
-      if (path1 && step2) {
-        const r2 = step2.getBoundingClientRect();
-        const startY = r1.bottom;
-        const totalDist = r2.top - startY;
-        const currentDist = triggerY - startY;
-        const progress1 = Math.max(0, Math.min(1, currentDist / (totalDist + 20)));
-
-        path1.style.strokeDashoffset = `${len1 * (1 - progress1)}`;
+      // Čára 1 (mezi krokem 1 a 2)
+      if (line1 && step2) {
+        const rLine1 = line1.getBoundingClientRect();
+        const progress1 = Math.max(0, Math.min(1, (triggerY - rLine1.top) / (rLine1.height + 20)));
+        const fill1 = line1.querySelector(".line-progress-fill") as HTMLElement | null;
+        if (fill1) {
+          fill1.style.clipPath = `inset(0 0 ${(1 - progress1) * 100}% 0)`;
+        }
 
         // Krok 2
+        const r2 = step2.getBoundingClientRect();
         if (r2.top < triggerY) {
           step2.classList.add("is-revealed");
         }
+      }
 
-        // Křivka 2 (Přicvaknout -> Otestovat)
-        if (path2 && step3) {
-          const r3 = step3.getBoundingClientRect();
-          const startY2 = r2.bottom;
-          const totalDist2 = r3.top - startY2;
-          const currentDist2 = triggerY - startY2;
-          const progress2 = Math.max(0, Math.min(1, currentDist2 / (totalDist2 + 20)));
+      // Čára 2 (mezi krokem 2 a 3)
+      if (line2 && step3) {
+        const rLine2 = line2.getBoundingClientRect();
+        const progress2 = Math.max(0, Math.min(1, (triggerY - rLine2.top) / (rLine2.height + 20)));
+        const fill2 = line2.querySelector(".line-progress-fill") as HTMLElement | null;
+        if (fill2) {
+          fill2.style.clipPath = `inset(0 0 ${(1 - progress2) * 100}% 0)`;
+        }
 
-          path2.style.strokeDashoffset = `${len2 * (1 - progress2)}`;
-
-          // Krok 3
-          if (r3.top < triggerY) {
-            step3.classList.add("is-revealed");
-          }
+        // Krok 3
+        const r3 = step3.getBoundingClientRect();
+        if (r3.top < triggerY) {
+          step3.classList.add("is-revealed");
         }
       }
     }
@@ -489,7 +468,7 @@ const installSteps = [
 
   function initAll() {
     initStrikeAnimation();
-    initMobileCurvesReveal();
+    initMobileFillReveal();
   }
 
   if (document.readyState === "loading") {
