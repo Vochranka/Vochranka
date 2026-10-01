@@ -110,7 +110,7 @@ const installSteps = [
     </div>
 
     <!-- 3 KROKY INSTALACE (Desktop i Mobil) -->
-    <div class="relative max-w-5xl mx-auto px-4 sm:px-6">
+    <div id="install-steps-container" class="relative max-w-5xl mx-auto px-4 sm:px-6">
       <!-- Desktop křivky (propojovací čárkované linie s plynulým postupným ztmavováním) -->
       <svg
         class="hidden md:block absolute inset-0 w-full h-full pointer-events-none overflow-visible"
@@ -133,10 +133,38 @@ const installSteps = [
             <stop offset="50%" stop-color="#475569" />
             <stop offset="100%" stop-color="#0f172a" />
           </linearGradient>
+
+          <!-- Masky pro odhalování křivek se zachováním čárkovaného vzoru (4 4) -->
+          <mask id="curve-mask-1" maskUnits="userSpaceOnUse">
+            <path
+              id="mask-path-1"
+              d="M 265 50 C 315 50, 355 65, 370 80"
+              stroke="#ffffff"
+              stroke-width="8"
+              fill="none"
+              stroke-dasharray="250"
+              stroke-dashoffset="250"
+            />
+          </mask>
+
+          <mask id="curve-mask-2" maskUnits="userSpaceOnUse">
+            <path
+              id="mask-path-2"
+              d="M 630 160 C 685 160, 745 110, 780 45"
+              stroke="#ffffff"
+              stroke-width="8"
+              fill="none"
+              stroke-dasharray="250"
+              stroke-dashoffset="250"
+            />
+          </mask>
         </defs>
 
         <!-- Křivka z kroku 1 dolů do kroku 2 -->
         <path
+          id="desktop-curve-1"
+          class="desktop-line-curve"
+          mask="url(#curve-mask-1)"
           d="M 265 50 C 315 50, 355 65, 370 80"
           stroke="url(#dash-grad-1)"
           stroke-width="1.75"
@@ -145,6 +173,9 @@ const installSteps = [
         />
         <!-- Křivka z kroku 2 nahoru do kroku 3 -->
         <path
+          id="desktop-curve-2"
+          class="desktop-line-curve"
+          mask="url(#curve-mask-2)"
           d="M 630 160 C 685 160, 745 110, 780 45"
           stroke="url(#dash-grad-2)"
           stroke-width="1.75"
@@ -156,25 +187,26 @@ const installSteps = [
       <!-- Desktop: 3 sloupce rozprostřené do šířky se střídavým odsazením -->
       <div class="hidden md:grid md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 relative z-10 items-start">
         {
-          installSteps.map((step) => (
-            <div class={`flex flex-col items-start ${step.desktopClass}`}>
+          installSteps.map((step, idx) => (
+            <div id={`desk-step-${idx + 1}`} class={`step-item flex flex-col items-start ${step.desktopClass}`}>
               <!-- Tečka -->
-              <div class={`w-3.5 h-3.5 rounded-full ${step.dotClass} mb-4 shadow-sm`} />
+              <div class={`step-dot w-3.5 h-3.5 rounded-full ${step.dotClass} mb-4 shadow-sm`} />
 
-              <!-- Název -->
-              <h3 class="text-2xl lg:text-[1.7rem] font-bold text-zinc-950 font-display mb-2.5 tracking-tight">
-                {step.title}
-              </h3>
+              <!-- Text wrapper -->
+              <div class="step-text">
+                <h3 class="text-2xl lg:text-[1.7rem] font-bold text-zinc-950 font-display mb-2.5 tracking-tight">
+                  {step.title}
+                </h3>
 
-              <!-- Popis s přesným zalamováním -->
-              <p class="text-sm lg:text-base text-zinc-600 leading-relaxed">
-                {step.lines.map((line, i) => (
-                  <span>
-                    {line}
-                    {i < step.lines.length - 1 && <br />}
-                  </span>
-                ))}
-              </p>
+                <p class="text-sm lg:text-base text-zinc-600 leading-relaxed">
+                  {step.lines.map((line, i) => (
+                    <span>
+                      {line}
+                      {i < step.lines.length - 1 && <br />}
+                    </span>
+                  ))}
+                </p>
+              </div>
             </div>
           ))
         }
@@ -183,15 +215,17 @@ const installSteps = [
       <!-- Mobilní verze: rozložení vlevo (Zapojit), vpravo (Přicvaknout), vlevo (Otestovat) s centrovanými čarami a postupným vyplněním -->
       <div class="md:hidden relative w-full max-w-sm mx-auto px-4 py-4 flex flex-col items-center">
         <!-- Krok 1 (VLEVO) -->
-        <div id="mob-step-1" class="mobile-scroll-reveal relative z-10 flex flex-col items-start text-left w-full max-w-[240px] mr-auto">
-          <div class="w-3.5 h-3.5 rounded-full bg-[#f97316] mb-3 shadow-sm" />
-          <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
-            Zapojit
-          </h3>
-          <p class="text-sm text-zinc-600 leading-relaxed">
-            Zasuňte sirénu a bránu do zásuvky.<br />
-            <span>Spárují se samy.</span>
-          </p>
+        <div id="mob-step-1" class="step-item relative z-10 flex flex-col items-start text-left w-full max-w-[240px] mr-auto">
+          <div class="step-dot w-3.5 h-3.5 rounded-full bg-[#f97316] mb-3 shadow-sm" />
+          <div class="step-text">
+            <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
+              Zapojit
+            </h3>
+            <p class="text-sm text-zinc-600 leading-relaxed">
+              Zasuňte sirénu a bránu do zásuvky.<br />
+              <span>Spárují se samy.</span>
+            </p>
+          </div>
         </div>
 
         <!-- 1. Vertikální propojovací čára uprostřed (mezi krokem 1 a 2, umístěná níže) -->
@@ -223,15 +257,17 @@ const installSteps = [
         </div>
 
         <!-- Krok 2 (VPRAVO) -->
-        <div id="mob-step-2" class="mobile-scroll-reveal relative z-10 flex flex-col items-end text-right w-full max-w-[245px] ml-auto">
-          <div class="w-3.5 h-3.5 rounded-full bg-[#fbb03b] mb-3 shadow-sm" />
-          <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
-            Přicvaknout
-          </h3>
-          <p class="text-sm text-zinc-600 leading-relaxed">
-            Tlačítko drží pod stolem magnetem,<br />
-            nebo na tenké destičce.
-          </p>
+        <div id="mob-step-2" class="step-item relative z-10 flex flex-col items-end text-right w-full max-w-[245px] ml-auto">
+          <div class="step-dot w-3.5 h-3.5 rounded-full bg-[#fbb03b] mb-3 shadow-sm" />
+          <div class="step-text">
+            <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
+              Přicvaknout
+            </h3>
+            <p class="text-sm text-zinc-600 leading-relaxed">
+              Tlačítko drží pod stolem magnetem,<br />
+              nebo na tenké destičce.
+            </p>
+          </div>
         </div>
 
         <!-- 2. Vertikální propojovací čára uprostřed (mezi krokem 2 a 3) -->
@@ -263,14 +299,16 @@ const installSteps = [
         </div>
 
         <!-- Krok 3 (VLEVO) -->
-        <div id="mob-step-3" class="mobile-scroll-reveal relative z-10 flex flex-col items-start text-left w-full max-w-[240px] mr-auto">
-          <div class="w-3.5 h-3.5 rounded-full bg-[#86efac] mb-3 shadow-sm" />
-          <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
-            Otestovat
-          </h3>
-          <p class="text-sm text-zinc-600 leading-relaxed">
-            Dvojklikem vyzkoušíte sirénu i<br />doručení SMS.
-          </p>
+        <div id="mob-step-3" class="step-item relative z-10 flex flex-col items-start text-left w-full max-w-[240px] mr-auto">
+          <div class="step-dot w-3.5 h-3.5 rounded-full bg-[#86efac] mb-3 shadow-sm" />
+          <div class="step-text">
+            <h3 class="text-xl font-bold text-zinc-950 font-display mb-1.5 tracking-tight">
+              Otestovat
+            </h3>
+            <p class="text-sm text-zinc-600 leading-relaxed">
+              Dvojklikem vyzkoušíte sirénu i<br />doručení SMS.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -278,22 +316,20 @@ const installSteps = [
 </section>
 
 <style>
-  /* Plynulejší a pomalejší animace postupného objevování na mobilu */
-  .mobile-scroll-reveal {
-    opacity: 0;
-    transform: translateY(22px);
-    transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
+  .step-dot {
+    transform-origin: center center;
+    will-change: transform, opacity;
   }
 
-  .mobile-scroll-reveal.is-revealed {
-    opacity: 1;
-    transform: translateY(0);
+  .step-text {
+    will-change: transform, opacity;
   }
 
-  /* Plynulé a pomalé vyplňování spojovací linie na scroll shora dolů */
+  .desktop-line-curve {
+    will-change: stroke-dashoffset;
+  }
+
   .line-progress-fill {
-    transition: clip-path 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: clip-path;
   }
 </style>
@@ -307,8 +343,8 @@ const installSteps = [
     if (!strikes.length) return;
 
     let isAnimating = false;
-    let timer1: NodeJS.Timeout | null = null;
-    let timer2: NodeJS.Timeout | null = null;
+    let timer1: number | null = null;
+    let timer2: number | null = null;
 
     function playStrikeAnimation() {
       if (isAnimating) return;
@@ -393,82 +429,183 @@ const installSteps = [
     }
   }
 
-  function initMobileFillReveal() {
-    const step1 = document.getElementById("mob-step-1");
-    const line1 = document.getElementById("mob-line-1");
-    const step2 = document.getElementById("mob-step-2");
-    const line2 = document.getElementById("mob-line-2");
-    const step3 = document.getElementById("mob-step-3");
+  function initScrollScrubAnimation() {
+    const container = document.getElementById("install-steps-container");
+    if (!container) return;
 
-    if (!step1) return;
+    // Elements
+    const deskStep1 = document.getElementById("desk-step-1");
+    const deskStep2 = document.getElementById("desk-step-2");
+    const deskStep3 = document.getElementById("desk-step-3");
+    const maskPath1 = document.getElementById("mask-path-1") as SVGPathElement | null;
+    const maskPath2 = document.getElementById("mask-path-2") as SVGPathElement | null;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      document.querySelectorAll(".mobile-scroll-reveal").forEach((el) => el.classList.add("is-revealed"));
-      document.querySelectorAll(".line-progress-fill").forEach((el) => ((el as HTMLElement).style.clipPath = "inset(0 0 0% 0)"));
-      return;
+    const mobStep1 = document.getElementById("mob-step-1");
+    const mobStep2 = document.getElementById("mob-step-2");
+    const mobStep3 = document.getElementById("mob-step-3");
+    const mobLine1 = document.querySelector("#mob-line-1 .line-progress-fill") as HTMLElement | null;
+    const mobLine2 = document.querySelector("#mob-line-2 .line-progress-fill") as HTMLElement | null;
+
+    // Measure desktop path lengths
+    let pathLen1 = 250;
+    let pathLen2 = 250;
+    if (maskPath1) {
+      try {
+        pathLen1 = Math.ceil(maskPath1.getTotalLength()) || 250;
+        maskPath1.style.strokeDasharray = `${pathLen1}`;
+        maskPath1.style.strokeDashoffset = `${pathLen1}`;
+      } catch (e) {}
     }
+    if (maskPath2) {
+      try {
+        pathLen2 = Math.ceil(maskPath2.getTotalLength()) || 250;
+        maskPath2.style.strokeDasharray = `${pathLen2}`;
+        maskPath2.style.strokeDashoffset = `${pathLen2}`;
+      } catch (e) {}
+    }
+
+    const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function applyState(
+      stepEl: HTMLElement | null,
+      p: number, // 0 to 1
+    ) {
+      if (!stepEl) return;
+      const dot = stepEl.querySelector(".step-dot") as HTMLElement | null;
+      const text = stepEl.querySelector(".step-text") as HTMLElement | null;
+      if (isReduced) {
+        if (dot) {
+          dot.style.opacity = "1";
+          dot.style.transform = "scale(1)";
+        }
+        if (text) {
+          text.style.opacity = "1";
+          text.style.transform = "translateY(0px)";
+        }
+        return;
+      }
+
+      if (dot) {
+        dot.style.opacity = String(p);
+        dot.style.transform = `scale(${p})`;
+      }
+      if (text) {
+        text.style.opacity = String(p);
+        text.style.transform = `translateY(${(1 - p) * 12}px)`;
+      }
+    }
+
+    function applyMaskCurve(
+      maskEl: SVGPathElement | null,
+      p: number, // 0 to 1
+      totalLen: number
+    ) {
+      if (!maskEl) return;
+      if (isReduced) {
+        maskEl.style.strokeDashoffset = "0";
+        return;
+      }
+      maskEl.style.strokeDashoffset = `${totalLen * (1 - p)}`;
+    }
+
+    function applyMobLine(lineEl: HTMLElement | null, p: number) {
+      if (!lineEl) return;
+      if (isReduced) {
+        lineEl.style.clipPath = "inset(0 0 0% 0)";
+        return;
+      }
+      lineEl.style.clipPath = `inset(0 0 ${(1 - p) * 100}% 0)`;
+    }
+
+    // Helper clamping
+    const clamp01 = (v: number) => Math.max(0, Math.min(1, v));
+    const rangeProgress = (progress: number, start: number, end: number) => {
+      if (progress <= start) return 0;
+      if (progress >= end) return 1;
+      return (progress - start) / (end - start);
+    };
 
     let ticking = false;
 
-    function updateScrollProgress() {
+    function update() {
       ticking = false;
       const vh = window.innerHeight;
-      const triggerY = vh * 0.82;
+      const isMobile = window.innerWidth < 768;
 
-      // Krok 1
-      const r1 = step1.getBoundingClientRect();
-      if (r1.top < triggerY) {
-        step1.classList.add("is-revealed");
-      }
+      if (!isMobile) {
+        const rect = container!.getBoundingClientRect();
+        const startY = vh * 0.90;
+        const endY = vh * 0.30;
+        const totalDist = startY - endY;
+        const currentPos = startY - rect.top;
+        const progress = clamp01(currentPos / totalDist);
 
-      // Čára 1 (mezi krokem 1 a 2)
-      if (line1 && step2) {
-        const rLine1 = line1.getBoundingClientRect();
-        const progress1 = Math.max(0, Math.min(1, (triggerY - rLine1.top) / (rLine1.height + 20)));
-        const fill1 = line1.querySelector(".line-progress-fill") as HTMLElement | null;
-        if (fill1) {
-          fill1.style.clipPath = `inset(0 0 ${(1 - progress1) * 100}% 0)`;
-        }
+        const pStep1 = rangeProgress(progress, 0.0, 0.20);
+        const pCurve1 = rangeProgress(progress, 0.20, 0.50);
+        const pStep2 = rangeProgress(progress, 0.50, 0.65);
+        const pCurve2 = rangeProgress(progress, 0.65, 0.85);
+        const pStep3 = rangeProgress(progress, 0.85, 1.0);
 
-        // Krok 2
-        const r2 = step2.getBoundingClientRect();
-        if (r2.top < triggerY) {
-          step2.classList.add("is-revealed");
-        }
-      }
+        applyState(deskStep1, pStep1);
+        applyMaskCurve(maskPath1, pCurve1, pathLen1);
+        applyState(deskStep2, pStep2);
+        applyMaskCurve(maskPath2, pCurve2, pathLen2);
+        applyState(deskStep3, pStep3);
+      } else {
+        // Mobile vertical scrubbing: each step & vertical connecting line scrubs
+        // directly as it enters and moves across the phone viewport
+        const calcElemScrub = (el: HTMLElement | null, offsetRatio = 0.88, dist = 140) => {
+          if (!el) return 0;
+          const top = el.getBoundingClientRect().top;
+          const trigger = vh * offsetRatio;
+          return clamp01((trigger - top) / dist);
+        };
 
-      // Čára 2 (mezi krokem 2 a 3)
-      if (line2 && step3) {
-        const rLine2 = line2.getBoundingClientRect();
-        const progress2 = Math.max(0, Math.min(1, (triggerY - rLine2.top) / (rLine2.height + 20)));
-        const fill2 = line2.querySelector(".line-progress-fill") as HTMLElement | null;
-        if (fill2) {
-          fill2.style.clipPath = `inset(0 0 ${(1 - progress2) * 100}% 0)`;
-        }
+        const mStep1 = calcElemScrub(mobStep1, 0.90, 130);
+        const mLine1 = calcElemScrub(document.getElementById("mob-line-1"), 0.86, 100);
+        const mStep2 = calcElemScrub(mobStep2, 0.86, 130);
+        const mLine2 = calcElemScrub(document.getElementById("mob-line-2"), 0.82, 100);
+        const mStep3 = calcElemScrub(mobStep3, 0.82, 130);
 
-        // Krok 3
-        const r3 = step3.getBoundingClientRect();
-        if (r3.top < triggerY) {
-          step3.classList.add("is-revealed");
-        }
-      }
-    }
-
-    function onScroll() {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(updateScrollProgress);
+        applyState(mobStep1, mStep1);
+        applyMobLine(mobLine1, mLine1);
+        applyState(mobStep2, mStep2);
+        applyMobLine(mobLine2, mLine2);
+        applyState(mobStep3, mStep3);
       }
     }
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }
+
+  function onResize() {
+    if (maskPath1) {
+      try {
+        pathLen1 = Math.ceil(maskPath1.getTotalLength()) || 250;
+        maskPath1.style.strokeDasharray = `${pathLen1}`;
+      } catch (e) {}
+    }
+    if (maskPath2) {
+      try {
+        pathLen2 = Math.ceil(maskPath2.getTotalLength()) || 250;
+        maskPath2.style.strokeDasharray = `${pathLen2}`;
+      } catch (e) {}
+    }
     onScroll();
   }
 
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onResize, { passive: true });
+  update();
+}
+
   function initAll() {
     initStrikeAnimation();
-    initMobileFillReveal();
+    initScrollScrubAnimation();
   }
 
   if (document.readyState === "loading") {
