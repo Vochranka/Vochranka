@@ -5,28 +5,22 @@ import Reviews from "./Reviews.astro";
 const placementItems = [
   {
     num: "01",
-    leftMeta: "MASÉRSKÝ STŮL",
-    rightMeta: "MAGNETICKÉ UCHYCENÍ",
-    title: "Schované. Přesto vždy na dosah.",
-    desc: "Tlačítko drží magneticky přímo na kovovém rámu lehátka. Během masáže ho najdete poslepu, bez jediného nápadného pohybu.",
+    title: "Skryté. Přesto vždy po ruce.",
+    desc: "Na rámu drží samo na magnet. Nahmatáte ho poslepu a jedním stiskem aktivujete sirénu i SMS poplach.",
     image: "/button-under-table.jpg",
     alt: "Tísňové tlačítko magneticky přichycené pod masérským stolem",
   },
   {
     num: "02",
-    leftMeta: "V KAPSE",
-    rightMeta: "4,5 CM • 28 G",
-    title: "Bezpečí se pohybuje s vámi.",
-    desc: "Má jen 4,5 cm a váží 28 gramů. V kapse zástěry nebo kalhot o něm nevíte — dokud ho nepotřebujete.",
+    title: "Když nezůstáváte na jednom místě.",
+    desc: "Díky kompaktním rozměrům padne přesně do kapsy zástěry nebo kalhot. Pokud nastane problém, nemusíte běžet k pultu, sirénu spustíte odkudkoliv.",
     image: "/button-pocket.jpg",
     alt: "Diskrétní nošení tísňového tlačítka v kapse",
   },
   {
     num: "03",
-    leftMeta: "RECEPCE",
-    rightMeta: "3M DESTIČKA + MAGNET",
-    title: "Pro klienta neviditelné.",
-    desc: "Pod hranu recepce přilepíte tenkou kovovou destičku. Tlačítko na ní drží magnetem a můžete ho kdykoliv zase vzít s sebou.",
+    title: " Pod hranou pultu nebo stolu.",
+    desc: "Na nalepovací kovové destičce drží jako přibité, ale kdykoliv ho můžete sundat. Při placení ho máte pod rukou a při zavíračce nebo úklidu zahrádky ho vezmete rovnou s sebou.",
     image: "/button-under-reception.jpg",
     alt: "Umístění tísňového tlačítka pod deskou recepce na 3M destičku",
   },
@@ -36,7 +30,7 @@ const placementItems = [
 <!-- 2. UMÍSTĚNÍ / VARIABILITA UCHYCENÍ -->
 <section
   id="umisteni"
-  class="py-24 sm:py-32 md:py-36 bg-white relative overflow-hidden"
+  class="py-24 sm:py-32 md:py-24 lg:py-28 bg-white relative overflow-hidden"
 >
   <!-- Kotva pro případné starší odkazy -->
   <div id="variabilita" class="absolute -top-16 left-0 pointer-events-none"></div>
@@ -53,47 +47,46 @@ const placementItems = [
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <!-- Hlavička sekce (v čistém uppercase stylu jako FAQ) -->
-    <div class="max-w-3xl mx-auto text-center mb-12 sm:mb-16 md:mb-20">
+    <div class="max-w-3xl mx-auto text-center mb-12 sm:mb-16 md:mb-12 lg:mb-14">
       <h2
-        class="text-center text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold tracking-tight text-zinc-950 font-display leading-[1.08] uppercase"
+        class="text-center text-4xl sm:text-5xl md:text-5xl lg:text-[3.75rem] font-bold tracking-tight text-zinc-950 font-display leading-[1.08] uppercase"
       >
         Vždy na dosah
       </h2>
       
       <p
-        class="text-center text-base sm:text-lg md:text-xl text-zinc-500 mt-4 leading-relaxed max-w-sm sm:max-w-xl md:max-w-2xl mx-auto font-normal"
+        class="text-center text-base sm:text-lg md:text-lg text-zinc-500 mt-4 leading-relaxed max-w-sm sm:max-w-xl md:max-w-2xl mx-auto font-normal"
       >
-        Na kov drží samo. Jinam nalepíte tenkou destičku. Umístění můžete
-        kdykoliv změnit podle toho, kde se právě cítíte nejjistěji.
+       Máte nespočet možností kam tlačítko umístit. 
       </p>
     </div>
 
     <!-- 3 KARTY: na mobilu nativní Apple swipe carousel, na desktopu 3 sloupce -->
     <div
       id="slider-container"
-      class="flex md:grid md:grid-cols-3 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-6 px-6 gap-4 md:gap-8 scroll-smooth items-start"
+      class="flex md:grid md:grid-cols-3 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-6 px-6 gap-4 md:gap-7 lg:gap-8 scroll-smooth items-start"
       style="-webkit-overflow-scrolling: touch;"
     >
       {
         placementItems.map((item, index) => (
           <div
-            class={`flex flex-col select-none w-[85vw] shrink-0 snap-center md:w-auto ${index === 1 ? 'md:mt-12 lg:mt-16' : ''}`}
+            class={`flex flex-col select-none w-[85vw] shrink-0 snap-center md:w-auto ${index === 1 ? 'md:mt-6 lg:mt-8' : ''}`}
           >
             <!-- Text nad fotkou -->
-            <div class="pb-3 sm:pb-4 md:pb-5 flex flex-col items-center text-center md:items-start md:text-left flex-1">
+            <div class="pb-3 sm:pb-4 md:pb-4 flex flex-col items-center text-center md:items-start md:text-left flex-1">
               <!-- Nadpis -->
-              <h3 class="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-zinc-950 mb-1.5 md:mb-2.5 leading-snug">
+              <h3 class="text-lg sm:text-xl md:text-xl lg:text-2xl font-bold tracking-tight text-zinc-950 mb-1.5 md:mb-2 leading-snug">
                 {item.title}
               </h3>
 
               <!-- Popis -->
-              <p class="text-sm sm:text-base text-zinc-600 leading-relaxed max-w-sm md:max-w-none">
+              <p class="text-sm sm:text-base md:text-sm lg:text-[0.95rem] text-zinc-600 leading-relaxed max-w-sm md:max-w-none">
                 {item.desc}
               </p>
             </div>
 
-            <!-- Obrázek -->
-            <div class="relative w-full aspect-[4/3] sm:aspect-[4/5] md:aspect-[3/4] rounded-2xl md:rounded-[2rem] overflow-hidden bg-zinc-100 shadow-sm group-hover:shadow-md transition-all duration-500">
+            <!-- Obrázek: na telefonu původní aspect-[4/3] sm:aspect-[4/5] a rounded-2xl, na desktopu citlivě zmenšeno na md:aspect-[4/3.1] md:max-h-[340px] -->
+            <div class="relative w-full aspect-[4/3] sm:aspect-[4/5] md:aspect-[4/3.1] md:max-h-[340px] lg:max-h-[360px] rounded-2xl md:rounded-[1.75rem] overflow-hidden bg-zinc-100 shadow-sm group-hover:shadow-md transition-all duration-500">
               <!-- Fotka -->
               <img
                 src={item.image}

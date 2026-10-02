@@ -39,12 +39,15 @@ const reviews: Review[] = [
 ---
 
 <div class="mt-20 sm:mt-24 md:mt-28 pt-12 sm:pt-16 border-t border-zinc-200/80">
-
-  <!-- Karty recenzí -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+  <!-- Karty recenzí: na mobilu plynulý scroll carousel se snapem, na desktopu 3 sloupce -->
+  <div
+    id="reviews-slider-container"
+    class="flex md:grid md:grid-cols-3 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-6 px-6 sm:-mx-8 sm:px-8 md:mx-0 md:px-0 gap-4 sm:gap-6 md:gap-8 scroll-smooth items-stretch py-2"
+    style="-webkit-overflow-scrolling: touch;"
+  >
     {
       reviews.map((rev) => (
-        <div class="bg-white border-2 border-zinc-950 p-6 sm:p-7 flex flex-col justify-between">
+        <div class="w-[85vw] sm:w-[70vw] md:w-auto shrink-0 snap-center select-none bg-white border-2 border-zinc-950 p-6 sm:p-7 flex flex-col justify-between rounded-xl md:rounded-none shadow-sm md:shadow-none">
           <div>
             <!-- Hvězdičky & tag -->
             <div class="flex items-center justify-between gap-2 mb-4">
@@ -55,6 +58,9 @@ const reviews: Review[] = [
                   </svg>
                 ))}
               </div>
+              <span class="text-[11px] font-semibold tracking-wider uppercase text-zinc-500 bg-zinc-100 px-2.5 py-1 rounded-full">
+                {rev.tag}
+              </span>
             </div>
 
             <!-- Text recenze -->
@@ -65,7 +71,7 @@ const reviews: Review[] = [
 
           <!-- Autor & salón -->
           <div class="pt-5 mt-5 border-t border-zinc-200 flex items-center gap-3">
-            <div class="w-8 h-8 bg-zinc-950 text-white font-bold text-xs flex items-center justify-center font-display shrink-0">
+            <div class="w-8 h-8 bg-zinc-950 text-white font-bold text-xs flex items-center justify-center font-display shrink-0 rounded-full md:rounded-none">
               {rev.author.charAt(0)}
             </div>
             <div>
@@ -81,4 +87,120 @@ const reviews: Review[] = [
       ))
     }
   </div>
+
+  <!-- Indikátor pozice (tečky pouze na mobilu) -->
+  <div class="flex md:hidden justify-center mt-5">
+    <div
+      id="reviews-slider-indicator"
+      class="flex items-center gap-2 py-1.5 px-3.5 bg-zinc-200/90 rounded-full border border-zinc-300/40 shadow-inner"
+      role="tablist"
+      aria-label="Pozice v recenzích"
+    >
+      {
+        reviews.map((_, index) => (
+          <button
+            type="button"
+            class={`review-dot h-2 rounded-full cursor-pointer transition-all duration-300 p-0 border-0 ${
+              index === 0
+                ? "w-6 bg-zinc-950"
+                : "w-2 bg-zinc-400 hover:bg-zinc-600"
+            }`}
+            data-index={index}
+            aria-label={`Přejít na recenzi ${index + 1}`}
+          />
+        ))
+      }
+    </div>
+  </div>
 </div>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  function initReviewsCarousel() {
+    const container = document.getElementById("reviews-slider-container");
+    const indicator = document.getElementById("reviews-slider-indicator");
+    if (!container || !indicator) return;
+
+    const dots = indicator.querySelectorAll(".review-dot") as NodeListOf<HTMLButtonElement>;
+    if (!dots.length) return;
+
+    function setActive(activeIndex: number) {
+      dots.forEach((dot, index) => {
+        if (index === activeIndex) {
+          dot.classList.remove("w-2", "bg-zinc-400");
+          dot.classList.add("w-6", "bg-zinc-950");
+        } else {
+          dot.classList.remove("w-6", "bg-zinc-950");
+          dot.classList.add("w-2", "bg-zinc-400");
+        }
+      });
+    }
+
+    function updateDots() {
+      const scrollLeft = container.scrollLeft;
+      const cards = container.querySelectorAll(".snap-center") as NodeListOf<HTMLElement>;
+      if (!cards.length) return;
+
+      const containerCenter = scrollLeft + container.clientWidth / 2;
+      let closestIdx = 0;
+      let minDiff = Infinity;
+
+      cards.forEach((card, idx) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const diff = Math.abs(containerCenter - cardCenter);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIdx = idx;
+        }
+      });
+
+      setActive(closestIdx);
+    }
+
+    container.addEventListener("scroll", updateDots, { passive: true });
+    container.addEventListener("touchmove", updateDots, { passive: true });
+    container.addEventListener(
+      "touchend",
+      () => {
+        setTimeout(updateDots, 60);
+        setTimeout(updateDots, 180);
+        setTimeout(updateDots, 350);
+      },
+      { passive: true }
+    );
+    window.addEventListener("resize", updateDots, { passive: true });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", (e) => {
+        e.preventDefault();
+        const cards = container.querySelectorAll(".snap-center") as NodeListOf<HTMLElement>;
+        if (cards[index]) {
+          cards[index].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center",
+          });
+          setActive(index);
+        }
+      });
+    });
+
+    updateDots();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initReviewsCarousel);
+  } else {
+    initReviewsCarousel();
+  }
+  document.addEventListener("astro:page-load", initReviewsCarousel);
+</script>
