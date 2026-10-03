@@ -2,7 +2,7 @@
 // src/components/Pricing.astro
 import {
   ChevronDown,
-  Battery,
+  Radio,
   BookOpen,
   MessageSquare,
   Activity,
@@ -25,14 +25,14 @@ const hardwareItems = [
   },
   {
     image: "/button2.png",
-    alt: "Magnetické uchycení a 3M destička",
-    label: "1× Magnetické uchycení",
-    desc: "Drží na kovu samo. Na dřevěný stůl nalepíte tenkou kovovou 3M destičku z balení.",
+    alt: "Kovová destička",
+    label: "1× Kovová destička",
+    sublabel: "(na dřevo a nemagnetické povrchy)",
   },
   {
-    icon: Battery,
-    alt: "Baterie",
-    label: "1× Baterie",
+    icon: Radio,
+    alt: "Brána",
+    label: "1× Brána",
   },
 ];
 
@@ -181,6 +181,11 @@ const serviceItems = [
                           <span class="text-xs sm:text-sm font-bold text-zinc-950 font-display">
                             {item.label}
                           </span>
+                          {item.sublabel && (
+                            <span class="block text-[11px] sm:text-xs text-zinc-500 font-normal mt-0.5 leading-snug">
+                              {item.sublabel}
+                            </span>
+                          )}
                           {item.desc && (
                             <p class="text-[11px] text-zinc-500 mt-1 leading-snug">
                               {item.desc}

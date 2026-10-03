@@ -1,0 +1,123 @@
+---
+// src/components/Contact.astro
+import { Phone, Mail, MapPin, Clock, ArrowRight, ShieldCheck } from "lucide-astro";
+
+const contactItems = [
+  {
+    icon: Phone,
+    label: "Telefon",
+    value: "+420 777 123 456",
+    href: "tel:+420777123456",
+    note: "Po–Pá 9:00–18:00",
+  },
+  {
+    icon: Mail,
+    label: "E-mail",
+    value: "info@vochranka.cz",
+    href: "mailto:info@vochranka.cz",
+    note: "Odpovídáme obvykle do několika hodin",
+  },
+  {
+    icon: MapPin,
+    label: "Osobní předvedení",
+    value: "Praha, Česká republika",
+    href: null,
+    note: "Rádi přijedeme ukázat přímo do vašeho salónu",
+  },
+  {
+    icon: Clock,
+    label: "Fakturační údaje",
+    value: "IČO: 19842531",
+    href: null,
+    note: "Zapsáno u Městského soudu v Praze",
+  },
+];
+---
+
+<section
+  id="kontakt"
+  class="py-24 sm:py-32 md:py-36 bg-white relative overflow-hidden"
+>
+  <!-- Jemná fialovo-modrá záře po stranách ve stejném stylu jako v ceníku -->
+  <div
+    class="absolute top-1/2 -left-32 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-r from-purple-500/15 via-violet-400/10 to-transparent blur-[80px] sm:blur-[100px] pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="absolute top-1/2 -right-32 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-l from-purple-500/15 via-violet-400/10 to-transparent blur-[80px] sm:blur-[100px] pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+      <h2
+        class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-950 font-display leading-[1.12]"
+      >
+        Kontakt
+      </h2>
+      <p class="text-sm sm:text-base text-zinc-600 mt-3 leading-relaxed">
+        Máte dotaz, chcete poradit s výběrem nebo si tlačítko nezávazně vyzkoušet?
+      </p>
+    </div>
+
+    <!-- Apple-style minimalistická karta přesně jako v Ceníku -->
+    <div
+      class="bg-white rounded-3xl p-6 sm:p-10 md:p-12 border border-zinc-200/90 shadow-sm transition-all duration-300"
+    >
+      <div class="max-w-2xl mx-auto space-y-8">
+        <!-- Přehledný vertikální seznam kontaktů přímo pod sebou ve stylu Ceníku -->
+        <div class="divide-y divide-zinc-200/90 border-y border-zinc-200/90 py-2">
+          {
+            contactItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 sm:gap-6">
+                  <div class="flex items-center gap-2.5">
+                    <span class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-zinc-500 font-display">
+                      {item.label}
+                    </span>
+                  </div>
+
+                  <div class="sm:text-right">
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        class="text-xl sm:text-2xl font-bold text-zinc-950 hover:text-zinc-700 transition-colors font-display"
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      <span class="text-xl sm:text-2xl font-bold text-zinc-950 font-display block">
+                        {item.value}
+                      </span>
+                    )}
+                    <p class="text-xs text-zinc-500 mt-0.5 leading-snug">
+                      {item.note}
+                    </p>
+                  </div>
+                </div>
+              );
+            })
+          }
+        </div>
+
+        <!-- Akční tlačítko pro rychlé zavolání / napsání -->
+        <div class="pt-2 flex flex-col items-center justify-center gap-3">
+          <a
+            href="mailto:info@vochranka.cz"
+            class="w-full sm:w-auto min-w-[260px] inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-zinc-950 text-white font-semibold text-base hover:bg-zinc-800 active:scale-[0.99] transition-all shadow-md hover:shadow-lg"
+          >
+            <span>Napsat na info@vochranka.cz</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <p class="text-xs text-zinc-400 text-center">
+            Nezávazný kontakt • Odpovíme do několika hodin
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
