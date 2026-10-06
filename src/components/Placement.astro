@@ -1,26 +1,25 @@
 ---
 // src/components/Placement.astro
-import Reviews from "./Reviews.astro";
 
 const placementItems = [
   {
     num: "01",
-    title: "Skryté. Přesto vždy po ruce.",
-    desc: "Na kovovém rámu drží samo na magnet. Nahmatáte ho poslepu a jedním stiskem aktivujete sirénu i SMS poplach.",
+    title: "Na kovovém rámu",
+    desc: 'Drží samo <strong class="font-semibold text-zinc-900"> na magnet</strong>. Nahmatáte ho poslepu a jedním stiskem aktivujete sirénu i SMS poplach.',
     image: "/button-under-table.jpg",
     alt: "Tísňové tlačítko magneticky přichycené pod masérským stolem",
   },
   {
     num: "02",
-    title: "Když nezůstáváte na jednom místě.",
-    desc: "Díky kompaktním rozměrům padne přesně do kapsy zástěry nebo kalhot.",
+    title: "V kapse",
+    desc: 'Díky kompaktním rozměrům padne přesně <strong class="font-semibold text-zinc-900">do kapsy</strong> zástěry nebo kalhot.',
     image: "/button-pocket.jpg",
     alt: "Diskrétní nošení tísňového tlačítka v kapse",
   },
   {
     num: "03",
-    title: " Pod hranou pultu nebo stolu.",
-    desc: "Na nalepovací kovové destičce drží jako přibité, ale kdykoliv ho můžete sundat. Při placení ho máte pod rukou a při zavíračce nebo úklidu zahrádky ho vezmete rovnou s sebou.",
+    title: " Pod pultem nebo stolem",
+    desc: 'Na <strong class="font-semibold text-zinc-900">nalepovací kovové destičce</strong> drží jako přibité, ale kdykoliv ho můžete sundat.',
     image: "/button-under-reception.jpg",
     alt: "Umístění tísňového tlačítka pod deskou recepce na 3M destičku",
   },
@@ -30,32 +29,32 @@ const placementItems = [
 <!-- 2. UMÍSTĚNÍ / VARIABILITA UCHYCENÍ -->
 <section
   id="umisteni"
-  class="py-24 sm:py-32 md:py-24 lg:py-28 bg-white relative overflow-hidden"
+  class="py-24 sm:py-32 md:py-24 lg:py-28 bg-white relative min-h-[100svh] flex flex-col justify-center"
 >
   <!-- Kotva pro případné starší odkazy -->
   <div id="variabilita" class="absolute -top-16 left-0 pointer-events-none"></div>
 
-  <!-- Rohová zelená záře -->
+  <!-- Horní smaragdová záře navazující na Instalaci (stejný styl jako boční záře) -->
   <div
-    class="absolute -top-20 -left-20 sm:-top-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-emerald-400/25 via-emerald-300/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    class="absolute -top-[200px] -left-32 w-80 h-[600px] sm:w-96 rounded-full bg-gradient-to-r from-emerald-500/20 via-green-400/10 to-transparent blur-[80px] sm:blur-[100px] pointer-events-none"
     aria-hidden="true"
   ></div>
   <div
-    class="absolute -top-20 -right-20 sm:-top-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-bl from-emerald-400/25 via-emerald-300/10 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
+    class="absolute -top-[200px] -right-32 w-80 h-[600px] sm:w-96 rounded-full bg-gradient-to-l from-emerald-500/20 via-green-400/10 to-transparent blur-[80px] sm:blur-[100px] pointer-events-none"
     aria-hidden="true"
   ></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <!-- Hlavička sekce (v čistém uppercase stylu jako FAQ) -->
-    <div class="max-w-3xl mx-auto text-center mb-12 sm:mb-16 md:mb-12 lg:mb-14">
+    <!-- Hlavička sekce -->
+    <div class="max-w-3xl mx-auto text-center mb-16 sm:mb-20 md:mb-20 lg:mb-24">
       <h2
-        class="text-center text-4xl sm:text-5xl md:text-5xl lg:text-[3.75rem] font-bold tracking-tight text-zinc-950 font-display leading-[1.08] uppercase"
+        class="text-center text-4xl sm:text-5xl md:text-5xl lg:text-[3.75rem] font-bold tracking-tight text-zinc-950 font-display leading-[1.08]"
       >
         Vždy na dosah
       </h2>
       
       <p
-        class="text-center text-base sm:text-lg md:text-lg text-zinc-500 mt-4 leading-relaxed max-w-sm sm:max-w-xl md:max-w-2xl mx-auto font-normal"
+        class="text-center text-base sm:text-lg md:text-xl text-zinc-500 mt-4 sm:mt-5 leading-relaxed max-w-sm sm:max-w-xl md:max-w-2xl mx-auto font-normal"
       >
        Máte nespočet možností kam tlačítko umístit. 
       </p>
@@ -64,7 +63,7 @@ const placementItems = [
     <!-- 3 KARTY: na mobilu nativní Apple swipe carousel, na desktopu 3 sloupce -->
     <div
       id="slider-container"
-      class="flex md:grid md:grid-cols-3 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-6 px-6 gap-4 md:gap-7 lg:gap-8 scroll-smooth items-start"
+      class="flex md:grid md:grid-cols-3 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-6 px-6 gap-6 md:gap-8 lg:gap-10 scroll-smooth items-start"
       style="-webkit-overflow-scrolling: touch;"
     >
       {
@@ -73,16 +72,14 @@ const placementItems = [
             class={`flex flex-col select-none w-[85vw] shrink-0 snap-center md:w-auto ${index === 1 ? 'md:mt-6 lg:mt-8' : ''}`}
           >
             <!-- Text nad fotkou -->
-            <div class="pb-3 sm:pb-4 md:pb-4 flex flex-col items-center text-center md:items-start md:text-left flex-1">
+            <div class="pb-4 sm:pb-5 md:pb-6 flex flex-col items-center text-center md:items-start md:text-left flex-1">
               <!-- Nadpis -->
-              <h3 class="text-lg sm:text-xl md:text-xl lg:text-2xl font-bold tracking-tight text-zinc-950 mb-1.5 md:mb-2 leading-snug">
+              <h3 class="text-xl sm:text-2xl md:text-2xl lg:text-[1.65rem] font-bold tracking-tight text-zinc-950 mb-3 sm:mb-3.5 leading-snug">
                 {item.title}
               </h3>
 
               <!-- Popis -->
-              <p class="text-sm sm:text-base md:text-sm lg:text-[0.95rem] text-zinc-600 leading-relaxed max-w-sm md:max-w-none">
-                {item.desc}
-              </p>
+              <p class="text-base sm:text-lg md:text-base lg:text-[1.05rem] text-zinc-600 leading-relaxed max-w-sm md:max-w-none" set:html={item.desc} />
             </div>
 
             <!-- Obrázek: na telefonu původní aspect-[4/3] sm:aspect-[4/5] a rounded-2xl, na desktopu citlivě zmenšeno na md:aspect-[4/3.1] md:max-h-[340px] -->
@@ -125,19 +122,8 @@ const placementItems = [
       </div>
     </div>
 
-    <!-- Pás recenzí jako samostatná komponenta -->
-    <Reviews />
   </div>
 
-  <!-- Spodní rohová světle žlutá záře navazující do sekce FAQ -->
-  <div
-    class="absolute -bottom-20 -left-20 sm:-bottom-24 sm:-left-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-amber-400/25 via-yellow-300/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
-    aria-hidden="true"
-  ></div>
-  <div
-    class="absolute -bottom-20 -right-20 sm:-bottom-24 sm:-right-24 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-tl from-amber-400/25 via-yellow-300/15 to-transparent blur-[60px] sm:blur-[70px] md:blur-[80px] pointer-events-none"
-    aria-hidden="true"
-  ></div>
 </section>
 
 <style>

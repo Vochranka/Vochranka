@@ -1,15 +1,12 @@
 ---
-// src/components/Pricing.astro
 import {
   ChevronDown,
   Radio,
-  BookOpen,
   MessageSquare,
   Activity,
   BatteryWarning,
   Headphones,
   Signal,
-  ArrowRight,
 } from "lucide-astro";
 
 const hardwareItems = [
@@ -82,253 +79,552 @@ const serviceItems = [
 
 <section
   id="cenik"
-  class="py-24 sm:py-32 md:py-36 bg-white relative overflow-hidden"
+  class="py-24 sm:py-32 md:py-36 lg:py-40 bg-white relative overflow-hidden min-h-[100svh] flex flex-col"
 >
-  <!-- Fialová záře na levé straně -->
+  <!-- Zelená záře vlevo -->
   <div
-    class="absolute top-1/2 -left-32 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-r from-purple-500/20 via-violet-400/10 to-transparent blur-[80px] sm:blur-[100px] pointer-events-none"
+    class="absolute top-1/2 -left-32 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-r from-emerald-500/20 via-green-400/10 to-transparent blur-[80px] sm:blur-[100px] pointer-events-none"
     aria-hidden="true"
   >
   </div>
 
-  <!-- Fialová záře na pravé straně -->
+  <!-- Zelená záře vpravo -->
   <div
-    class="absolute top-1/2 -right-32 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-l from-purple-500/20 via-violet-400/10 to-transparent blur-[80px] sm:blur-[100px] pointer-events-none"
+    class="absolute top-1/2 -right-32 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-l from-emerald-500/20 via-green-400/10 to-transparent blur-[80px] sm:blur-[100px] pointer-events-none"
     aria-hidden="true"
   >
   </div>
 
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <!-- Header -->
     <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
       <h2
         class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-950 font-display leading-[1.12]"
       >
-        Ceník<br />
+        Ceník
       </h2>
+
       <p class="text-sm sm:text-base text-zinc-600 mt-3 leading-relaxed">
-        Hardware navždy ve vašem vlastnictví. Žádné pronájmy ani montážní
-        poplatky.
+        Žádné pronájmy ani montážní poplatky. Osobní předvedení. 14 dní na
+        vyzkoušení.
       </p>
     </div>
 
-    <!-- Apple-style minimalistická karta -->
-    <div
-      class="bg-white rounded-3xl p-6 sm:p-10 md:p-12 border border-zinc-200/90 shadow-sm transition-all duration-300"
-    >
-      <div class="max-w-2xl mx-auto space-y-9">
-        <!-- 1. Hardware 1 999 Kč / jednorázově -->
-        <div>
-          <div class="flex items-baseline flex-wrap gap-x-2.5 gap-y-1">
-            <span
-              class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-950 font-display"
-            >
-              1 999 Kč
-            </span>
-            <span
-              class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#63625C] font-display"
-            >
-              / jednorázově
-            </span>
-          </div>
-          <p class="text-xs sm:text-sm text-zinc-600 mt-1.5">
-            Celá fyzická sada Vochranka je váš trvalý majetek.
-          </p>
-          <div class="mt-4">
-            <button
-              type="button"
-              id="toggle-hardware-drawer"
-              aria-expanded="false"
-              class="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200/80 active:scale-[0.98] text-xs font-semibold text-zinc-800 transition-all cursor-pointer"
-            >
-              <span>Co sada obsahuje</span>
-              <ChevronDown
-                class="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-900 transition-transform duration-300"
-                id="hardware-chevron"
-              />
-            </button>
-          </div>
+    <!--
+      HLAVNÍ GRID
+      Mobil: 1 sloupec
+      Desktop: Ceník 7 sloupců + Kontakt 5 sloupců
+    -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+      <!-- ========================================================= -->
+      <!-- LEVÁ KARTA – CENÍK -->
+      <!-- ========================================================= -->
 
-          <!-- Výsuvný blok: Hardware položky (přehledná mřížka bez scrollování) -->
-          <div
-            id="hardware-drawer"
-            class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out"
-          >
-            <div class="overflow-hidden">
-              <div class="pt-6">
-                <div
-                  class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 items-start"
-                >
-                  {
-                    hardwareItems.map((item) => {
-                      const Icon = item.icon;
-                      return (
-                        <div class="flex flex-col items-center text-center">
-                          <div class="h-24 sm:h-28 w-full flex items-center justify-center mb-2.5">
-                            {item.image ? (
-                              <img
-                                src={item.image}
-                                alt={item.alt}
-                                class="max-h-24 sm:max-h-28 max-w-full object-contain drop-shadow-sm select-none"
-                                loading="lazy"
-                              />
-                            ) : (
-                              <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-zinc-100/90 flex items-center justify-center text-zinc-800">
-                                <Icon class="w-6 h-6 sm:w-7 sm:h-7 stroke-[1.8]" />
-                              </div>
+      <div
+        class="md:col-span-7 bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-zinc-200/80 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08),0_10px_25px_-5px_rgba(0,0,0,0.04)] hover:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.12),0_10px_30px_-5px_rgba(0,0,0,0.06)] transition-all duration-500 flex flex-col justify-between"
+      >
+        <div class="space-y-10 sm:space-y-12">
+          <!-- ===================================================== -->
+          <!-- 1. SADA S HARDWAREM -->
+          <!-- ===================================================== -->
+
+          <div>
+            <div class="flex items-baseline flex-wrap gap-x-2.5 gap-y-1">
+              <span
+                class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-950 font-display"
+              >
+                2 990 Kč
+              </span>
+
+              <span
+                class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#63625C] font-display"
+              >
+                / první rok
+              </span>
+            </div>
+
+            <p
+              class="text-sm sm:text-base font-bold text-[#c1471e] mt-1.5 tracking-tight"
+            >
+              První rok provozu zdarma
+            </p>
+
+            <p class="text-xs sm:text-sm text-zinc-600 mt-2">
+              Kompletní fyzická sada Vochranka + 1. rok provozu bez dalších
+              poplatků.
+            </p>
+
+            <!-- Hardware button -->
+            <div class="mt-4">
+              <button
+                type="button"
+                id="toggle-hardware-drawer"
+                aria-expanded="false"
+                class="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200/80 active:scale-[0.98] text-xs font-semibold text-zinc-800 transition-all cursor-pointer"
+              >
+                <span>Co sada obsahuje</span>
+
+                <ChevronDown
+                  class="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-900 transition-transform duration-300"
+                  id="hardware-chevron"
+                />
+              </button>
+            </div>
+
+            <!-- Hardware drawer -->
+            <div
+              id="hardware-drawer"
+              class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out"
+            >
+              <div class="overflow-hidden">
+                <div class="pt-6">
+                  <div
+                    class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 items-start"
+                  >
+                    {
+                      hardwareItems.map((item) => {
+                        const Icon = item.icon;
+
+                        return (
+                          <div class="flex flex-col items-center text-center">
+                            <div class="h-24 sm:h-28 w-full flex items-center justify-center mb-2.5">
+                              {item.image ? (
+                                <img
+                                  src={item.image}
+                                  alt={item.alt}
+                                  class="max-h-24 sm:max-h-28 max-w-full object-contain drop-shadow-sm select-none"
+                                  loading="lazy"
+                                />
+                              ) : (
+                                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-zinc-100/90 flex items-center justify-center text-zinc-800">
+                                  {Icon && (
+                                    <Icon class="w-6 h-6 sm:w-7 sm:h-7 stroke-[1.8]" />
+                                  )}
+                                </div>
+                              )}
+                            </div>
+
+                            <span class="text-xs sm:text-sm font-bold text-zinc-950 font-display">
+                              {item.label}
+                            </span>
+
+                            {item.sublabel && (
+                              <span class="block text-[11px] sm:text-xs text-zinc-500 font-normal mt-0.5 leading-snug">
+                                {item.sublabel}
+                              </span>
                             )}
                           </div>
-                          <span class="text-xs sm:text-sm font-bold text-zinc-950 font-display">
-                            {item.label}
-                          </span>
-                          {item.sublabel && (
-                            <span class="block text-[11px] sm:text-xs text-zinc-500 font-normal mt-0.5 leading-snug">
-                              {item.sublabel}
-                            </span>
-                          )}
-                          {item.desc && (
-                            <p class="text-[11px] text-zinc-500 mt-1 leading-snug">
-                              {item.desc}
-                            </p>
-                          )}
-                        </div>
-                      );
-                    })
-                  }
+                        );
+                      })
+                    }
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- 2. Provoz 990 Kč / ročně -->
-        <div>
-          <div class="flex items-baseline flex-wrap gap-x-2.5 gap-y-1">
-            <span
-              class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-950 font-display"
+          <!-- ===================================================== -->
+          <!-- 2. PROVOZ OD 2. ROKU -->
+          <!-- ===================================================== -->
+
+          <div>
+            <div class="flex items-baseline flex-wrap gap-x-2.5 gap-y-1">
+              <span
+                class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-950 font-display"
+              >
+                82 Kč
+              </span>
+
+              <span
+                class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#63625C] font-display"
+              >
+                / měsíčně
+              </span>
+            </div>
+
+            <p
+              class="text-sm sm:text-base font-bold text-[#c1471e] mt-1.5 tracking-tight"
             >
-              990 Kč
-            </span>
-            <span
-              class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#63625C] font-display"
+              Míň než jedno kafe
+            </p>
+
+            <p class="text-xs sm:text-sm text-zinc-600 mt-2">
+              Zahrnuje tísňové SMS rodině, 24/7 monitoring, SIM data a
+              nepřetržitou technickou podporu.
+            </p>
+
+            <!-- Service button -->
+            <div class="mt-4">
+              <button
+                type="button"
+                id="toggle-service-drawer"
+                aria-expanded="false"
+                class="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200/80 active:scale-[0.98] text-xs font-semibold text-zinc-800 transition-all cursor-pointer"
+              >
+                <span>Co provoz zahrnuje</span>
+
+                <ChevronDown
+                  class="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-900 transition-transform duration-300"
+                  id="service-chevron"
+                />
+              </button>
+            </div>
+
+            <!-- Service drawer -->
+            <div
+              id="service-drawer"
+              class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out"
             >
-              / ročně
-            </span>
-            <span class="text-s text-[#c1471e] font-medium ml-1">
-              (82 Kč / měsíc)</span
-            >
-          </div>
-          <p class="text-xs sm:text-sm text-zinc-600 mt-1.5">
-            Neomezené tísňové SMS rodině, 24/7 monitoring a datové přenosy.
-          </p>
-          <div class="mt-4">
-            <button
-              type="button"
-              id="toggle-service-drawer"
-              aria-expanded="false"
-              class="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200/80 active:scale-[0.98] text-xs font-semibold text-zinc-800 transition-all cursor-pointer"
-            >
-              <span>Co provoz zahrnuje</span>
-              <ChevronDown
-                class="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-900 transition-transform duration-300"
-                id="service-chevron"
-              />
-            </button>
+              <div class="overflow-hidden">
+                <div class="pt-6">
+                  <div
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-5 items-start text-left"
+                  >
+                    {
+                      serviceItems.map((item) => {
+                        const Icon = item.icon;
+
+                        return (
+                          <div class="flex items-start gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-zinc-100 flex items-center justify-center shrink-0 text-zinc-900 mt-0.5">
+                              <Icon class="w-4 h-4 stroke-[1.8]" />
+                            </div>
+
+                            <div>
+                              <h4 class="text-xs sm:text-sm font-bold text-zinc-950 font-display">
+                                {item.title}
+                              </h4>
+
+                              <p class="text-[11px] text-zinc-500 leading-snug mt-0.5">
+                                {item.detail}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Výsuvný blok: Provoz položky (přehledný seznam/mřížka bez scrollování) -->
-          <div
-            id="service-drawer"
-            class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out"
-          >
-            <div class="overflow-hidden">
-              <div class="pt-6">
-                <div
-                  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 items-start text-left"
+          <!-- ===================================================== -->
+          <!-- 3. VÍCE TLAČÍTEK -->
+          <!-- ===================================================== -->
+          <div class="pt-6 border-t border-zinc-100 mt-4">
+            <div class="flex items-start gap-3">
+              <div
+                class="w-12 h-12 sm:w-14 sm:h-14 shrink-0 flex items-center justify-center -ml-1 sm:-ml-2"
+              >
+                <img
+                  src="/button1xxx.png"
+                  alt="Tlačítko"
+                  class="w-full h-full object-contain drop-shadow-sm"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <p class="text-sm font-bold text-zinc-950">
+                  Potřebujete více tlačítek?
+                </p>
+                <p
+                  class="text-xs sm:text-sm text-zinc-600 mt-0.5 leading-relaxed"
                 >
-                  {
-                    serviceItems.map((item) => {
-                      const Icon = item.icon;
-                      return (
-                        <div class="flex items-start gap-3">
-                          <div class="w-9 h-9 rounded-xl bg-zinc-100 flex items-center justify-center shrink-0 text-zinc-900 mt-0.5">
-                            <Icon class="w-4 h-4 stroke-[1.8]" />
-                          </div>
-                          <div>
-                            <h4 class="text-xs sm:text-sm font-bold text-zinc-950 font-display">
-                              {item.title}
-                            </h4>
-                            <p class="text-[11px] text-zinc-500 leading-snug mt-0.5">
-                              {item.detail}
-                            </p>
-                          </div>
-                        </div>
-                      );
-                    })
-                  }
-                </div>
+                  Každé další tlačítko stojí <strong>590 Kč</strong>. Protože
+                  funguje zcela nezávisle a obsahuje vlastní SIM kartu, platí se
+                  za něj i samostatný poplatek za provoz.
+                </p>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Tlačítko Kontaktovat přímo dole -->
-        <div class="pt-6 flex flex-col items-center justify-center gap-3">
-          <a
-            href="#kontakt"
-            class="w-full sm:w-auto min-w-[260px] inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-zinc-950 text-white font-semibold text-base hover:bg-zinc-800 active:scale-[0.99] transition-all shadow-md hover:shadow-lg"
-          >
-            <span>Kontaktovat</span>
-            <ArrowRight class="w-4 h-4" />
-          </a>
-          <p class="text-xs text-zinc-400 text-center">
-            Nezávazná poptávka • Rádi vám vše předvedeme nebo zodpovíme dotazy
-          </p>
+      <!-- ========================================================= -->
+      <!-- PRAVÁ KARTA – KONTAKT -->
+      <!-- ========================================================= -->
+
+      <div class="md:col-span-5 flex flex-col">
+        <div
+          class="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-zinc-200/80 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08),0_10px_25px_-5px_rgba(0,0,0,0.04)] hover:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.12),0_10px_30px_-5px_rgba(0,0,0,0.06)] transition-all duration-500 h-full flex flex-col justify-between"
+        >
+          <div class="space-y-6">
+            <!-- Nadpis -->
+            <div>
+              <h3
+                class="text-2xl sm:text-3xl font-extrabold tracking-tight text-zinc-950 font-display leading-tight"
+              >
+                Kontaktujte nás<br />ihned
+              </h3>
+
+              <p class="text-sm text-zinc-600 mt-6 leading-relaxed">
+                Zanechte email a my se vám ozveme. Víc nepotřebujeme.
+              </p>
+            </div>
+
+            <!-- =================================================== -->
+            <!-- FORMULÁŘ -->
+            <!-- =================================================== -->
+
+            <form
+              id="pricing-contact-form"
+              name="pricing-contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              class="space-y-4 pt-1"
+            >
+              <input type="hidden" name="form-name" value="pricing-contact" />
+              <p class="hidden">
+                <label
+                  >Nevyplňujte, pokud jste člověk: <input
+                    name="bot-field"
+                  /></label
+                >
+              </p>
+              <!-- Jméno -->
+              <div>
+                <label
+                  for="contact-name"
+                  class="block text-sm font-semibold text-zinc-950 mb-2 font-display"
+                >
+                  Jméno
+                </label>
+
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  placeholder="Jana"
+                  required
+                  class="w-full px-4 py-3 rounded-2xl bg-zinc-50 border border-zinc-200/90 text-zinc-950 placeholder-zinc-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#f97316]/40 focus:border-[#f97316] transition-all"
+                />
+              </div>
+
+              <!-- Telefon -->
+              <div>
+                <label
+                  for="contact-email"
+                  class="block text-sm font-semibold text-zinc-950 mb-2 font-display"
+                >
+                  E-mail
+                </label>
+
+                <input
+                  type="email"
+                  id="contact-email"
+                  name="email"
+                  placeholder="jana@gmail.com"
+                  required
+                  class="w-full px-4 py-3 rounded-2xl bg-zinc-50 border border-zinc-200/90 text-zinc-950 placeholder-zinc-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#f97316]/40 focus:border-[#f97316] transition-all"
+                />
+              </div>
+
+              <!-- Pocet talcitek -->
+              <div>
+                <label
+                  for="contact-count"
+                  class="block text-sm font-semibold text-zinc-950 mb-2 font-display"
+                >
+                  Počet tlačítek (nepovinné)
+                </label>
+
+                <div
+                  class="flex items-center w-full h-[46px] rounded-2xl bg-zinc-50 border border-zinc-200/90 overflow-hidden focus-within:ring-2 focus-within:ring-[#f97316]/40 focus-within:border-[#f97316] transition-all"
+                >
+                  <button
+                    type="button"
+                    onclick="document.getElementById('contact-count').stepDown()"
+                    class="w-12 h-full flex items-center justify-center text-zinc-500 hover:bg-zinc-200/50 hover:text-zinc-900 transition-colors cursor-pointer select-none"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      ><line x1="5" y1="12" x2="19" y2="12"></line></svg
+                    >
+                  </button>
+                  <input
+                    type="number"
+                    id="contact-count"
+                    name="count"
+                    value="1"
+                    min="1"
+                    class="flex-1 w-full text-center bg-transparent text-zinc-950 font-semibold text-sm focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  />
+                  <button
+                    type="button"
+                    onclick="document.getElementById('contact-count').stepUp()"
+                    class="w-12 h-full flex items-center justify-center text-zinc-500 hover:bg-zinc-200/50 hover:text-zinc-900 transition-colors cursor-pointer select-none"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      ><line x1="12" y1="5" x2="12" y2="19"></line><line
+                        x1="5"
+                        y1="12"
+                        x2="19"
+                        y2="12"></line></svg
+                    >
+                  </button>
+                </div>
+              </div>
+
+              <!-- Tlačítko -->
+              <div class="pt-2">
+                <button
+                  type="submit"
+                  class="w-full py-4 px-6 rounded-2xl bg-[#c1471e] hover:bg-[#d94e08] active:scale-[0.98] text-white font-bold text-base shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer text-center"
+                >
+                  Kontaktujte mě
+                </button>
+              </div>
+
+              <!-- Ujištění -->
+              <p class="text-xs text-zinc-500 text-center leading-relaxed pt-1">
+                Nezávazně. Rádi vám vše předvedeme nebo zodpovíme dotazy.
+              </p>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<script>
-  function setupDrawer(btnId: string, drawerId: string, chevronId: string) {
-    const btn = document.getElementById(btnId);
-    const drawer = document.getElementById(drawerId);
-    const chevron = document.getElementById(chevronId);
+  <!-- Toast Notification -->
+  <div
+    id="pricing-toast"
+    class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 translate-y-[150%] opacity-0 bg-white text-zinc-950 border border-zinc-200/80 px-6 py-4 rounded-2xl shadow-xl flex items-center gap-3 transition-all duration-500 z-50 w-[90vw] max-w-sm font-sans"
+  >
+    <div
+      class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center shrink-0"
+    >
+      <svg
+        class="w-5 h-5 text-emerald-600"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 13l4 4L19 7"></path></svg
+      >
+    </div>
+    <div>
+      <h4 class="text-sm font-bold font-display">Odesláno!</h4>
+      <p class="text-xs text-zinc-600 mt-0.5">Děkujeme, brzy se vám ozveme.</p>
+    </div>
+  </div>
 
-    if (!btn || !drawer || btn.dataset.drawerInit) return;
-    btn.dataset.drawerInit = "true";
+  <!-- ============================================================= -->
+  <!-- JAVASCRIPT – DRAWERS & FORM -->
+  <!-- ============================================================= -->
 
-    btn.addEventListener("click", () => {
-      const isExpanded = btn.getAttribute("aria-expanded") === "true";
-      const nextState = !isExpanded;
-      btn.setAttribute("aria-expanded", String(nextState));
+  <script>
+    function setupDrawer(btnId: string, drawerId: string, chevronId: string) {
+      const btn = document.getElementById(btnId);
+      const drawer = document.getElementById(drawerId);
+      const chevron = document.getElementById(chevronId);
 
-      if (nextState) {
-        drawer.classList.remove("grid-rows-[0fr]");
-        drawer.classList.add("grid-rows-[1fr]");
-        if (chevron) chevron.classList.add("rotate-180");
-      } else {
-        drawer.classList.remove("grid-rows-[1fr]");
-        drawer.classList.add("grid-rows-[0fr]");
-        if (chevron) chevron.classList.remove("rotate-180");
+      if (!btn || !drawer || btn.dataset.drawerInit) return;
+
+      btn.dataset.drawerInit = "true";
+
+      btn.addEventListener("click", () => {
+        const isExpanded = btn.getAttribute("aria-expanded") === "true";
+
+        const nextState = !isExpanded;
+
+        btn.setAttribute("aria-expanded", String(nextState));
+
+        if (nextState) {
+          drawer.classList.remove("grid-rows-[0fr]");
+          drawer.classList.add("grid-rows-[1fr]");
+
+          if (chevron) {
+            chevron.classList.add("rotate-180");
+          }
+        } else {
+          drawer.classList.remove("grid-rows-[1fr]");
+          drawer.classList.add("grid-rows-[0fr]");
+
+          if (chevron) {
+            chevron.classList.remove("rotate-180");
+          }
+        }
+      });
+    }
+
+    function initPricingDrawers() {
+      setupDrawer(
+        "toggle-hardware-drawer",
+        "hardware-drawer",
+        "hardware-chevron",
+      );
+
+      setupDrawer("toggle-service-drawer", "service-drawer", "service-chevron");
+
+      const pricingForm = document.getElementById(
+        "pricing-contact-form",
+      ) as HTMLFormElement;
+      const pricingToast = document.getElementById("pricing-toast");
+
+      if (pricingForm && pricingToast && !pricingForm.dataset.init) {
+        pricingForm.dataset.init = "true";
+        pricingForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const formData = new FormData(pricingForm);
+          const submitBtn = pricingForm.querySelector(
+            'button[type="submit"]',
+          ) as HTMLButtonElement;
+          const originalText = submitBtn.innerHTML;
+          submitBtn.innerHTML = "Odesílám...";
+          submitBtn.disabled = true;
+
+          fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData as any).toString(),
+          })
+            .then(() => {
+              pricingToast.classList.remove("translate-y-[150%]", "opacity-0");
+              pricingForm.reset();
+              setTimeout(() => {
+                pricingToast.classList.add("translate-y-[150%]", "opacity-0");
+              }, 4000);
+            })
+            .catch(() => {
+              alert("Při odesílání došlo k chybě. Zkuste to prosím znovu.");
+            })
+            .finally(() => {
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+            });
+        });
       }
-    });
-  }
+    }
 
-  function initPricingDrawers() {
-    setupDrawer(
-      "toggle-hardware-drawer",
-      "hardware-drawer",
-      "hardware-chevron",
-    );
-    setupDrawer("toggle-service-drawer", "service-drawer", "service-chevron");
-  }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initPricingDrawers);
+    } else {
+      initPricingDrawers();
+    }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initPricingDrawers);
-  } else {
-    initPricingDrawers();
-  }
-  document.addEventListener("astro:page-load", initPricingDrawers);
-</script>
+    document.addEventListener("astro:page-load", initPricingDrawers);
+  </script>
+</section>

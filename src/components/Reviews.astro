@@ -7,8 +7,9 @@ interface Review {
   salon: string;
   text: string;
   rating: number;
-  tag: string;
 }
+
+const target_count = 1;
 
 const reviews: Review[] = [
   {
@@ -17,190 +18,137 @@ const reviews: Review[] = [
     salon: "Studio Relax & Tělo",
     text: "Pracuji sama do večerních hodin. Tlačítko mám přímo zespodu rámu lehátka, nahmatám ho poslepu. Už jen to vědomí, že stačí podržet a manželovi pípne SMS a v salonu začne řvát siréna, mi dává neuvěřitelný klid.",
     rating: 5,
-    tag: "Ověřená masérka",
   },
   {
-    author: "Barbora K.",
-    role: "Kosmetička a lash stylistka",
-    salon: "Beauty Privé, Brno",
-    text: "Bála jsem se složitého nastavování a vrtání do nábytku. Tlačítko jsem jen přicvakla na magnet a bránu píchla do zásuvky. Za 3 minuty hotovo. Skvělý minimalistický design, který klient vůbec nevidí.",
+    author: "Jana V.",
+    role: "Kosmetička, Brno",
+    salon: "Beauty by Jana",
+    text: "Nedávno mi do salonu vešel dost podezřelý chlap. Byla jsem moc ráda, že mám Vochranku hned u ruky. Naštěstí odešel, ale ten pocit bezpečí je k nezaplacení. Doporučuji všem.",
     rating: 5,
-    tag: "Rychlá instalace",
   },
   {
-    author: "MUDr. Klára V.",
-    role: "Fyzioterapeutka v privátní praxi",
-    salon: "Fyzio Balance",
-    text: "Oceňuji diskrétnost. Klienti si ničeho nevšimnou a já mám jistotu, že i kdyby došlo k nepříjemné či vyhrocené situaci, mám okamžité spojení s rodinou bez vytahování mobilu.",
+    author: "Tereza S.",
+    role: "Fyzioterapeutka, Plzeň",
+    salon: "Fyzio Tereza",
+    text: "Skvělá věc. Instalace trvala minutu, mám to na magnetu pod stolem. Rodina je taky mnohem klidnější, když ví, že si můžu jedním stiskem přivolat pomoc.",
     rating: 5,
-    tag: "Diskrétní bezpečí",
   },
 ];
 ---
 
-<div class="mt-20 sm:mt-24 md:mt-28 pt-12 sm:pt-16 border-t border-zinc-200/80">
-  <!-- Karty recenzí: na mobilu plynulý scroll carousel se snapem, na desktopu 3 sloupce -->
+<section class="pt-24 sm:pt-32 pb-16 sm:pb-24 relative overflow-hidden">
+  <!-- Fialová záře na pozadí -->
   <div
-    id="reviews-slider-container"
-    class="flex md:grid md:grid-cols-3 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-6 px-6 sm:-mx-8 sm:px-8 md:mx-0 md:px-0 gap-4 sm:gap-6 md:gap-8 scroll-smooth items-stretch py-2"
-    style="-webkit-overflow-scrolling: touch;"
-  >
-    {
-      reviews.map((rev) => (
-        <div class="w-[85vw] sm:w-[70vw] md:w-auto shrink-0 snap-center select-none bg-white border-2 border-zinc-950 p-6 sm:p-7 flex flex-col justify-between rounded-xl md:rounded-none shadow-sm md:shadow-none">
-          <div>
-            <!-- Hvězdičky & tag -->
-            <div class="flex items-center justify-between gap-2 mb-4">
-              <div class="flex items-center gap-1 text-zinc-950">
-                {Array.from({ length: rev.rating }).map(() => (
-                  <svg class="w-4 h-4 fill-zinc-950 text-zinc-950" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <span class="text-[11px] font-semibold tracking-wider uppercase text-zinc-500 bg-zinc-100 px-2.5 py-1 rounded-full">
-                {rev.tag}
-              </span>
-            </div>
+    class="absolute top-1/3 -left-32 w-80 h-[600px] sm:w-96 rounded-full bg-gradient-to-r from-purple-500/20 via-violet-400/10 to-transparent blur-[80px] sm:blur-[100px] pointer-events-none"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="absolute top-1/3 -right-32 w-80 h-[600px] sm:w-96 rounded-full bg-gradient-to-l from-purple-500/20 via-violet-400/10 to-transparent blur-[80px] sm:blur-[100px] pointer-events-none"
+    aria-hidden="true"
+  ></div>
 
-            <!-- Text recenze -->
-            <p class="text-sm text-zinc-800 leading-relaxed">
-              „{rev.text}“
-            </p>
-          </div>
-
-          <!-- Autor & salón -->
-          <div class="pt-5 mt-5 border-t border-zinc-200 flex items-center gap-3">
-            <div class="w-8 h-8 bg-zinc-950 text-white font-bold text-xs flex items-center justify-center font-display shrink-0 rounded-full md:rounded-none">
-              {rev.author.charAt(0)}
-            </div>
-            <div>
-              <h4 class="text-xs sm:text-sm font-bold text-zinc-950 font-display leading-tight">
-                {rev.author}
-              </h4>
-              <p class="text-[11px] text-zinc-600 leading-tight mt-0.5">
-                {rev.role} • <span class="text-zinc-950 font-medium">{rev.salon}</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      ))
-    }
-  </div>
-
-  <!-- Indikátor pozice (tečky pouze na mobilu) -->
-  <div class="flex md:hidden justify-center mt-5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div
-      id="reviews-slider-indicator"
-      class="flex items-center gap-2 py-1.5 px-3.5 bg-zinc-200/90 rounded-full border border-zinc-300/40 shadow-inner"
-      role="tablist"
-      aria-label="Pozice v recenzích"
+      class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start"
     >
-      {
-        reviews.map((_, index) => (
-          <button
-            type="button"
-            class={`review-dot h-2 rounded-full cursor-pointer transition-all duration-300 p-0 border-0 ${
-              index === 0
-                ? "w-6 bg-zinc-950"
-                : "w-2 bg-zinc-400 hover:bg-zinc-600"
-            }`}
-            data-index={index}
-            aria-label={`Přejít na recenzi ${index + 1}`}
-          />
-        ))
-      }
+      <!-- Levý panel: Nadpis a velká čísla -->
+      <div class="lg:w-1/3 shrink-0">
+        <div
+          class="flex flex-col items-start leading-none gap-2 sm:gap-4"
+        >
+          <p
+            class="text-4xl sm:text-5xl lg:text-6xl font-black text-zinc-950 uppercase tracking-tighter"
+          >
+            Vochranku má
+          </p>
+          <p
+            class="text-[7rem] sm:text-[9rem] lg:text-[11rem] font-black text-purple-600 tracking-tighter py-2 leading-none"
+          >
+            1
+          </p>
+          <p
+            class="text-4xl sm:text-5xl lg:text-6xl font-black text-zinc-950 uppercase tracking-tighter"
+          >
+            osoba
+          </p>
+        </div>
+      </div>
+
+      <!-- Pravý panel: Skrolovací recenze -->
+      <div class="lg:w-2/3 w-full">
+        <!-- Zabalení pro overflow -->
+        <div
+          id="reviews-container"
+          class="flex overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-6 pb-8 pt-4 -mx-4 px-4 sm:mx-0 sm:px-0 no-scrollbar scroll-smooth"
+        >
+          {
+            reviews.map((rev) => (
+              <div class="shrink-0 w-[85vw] sm:w-[400px] snap-center sm:snap-start bg-white p-6 sm:p-8 flex flex-col justify-between rounded-3xl">
+                <div>
+                  <div class="flex items-center justify-between gap-2 mb-5">
+                    <div class="flex items-center gap-1">
+                      {Array.from({ length: rev.rating }).map(() => (
+                        <svg
+                          class="w-4 h-4 fill-zinc-900 text-zinc-900"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
+                  </div>
+                  <p class="text-sm sm:text-base text-zinc-700 leading-relaxed italic">
+                    „{rev.text}“
+                  </p>
+                </div>
+                <div class="pt-5 mt-5 border-t border-zinc-100 flex items-center gap-3">
+                  <div>
+                    <h4 class="text-sm font-bold text-zinc-900 leading-tight">
+                      {rev.author}
+                    </h4>
+                    <p class="text-[11px] text-zinc-500 leading-tight mt-0.5">
+                      {rev.role} •{" "}
+                      <span class="text-zinc-700 font-medium">{rev.salon}</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <!-- Indikátor rolování -->
+        <div
+          class="mt-2 mb-6 sm:mb-0 flex items-center justify-center gap-2 text-zinc-400"
+        >
+          <svg
+            class="w-5 h-5 animate-[pulse_2s_ease-in-out_infinite]"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+          </svg>
+          <span class="text-[11px] font-bold uppercase tracking-widest"
+            >Tažením posuňte dál</span
+          >
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <style>
+  /* Skrytí posuvníku pro čistý vzhled */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
   .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 </style>
-
-<script>
-  function initReviewsCarousel() {
-    const container = document.getElementById("reviews-slider-container");
-    const indicator = document.getElementById("reviews-slider-indicator");
-    if (!container || !indicator) return;
-
-    const dots = indicator.querySelectorAll(".review-dot") as NodeListOf<HTMLButtonElement>;
-    if (!dots.length) return;
-
-    function setActive(activeIndex: number) {
-      dots.forEach((dot, index) => {
-        if (index === activeIndex) {
-          dot.classList.remove("w-2", "bg-zinc-400");
-          dot.classList.add("w-6", "bg-zinc-950");
-        } else {
-          dot.classList.remove("w-6", "bg-zinc-950");
-          dot.classList.add("w-2", "bg-zinc-400");
-        }
-      });
-    }
-
-    function updateDots() {
-      const scrollLeft = container.scrollLeft;
-      const cards = container.querySelectorAll(".snap-center") as NodeListOf<HTMLElement>;
-      if (!cards.length) return;
-
-      const containerCenter = scrollLeft + container.clientWidth / 2;
-      let closestIdx = 0;
-      let minDiff = Infinity;
-
-      cards.forEach((card, idx) => {
-        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-        const diff = Math.abs(containerCenter - cardCenter);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closestIdx = idx;
-        }
-      });
-
-      setActive(closestIdx);
-    }
-
-    container.addEventListener("scroll", updateDots, { passive: true });
-    container.addEventListener("touchmove", updateDots, { passive: true });
-    container.addEventListener(
-      "touchend",
-      () => {
-        setTimeout(updateDots, 60);
-        setTimeout(updateDots, 180);
-        setTimeout(updateDots, 350);
-      },
-      { passive: true }
-    );
-    window.addEventListener("resize", updateDots, { passive: true });
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener("click", (e) => {
-        e.preventDefault();
-        const cards = container.querySelectorAll(".snap-center") as NodeListOf<HTMLElement>;
-        if (cards[index]) {
-          cards[index].scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-            inline: "center",
-          });
-          setActive(index);
-        }
-      });
-    });
-
-    updateDots();
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initReviewsCarousel);
-  } else {
-    initReviewsCarousel();
-  }
-  document.addEventListener("astro:page-load", initReviewsCarousel);
-</script>

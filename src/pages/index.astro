@@ -11,11 +11,12 @@ import OrderForm from "../components/OrderForm.astro";
 import Footer from "../components/Footer.astro";
 import { ArrowRight, ShieldCheck } from "lucide-astro";
 import Pricing from "../components/Pricing.astro";
+import Reviews from "../components/Reviews.astro";
 ---
 
 <Layout
-  title="Vochranka | Diskrétní tísňové tlačítko pro masérky, kosmetičky a sólo salóny"
-  description="Diskrétní bezdrátové tísňové tlačítko pod stůl a masérské lehátko. Hlasitá odstrašující siréna na místě a tichá nouzová SMS rodině do 2 vteřin. Bez vrtání a kabelů."
+  title="Vochranka | Tísňové tlačítko pro masérky, kosmetičky a sólo salóny"
+  description="Bezdrátové tísňové tlačítko pod stůl a masérské lehátko. Hlasitá odstrašující siréna na místě a tichá nouzová SMS rodině do 2 vteřin. Bez vrtání a kabelů."
 >
   <!-- Navigation bar -->
   <Navbar />
@@ -34,14 +35,13 @@ import Pricing from "../components/Pricing.astro";
     <!-- 4. Umístění & Kam se dá tlačítko dát (Magnet pod stůl, v kapse, potají) -->
     <Placement />
 
+    <Reviews />
+
     <!-- 4. Pricing -->
     <Pricing />
 
     <!-- 5. FAQ -->
     <Faq />
-
-    <!-- 6. Kontakt -->
-    <Contact />
   </main>
 
   <!-- Footer -->

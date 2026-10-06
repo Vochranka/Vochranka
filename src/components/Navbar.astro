@@ -4,7 +4,7 @@ import { ShieldCheck, Menu, X, ArrowRight } from "lucide-astro";
 
 <header
   id="main-navbar"
-  class="fixed top-0 left-0 right-0 z-50 w-full pointer-events-none transition-all duration-500 ease-out pt-4 sm:pt-6 px-4 sm:px-8 lg:px-12"
+  class="fixed top-0 left-0 right-0 z-50 w-full pointer-events-none transition-all duration-500 ease-out pt-3 sm:pt-4 px-4 sm:px-6 lg:px-8"
 >
   <div
     id="navbar-container"
@@ -12,16 +12,16 @@ import { ShieldCheck, Menu, X, ArrowRight } from "lucide-astro";
   >
     <div
       id="navbar-pill"
-      class="relative flex items-center justify-between w-full transition-all duration-500 ease-out px-6 sm:px-10 py-3 sm:py-4 rounded-2xl md:rounded-full"
+      class="relative flex items-center justify-between w-full transition-all duration-500 ease-out px-4 sm:px-6 py-2 sm:py-2.5 rounded-2xl md:rounded-full"
     >
       <!-- Brand / Logo (Left) with hover scaling & animation -->
       <a
         href="#"
-        class="flex items-center gap-2.5 group focus:outline-none rounded-lg p-1 transition-transform duration-300 hover:scale-105 active:scale-95 z-10 shrink-0"
+        class="flex items-center gap-2 group focus:outline-none rounded-lg p-1 transition-transform duration-300 hover:scale-105 active:scale-95 z-10 shrink-0"
       >
         <div class="flex flex-col">
           <span
-            class="nav-text-color text-2xl sm:text-3xl font-bold font-display tracking-tight text-white leading-none transition-colors duration-200"
+            class="nav-text-color text-xl sm:text-2xl font-bold font-display tracking-tight text-white leading-none transition-colors duration-200"
           >
             Vochranka
           </span>
@@ -30,7 +30,7 @@ import { ShieldCheck, Menu, X, ArrowRight } from "lucide-astro";
 
       <!-- Desktop Nav with animated underline -->
       <nav
-        class="hidden md:flex items-center gap-7 lg:gap-10 xl:gap-12 text-[17px] lg:text-[18px] font-medium z-10 whitespace-nowrap mx-auto"
+        class="hidden md:flex items-center gap-5 lg:gap-7 xl:gap-8 text-sm lg:text-[15px] font-medium z-10 whitespace-nowrap mx-auto"
       >
         <a
           href="#vyuziti"
@@ -80,14 +80,14 @@ import { ShieldCheck, Menu, X, ArrowRight } from "lucide-astro";
       </nav>
 
       <!-- Desktop CTA Button (Right) -->
-      <div class="hidden md:flex items-center gap-3 z-10 shrink-0">
+      <div class="hidden md:flex items-center gap-2 z-10 shrink-0">
         <a
           href="#kontakt"
-          class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full text-base font-semibold bg-zinc-950 hover:bg-zinc-800 text-white shadow-md active:scale-95 transition-all duration-300 group whitespace-nowrap border border-white/10"
+          class="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-full text-sm font-semibold bg-zinc-950 hover:bg-zinc-800 text-white shadow-md active:scale-95 transition-all duration-300 group whitespace-nowrap border border-white/10"
         >
           <span>Objednat sadu</span>
           <ArrowRight
-            class="w-4.5 h-4.5 transition-transform duration-300 group-hover:translate-x-1"
+            class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
           />
         </a>
       </div>
@@ -97,10 +97,10 @@ import { ShieldCheck, Menu, X, ArrowRight } from "lucide-astro";
         <button
           id="mobile-menu-toggle"
           type="button"
-          class="nav-burger-btn w-12 h-12 rounded-full bg-white/15 hover:bg-white/25 border border-white/20 flex items-center justify-center text-white shadow-soft-sm backdrop-blur-md active:scale-90 transition-all duration-200 focus:outline-none cursor-pointer"
+          class="nav-burger-btn w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 border border-white/20 flex items-center justify-center text-white shadow-soft-sm backdrop-blur-md active:scale-90 transition-all duration-200 focus:outline-none cursor-pointer"
           aria-label="Otevřít menu"
         >
-          <Menu class="w-6 h-6" />
+          <Menu class="w-5 h-5" />
         </button>
       </div>
     </div>
