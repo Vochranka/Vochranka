@@ -5,9 +5,12 @@ interface Props {
 }
 
 const {
-  title = "Vochranka | Diskrétní tísňové tlačítko pro sólo salóny a masérky",
-  description = "Bezpečí a klid při práci o samotě. Nenápadné tlačítko pod lehátko či stůl, odstrašující siréna a okamžitá tichá SMS rodině. Bez vrtání a kabelů.",
+  title = "Vochranka | Tísňové tlačítko pro masérky, kosmetičky a sólo salóny",
+  description = "Bezdrátové tísňové tlačítko pod lehátko nebo stůl. Hlasitá siréna na místě a tichá nouzová SMS rodině do 2 vteřin. Bez Wi-Fi, bez vrtání, bez kabelů. Pro sólo masérky, kosmetičky a terapeutky.",
 } = Astro.props;
+
+const canonicalUrl = "https://vochranka.cz";
+const ogImage = "https://vochranka.cz/og-vochranka.jpg";
 ---
 
 <!doctype html>
@@ -23,22 +26,36 @@ const {
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://vochranka.cz" />
+    <meta name="keywords" content="tísňové tlačítko, masérka bezpečí, nouzové tlačítko salón, siréna masáže, bezpečnost kosmetička, SOS tlačítko, vochranka, tichý poplach, nouzová SMS, ochrana žen v práci" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="Vochranka" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Geo tags (česká firma) -->
+    <meta name="geo.region" content="CZ" />
+    <meta name="geo.placename" content="Praha" />
+    <meta name="language" content="Czech" />
 
     <!-- Open Graph / Facebook / Instagram -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://vochranka.cz" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://vochranka.cz/og-vochranka.jpg" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vochranka – tísňové tlačítko pro masérky a kosmetičky" />
+    <meta property="og:site_name" content="Vochranka" />
+    <meta property="og:locale" content="cs_CZ" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Vochranka – tísňové tlačítko pro masérky a kosmetičky" />
 
-    <!-- Fonts preconnect -->
+    <!-- Fonts preconnect + preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -46,26 +63,109 @@ const {
       rel="stylesheet"
     />
 
-    <!-- Schema.org Structured Data -->
+    <!-- Schema.org Structured Data: Product -->
     <script type="application/ld+json">
       {
-        "@context": "https://schema.org/",
+        "@context": "https://schema.org",
         "@type": "Product",
-        "name": "Vochranka - Tísňové tlačítko pro privátní salóny",
+        "name": "Vochranka – Tísňové tlačítko pro sólo salóny",
         "image": "https://vochranka.cz/og-vochranka.jpg",
-        "description": "Diskrétní bezdrátové tísňové tlačítko pod stůl a masérské lehátko pro sólo pracující ženy se sirénou a tichou nouzovou SMS.",
+        "description": "Bezdrátové tísňové tlačítko pod masérské lehátko nebo stůl. Hlasitá odstrašující siréna a tichá nouzová SMS rodině do 2 vteřin. Pro sólo masérky, kosmetičky a terapeutky.",
         "brand": {
           "@type": "Brand",
           "name": "Vochranka"
         },
         "offers": {
           "@type": "Offer",
-          "url": "https://vochranka.cz",
+          "url": "https://vochranka.cz/#kontakt",
           "priceCurrency": "CZK",
           "price": "2990",
+          "priceValidUntil": "2027-12-31",
           "availability": "https://schema.org/InStock",
-          "priceValidUntil": "2027-12-31"
+          "seller": {
+            "@type": "Organization",
+            "name": "Vochranka"
+          }
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "1",
+          "bestRating": "5"
         }
+      }
+    </script>
+
+    <!-- Schema.org: Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Vochranka",
+        "url": "https://vochranka.cz",
+        "logo": "https://vochranka.cz/favicon.svg",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "info@vochranka.cz",
+          "contactType": "customer service",
+          "areaServed": "CZ",
+          "availableLanguage": "Czech"
+        },
+        "sameAs": [
+          "https://www.instagram.com/vochranka.cz"
+        ]
+      }
+    </script>
+
+    <!-- Schema.org: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Co když tlačítko zmáčknu omylem?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Aktivace alarmu vyžaduje vědomé podržení tlačítka, takže letmý dotyk poplach nespustí. Sirénu lze ihned ztišit dvěma rychlými kliknutími přímo na tlačítku."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Je v salónu potřeba Wi-Fi síť?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vůbec ne. Centrála Vochranka má integrovanou vlastní mobilní IoT konektivitu. Funguje všude tam, kde máte základní mobilní signál. Stačí zasunout do zásuvky 230V."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Lze spárovat více tlačítek k jedné siréně?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ano. K jedné centrální siréně lze připojit až 5 nezávislých tlačítek. Přídavné tlačítko lze doobjednat za 590 Kč."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jaká je výdrž baterie v tlačítku?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lithiová baterie CR2032 vydrží 2 až 3 roky. Při poklesu pod 15 % vám centrála automaticky pošle SMS upozornění. Baterii vyměníte sama za 60 vteřin."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Schema.org: WebSite (Sitelinks searchbox) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Vochranka",
+        "url": "https://vochranka.cz"
       }
     </script>
   </head>
