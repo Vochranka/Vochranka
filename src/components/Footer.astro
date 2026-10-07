@@ -9,81 +9,49 @@ import {
 } from "lucide-astro";
 ---
 
-<footer class="bg-white text-zinc-600 pt-16 md:pt-24 pb-12">
+<footer class="bg-white text-zinc-600 py-12">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div
-      class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-zinc-200"
-    >
-      <!-- Brand & Mission column -->
-      <div class="md:col-span-5 space-y-4">
-        <div class="flex items-center gap-2.5">
-          <span
-            class="text-xl font-bold font-display tracking-tight text-zinc-950"
-          >
-            Vochranka
+    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
+      
+      <!-- Brand & Mission -->
+      <div class="flex flex-col items-start gap-3 lg:max-w-sm">
+        <span class="text-xl font-bold font-display tracking-tight text-zinc-950">
+          Vochranka
+        </span>
+        <p class="text-xs sm:text-sm text-zinc-600 text-left leading-relaxed">
+          Bezpečnostní systém navržen s empatií pro sólo masérky, kosmetičky, terapeutky. Pro klid při každém klientském setkání.
+        </p>
+      </div>
+
+      <!-- Contact Info in a row on desktop/tablet, stacked left on mobile -->
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8 text-sm font-medium text-zinc-800 relative">
+        <!-- Žlutá záře -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-yellow-400/20 blur-[50px] pointer-events-none -z-10 rounded-full"></div>
+
+        <a href="mailto:info@vochranka.cz" class="flex items-center gap-2 hover:text-zinc-950 hover:underline transition-all">
+          <Mail class="w-4 h-4 text-zinc-900 shrink-0" />
+          <span>info@vochranka.cz</span>
+        </a>
+
+        <div class="flex items-start sm:items-center gap-2">
+          <MapPin class="w-4 h-4 text-zinc-900 shrink-0 sm:mt-0 mt-0.5" />
+          <span class="text-left">
+            Praha <span class="hidden sm:inline">|</span><br class="sm:hidden" />
+            <span class="text-[11px] text-zinc-500 font-normal">Osobní zkoušky po domluvě</span>
           </span>
         </div>
 
-        <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed max-w-sm">
-          Bezpečnostní systém navržen s empatií pro sólo masérky, kosmetičky,
-          terapeutky, ... . Pro klid při každém klientském setkání.
-        </p>
-
-        <div class="flex items-center gap-3 pt-2">
-          <a
-            href="https://instagram.com/vochranka.cz"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-xs text-zinc-800 hover:text-zinc-950 hover:border-zinc-400 transition-colors"
-          >
-            <Instagram class="w-4 h-4 text-zinc-700" />
-            <span>@vochranka.cz</span>
-          </a>
-        </div>
+        <a href="https://instagram.com/vochranka.cz" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-zinc-950 transition-colors">
+          <Instagram class="w-4 h-4 text-zinc-900 shrink-0" />
+          <span>@vochranka.cz</span>
+        </a>
       </div>
 
-      <!-- Legal & Contact -->
-      <div class="md:col-span-5 md:col-start-8 space-y-3 relative">
-        <!-- Žlutá záře kolem textu -->
-        <div
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[150%] bg-yellow-400/25 blur-[60px] pointer-events-none -z-10 rounded-full"
-        >
-        </div>
+    </div>
 
-        <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-950">
-          Kontakt
-        </h4>
-
-        <div class="space-y-2 text-xs sm:text-sm text-zinc-800 font-medium">
-          <p class="flex items-center gap-2">
-            <p class="flex items-center gap-2">
-              <Mail class="w-4 h-4 text-zinc-900 shrink-0" />
-              <a
-                href="mailto:info@vochranka.cz"
-                class="hover:text-zinc-950 hover:underline transition-all"
-                >info@vochranka.cz</a
-              >
-            </p>
-
-            <p class="flex items-start gap-2 pt-1">
-              <MapPin class="w-4 h-4 text-zinc-900 shrink-0 mt-0.5" />
-              <span class="leading-relaxed"
-                >Praha, Česká republika<br /><span
-                  class="text-[11px] text-zinc-500 font-normal"
-                  >Osobní zkoušky v salónech po domluvě</span
-                ></span
-              >
-            </p>
-          </p>
-        </div>
-      </div>
-
-      <!-- Bottom copyright -->
-      <div
-        class="pt-8 flex flex-row sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500"
-      >
-        <p>© {new Date().getFullYear()} Vochranka. Všechna práva vyhrazena.</p>
-      </div>
+    <!-- Bottom copyright -->
+    <div class="mt-12 pt-8 flex items-start sm:items-center sm:justify-center text-xs text-zinc-500">
+      <p>© {new Date().getFullYear()} Vochranka. Všechna práva vyhrazena.</p>
     </div>
   </div>
 </footer>
