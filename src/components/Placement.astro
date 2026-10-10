@@ -60,25 +60,23 @@ const placementItems = [
       </p>
     </div>
 
-    <!-- 3 KARTY: na mobilu nativní Apple swipe carousel, na desktopu 3 sloupce -->
+    <!-- 3 KARTY: na mobilu vertikální stack pro přirozený scroll, na desktopu 3 sloupce -->
     <div
-      id="slider-container"
-      class="flex md:grid md:grid-cols-3 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 sm:-mx-6 sm:px-6 gap-4 sm:gap-6 md:gap-8 lg:gap-10 items-start pb-4 scroll-smooth custom-scrollbar"
-      style="-webkit-overflow-scrolling: touch;"
+      class="flex flex-col md:grid md:grid-cols-3 gap-8 sm:gap-10 md:gap-8 lg:gap-10 items-start"
     >
       {
         placementItems.map((item, index) => (
           <div
-            class={`flex flex-col w-[85vw] sm:w-[320px] shrink-0 snap-center md:w-auto ${index === 1 ? 'md:mt-6 lg:mt-8' : ''}`}
+            class={`flex flex-col w-full ${index === 1 ? 'md:mt-6 lg:mt-8' : ''}`}
           >
             <!-- Obrázek -->
-            <div class="relative w-full aspect-[4/3] sm:aspect-[4/5] md:aspect-[4/3.1] md:max-h-[340px] lg:max-h-[360px] rounded-2xl md:rounded-[1.75rem] overflow-hidden bg-zinc-100 shadow-sm transition-all duration-500 mb-4 sm:mb-5 md:mb-6">
+            <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[4/3.1] md:max-h-[340px] lg:max-h-[360px] rounded-2xl md:rounded-[1.75rem] overflow-hidden bg-zinc-100 shadow-sm transition-all duration-500 mb-4 sm:mb-5 md:mb-6">
               <!-- Fotka -->
               <img
                 src={item.image}
                 alt={item.alt}
                 class="w-full h-full object-cover object-center"
-                loading="eager"
+                loading="lazy"
               />
             </div>
 
@@ -97,116 +95,7 @@ const placementItems = [
       }
     </div>
 
-    <!-- Mobilní indikátor / tečky -->
-    <div class="flex md:hidden justify-center mt-6">
-      <div
-        id="slider-indicator"
-        class="flex items-center gap-2 py-2 px-3.5 bg-zinc-100 rounded-full border border-zinc-200/80 shadow-sm"
-        role="tablist"
-        aria-label="Pozice v carouselu"
-      >
-        {
-          placementItems.map((_, index) => (
-            <button
-              type="button"
-              class={`dot h-2 rounded-full cursor-pointer transition-all duration-300 p-0 border-0 ${
-                index === 0
-                  ? "w-6 bg-zinc-950"
-                  : "w-2 bg-zinc-300 hover:bg-zinc-400"
-              }`}
-              data-index={index}
-              aria-label={`Přejít na kartu ${index + 1}`}
-            />
-          ))
-        }
-      </div>
-    </div>
-
   </div>
 </section>
-
-<style>
-  /* Vlastní styly scrollbaru pro mobilní carousel */
-  .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: #d4d4d8 transparent;
-  }
-  .custom-scrollbar::-webkit-scrollbar {
-    height: 5px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #d4d4d8;
-    border-radius: 9999px;
-  }
-</style>
-
-<script>
-  function initPlacementSlider() {
-    const container = document.getElementById('slider-container');
-    const dots = document.querySelectorAll('#slider-indicator .dot');
-
-    if (!container || !dots.length) return;
-
-    function setActive(activeIndex: number) {
-      dots.forEach((dot, index) => {
-        if (index === activeIndex) {
-          dot.classList.remove('w-2', 'bg-zinc-300');
-          dot.classList.add('w-6', 'bg-zinc-950');
-        } else {
-          dot.classList.remove('w-6', 'bg-zinc-950');
-          dot.classList.add('w-2', 'bg-zinc-300');
-        }
-      });
-    }
-
-    function updateDots() {
-      const scrollLeft = container.scrollLeft;
-      const cards = container.querySelectorAll('.snap-center') as NodeListOf<HTMLElement>;
-      if (!cards.length) return;
-
-      const containerCenter = scrollLeft + container.clientWidth / 2;
-      let closestIdx = 0;
-      let minDiff = Infinity;
-
-      cards.forEach((card, idx) => {
-        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-        const diff = Math.abs(containerCenter - cardCenter);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closestIdx = idx;
-        }
-      });
-
-      setActive(closestIdx);
-    }
-
-    container.addEventListener('scroll', updateDots, { passive: true });
-    container.addEventListener('touchmove', updateDots, { passive: true });
-    window.addEventListener('resize', updateDots, { passive: true });
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', (e) => {
-        e.preventDefault();
-        const cards = container.querySelectorAll('.snap-center') as NodeListOf<HTMLElement>;
-        if (cards[index]) {
-          cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-          setActive(index);
-        }
-      });
-    });
-
-    updateDots();
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initPlacementSlider);
-  } else {
-    initPlacementSlider();
-  }
-  document.addEventListener("astro:page-load", initPlacementSlider);
-</script>
 
 
