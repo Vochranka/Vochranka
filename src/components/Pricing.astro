@@ -17,19 +17,19 @@ const hardwareItems = [
   },
   {
     image: "/siren.webp",
-    alt: "Brána se sirénou",
+    alt: "Siréna",
     label: "1× Siréna",
   },
   {
     image: "/button2.webp",
-    alt: "Kovová destička",
-    label: "1× Kovová destička",
-    sublabel: "(na dřevo a nemagnetické povrchy)",
+    alt: "Kovová podložka",
+    label: "1× Kovová podložka",
+    sublabel: "(na nemagnetické povrchy)",
   },
   {
     icon: Radio,
-    alt: "Brána",
-    label: "1× Brána",
+    alt: "Centrála",
+    label: "1× Centrála",
   },
 ];
 
@@ -46,7 +46,7 @@ const serviceItems = [
     tag: "Dohled",
     title: "24/7 monitoring spojení",
     subtitle: "Nepřetržitá kontrola",
-    detail: "Automatický dohled nad funkčností brány a dostupností sítě.",
+    detail: "Automatický dohled nad funkčností centrály a dostupností sítě.",
     icon: Activity,
     badge: "24/7",
   },
@@ -57,14 +57,6 @@ const serviceItems = [
     detail: "Včasná SMS zpráva s předstihem několika týdnů před vybitím.",
     icon: BatteryWarning,
     badge: "Automaticky",
-  },
-  {
-    tag: "Data",
-    title: "Zabezpečená SIM a data",
-    subtitle: "Šifrovaný přenos",
-    detail: "Bezstarostné spojení bez nutnosti řešit vlastní mobilní tarif.",
-    icon: Signal,
-    badge: "V ceně",
   },
   {
     tag: "Podpora",
@@ -228,6 +220,11 @@ const serviceItems = [
           <!-- ===================================================== -->
 
           <div>
+            <span
+              class="inline-block text-xs font-bold uppercase tracking-wider text-zinc-500 mb-1"
+            >
+              Provoz od 2. roku
+            </span>
             <div class="flex items-baseline flex-wrap gap-x-2.5 gap-y-1">
               <span
                 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-950 font-display"
@@ -240,6 +237,10 @@ const serviceItems = [
               >
                 / měsíčně
               </span>
+
+              <span class="text-xs sm:text-sm text-zinc-500 font-medium">
+                (999 Kč ročně)
+              </span>
             </div>
 
             <p
@@ -249,8 +250,8 @@ const serviceItems = [
             </p>
 
             <p class="text-xs sm:text-sm text-zinc-600 mt-2">
-              Zahrnuje tísňové SMS rodině, 24/7 monitoring, SIM data a
-              nepřetržitou technickou podporu.
+              Platí se až od druhého roku provozu. Zahrnuje tísňové SMS rodině,
+              24/7 monitoring a nepřetržitou technickou podporu.
             </p>
 
             <!-- Service button -->
@@ -350,7 +351,7 @@ const serviceItems = [
         <div
           class="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-zinc-200/80 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08),0_10px_25px_-5px_rgba(0,0,0,0.04)] hover:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.12),0_10px_30px_-5px_rgba(0,0,0,0.06)] transition-all duration-500 h-full flex flex-col justify-between"
         >
-          <div class="space-y-6">
+          <div class="space-y-4">
             <!-- Nadpis -->
             <div>
               <h3
@@ -359,8 +360,8 @@ const serviceItems = [
                 Mám zájem
               </h3>
 
-              <p class="text-sm text-zinc-600 mt-6 leading-relaxed">
-                Zanechte nám na Vás email. My se vám obratem ozveme a dokončíme
+              <p class="text-sm text-zinc-600 mt-2 sm:mt-3 leading-relaxed">
+                Zanechte nám na Vás kontakt. My se vám obratem ozveme a dokončíme
                 spolu potřebnou konfiguraci před odesláním.
               </p>
             </div>
@@ -375,7 +376,7 @@ const serviceItems = [
               method="POST"
               data-netlify="true"
               netlify-honeypot="bot-field"
-              class="space-y-4 pt-1"
+              class="space-y-4"
             >
               <input type="hidden" name="form-name" value="pricing-contact" />
               <p class="hidden">
@@ -404,20 +405,39 @@ const serviceItems = [
                 />
               </div>
 
-              <!-- Telefon -->
+              <!-- Telefon / Email -->
               <div>
                 <label
-                  for="contact-email"
+                  for="contact-reach"
                   class="block text-sm font-semibold text-zinc-950 mb-2 font-display"
                 >
-                  E-mail
+                  E-mail nebo telefon
                 </label>
 
                 <input
-                  type="email"
-                  id="contact-email"
-                  name="email"
-                  placeholder="jana@gmail.com"
+                  type="text"
+                  id="contact-reach"
+                  name="contact"
+                  placeholder="jana@gmail.com nebo 777 123 456"
+                  required
+                  class="w-full px-4 py-3 rounded-2xl bg-zinc-50 border border-zinc-200/90 text-zinc-950 placeholder-zinc-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#f97316]/40 focus:border-[#f97316] transition-all"
+                />
+              </div>
+
+              <!-- Město -->
+              <div>
+                <label
+                  for="contact-city"
+                  class="block text-sm font-semibold text-zinc-950 mb-2 font-display"
+                >
+                  Město
+                </label>
+
+                <input
+                  type="text"
+                  id="contact-city"
+                  name="city"
+                  placeholder="Praha"
                   required
                   class="w-full px-4 py-3 rounded-2xl bg-zinc-50 border border-zinc-200/90 text-zinc-950 placeholder-zinc-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#f97316]/40 focus:border-[#f97316] transition-all"
                 />
