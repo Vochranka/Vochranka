@@ -9,14 +9,14 @@ import { Magnet } from "lucide-astro";
   aria-labelledby="showcase-heading"
 >
   <div
-    class="max-w-6xl lg:max-w-[max(64.5vw,56rem)] mx-auto w-full my-auto relative z-10"
+    class="max-w-7xl lg:max-w-[max(72vw,64rem)] mx-auto w-full my-auto relative z-10"
   >
     <!-- Main 2-Column Grid -->
     <div
-      class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center lg:items-stretch"
+      class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center lg:items-stretch"
     >
-      <!-- LEFT COLUMN: Hardware & Ergonomie (7 cols) -->
-      <div class="lg:col-span-7 flex flex-col justify-between">
+      <!-- LEFT COLUMN: Hardware & Ergonomie (posunuté více doleva) -->
+      <div class="lg:col-span-6 flex flex-col justify-between lg:-ml-2 xl:-ml-6">
         <div class="text-left">
           <h2
             id="showcase-heading"
@@ -28,7 +28,7 @@ import { Magnet } from "lucide-astro";
 
           <!-- Situace / Problém (Napětí) -->
           <p
-            class="text-zinc-600 text-lg md:text-xl lg:text-[clamp(1rem,1.1vw,2.5rem)] mt-8 md:mt-12 max-w-xl lg:max-w-[max(34vw,28rem)] leading-relaxed [&>strong]:text-zinc-950 [&>strong]:font-bold"
+            class="text-zinc-600 text-lg md:text-xl lg:text-[clamp(1rem,1.1vw,2.5rem)] mt-8 md:mt-10 max-w-xl leading-relaxed [&>strong]:text-zinc-950 [&>strong]:font-bold"
           >
             Jste sami ve svém salonu, kavárně či večerce a zákazník se začne
             chovat divně? Podržením tlačítka spustíte <strong
@@ -40,7 +40,7 @@ import { Magnet } from "lucide-astro";
 
         <!-- SPODNÍ ČÁST VLEVO: 2s a 2x -->
         <div
-          class="mt-12 lg:mt-auto pt-8 grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-xl items-start"
+          class="mt-10 lg:mt-auto pt-8 grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-xl items-start"
         >
           <div>
             <span
@@ -70,15 +70,15 @@ import { Magnet } from "lucide-astro";
         </div>
       </div>
 
-      <!-- RIGHT COLUMN: Video & 3 popisky pod videem (5 cols) -->
+      <!-- RIGHT COLUMN: Větší video & 3 popisky (6 cols) -->
       <div
-        class="lg:col-span-5 flex flex-col justify-between items-center relative"
+        class="lg:col-span-6 flex flex-col justify-between items-center relative"
       >
         <div
-          class="w-full max-w-md sm:max-w-lg lg:max-w-[500px] relative flex flex-col items-center mt-4 lg:mt-0"
+          class="w-full max-w-xl lg:max-w-none relative flex flex-col items-center mt-4 lg:mt-0"
         >
-          <!-- Video Container with Warm Ambient Glow -->
-          <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-zinc-200/80 bg-black group select-none">
+          <!-- Video Container with Warm Ambient Glow - větší rozměr -->
+          <div class="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-zinc-200/80 bg-black group select-none">
             <!-- Oranžová ambientní záře na pozadí videa -->
             <div
               class="absolute -inset-4 rounded-3xl blur-2xl pointer-events-none opacity-40 bg-gradient-to-tr from-orange-500/35 via-amber-500/25 to-yellow-500/15 z-0"
@@ -101,21 +101,7 @@ import { Magnet } from "lucide-astro";
                 Váš prohlížeč nepodporuje přehrávání videa.
               </video>
             </div>
-
-            <!-- Text k videu / popis panel -->
-            <div class="relative z-10 p-3.5 sm:p-4 bg-zinc-900/95 text-white border-t border-zinc-800 flex items-center justify-between text-xs gap-3">
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-                <span class="text-zinc-200 font-medium">Ukázka použití Vochranky v praxi</span>
-              </div>
-              <span class="text-zinc-400 text-[11px] shrink-0 font-mono">110 dB siréna</span>
-            </div>
           </div>
-
-          <!-- Doplňující text pod videem -->
-          <p class="text-xs sm:text-sm text-zinc-500 text-center mt-3 leading-relaxed">
-            Podívejte se, jak snadno a nenápadně tlačítko aktivujete během klientského setkání.
-          </p>
         </div>
 
         <!-- SPODNÍ ČÁST VPRAVO: 3 popisky pod videem -->
