@@ -1,186 +1,93 @@
 ---
 // src/components/Hero.astro
-import { Volume2, MessageSquare, ChevronDown } from "lucide-astro";
+import { ChevronDown } from "lucide-astro";
 ---
 
 <section
-  class="relative isolate w-full h-screen min-h-[640px] max-h-[1080px] flex flex-col justify-between pt-20 pb-4 sm:pt-24 sm:pb-6 px-4 sm:px-6 lg:px-10 xl:px-16 overflow-hidden text-white bg-gradient-to-b from-[#8FA895] via-[#859E8B] to-[#768F7C]"
-  aria-label="Vochranka – SOS tlačítko"
+  class="hero-section relative isolate w-full h-screen min-h-[600px] max-h-[1080px] overflow-hidden bg-[#cdd4cb] text-zinc-900"
+  aria-label="Vochranka – tísňové tlačítko"
 >
-  <!-- Ambientní jemné záře pro hloubku a plastičnost sage pozadí -->
+
+  <!-- Giant brand name at the bottom (watermark style) -->
   <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] lg:w-[850px] lg:h-[850px] rounded-full bg-white/10 blur-[140px] pointer-events-none"
+    class="absolute bottom-0 left-0 w-full pointer-events-none select-none overflow-hidden leading-none"
     aria-hidden="true"
   >
-  </div>
-  <div
-    class="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-emerald-300/15 blur-[120px] pointer-events-none"
-    aria-hidden="true"
-  >
+    <span
+      class="block text-center font-black uppercase tracking-tight text-zinc-900/10"
+      style="font-size: clamp(8rem, 22vw, 22rem); font-family: system-ui, -apple-system, 'Helvetica Neue', sans-serif; line-height: 0.78; transform: translateY(18%);"
+    >
+      VOCHRANKA
+    </span>
   </div>
 
-  <!-- Celý hlavní obsah Hero sekce – kompaktní vycentrování pro celou obrazovku bez scrollování -->
-  <div class="max-w-[1340px] w-full mx-auto my-auto relative z-10 flex flex-col items-center justify-center select-none">
-    
-    <!-- 1. OBŘÍ MODERNÍ NADPIS V HORNÍ ČÁSTI (SOS BUTTON) -->
-    <div class="w-full text-center mb-3 sm:mb-5 lg:mb-6">
+  <!-- Product image – centered, large, on top of the brand name -->
+  <div
+    class="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
+    aria-hidden="true"
+  >
+    <img
+      src="/button1.webp"
+      alt="Vochranka tísňové tlačítko"
+      class="w-[260px] h-[260px] sm:w-[340px] sm:h-[340px] md:w-[420px] md:h-[420px] lg:w-[500px] lg:h-[500px] xl:w-[560px] xl:h-[560px] object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.18)]"
+      loading="eager"
+    />
+  </div>
+
+  <!-- Foreground content: text top-left -->
+  <div class="relative z-10 h-full flex flex-col justify-between px-6 sm:px-10 lg:px-16 xl:px-20 pt-8 sm:pt-10 pb-6 sm:pb-8">
+
+    <!-- Top left: headline + subline + benefits -->
+    <div class="max-w-[380px] sm:max-w-[440px] lg:max-w-[500px]">
       <h1
-        class="text-4xl sm:text-6xl md:text-7xl lg:text-[6.5vw] font-black tracking-[0.06em] md:tracking-[0.08em] text-white uppercase font-display leading-none drop-shadow-[0_4px_25px_rgba(0,0,0,0.18)]"
-        style="font-family: system-ui, -apple-system, sans-serif;"
+        class="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] font-bold leading-tight text-zinc-900 mb-2 sm:mb-3"
+        style="font-family: system-ui, -apple-system, 'Helvetica Neue', sans-serif;"
       >
-        SOS BUTTON
+        Bezpečnostní tlačítko<br />pro nouzové situace.
       </h1>
-    </div>
-
-    <!-- 2. CENTRÁLNÍ INTERAKTIVNÍ SCÉNA: 
-            Vlevo 2 karty | Uprostřed tlačítko | Vpravo 2 karty -->
-    <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-4 items-center justify-items-center my-auto">
-      
-      <!-- LEVÝ SLOUPEC: Karta Siréna + Karta Připravena -->
-      <div class="lg:col-span-3 w-full max-w-[270px] sm:max-w-xs flex flex-col gap-3 sm:gap-3.5 order-2 lg:order-1 items-center lg:items-end">
-        
-        <!-- Kapsle 1: Siréna -->
-        <div class="w-full bg-white text-zinc-900 rounded-full px-4 sm:px-5 py-2.5 sm:py-3 shadow-[0_10px_25px_rgba(0,0,0,0.1)] flex items-center justify-between border border-white/60 transform hover:scale-[1.02] transition-transform">
-          <span class="text-sm sm:text-base font-bold text-zinc-900">Siréna</span>
-          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-700 text-white flex items-center justify-center shadow-xs">
-            <Volume2 class="w-4 h-4 sm:w-4.5 sm:h-4.5" />
-          </div>
-        </div>
-
-        <!-- Karta 2: Připravena (světle zelená / mint podklad podle obrázku) -->
-        <div class="w-full bg-[#d7f1be] text-zinc-900 rounded-2xl sm:rounded-3xl p-3.5 sm:p-4 shadow-[0_10px_25px_rgba(0,0,0,0.1)] border border-white/50 flex flex-col justify-between transform hover:scale-[1.02] transition-transform">
-          <div>
-            <h3 class="text-lg sm:text-xl font-bold tracking-tight text-zinc-950">Připravena</h3>
-            <p class="text-[11px] sm:text-xs text-zinc-700 font-medium mt-0.5">Spustí se dvojklikem</p>
-          </div>
-          <!-- Indikátor stavu (tečkované čtverečky) -->
-          <div class="flex items-center gap-1.5 mt-3 sm:mt-4">
-            <span class="w-2 h-2 rounded-xs bg-emerald-800"></span>
-            <span class="w-2 h-2 rounded-xs bg-emerald-800"></span>
-            <span class="w-2 h-2 rounded-xs bg-emerald-800"></span>
-            <span class="w-2 h-2 rounded-xs bg-emerald-800"></span>
-            <span class="w-2 h-2 rounded-xs bg-emerald-800"></span>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- STŘEDOVÝ SLOUPEC: Obří tísňové tlačítko -->
-      <div class="lg:col-span-6 flex flex-col items-center justify-center order-1 lg:order-2">
-        <div class="relative w-[210px] h-[210px] sm:w-[280px] sm:h-[280px] md:w-[330px] md:h-[330px] lg:w-[370px] lg:h-[370px] flex items-center justify-center">
-          
-          <!-- Hřejivá pulzující záře pod tlačítkem -->
-          <div
-            class="absolute inset-6 rounded-full bg-gradient-to-tr from-white/30 via-emerald-100/20 to-amber-100/15 blur-3xl pointer-events-none"
-          >
-          </div>
-
-          <!-- Samotné velké tlačítko -->
-          <a
-            href="#vyuziti"
-            class="relative z-20 block w-full h-full rounded-full transform transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-white/40 group cursor-pointer"
-            aria-label="Přejít na ukázku tísňového tlačítka Vochranka"
-          >
-            <img
-              src="/button1.webp"
-              alt="SOS tísňové tlačítko Vochranka"
-              class="w-full h-full object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_30px_70px_rgba(255,255,255,0.45)] transition-all duration-300"
-              loading="eager"
-            />
-          </a>
-        </div>
-      </div>
-
-      <!-- PRAVÝ SLOUPEC: Karta SOS kontakty + Kapsle SMS čeká na SOS -->
-      <div class="lg:col-span-3 w-full max-w-[270px] sm:max-w-xs flex flex-col gap-3 sm:gap-3.5 order-3 items-center lg:items-start">
-        
-        <!-- Karta 1: SOS kontakty (světle zelená / mint podklad) -->
-        <div class="w-full bg-[#d7f1be] text-zinc-900 rounded-2xl sm:rounded-3xl p-3.5 sm:p-4 shadow-[0_10px_25px_rgba(0,0,0,0.1)] border border-white/50 flex flex-col transform hover:scale-[1.02] transition-transform">
-          <span class="text-[11px] sm:text-xs font-semibold text-zinc-700 mb-2 sm:mb-2.5">SOS kontakty</span>
-          
-          <div class="space-y-2">
-            <!-- Kontakt 1 -->
-            <div class="flex items-center gap-2.5">
-              <div class="w-6 h-6 rounded-full bg-emerald-800 text-white font-bold text-[10px] sm:text-xs flex items-center justify-center shadow-xs">
-                M
-              </div>
-              <span class="text-xs sm:text-sm font-semibold text-zinc-900">Maminka</span>
-            </div>
-
-            <!-- Kontakt 2 -->
-            <div class="flex items-center gap-2.5">
-              <div class="w-6 h-6 rounded-full bg-emerald-800 text-white font-bold text-[10px] sm:text-xs flex items-center justify-center shadow-xs">
-                T
-              </div>
-              <span class="text-xs sm:text-sm font-semibold text-zinc-900">Tomáš</span>
-            </div>
-
-            <!-- Kontakt 3 -->
-            <div class="flex items-center gap-2.5">
-              <div class="w-6 h-6 rounded-full bg-emerald-800 text-white font-bold text-[10px] sm:text-xs flex items-center justify-center shadow-xs">
-                J
-              </div>
-              <span class="text-xs sm:text-sm font-semibold text-zinc-900">Jana</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Kapsle 2: SMS čeká na SOS -->
-        <div class="w-full bg-white text-zinc-900 rounded-full px-4 sm:px-5 py-2.5 sm:py-3 shadow-[0_10px_25px_rgba(0,0,0,0.1)] flex items-center justify-between border border-white/60 transform hover:scale-[1.02] transition-transform">
-          <span class="text-xs sm:text-sm font-bold text-zinc-900 whitespace-nowrap">SMS čeká na SOS</span>
-          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-800 text-white flex items-center justify-center shadow-xs shrink-0 ml-2">
-            <MessageSquare class="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- 3. SPODNÍ TEXT A TLAČÍTKA PŘESNĚ JAKO NA OBRÁZKU -->
-    <div class="max-w-2xl mx-auto text-center mt-4 sm:mt-6 lg:mt-8">
-      <!-- Hlavní vysvětlující text -->
-      <p class="text-sm sm:text-base md:text-lg text-white font-medium leading-snug sm:leading-relaxed drop-shadow-sm max-w-xl mx-auto">
-        Dvakrát stiskněte. Zazní siréna a vaši blízcí dostanou SMS s žádostí o pomoc.
+      <p class="text-sm sm:text-base text-zinc-600 font-normal mb-5 sm:mb-7 leading-relaxed">
+        Dvakrát stiskněte – zazní siréna a blízcí dostanou SOS zprávu.
       </p>
 
-      <!-- 2 Akční tlačítka: Červené a Průhledné se zaobleným okrajem -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3.5 mt-3.5 sm:mt-4">
-        <!-- Červené tlačítko: Objednat tlačítko -->
+      <!-- Benefits pills -->
+      <div class="flex flex-col gap-2">
+        <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-700">
+          <span class="w-1.5 h-1.5 rounded-full bg-zinc-800 shrink-0"></span>
+          14 dní zdarma – zkušební doba bez závazků
+        </div>
+        <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-700">
+          <span class="w-1.5 h-1.5 rounded-full bg-zinc-800 shrink-0"></span>
+          1. rok provozu zdarma
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom row: CTA left + scroll arrow right -->
+    <div class="flex items-end justify-between w-full">
+      <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
         <a
           href="#kontakt"
-          class="w-full sm:w-auto inline-flex items-center justify-center px-7 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold text-white bg-[#dc3825] hover:bg-[#c62f1e] active:scale-95 transition-all duration-200 shadow-[0_8px_20px_-4px_rgba(220,56,37,0.5)] hover:scale-105 cursor-pointer text-center"
+          class="inline-flex items-center justify-center px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold text-white bg-zinc-900 hover:bg-zinc-700 active:scale-95 transition-all duration-200 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.25)] hover:scale-[1.03] cursor-pointer"
         >
-          <span>Objednat tlačítko</span>
+          Objednat tlačítko
         </a>
-
-        <!-- Průhledné tlačítko: Jak to funguje -->
         <a
           href="#vyuziti"
-          class="w-full sm:w-auto inline-flex items-center justify-center px-7 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold text-white bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/40 active:scale-95 transition-all duration-200 hover:scale-105 cursor-pointer shadow-sm text-center"
+          class="inline-flex items-center justify-center px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold text-zinc-800 bg-white/50 hover:bg-white/80 backdrop-blur-sm border border-zinc-900/15 active:scale-95 transition-all duration-200 hover:scale-[1.03] cursor-pointer"
         >
-          <span>Jak to funguje</span>
+          Jak to funguje
         </a>
       </div>
 
-      <!-- Spodní jemný řádek nápovědy -->
-      <p class="text-[11px] sm:text-xs text-white/80 font-normal tracking-wide mt-2.5 sm:mt-3">
-        Vyzkoušejte si to: klikněte na tlačítko výše dvakrát po sobě.
-      </p>
+      <!-- Scroll down hint -->
+      <a
+        href="#vyuziti"
+        class="flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-800 transition-colors duration-200 group mb-1"
+        aria-label="Přejít dolů"
+      >
+        <ChevronDown class="w-4 h-4 animate-bounce" />
+      </a>
     </div>
-
   </div>
 
-  <!-- Jemná šipka dolů na spodku sekce -->
-  <div class="relative z-20 w-full flex items-center justify-center pt-1 shrink-0">
-    <a
-      href="#vyuziti"
-      class="flex flex-col items-center justify-center p-1 text-white/70 hover:text-white transition-all duration-300 hover:scale-110 group"
-      aria-label="Přejít na další sekci"
-    >
-      <ChevronDown
-        class="w-5 h-5 sm:w-6 sm:h-6 text-white/80 group-hover:text-white animate-bounce transition-colors drop-shadow"
-      />
-    </a>
-  </div>
 </section>
