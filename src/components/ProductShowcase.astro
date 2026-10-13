@@ -70,35 +70,55 @@ import { Magnet } from "lucide-astro";
         </div>
       </div>
 
-      <!-- RIGHT COLUMN: Frameless Interactive Button with Orange Glow (5 cols) -->
+      <!-- RIGHT COLUMN: Video & 3 popisky pod videem (5 cols) -->
       <div
         class="lg:col-span-5 flex flex-col justify-between items-center relative"
       >
         <div
-          class="w-full max-w-md sm:max-w-lg lg:max-w-[480px] relative flex flex-col items-center text-center mt-4 lg:mt-0"
+          class="w-full max-w-md sm:max-w-lg lg:max-w-[500px] relative flex flex-col items-center mt-4 lg:mt-0"
         >
-          <!-- Interactive Button Stage with Warm Orange Radiant Glow (Oranžové ozáření bez boxu) -->
-          <div
-            class="relative w-full h-64 sm:h-72 md:h-80 flex items-center justify-center my-2 select-none"
-          >
-            <!-- Oranžové pozadí jako ozáření -->
+          <!-- Video Container with Warm Ambient Glow -->
+          <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-zinc-200/80 bg-black group select-none">
+            <!-- Oranžová ambientní záře na pozadí videa -->
             <div
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-3xl pointer-events-none opacity-85 bg-gradient-to-tr from-orange-500/35 via-amber-500/30 to-yellow-500/15"
+              class="absolute -inset-4 rounded-3xl blur-2xl pointer-events-none opacity-40 bg-gradient-to-tr from-orange-500/35 via-amber-500/25 to-yellow-500/15 z-0"
             >
             </div>
 
-            <!-- View 1: Button 1 (Přední strana) -->
-            <img
-              id="btn-view-1"
-              src="/button1.webp"
-              alt="Tlačítko Vochranka - přední strana s logem"
-              class="absolute inset-0 m-auto max-h-64 sm:max-h-72 md:max-h-80 object-contain transition-all duration-500 ease-out drop-shadow-[0_20px_40px_rgba(0,0,0,0.14)] opacity-100 scale-100"
-              loading="eager"
-            />
+            <div class="relative z-10 w-full aspect-video overflow-hidden bg-black flex items-center justify-center">
+              <video
+                id="showcase-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                webkit-playsinline
+                controls
+                preload="metadata"
+                class="w-full h-full object-cover"
+              >
+                <source src="/vochranka-video-optimized.mp4" type="video/mp4" />
+                Váš prohlížeč nepodporuje přehrávání videa.
+              </video>
+            </div>
+
+            <!-- Text k videu / popis panel -->
+            <div class="relative z-10 p-3.5 sm:p-4 bg-zinc-900/95 text-white border-t border-zinc-800 flex items-center justify-between text-xs gap-3">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                <span class="text-zinc-200 font-medium">Ukázka použití Vochranky v praxi</span>
+              </div>
+              <span class="text-zinc-400 text-[11px] shrink-0 font-mono">110 dB siréna</span>
+            </div>
           </div>
+
+          <!-- Doplňující text pod videem -->
+          <p class="text-xs sm:text-sm text-zinc-500 text-center mt-3 leading-relaxed">
+            Podívejte se, jak snadno a nenápadně tlačítko aktivujete během klientského setkání.
+          </p>
         </div>
 
-        <!-- SPODNÍ ČÁST VPRAVO: 3 popisky pod tlačítkem -->
+        <!-- SPODNÍ ČÁST VPRAVO: 3 popisky pod videem -->
         <div
           class="mt-8 lg:mt-auto pt-8 grid grid-cols-3 w-full max-w-full text-center items-start"
         >
@@ -126,7 +146,7 @@ import { Magnet } from "lucide-astro";
               >Kamkoliv</span
             >
             <span class="text-xs text-zinc-500 font-medium block mt-2"
-              >Podstůl i do kapsy</span
+              >Pod stůl i do kapsy</span
             >
           </div>
         </div>
@@ -175,61 +195,3 @@ import { Magnet } from "lucide-astro";
       right top;
   }
 </style>
-
-<script>
-  const toggleBtn1 = document.getElementById("toggle-btn-1");
-  const toggleBtn2 = document.getElementById("toggle-btn-2");
-  const img1 = document.getElementById("btn-view-1");
-  const img2 = document.getElementById("btn-view-2");
-  const caption1 = document.getElementById("view-caption-1");
-  const caption2 = document.getElementById("view-caption-2");
-
-  function setView(isFirst: boolean) {
-    if (!toggleBtn1 || !toggleBtn2 || !img1 || !img2) return;
-
-    if (isFirst) {
-      // Show view 1: Přední strana
-      img1.classList.remove("opacity-0", "scale-95", "pointer-events-none");
-      img1.classList.add("opacity-100", "scale-100");
-
-      img2.classList.remove("opacity-100", "scale-100");
-      img2.classList.add("opacity-0", "scale-95", "pointer-events-none");
-
-      if (caption1 && caption2) {
-        caption1.classList.remove("hidden");
-        caption2.classList.add("hidden");
-      }
-
-      toggleBtn1.setAttribute("aria-selected", "true");
-      toggleBtn1.className =
-        "px-4 py-2 rounded-full text-xs font-bold bg-white text-zinc-950 shadow-sm transition-all duration-200 cursor-pointer";
-
-      toggleBtn2.setAttribute("aria-selected", "false");
-      toggleBtn2.className =
-        "px-4 py-2 rounded-full text-xs font-medium text-zinc-600 hover:text-zinc-950 transition-all duration-200 cursor-pointer";
-    } else {
-      // Show view 2: Magnetický profil
-      img1.classList.remove("opacity-100", "scale-100");
-      img1.classList.add("opacity-0", "scale-95", "pointer-events-none");
-
-      img2.classList.remove("opacity-0", "scale-95", "pointer-events-none");
-      img2.classList.add("opacity-100", "scale-100");
-
-      if (caption1 && caption2) {
-        caption1.classList.add("hidden");
-        caption2.classList.remove("hidden");
-      }
-
-      toggleBtn1.setAttribute("aria-selected", "false");
-      toggleBtn1.className =
-        "px-4 py-2 rounded-full text-xs font-medium text-zinc-600 hover:text-zinc-950 transition-all duration-200 cursor-pointer";
-
-      toggleBtn2.setAttribute("aria-selected", "true");
-      toggleBtn2.className =
-        "px-4 py-2 rounded-full text-xs font-bold bg-white text-zinc-950 shadow-sm transition-all duration-200 cursor-pointer";
-    }
-  }
-
-  toggleBtn1?.addEventListener("click", () => setView(true));
-  toggleBtn2?.addEventListener("click", () => setView(false));
-</script>
