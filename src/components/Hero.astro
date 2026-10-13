@@ -4,90 +4,88 @@ import { ChevronDown } from "lucide-astro";
 ---
 
 <section
-  class="hero-section relative isolate w-full h-screen min-h-[600px] max-h-[1080px] overflow-hidden bg-[#cdd4cb] text-zinc-900"
+  class="relative isolate w-full h-screen min-h-[600px] max-h-[1080px] overflow-hidden text-zinc-900"
+  style="background-color: #F9F8F6;"
   aria-label="Vochranka – tísňové tlačítko"
 >
-
   <!-- Giant brand name at the bottom (watermark style) -->
   <div
     class="absolute bottom-0 left-0 w-full pointer-events-none select-none overflow-hidden leading-none"
     aria-hidden="true"
   >
     <span
-      class="block text-center font-black uppercase tracking-tight text-zinc-900/10"
-      style="font-size: clamp(8rem, 22vw, 22rem); font-family: system-ui, -apple-system, 'Helvetica Neue', sans-serif; line-height: 0.78; transform: translateY(18%);"
+      class="block text-center font-black uppercase tracking-tight text-zinc-900/[0.06]"
+      style="font-size: clamp(8rem, 22vw, 22rem); line-height: 0.78; transform: translateY(18%);"
     >
       VOCHRANKA
     </span>
   </div>
 
-  <!-- Product image – centered, large, on top of the brand name -->
+  <!-- Product image – right side, large, with orange glow -->
   <div
-    class="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
+    class="absolute top-1/2 -translate-y-1/2 right-[-8%] sm:right-[-5%] md:right-[-3%] lg:right-[-1%] pointer-events-none select-none z-[1] flex items-center justify-center"
     aria-hidden="true"
   >
+    <!-- Orange glow -->
+    <div
+      class="absolute rounded-full"
+      style="width: 110%; height: 110%; background: radial-gradient(circle, rgba(251,146,60,0.32) 0%, rgba(251,146,60,0.13) 42%, transparent 70%); filter: blur(14px);"
+    ></div>
     <img
       src="/button1.webp"
       alt="Vochranka tísňové tlačítko"
-      class="w-[260px] h-[260px] sm:w-[340px] sm:h-[340px] md:w-[420px] md:h-[420px] lg:w-[500px] lg:h-[500px] xl:w-[560px] xl:h-[560px] object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.18)]"
+      class="relative w-[320px] h-[320px] sm:w-[430px] sm:h-[430px] md:w-[540px] md:h-[540px] lg:w-[640px] lg:h-[640px] xl:w-[720px] xl:h-[720px] object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.14)]"
       loading="eager"
     />
   </div>
 
-  <!-- Foreground content: text top-left -->
-  <div class="relative z-10 h-full flex flex-col justify-between px-6 sm:px-10 lg:px-16 xl:px-20 pt-8 sm:pt-10 pb-6 sm:pb-8">
+  <!-- Foreground content: vertically centered on left -->
+  <div class="relative z-10 h-full flex flex-col justify-center px-6 sm:px-10 lg:px-16 xl:px-20 pt-20 pb-16">
+    <div class="max-w-[360px] sm:max-w-[420px] lg:max-w-[460px]">
 
-    <!-- Top left: headline + subline + benefits -->
-    <div class="max-w-[380px] sm:max-w-[440px] lg:max-w-[500px]">
-      <h1
-        class="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] font-bold leading-tight text-zinc-900 mb-2 sm:mb-3"
-        style="font-family: system-ui, -apple-system, 'Helvetica Neue', sans-serif;"
-      >
+      <!-- Headline -->
+      <h1 class="text-3xl sm:text-4xl md:text-[2.8rem] lg:text-5xl font-bold leading-tight text-zinc-900 mb-3 sm:mb-4">
         Bezpečnostní tlačítko<br />pro nouzové situace.
       </h1>
-      <p class="text-sm sm:text-base text-zinc-600 font-normal mb-5 sm:mb-7 leading-relaxed">
-        Dvakrát stiskněte – zazní siréna a blízcí dostanou SOS zprávu.
+
+      <!-- Subtext -->
+      <p class="text-sm sm:text-base text-zinc-500 leading-relaxed mb-6 sm:mb-7">
+        Dvakrát stiskněte – zazní siréna a&nbsp;blízcí dostanou SOS zprávu.
       </p>
 
-      <!-- Benefits pills -->
-      <div class="flex flex-col gap-2">
-        <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-700">
-          <span class="w-1.5 h-1.5 rounded-full bg-zinc-800 shrink-0"></span>
-          14 dní zdarma – zkušební doba bez závazků
-        </div>
-        <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-700">
-          <span class="w-1.5 h-1.5 rounded-full bg-zinc-800 shrink-0"></span>
-          1. rok provozu zdarma
-        </div>
+      <!-- 14 dní bubble -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-zinc-800 border border-zinc-200 shadow-sm bg-white mb-7 sm:mb-9">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+        14 dní na zkoušku zdarma
       </div>
-    </div>
 
-    <!-- Bottom row: CTA left + scroll arrow right -->
-    <div class="flex items-end justify-between w-full">
-      <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+      <!-- CTA buttons -->
+      <div class="flex flex-col sm:flex-row items-start gap-2.5 sm:gap-3">
         <a
           href="#kontakt"
-          class="inline-flex items-center justify-center px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold text-white bg-zinc-900 hover:bg-zinc-700 active:scale-95 transition-all duration-200 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.25)] hover:scale-[1.03] cursor-pointer"
+          class="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm sm:text-base font-semibold text-white bg-zinc-900 hover:bg-zinc-700 active:scale-95 transition-all duration-200 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.22)] hover:scale-[1.03] cursor-pointer"
         >
           Objednat tlačítko
         </a>
         <a
           href="#vyuziti"
-          class="inline-flex items-center justify-center px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold text-zinc-800 bg-white/50 hover:bg-white/80 backdrop-blur-sm border border-zinc-900/15 active:scale-95 transition-all duration-200 hover:scale-[1.03] cursor-pointer"
+          class="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm sm:text-base font-semibold text-zinc-700 bg-white border border-zinc-200 hover:bg-zinc-50 active:scale-95 transition-all duration-200 hover:scale-[1.03] cursor-pointer"
         >
           Jak to funguje
         </a>
       </div>
 
-      <!-- Scroll down hint -->
-      <a
-        href="#vyuziti"
-        class="flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-800 transition-colors duration-200 group mb-1"
-        aria-label="Přejít dolů"
-      >
-        <ChevronDown class="w-4 h-4 animate-bounce" />
-      </a>
     </div>
   </div>
 
+  <!-- Scroll arrow -->
+  <div class="absolute bottom-5 left-1/2 -translate-x-1/2 z-20">
+    <a
+      href="#vyuziti"
+      class="flex items-center justify-center text-zinc-400 hover:text-zinc-600 transition-colors duration-200"
+      aria-label="Přejít dolů"
+    >
+      <ChevronDown class="w-5 h-5 animate-bounce" />
+    </a>
+  </div>
 </section>
