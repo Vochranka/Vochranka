@@ -32,80 +32,104 @@ const placementOptions: PlacementOption[] = [
 ];
 ---
 
-<section id="umisteni" class="py-20 sm:py-28 lg:py-32 px-6 sm:px-10 lg:px-14 bg-white select-none" aria-labelledby="placement-heading">
-  <div class="max-w-5xl mx-auto">
+<section id="umisteni" class="py-20 sm:py-28 lg:py-32 px-6 sm:px-12 lg:px-20 bg-white select-none" aria-labelledby="placement-heading">
+  <div class="max-w-[1260px] mx-auto">
     
     <!-- Section Heading -->
     <div class="text-left mb-16 sm:mb-24">
-      <h2 id="placement-heading" class="font-heading font-black text-4xl sm:text-6xl lg:text-[4.2rem] text-ink tracking-tight leading-[1.08]">
+      <h2 id="placement-heading" class="font-sans font-bold text-5xl sm:text-7xl lg:text-[84px] text-[#2B2523] tracking-[-0.05em] leading-[0.92]">
         Nespočet<br />
         možností kam<br />
         tlačítko umístit
       </h2>
     </div>
 
-    <!-- Staggered 3-Item Layout matching mock-up exactly -->
-    <div class="space-y-16 sm:space-y-24">
-      {
-        placementOptions.map((item) => {
-          const isReversed = item.align === "reversed";
-          const isShifted = item.align === "right-shifted";
+    <!-- Rows structure matching Figma node 4:25 / 7:51 -->
+    <div class="divide-y divide-[#DDDDDD] border-b border-[#DDDDDD]">
+      
+      <!-- TOP BLOCK (Row 1 & 2 in Figma):
+           Left photo [312px], Middle column with 2 stacked texts (Na kovový rám & Do kapsy), Right photo [312px] -->
+      <div class="py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <!-- 1. Left Photo: Na kovový rám -->
+        <div class="lg:col-span-3">
+          <div class="w-full max-w-[312px] aspect-square rounded-2xl overflow-hidden bg-[#2B2420] shadow-sm">
+            <img
+              src="/placement-kovovy-ram.png"
+              alt="Na kovový rám"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              width="312"
+              height="312"
+            />
+          </div>
+        </div>
 
-          return (
-            <div
-              class:list={[
-                "flex items-center gap-6 sm:gap-10 max-w-2xl",
-                isReversed ? "flex-col-reverse sm:flex-row" : "flex-col sm:flex-row",
-                isShifted && "sm:ml-auto",
-              ]}
-            >
-              {isReversed ? (
-                <>
-                  <div class="text-left">
-                    <h3 class="font-heading font-black text-xl sm:text-2xl text-ink tracking-tight mb-2">
-                      {item.title}
-                    </h3>
-                    <p class="text-xs sm:text-sm text-black/70 leading-relaxed font-normal">
-                      {item.desc}
-                    </p>
-                  </div>
-                  <div class="w-44 sm:w-56 md:w-64 aspect-square rounded-2xl overflow-hidden bg-black/5 shadow-md shrink-0">
-                    <img
-                      src={item.image}
-                      alt={item.alt}
-                      class="w-full h-full object-cover"
-                      loading="lazy"
-                      width="1024"
-                      height="1024"
-                    />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div class="w-44 sm:w-56 md:w-64 aspect-square rounded-2xl overflow-hidden bg-black/5 shadow-md shrink-0">
-                    <img
-                      src={item.image}
-                      alt={item.alt}
-                      class="w-full h-full object-cover"
-                      loading="lazy"
-                      width="1024"
-                      height="1024"
-                    />
-                  </div>
-                  <div class="text-left">
-                    <h3 class="font-heading font-black text-xl sm:text-2xl text-ink tracking-tight mb-2">
-                      {item.title}
-                    </h3>
-                    <p class="text-xs sm:text-sm text-black/70 leading-relaxed font-normal">
-                      {item.desc}
-                    </p>
-                  </div>
-                </>
-              )}
-            </div>
-          );
-        })
-      }
+        <!-- 2. Middle Column: Both "Na kovový rám" and "Do kapsy" text stacked -->
+        <div class="lg:col-span-5 text-left flex flex-col justify-between py-2 space-y-10 sm:space-y-12">
+          <!-- Item 1: Na kovový rám -->
+          <div>
+            <h3 class="font-sans font-medium text-2xl sm:text-[38px] text-[#2B2523] tracking-[-0.03em] leading-tight mb-3">
+              Na kovový rám
+            </h3>
+            <p class="font-mono text-xs text-[#2B2523] leading-[1.5] max-w-md font-normal">
+              Drží samo na magnet. Nepotřebuje montáž a jedním stiskem aktivujete sirénu i SMS poplach.
+            </p>
+          </div>
+
+          <!-- Item 2: Do kapsy -->
+          <div>
+            <h3 class="font-sans font-medium text-2xl sm:text-[38px] text-[#2B2523] tracking-[-0.03em] leading-tight mb-3">
+              Do kapsy
+            </h3>
+            <p class="font-mono text-xs text-[#2B2523] leading-[1.5] max-w-md font-normal">
+              Díky kompaktním rozměrům padne přesně do kapsy zástěry nebo kalhot.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. Right Photo: Do kapsy -->
+        <div class="lg:col-span-4 flex justify-start lg:justify-end">
+          <div class="w-full max-w-[312px] aspect-square rounded-2xl overflow-hidden bg-[#8D7F73] shadow-sm">
+            <img
+              src="/placement-do-kapsy.png"
+              alt="Do kapsy"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              width="312"
+              height="312"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM BLOCK (Row 3 in Figma):
+           Left column with "Pod pult nebo stůl" text, Center/Middle photo [312px], Empty right -->
+      <div class="py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <!-- 1. Left: Pod pult nebo stůl Text -->
+        <div class="lg:col-span-6 text-left">
+          <h3 class="font-sans font-medium text-2xl sm:text-[38px] text-[#2B2523] tracking-[-0.03em] leading-tight mb-3">
+            Pod pult nebo stůl
+          </h3>
+          <p class="font-mono text-xs text-[#2B2523] leading-[1.5] max-w-md font-normal">
+            Na nalepovací kovové destičce drží jako přibitý, ale kdykoliv ho můžete sundat.
+          </p>
+        </div>
+
+        <!-- 2. Middle: Photo Pod pult nebo stůl -->
+        <div class="lg:col-span-6 flex justify-start lg:justify-start">
+          <div class="w-full max-w-[312px] aspect-square rounded-2xl overflow-hidden bg-[#4A3F38] shadow-sm">
+            <img
+              src="/placement-pod-pult.png"
+              alt="Pod pult nebo stůl"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              width="312"
+              height="312"
+            />
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div>

@@ -5,120 +5,123 @@ import { SITE_CONFIG } from "@/data/siteConfig";
 const { pricing } = SITE_CONFIG;
 ---
 
-<section id="kontakt" class="py-20 sm:py-28 lg:py-32 px-6 sm:px-10 lg:px-14 bg-white border-t border-black/10 select-none">
-  <div class="max-w-5xl mx-auto text-left">
+<section id="kontakt" class="py-20 sm:py-28 lg:py-32 px-6 sm:px-12 lg:px-20 bg-white select-none">
+  <div class="max-w-[1260px] mx-auto text-left">
     
     <!-- Heading -->
-    <div class="mb-10 sm:mb-14">
-      <h2 class="font-heading font-black text-4xl sm:text-6xl lg:text-[4.2rem] text-ink tracking-tight mb-2">
+    <div class="mb-14 sm:mb-16">
+      <h2 class="font-sans font-bold text-6xl sm:text-8xl lg:text-[100px] text-[#2B2523] tracking-[-0.05em] leading-none mb-4">
         Mám zájem
       </h2>
-      <p class="text-xs sm:text-sm text-black/60 max-w-md font-normal leading-relaxed">
-        Zanechte nám kontakt. Obratem se vám ozveme a doladíme nastavení kontaktů a doručení sady.
+      <p class="font-mono text-xs sm:text-[13px] text-[#2B2523] max-w-xl font-normal leading-[1.5]">
+        Zanechte nám na sebe kontakt. My se vám obratem ozveme a dokončíme spolu potřebnou konfiguraci před odesláním.
       </p>
     </div>
 
-    <!-- Form: 2-column grid matching mock-up -->
+    <!-- Form: 2-column grid matching Figma node 7:7 -->
     <form
       id="contact-order-form"
-      class="space-y-6 max-w-3xl"
+      class="space-y-8"
       data-base-price={pricing.basePrice}
       data-extra-price={pricing.extraButtonPrice}
     >
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
-        <!-- Jméno -->
-        <div class="border-b border-black/20 focus-within:border-ink transition-colors pb-2">
-          <label for="order-name" class="block text-xs font-bold text-black/50 uppercase tracking-wider mb-1">
-            Jméno a příjmení
-          </label>
-          <input
-            type="text"
-            id="order-name"
-            name="name"
-            placeholder="Jana Nováková"
-            autocomplete="name"
-            required
-            class="w-full bg-transparent text-sm sm:text-base text-ink font-medium placeholder-black/30 focus:outline-none"
-          />
-        </div>
-
-        <!-- Telefon nebo e-mail -->
-        <div class="border-b border-black/20 focus-within:border-ink transition-colors pb-2">
-          <label for="order-contact" class="block text-xs font-bold text-black/50 uppercase tracking-wider mb-1">
-            Telefon nebo e-mail
-          </label>
-          <input
-            type="text"
-            id="order-contact"
-            name="contact"
-            placeholder="+420 777 123 456 nebo jana@salon.cz"
-            autocomplete="email"
-            required
-            class="w-full bg-transparent text-sm sm:text-base text-ink font-medium placeholder-black/30 focus:outline-none"
-          />
-        </div>
-
-        <!-- Město -->
-        <div class="border-b border-black/20 focus-within:border-ink transition-colors pb-2">
-          <label for="order-city" class="block text-xs font-bold text-black/50 uppercase tracking-wider mb-1">
-            Město / Salón
-          </label>
-          <input
-            type="text"
-            id="order-city"
-            name="city"
-            placeholder="Praha 2, Studio Relax"
-            autocomplete="address-level2"
-            required
-            class="w-full bg-transparent text-sm sm:text-base text-ink font-medium placeholder-black/30 focus:outline-none"
-          />
-        </div>
-
-        <!-- Počet tlačítek Counter -->
-        <div class="border-b border-black/20 pb-2 flex items-center justify-between">
-          <div>
-            <label class="block text-xs font-bold text-black/50 uppercase tracking-wider mb-1">
-              Počet tlačítek
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-14">
+        <!-- Sloupec 1 -->
+        <div class="space-y-6">
+          <!-- Jméno -->
+          <div class="border-b border-[#CFCFCF] pb-3">
+            <label for="order-name" class="block font-mono text-[10px] text-[#6B6560] mb-2 uppercase">
+              Jméno
             </label>
-            <span class="text-xs text-black/60">
-              V sadě
-            </span>
+            <input
+              type="text"
+              id="order-name"
+              name="name"
+              placeholder=""
+              autocomplete="name"
+              required
+              class="w-full bg-transparent text-sm sm:text-base text-[#2B2523] font-medium focus:outline-none"
+            />
           </div>
 
-          <div class="flex items-center gap-2">
-            <button
-              type="button"
-              id="order-btn-dec"
-              disabled
-              class="w-7 h-7 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-ink cursor-pointer active:scale-90 transition-all disabled:opacity-30 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
-              aria-label="Odebrat tlačítko"
-            >
-              <Minus class="w-3 h-3" />
-            </button>
-            <span id="order-count" class="w-5 text-center font-bold text-sm text-ink" aria-live="polite">1</span>
-            <button
-              type="button"
-              id="order-btn-inc"
-              class="w-7 h-7 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-ink cursor-pointer active:scale-90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
-              aria-label="Přidat tlačítko"
-            >
-              <Plus class="w-3 h-3" />
-            </button>
+          <!-- Město -->
+          <div class="border-b border-[#CFCFCF] pb-3">
+            <label for="order-city" class="block font-mono text-[10px] text-[#6B6560] mb-2 uppercase">
+              Město
+            </label>
+            <input
+              type="text"
+              id="order-city"
+              name="city"
+              placeholder=""
+              autocomplete="address-level2"
+              required
+              class="w-full bg-transparent text-sm sm:text-base text-[#2B2523] font-medium focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <!-- Sloupec 2 -->
+        <div class="space-y-6">
+          <!-- E-mail nebo telefon -->
+          <div class="border-b border-[#CFCFCF] pb-3">
+            <label for="order-contact" class="block font-mono text-[10px] text-[#6B6560] mb-2 uppercase">
+              E-mail nebo telefon
+            </label>
+            <input
+              type="text"
+              id="order-contact"
+              name="contact"
+              placeholder=""
+              autocomplete="email"
+              required
+              class="w-full bg-transparent text-sm sm:text-base text-[#2B2523] font-medium focus:outline-none"
+            />
+          </div>
+
+          <!-- Počet tlačítek Counter -->
+          <div class="border-b border-[#CFCFCF] pb-3 flex items-center justify-between">
+            <div>
+              <label class="block font-mono text-[10px] text-[#6B6560] mb-1 uppercase">
+                Počet tlačítek
+              </label>
+              <span id="order-count" class="font-sans font-normal text-lg text-[#2B2523]" aria-live="polite">1</span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button
+                type="button"
+                id="order-btn-dec"
+                disabled
+                class="w-7 h-7 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-[#2B2523] cursor-pointer active:scale-90 transition-all disabled:opacity-30 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+                aria-label="Odebrat tlačítko"
+              >
+                <Minus class="w-3 h-3" />
+              </button>
+              <button
+                type="button"
+                id="order-btn-inc"
+                class="w-7 h-7 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-[#2B2523] cursor-pointer active:scale-90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+                aria-label="Přidat tlačítko"
+              >
+                <Plus class="w-3 h-3" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Action & disclaimer -->
-      <div class="pt-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <!-- Action & disclaimer matching Figma node 7:19 -->
+      <div class="pt-6 flex flex-col sm:flex-row items-start sm:items-center gap-6">
         <button
           type="submit"
           id="order-submit-btn"
-          class="inline-flex items-center justify-center px-8 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-black hover:bg-black/85 active:scale-95 transition-all duration-200 cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+          class="inline-flex items-center justify-center px-7 py-2.5 rounded-full text-sm font-medium text-white bg-[#2B2523] hover:bg-black active:scale-95 transition-all shadow-sm"
         >
-          <span>Odeslat poptávku</span>
+          <span>Odeslat</span>
         </button>
-        <span class="text-[11px] text-black/45 leading-tight">
-          Nezávazné odeslání. Ozveme se vám do 2 hodin v pracovní dny.
+        <span class="font-mono text-[11px] text-[#6B6560] leading-tight">
+          Nezávazně. Rádi vám vše předvedeme nebo zodpovíme dotazy.
         </span>
       </div>
     </form>
@@ -132,16 +135,16 @@ const { pricing } = SITE_CONFIG;
       <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center mb-4">
         <Check class="w-6 h-6 stroke-[3]" />
       </div>
-      <h3 class="font-heading font-black text-2xl sm:text-3xl text-ink mb-2">
+      <h3 class="font-sans font-bold text-2xl sm:text-3xl text-[#2B2523] mb-2">
         Děkujeme za poptávku!
       </h3>
-      <p class="text-xs sm:text-sm text-black/70 leading-relaxed mb-6">
+      <p class="font-mono text-xs text-[#6B6560] leading-relaxed mb-6">
         Vaši zprávu jsme v pořádku přijali. Během několika hodin vás budeme kontaktovat a domluvíme podrobnosti.
       </p>
       <button
         type="button"
         id="order-reset-btn"
-        class="px-5 py-2 rounded-full text-xs font-bold text-ink bg-black/5 hover:bg-black/10 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+        class="px-5 py-2 rounded-full text-xs font-bold text-[#2B2523] bg-black/5 hover:bg-black/10 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
       >
         Odeslat další poptávku
       </button>

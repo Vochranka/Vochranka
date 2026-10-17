@@ -23,34 +23,35 @@ const faqs = [
 ];
 ---
 
-<section id="faq" class="py-20 sm:py-28 lg:py-32 px-4 sm:px-8 lg:px-12 bg-white border-t border-black/10 select-none">
-  <div class="max-w-4xl mx-auto text-left">
+<section id="faq" class="py-20 sm:py-28 lg:py-32 px-6 sm:px-12 lg:px-20 bg-white select-none">
+  <div class="max-w-[1260px] mx-auto text-left">
     
     <!-- Heading -->
-    <div class="mb-12 sm:mb-16">
-      <h2 class="font-heading font-black text-4xl sm:text-6xl lg:text-[4.2rem] text-ink tracking-tight mb-2">
+    <div class="mb-14 sm:mb-16">
+      <h2 class="font-sans font-bold text-6xl sm:text-8xl lg:text-[100px] text-[#2B2523] tracking-[-0.05em] leading-none mb-4">
         Často kladené otázky
       </h2>
-      <p class="text-xs sm:text-sm text-black/60 max-w-md font-normal leading-relaxed">
-        Vše, co potřebujete vědět před pořízením Vochránky.
-      </p>
+      <div class="font-mono text-xs sm:text-[13px] text-[#2B2523] leading-[1.5]">
+        <p>Rychlé odpovědi na nejčastější dotazy. Máte jiný dotaz?</p>
+        <a href="#kontakt" class="underline hover:text-black">Napište nám</a>
+      </div>
     </div>
 
-    <!-- Accordion List matching the mock-up -->
-    <div class="border-t border-black/15 divide-y divide-black/15">
+    <!-- Accordion List matching Figma node 7:29 -->
+    <div class="divide-y divide-[#CFCFCF] border-b border-[#CFCFCF]">
       {
         faqs.map((faq, index) => (
           <div class="faq-item">
             <button
               type="button"
-              class="faq-btn w-full py-5 sm:py-6 text-left flex items-center justify-between gap-4 cursor-pointer select-none group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded-sm"
+              class="faq-btn w-full py-6 sm:py-7 text-left flex items-center justify-between gap-4 cursor-pointer select-none group focus-visible:outline-none"
               aria-expanded="false"
               aria-controls={`faq-ans-${index}`}
             >
-              <span class="font-heading font-bold text-base sm:text-xl text-ink tracking-tight group-hover:text-accent transition-colors">
+              <span class="font-sans font-normal text-xl sm:text-2xl lg:text-[30px] text-[#2B2523] tracking-[-0.02em] leading-tight">
                 {faq.q}
               </span>
-              <span class="faq-icon text-xl sm:text-2xl font-light text-black/60 transition-transform duration-200 shrink-0" aria-hidden="true">
+              <span class="faq-icon font-sans font-light text-2xl sm:text-3xl text-[#2B2523] transition-transform duration-200 shrink-0" aria-hidden="true">
                 +
               </span>
             </button>
@@ -60,7 +61,7 @@ const faqs = [
               class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out"
             >
               <div class="overflow-hidden">
-                <p class="text-xs sm:text-sm text-black/70 leading-relaxed pb-6 pr-6 font-normal">
+                <p class="font-mono text-xs sm:text-[13px] text-[#6B6560] leading-relaxed pb-6 pr-6 font-normal">
                   {faq.a}
                 </p>
               </div>

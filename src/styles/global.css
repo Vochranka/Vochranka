@@ -1,20 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Courier Prime', monospace, monospace;
 
+  /* Exact Figma Design Colors */
+  --color-figma-dark: #2A211D;
+  --color-figma-ink: #2B2523;
+  --color-figma-muted: #6B6560;
+  --color-figma-gray: #F4F4F4;
+  --color-figma-line: #DDDDDD;
+  --color-figma-line-light: #CFCFCF;
+  --color-figma-accent-line: #A9532E;
 
-  /* Custom Color Palette */
-  --color-canvas: #F9F8F6;
-  --color-card-bg: #F8F8F8;
-  --color-ink: #000000;
-  --color-ink-muted: #666666;
-  --color-ink-faint: #999999;
-  --color-accent: #388882;
-  --color-accent-hover: #2d6e69;
-  --color-accent-subtle: #EBF3F2;
+  --color-canvas: #FFFFFF;
+  --color-card-bg: #F4F4F4;
+  --color-ink: #2B2523;
+  --color-ink-muted: #6B6560;
+  --color-ink-faint: #8E8883;
 }
 
 @layer base {

@@ -4,21 +4,38 @@ import { SITE_CONFIG } from "@/data/siteConfig";
 const stats = SITE_CONFIG.stats;
 ---
 
-<section class="bg-white border-b border-black/10 py-10 sm:py-14 px-4 sm:px-8 lg:px-12 select-none" aria-label="Klíčové parametry">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-black/10">
-      {
-        stats.map((stat) => (
-          <div class="py-6 md:py-0 md:px-8 first:pl-0 last:pr-0 text-left">
-            <span class="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-ink tracking-tight block leading-none">
-              {stat.value}
-            </span>
-            <p class="text-xs sm:text-sm text-black/60 mt-2 font-medium">
-              {stat.label}
-            </p>
-          </div>
-        ))
-      }
+<section class="bg-white py-6 sm:py-8 px-6 sm:px-12 lg:px-20 select-none" aria-label="Klíčové parametry">
+  <div class="max-w-[1260px] mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+      <!-- Stat 2 s -->
+      <div class="bg-[#F4F4F4] p-7 sm:p-8 flex flex-col justify-between min-h-[166px] text-left">
+        <span class="font-sans font-medium text-4xl sm:text-[44px] text-[#2B2523] tracking-[-0.03em] leading-none">
+          2 s
+        </span>
+        <p class="font-mono text-xs text-[#2B2523] mt-8 font-normal">
+          Podržením spustíte sirénu
+        </p>
+      </div>
+
+      <!-- Stat 24/7 -->
+      <div class="bg-[#F4F4F4] p-7 sm:p-8 flex flex-col justify-between min-h-[166px] text-left">
+        <span class="font-sans font-medium text-4xl sm:text-[44px] text-[#2B2523] tracking-[-0.03em] leading-none">
+          24/7
+        </span>
+        <p class="font-mono text-xs text-[#2B2523] mt-8 font-normal">
+          Monitoring a technická podpora
+        </p>
+      </div>
+
+      <!-- Stat 14 dní -->
+      <div class="bg-[#F4F4F4] p-7 sm:p-8 flex flex-col justify-between min-h-[166px] text-left">
+        <span class="font-sans font-medium text-4xl sm:text-[44px] text-[#2B2523] tracking-[-0.03em] leading-none">
+          14 dní
+        </span>
+        <p class="font-mono text-xs text-[#2B2523] mt-8 font-normal">
+          Na vyzkoušení, osobní předvedení
+        </p>
+      </div>
     </div>
   </div>
 </section>

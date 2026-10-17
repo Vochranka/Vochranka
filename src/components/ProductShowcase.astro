@@ -4,105 +4,61 @@ import { ArrowRight } from "lucide-astro";
 
 <section
   id="vyuziti"
-  class="py-20 sm:py-28 lg:py-32 px-6 sm:px-10 lg:px-14 bg-white select-none"
+  class="py-20 sm:py-28 lg:py-32 px-6 sm:px-12 lg:px-20 bg-white select-none"
   aria-labelledby="showcase-heading"
 >
-  <div class="max-w-7xl mx-auto">
+  <div class="max-w-[1260px] mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
       <!-- LEFT COLUMN: All-caps bold stacked heading & copy -->
       <div class="lg:col-span-5 flex flex-col items-start text-left">
         <h2
           id="showcase-heading"
-          class="font-heading font-black text-4xl sm:text-5xl lg:text-[3.8rem] text-ink tracking-tight uppercase leading-[1.04] mb-8"
+          class="font-sans font-bold text-4xl sm:text-6xl lg:text-[72px] text-[#2B2523] tracking-[-0.05em] uppercase leading-[0.9] mb-12"
         >
           OKAMŽITÁ<br />
-          <span class="inline-flex items-center">
-            POMOC
-            <span
-              class="inline-block w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-card-bg border border-black/10 shadow-xs ml-2 align-middle shrink-0"
-              aria-hidden="true"
-            >
-              <span
-                class="block w-full h-full rounded-full border-2 border-white"
-              ></span>
-            </span>
-          </span><br />
+          POMOC<br />
           NA JEDNO<br />
           STISKNUTÍ
         </h2>
 
-        <div
-          class="space-y-4 max-w-sm text-xs sm:text-sm text-black/70 leading-relaxed mb-8"
-        >
+        <div class="space-y-6 max-w-sm mb-10 text-left">
           <div>
-            <strong class="font-bold text-ink block text-sm"
-              >2 s Podržíte</strong
-            >
-            <p>
-              Rozezní se pronikavá odstrašující siréna a systém okamžitě odešle
-              nouzovou SMS rodině nebo kolegům.
+            <span class="font-mono font-bold text-xs text-[#2B2523] block mb-1">
+              Podržíte 2 s
+            </span>
+            <p class="font-mono text-xs text-[#2B2523] leading-[1.4] font-normal">
+              Rozezní se hlasitá siréna a okamžitě se odesílají nouzové SMS zprávy.
             </p>
           </div>
+
           <div>
-            <strong class="font-bold text-ink block text-sm">2x Kliknete</strong
-            >
-            <p>
-              Nebezpečí pominulo nebo šlo o omyl? Dvojitým kliknutím sirénu
-              kdykoliv ihned ztišíte.
+            <span class="font-mono font-bold text-xs text-[#2B2523] block mb-1">
+              Kliknete 2x
+            </span>
+            <p class="font-mono text-xs text-[#2B2523] leading-[1.4] font-normal">
+              Nebezpečí pominulo nebo to byl omyl? Dvojitým stiskem poplach zrušíte.
             </p>
           </div>
         </div>
 
         <a
-          href="#cenik"
-          class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-black hover:bg-black/85 active:scale-95 transition-all duration-200 cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+          href="#jak-to-funguje"
+          class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-medium text-white bg-[#2B2523] hover:bg-black active:scale-95 transition-all shadow-sm"
         >
-          <span>Objednat sadu</span>
-          <ArrowRight class="w-3.5 h-3.5" />
+          <span>Jak to funguje</span>
         </a>
       </div>
 
-      <!-- RIGHT COLUMN: Image collage matching the mock-up exactly -->
-      <div class="lg:col-span-7 relative flex items-center justify-center">
-        <!-- Main centerpiece image: Hand holding button next to phone -->
-        <div
-          class="relative w-full max-w-[520px] aspect-[4/3] rounded-3xl overflow-hidden shadow-xl bg-black/5 border border-black/5"
-        >
+      <!-- RIGHT COLUMN: Figma Visual asset -->
+      <div class="lg:col-span-7 flex items-center justify-center">
+        <div class="w-full max-w-[780px] rounded-2xl overflow-hidden">
           <img
-            src="/button-pocket.jpg"
-            alt="Použití tísňového tlačítka Vochránka a SMS notifikace v telefonu"
-            class="w-full h-full object-cover"
+            src="/figma-visual-4-14.png"
+            alt="Okamžitá pomoc na jedno stisknutí - Vochránka tísňové tlačítko"
+            class="w-full h-auto object-cover"
             loading="lazy"
-            width="520"
-            height="390"
-          />
-        </div>
-
-        <!-- Top-right overlapping small thumbnail card (Pocket) -->
-        <div
-          class="absolute -top-3 sm:-top-5 -right-1 sm:-right-3 w-28 sm:w-36 md:w-40 aspect-square rounded-2xl overflow-hidden shadow-lg border-2 border-white hidden sm:block"
-        >
-          <img
-            src="/button-pocket.jpg"
-            alt="Diskrétní nošení tísňového tlačítka v kapse"
-            class="w-full h-full object-cover"
-            loading="lazy"
-            width="1024"
-            height="1024"
-          />
-        </div>
-
-        <!-- Bottom-right overlapping small thumbnail card (Reception / Desk) -->
-        <div
-          class="absolute -bottom-3 sm:-bottom-5 -right-1 sm:-right-3 w-28 sm:w-36 md:w-40 aspect-square rounded-2xl overflow-hidden shadow-lg border-2 border-white hidden sm:block"
-        >
-          <img
-            src="/button_underdesk.jpg"
-            alt="Tísňové tlačítko pod deskou stolu či recepce"
-            class="w-full h-full object-cover"
-            loading="lazy"
-            width="1024"
-            height="1024"
+            width="780"
+            height="540"
           />
         </div>
       </div>

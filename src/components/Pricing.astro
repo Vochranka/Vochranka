@@ -35,62 +35,99 @@ const pricingCards = [
 ];
 ---
 
-<section id="cenik" class="py-20 sm:py-28 lg:py-32 px-6 sm:px-10 lg:px-14 bg-white border-t border-black/10 select-none">
-  <div class="max-w-7xl mx-auto">
+<section id="cenik" class="py-20 sm:py-28 lg:py-32 px-6 sm:px-12 lg:px-20 bg-white select-none">
+  <div class="max-w-[1260px] mx-auto">
     
     <!-- Section Header -->
-    <div class="text-left mb-12 sm:mb-16">
-      <h2 class="font-heading font-black text-4xl sm:text-6xl lg:text-[4.2rem] text-ink tracking-tight mb-2">
+    <div class="text-left mb-14 sm:mb-16">
+      <h2 class="font-sans font-bold text-6xl sm:text-8xl lg:text-[100px] text-[#2B2523] tracking-[-0.05em] leading-none mb-4">
         Ceník
       </h2>
-      <p class="text-xs sm:text-sm text-black/60 max-w-md font-normal">
-        Jednoduché a férové ceny bez skrytých poplatků a složitých smluv.
+      <p class="font-mono text-xs sm:text-[13px] text-[#2B2523] max-w-xl font-normal leading-[1.5]">
+        Žádné pronájmy ani montážní poplatky. Osobní předvedení.<br />
+        14 dní na vyzkoušení.
       </p>
     </div>
 
-    <!-- 3 Cards Horizontal Grid matching mock-up -->
+    <!-- 3 Cards Horizontal Grid matching Figma -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-      {
-        pricingCards.map((card) => (
-          <div class="bg-card-bg rounded-3xl p-6 sm:p-8 border border-black/5 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-shadow duration-300">
-            <div>
-              <!-- Price & Period -->
-              <div class="flex items-baseline flex-wrap gap-x-2 gap-y-1 mb-2">
-                <span class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-ink tracking-tight">
-                  {card.price}
-                </span>
-                <span class="text-xs sm:text-sm text-black/50 font-medium">
-                  {card.period}
-                </span>
-              </div>
-
-              <!-- Badge / Tag -->
-              <div class="mb-4">
-                <span class="inline-block text-[11px] font-bold text-black/50 uppercase tracking-wider">
-                  {card.badge}
-                </span>
-              </div>
-
-              <!-- Description -->
-              <p class="text-xs sm:text-sm text-black/70 leading-relaxed font-normal">
-                {card.desc}
-              </p>
-            </div>
-
-            <!-- CTA button if present -->
-            {card.cta && (
-              <div class="mt-8 pt-6 border-t border-black/5">
-                <a
-                  href="#kontakt"
-                  class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-black hover:bg-black/80 active:scale-95 transition-all duration-200 shadow-xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
-                >
-                  <span>{card.cta}</span>
-                </a>
-              </div>
-            )}
+      <!-- Card 1: 2 990 Kč -->
+      <div class="bg-[#F4F4F4] p-8 flex flex-col justify-between text-left min-h-[280px]">
+        <div>
+          <!-- Price & Period -->
+          <div class="flex items-baseline flex-wrap gap-x-2 gap-y-1 mb-4">
+            <span class="font-sans font-medium text-4xl sm:text-5xl lg:text-[56px] text-[#2B2523] tracking-[-0.04em] leading-none">
+              2 990 Kč
+            </span>
+            <span class="font-mono text-xs text-[#6B6560] font-normal">
+              / první rok
+            </span>
           </div>
-        ))
-      }
+
+          <!-- Title & Description -->
+          <span class="font-mono font-bold text-xs text-[#2B2523] block mb-2">
+            1. rok provozu zdarma
+          </span>
+          <p class="font-mono text-[11px] text-[#6B6560] leading-[1.5] font-normal">
+            Kompletní fyzická sada Vochranka + 1. rok provozu bez dalších poplatků.
+          </p>
+        </div>
+
+        <div class="mt-8 pt-4">
+          <a
+            href="#kontakt"
+            class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-medium text-white bg-[#2B2523] hover:bg-black active:scale-95 transition-all shadow-sm"
+          >
+            <span>Mám zájem</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: 83 Kč -->
+      <div class="bg-[#F4F4F4] p-8 flex flex-col justify-between text-left min-h-[280px]">
+        <div>
+          <!-- Price & Period -->
+          <div class="flex items-baseline flex-wrap gap-x-2 gap-y-1 mb-4">
+            <span class="font-sans font-medium text-4xl sm:text-5xl lg:text-[56px] text-[#2B2523] tracking-[-0.04em] leading-none">
+              83 Kč
+            </span>
+            <span class="font-mono text-xs text-[#6B6560] font-normal">
+              / měsíčně (999 Kč ročně)
+            </span>
+          </div>
+
+          <!-- Title & Description -->
+          <span class="font-mono font-bold text-xs text-[#2B2523] block mb-2">
+            Provoz od 2. roku
+          </span>
+          <p class="font-mono text-[11px] text-[#6B6560] leading-[1.5] font-normal">
+            Platí se až od druhého roku provozu – méně než jedno kafe měsíčně. Zahrnuje nouzové SMS zprávy, 24/7 monitoring a nepřetržitou technickou podporu.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 3: 699 Kč -->
+      <div class="bg-[#F4F4F4] p-8 flex flex-col justify-between text-left min-h-[280px]">
+        <div>
+          <!-- Price & Period -->
+          <div class="flex items-baseline flex-wrap gap-x-2 gap-y-1 mb-4">
+            <span class="font-sans font-medium text-4xl sm:text-5xl lg:text-[56px] text-[#2B2523] tracking-[-0.04em] leading-none">
+              699 Kč
+            </span>
+            <span class="font-mono text-xs text-[#6B6560] font-normal">
+              / další tlačítko
+            </span>
+          </div>
+
+          <!-- Title & Description -->
+          <span class="font-mono font-bold text-xs text-[#2B2523] block mb-2">
+            Potřebujete více tlačítek?
+          </span>
+          <p class="font-mono text-[11px] text-[#6B6560] leading-[1.5] font-normal">
+            Každé další tlačítko stojí jednorázově 699 Kč. První rok provozu je zdarma, po něm se provoz přidružených tlačítek platí zvlášť.
+          </p>
+        </div>
+      </div>
     </div>
 
   </div>

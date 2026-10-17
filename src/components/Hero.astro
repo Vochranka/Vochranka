@@ -5,34 +5,16 @@ import { SITE_CONFIG } from "@/data/siteConfig";
 const places = SITE_CONFIG.heroPlaces;
 ---
 
-<section class="relative w-full min-h-[85vh] sm:min-h-[92vh] flex flex-col justify-end overflow-hidden select-none bg-black text-white pb-14 sm:pb-20 pt-32 sm:pt-40">
-  <!-- Hero Background Image: high quality button_underdesk.jpg -->
-  <div class="absolute inset-0 w-full h-full z-0 overflow-hidden">
-    <img
-      src="/button_underdesk.jpg"
-      alt="Diskrétní tísňové tlačítko Vochránka pod deskou stolu v salónu"
-      class="w-full h-full object-cover object-center sm:object-top filter contrast-105 brightness-95"
-      loading="eager"
-      fetchpriority="high"
-      width="1920"
-      height="1080"
-    />
-
-    <!-- Dark gradient overlays for high-contrast white text -->
-    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent pointer-events-none"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/85 pointer-events-none"></div>
-  </div>
-
-  <!-- Hero Content Grid -->
-  <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 w-full relative z-10">
+<section class="relative w-full bg-[#2A211D] text-white pt-28 sm:pt-36 lg:pt-44 pb-20 sm:pb-28 px-6 sm:px-12 lg:px-20 overflow-hidden select-none">
+  <div class="max-w-[1260px] mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
       
       <!-- LEFT: Massive All-Caps Heading with rotating place -->
       <div class="lg:col-span-8 text-left">
-        <h1 class="font-heading font-black text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight text-white leading-[1.04] uppercase drop-shadow-md">
+        <h1 class="font-sans font-bold text-5xl sm:text-7xl md:text-8xl lg:text-[110px] xl:text-[128px] tracking-[-0.05em] text-white leading-[0.88] uppercase">
           <span class="block">OBTĚŽOVAL</span>
           <span class="block">VÁS NĚKDO</span>
-          <span class="inline-block relative overflow-hidden align-bottom h-[1.15em] [perspective:800px]">
+          <span class="inline-block relative overflow-hidden align-bottom h-[1.05em] [perspective:800px]">
             <span
               id="hero-rotating-place"
               data-places={JSON.stringify(places)}
@@ -44,19 +26,27 @@ const places = SITE_CONFIG.heroPlaces;
         </h1>
       </div>
 
-      <!-- RIGHT: Paragraph & White Pill CTA -->
-      <div class="lg:col-span-4 flex flex-col items-start lg:items-end text-left lg:text-right pb-2">
-        <p class="text-xs sm:text-sm text-white/85 leading-relaxed max-w-xs mb-5 drop-shadow-sm font-normal">
-          Diskrétní bezdrátové tísňové tlačítko pro masérky, kosmetičky a ordinace. Dvakrát stisknete – rozezní se siréna a blízcí dostanou nouzovou SMS do 2 vteřin.
+      <!-- RIGHT: Paragraph & Buttons -->
+      <div class="lg:col-span-4 flex flex-col items-start lg:items-end text-left lg:text-right">
+        <p class="font-mono text-xs sm:text-[13px] text-white/90 leading-[1.5] max-w-[420px] mb-8 font-normal">
+          Bezpečnostní systém. Jste sami ve svém salonu, kavárně či večerce a zákazník se začne chovat divně? Podržením tlačítka spustíte výstražnou sirénu a pošlete nouzovou SMS.
         </p>
 
-        <a
-          href="#cenik"
-          class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold text-black bg-white hover:bg-white/90 active:scale-95 transition-all duration-200 shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-        >
-          <span>Objednat sadu</span>
-          <ArrowRight class="w-3.5 h-3.5" />
-        </a>
+        <div class="flex items-center gap-5 sm:gap-6">
+          <a
+            href="#vyuziti"
+            class="font-mono text-[13px] text-white underline hover:text-white/80 transition-colors"
+          >
+            Jak to funguje
+          </a>
+
+          <a
+            href="#cenik"
+            class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-medium text-[#2B2523] bg-white hover:bg-white/90 active:scale-95 transition-all shadow-sm"
+          >
+            Chci bezpečí
+          </a>
+        </div>
       </div>
 
     </div>
