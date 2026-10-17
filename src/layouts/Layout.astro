@@ -1,6 +1,6 @@
 ---
-import '../styles/global.css';
-import { SITE_CONFIG } from '@/data/siteConfig';
+import "../styles/global.css";
+import { SITE_CONFIG } from "@/data/siteConfig";
 
 interface Props {
   title?: string;
@@ -31,7 +31,9 @@ const {
       rel="stylesheet"
     />
   </head>
-  <body class="flex min-h-screen flex-col bg-canvas text-ink antialiased selection:bg-accent selection:text-white">
+  <body
+    class="flex min-h-screen flex-col bg-canvas text-ink antialiased selection:bg-accent selection:text-white"
+  >
     <slot />
   </body>
 </html>

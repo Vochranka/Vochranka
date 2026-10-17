@@ -1,47 +1,55 @@
 ---
-import { ArrowRight } from "lucide-astro";
+
 ---
 
-<section class="relative w-full h-[400px] sm:h-[480px] lg:h-[540px] flex items-center justify-between overflow-hidden bg-black select-none text-white px-6 sm:px-10 lg:px-14" aria-labelledby="reach-heading">
-  <!-- Panoramic Background Image -->
+<section
+  id="umisteni"
+  class="relative w-full min-h-[max(420px,44vw)] flex flex-col justify-between overflow-hidden bg-black select-none text-white py-8 sm:py-9 px-6 sm:px-[5.5%]"
+  aria-label="Umístění tlačítka"
+>
+  <!-- Background Image with Gradient Overlays -->
   <div class="absolute inset-0 w-full h-full z-0 overflow-hidden">
     <img
       src="/button-under-table.jpg"
-      alt="Tísňové tlačítko Vochránka přichycené pod kovovým stolem"
-      class="w-full h-full object-cover object-center filter contrast-125 brightness-90"
+      alt="Tlačítko na kovovém rámu stolu"
+      class="w-full h-full object-cover object-[center_30%]"
       loading="lazy"
       width="1024"
-      height="1024"
+      height="600"
     />
-
-    <!-- Dark gradient overlays for high text contrast -->
-    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/35 to-black/80 pointer-events-none"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/50 pointer-events-none"></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/20 to-transparent pointer-events-none"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"
+    >
+    </div>
   </div>
 
   <!-- Content Container -->
-  <div class="max-w-7xl mx-auto w-full h-full relative z-10 flex flex-col justify-between py-10 sm:py-14">
-    <!-- Top Left: "Vždy na dosah" -->
-    <div class="text-left">
-      <h2 id="reach-heading" class="font-heading font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight text-white leading-[1.04]">
-        Vždy<br />
-        na dosah
-      </h2>
-    </div>
+  <div class="relative z-10 w-full">
+    <h2
+      class="text-5xl sm:text-7xl lg:text-[104px] font-bold text-white leading-[0.98] tracking-tight"
+    >
+      Vždy<br />
+      na dosah
+    </h2>
+  </div>
 
-    <!-- Bottom Right: Subtitle & CTA -->
-    <div class="flex flex-col items-start sm:items-end text-left sm:text-right max-w-sm ml-auto">
-      <p class="text-xs sm:text-sm text-white/80 leading-relaxed mb-5 drop-shadow-sm font-normal">
-        Nahmatáte ho poslepu během vteřiny přímo pod deskou stolu nebo masérským lehátkem. Žádné hledání telefonu.
-      </p>
+  <div
+    class="relative z-10 self-end max-w-[380px] text-right flex flex-col items-end gap-5"
+  >
+    <p class="text-[15px] leading-relaxed text-white/90">
+      Drží samo na magnet, v kapse i pod pultem. Jedním stiskem aktivujete
+      sirénu i SMS poplach.
+    </p>
 
-      <a
-        href="#cenik"
-        class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold text-black bg-white hover:bg-white/90 active:scale-95 transition-all duration-200 shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-      >
-        <span>Objednat sadu</span>
-        <ArrowRight class="w-3.5 h-3.5" />
-      </a>
-    </div>
+    <a
+      href="#cenik"
+      class="inline-block rounded-full px-6 py-3 bg-white text-ink font-medium text-sm hover:bg-neutral-100 active:scale-95 transition-all shadow-md"
+    >
+      Objednat sadu
+    </a>
   </div>
 </section>

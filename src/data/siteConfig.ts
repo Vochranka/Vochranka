@@ -4,11 +4,11 @@
  */
 
 export const SITE_CONFIG = {
-  name: "VOCHRÁNKA",
-  brandName: "Vochránka",
-  metaTitle: "Vochránka | Diskrétní tísňové tlačítko pro masérky, salóny a ordinace",
-  metaDescription: "Diskrétní bezdrátové tísňové tlačítko pod stůl a pult. Hlasitá odstrašující siréna na místě a tichá nouzová SMS rodině do 2 vteřin. Bez vrtání a kabelů.",
-  
+  name: "Vochranka",
+  brandName: "Vochranka",
+  metaTitle: "Vochranka | Bezpečnostní systém",
+  metaDescription: "Diskrétní bezdrátové tísňové tlačítko pod stůl a pult. Hlasitá odstrašující siréna na místě a tichá nouzová SMS rodině či blízkám do 2 vteřin. Bez vrtání a kabelů.",
+
   contact: {
     phone: "+420 777 123 456",
     phoneHref: "tel:+420777123456",
@@ -49,15 +49,15 @@ export const SITE_CONFIG = {
   stats: [
     {
       value: "2 s",
-      label: "Okamžitá odezva sirény a odeslání nouzové SMS od stisku",
+      label: "Podržením spustíte sirénu",
     },
     {
       value: "24/7",
-      label: "Nepřetržitý dohled nad funkčností centrály a dostupností sítě",
+      label: "Monitoring a technická podpora",
     },
     {
       value: "14 dní",
-      label: "Na bezplatné vyzkoušení přímo ve vašem salónu či ordinaci",
+      label: "Na vyzkoušení, osobní předvedení",
     },
   ],
 

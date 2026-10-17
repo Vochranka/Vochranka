@@ -1,0 +1,64 @@
+---
+---
+
+<!-- Mobile Sticky Bottom CTA Bar -->
+<div
+  id="mobile-sticky-bar"
+  class="fixed bottom-0 left-0 right-0 z-40 px-3.5 sm:px-4 py-2.5 sm:py-3 bg-white/70 backdrop-blur-xl border-t border-black/10 shadow-[0_-4px_24px_rgba(0,0,0,0.07)] transform translate-y-full transition-transform duration-300 md:hidden flex items-center justify-between gap-2.5 select-none"
+  aria-label="Rychlý kontakt na mobilu"
+>
+  <div class="flex items-center gap-2.5 min-w-0">
+    <img
+      src="/button1.png"
+      alt="Tlačítko Vochránka"
+      class="w-10 h-10 object-contain shrink-0 scale-x-[-1] drop-shadow-sm"
+      width="40"
+      height="40"
+      loading="lazy"
+    />
+    <div class="min-w-0 pr-1">
+      <p class="text-xs sm:text-sm font-bold text-ink leading-tight truncate">
+        Sada Vochránka
+      </p>
+      <p
+        class="text-[10px] sm:text-[11px] font-medium text-black/65 leading-tight mt-0.5"
+      >
+        Osobní předvedení zdarma, 14 dní na vyzkoušení
+      </p>
+    </div>
+  </div>
+
+  <a
+    href="#kontakt"
+    class="inline-flex items-center justify-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-black text-white text-xs sm:text-sm font-bold shadow-md hover:bg-black/80 active:scale-95 transition-all shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black whitespace-nowrap"
+  >
+    Kontaktovat
+  </a>
+</div>
+
+<script>
+  function setupStickyBar() {
+    const stickyBar = document.getElementById("mobile-sticky-bar");
+    if (!stickyBar || stickyBar.dataset.initialized) return;
+    stickyBar.dataset.initialized = "true";
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (window.scrollY > 450) {
+          stickyBar.classList.remove("translate-y-full");
+        } else {
+          stickyBar.classList.add("translate-y-full");
+        }
+      },
+      { passive: true },
+    );
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupStickyBar);
+  } else {
+    setupStickyBar();
+  }
+  document.addEventListener("astro:page-load", setupStickyBar);
+</script>

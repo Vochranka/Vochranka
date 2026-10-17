@@ -1,216 +1,154 @@
 ---
-import { Check, Plus, Minus } from "lucide-astro";
-import { SITE_CONFIG } from "@/data/siteConfig";
 
-const { pricing } = SITE_CONFIG;
 ---
 
-<section id="kontakt" class="py-20 sm:py-28 lg:py-32 px-6 sm:px-10 lg:px-14 bg-white border-t border-black/10 select-none">
-  <div class="max-w-5xl mx-auto text-left">
-    
-    <!-- Heading -->
-    <div class="mb-10 sm:mb-14">
-      <h2 class="font-heading font-black text-4xl sm:text-6xl lg:text-[4.2rem] text-ink tracking-tight mb-2">
-        Mám zájem
-      </h2>
-      <p class="text-xs sm:text-sm text-black/60 max-w-md font-normal leading-relaxed">
-        Zanechte nám kontakt. Obratem se vám ozveme a doladíme nastavení kontaktů a doručení sady.
-      </p>
-    </div>
-
-    <!-- Form: 2-column grid matching mock-up -->
-    <form
-      id="contact-order-form"
-      class="space-y-6 max-w-3xl"
-      data-base-price={pricing.basePrice}
-      data-extra-price={pricing.extraButtonPrice}
+<section
+  id="kontakt"
+  class="bg-white select-none pt-4 sm:pt-6 lg:pt-8 pb-16 sm:pb-24 px-6 sm:px-[5.5%]"
+  aria-label="Kontakt"
+>
+  <div class="max-w-7xl mx-auto">
+    <h2
+      class="text-4xl sm:text-6xl lg:text-[76px] font-bold text-ink tracking-tight mb-4 sm:mb-6"
     >
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
-        <!-- Jméno -->
-        <div class="border-b border-black/20 focus-within:border-ink transition-colors pb-2">
-          <label for="order-name" class="block text-xs font-bold text-black/50 uppercase tracking-wider mb-1">
-            Jméno a příjmení
-          </label>
+      Mám zájem
+    </h2>
+    <p class="text-[15px] text-ink-muted max-w-[56ch] leading-relaxed mb-8 sm:mb-10">
+      Zanechte nám na sebe kontakt. My se vám obratem ozveme a dokončíme spolu
+      potřebnou konfiguraci před odesláním.
+    </p>
+
+    <form
+      id="fm"
+      class="grid grid-cols-1 md:grid-cols-2 gap-x-10 max-w-[900px]"
+    >
+      <label
+        class="block border-b border-line py-3.5 sm:py-4 text-[13px] text-ink focus-within:border-brown transition-colors"
+      >
+        <span class="block text-ink-muted text-xs mb-1">Jméno</span>
+        <input
+          name="jmeno"
+          required
+          autocomplete="name"
+          class="block w-full border-0 bg-transparent text-xl sm:text-2xl font-medium tracking-tight text-ink outline-none mt-1"
+        />
+      </label>
+
+      <label
+        class="block border-b border-line py-3.5 sm:py-4 text-[13px] text-ink focus-within:border-brown transition-colors"
+      >
+        <span class="block text-ink-muted text-xs mb-1"
+          >E-mail nebo telefon</span
+        >
+        <input
+          name="kontakt"
+          required
+          autocomplete="email"
+          class="block w-full border-0 bg-transparent text-xl sm:text-2xl font-medium tracking-tight text-ink outline-none mt-1"
+        />
+      </label>
+
+      <label
+        class="block border-b border-line md:border-transparent py-3.5 sm:py-4 text-[13px] text-ink focus-within:border-brown transition-colors"
+      >
+        <span class="block text-ink-muted text-xs mb-1">Město</span>
+        <input
+          name="mesto"
+          autocomplete="address-level2"
+          class="block w-full border-0 bg-transparent text-xl sm:text-2xl font-medium tracking-tight text-ink outline-none mt-1"
+        />
+      </label>
+
+      <div
+        class="block border-b border-transparent py-3.5 sm:py-4 text-[13px] text-ink focus-within:border-brown transition-colors"
+      >
+        <label for="pocet-input" class="block text-ink-muted text-xs mb-1 cursor-pointer">
+          Počet tlačítek
+        </label>
+        <div class="flex items-center justify-between mt-1">
           <input
-            type="text"
-            id="order-name"
-            name="name"
-            placeholder="Jana Nováková"
-            autocomplete="name"
-            required
-            class="w-full bg-transparent text-sm sm:text-base text-ink font-medium placeholder-black/30 focus:outline-none"
+            id="pocet-input"
+            name="pocet"
+            type="number"
+            min="1"
+            value="1"
+            class="w-20 border-0 bg-transparent text-xl sm:text-2xl font-medium tracking-tight text-ink outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
-        </div>
-
-        <!-- Telefon nebo e-mail -->
-        <div class="border-b border-black/20 focus-within:border-ink transition-colors pb-2">
-          <label for="order-contact" class="block text-xs font-bold text-black/50 uppercase tracking-wider mb-1">
-            Telefon nebo e-mail
-          </label>
-          <input
-            type="text"
-            id="order-contact"
-            name="contact"
-            placeholder="+420 777 123 456 nebo jana@salon.cz"
-            autocomplete="email"
-            required
-            class="w-full bg-transparent text-sm sm:text-base text-ink font-medium placeholder-black/30 focus:outline-none"
-          />
-        </div>
-
-        <!-- Město -->
-        <div class="border-b border-black/20 focus-within:border-ink transition-colors pb-2">
-          <label for="order-city" class="block text-xs font-bold text-black/50 uppercase tracking-wider mb-1">
-            Město / Salón
-          </label>
-          <input
-            type="text"
-            id="order-city"
-            name="city"
-            placeholder="Praha 2, Studio Relax"
-            autocomplete="address-level2"
-            required
-            class="w-full bg-transparent text-sm sm:text-base text-ink font-medium placeholder-black/30 focus:outline-none"
-          />
-        </div>
-
-        <!-- Počet tlačítek Counter -->
-        <div class="border-b border-black/20 pb-2 flex items-center justify-between">
-          <div>
-            <label class="block text-xs font-bold text-black/50 uppercase tracking-wider mb-1">
-              Počet tlačítek
-            </label>
-            <span class="text-xs text-black/60">
-              V sadě
-            </span>
-          </div>
-
           <div class="flex items-center gap-2">
             <button
+              id="pocet-minus"
               type="button"
-              id="order-btn-dec"
-              disabled
-              class="w-7 h-7 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-ink cursor-pointer active:scale-90 transition-all disabled:opacity-30 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
-              aria-label="Odebrat tlačítko"
+              class="w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink hover:bg-neutral-100 active:scale-90 transition-all cursor-pointer select-none text-base font-medium"
+              aria-label="Snížit počet tlačítek"
             >
-              <Minus class="w-3 h-3" />
+              –
             </button>
-            <span id="order-count" class="w-5 text-center font-bold text-sm text-ink" aria-live="polite">1</span>
             <button
+              id="pocet-plus"
               type="button"
-              id="order-btn-inc"
-              class="w-7 h-7 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-ink cursor-pointer active:scale-90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
-              aria-label="Přidat tlačítko"
+              class="w-8 h-8 rounded-full bg-ink text-white flex items-center justify-center hover:bg-neutral-800 active:scale-90 transition-all cursor-pointer select-none text-base font-medium shadow-xs"
+              aria-label="Zvýšit počet tlačítek"
             >
-              <Plus class="w-3 h-3" />
+              +
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Action & disclaimer -->
-      <div class="pt-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <div
+        class="col-span-full pt-6 mt-2 flex items-center gap-4 sm:gap-6 text-[12px] sm:text-[13px]"
+      >
         <button
           type="submit"
-          id="order-submit-btn"
-          class="inline-flex items-center justify-center px-8 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-black hover:bg-black/85 active:scale-95 transition-all duration-200 cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+          class="inline-block rounded-full px-7 py-3.5 bg-ink text-white font-medium text-sm hover:opacity-85 active:scale-95 transition-all shadow-sm cursor-pointer shrink-0"
         >
-          <span>Odeslat poptávku</span>
+          Odeslat
         </button>
-        <span class="text-[11px] text-black/45 leading-tight">
-          Nezávazné odeslání. Ozveme se vám do 2 hodin v pracovní dny.
+        <span class="text-ink-muted max-w-[42ch] leading-snug">
+          Nezávazně. Rádi vám vše předvedeme nebo zodpovíme dotazy!
         </span>
       </div>
     </form>
 
-    <!-- Success Feedback State -->
-    <div
-      id="order-success-state"
-      class="hidden max-w-xl py-8 text-left animate-fade-in"
-      role="alert"
-    >
-      <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center mb-4">
-        <Check class="w-6 h-6 stroke-[3]" />
-      </div>
-      <h3 class="font-heading font-black text-2xl sm:text-3xl text-ink mb-2">
-        Děkujeme za poptávku!
+    <div id="ok" class="hidden py-8" role="status">
+      <h3 class="text-3xl sm:text-5xl font-bold tracking-tight text-ink mb-2">
+        Odesláno!
       </h3>
-      <p class="text-xs sm:text-sm text-black/70 leading-relaxed mb-6">
-        Vaši zprávu jsme v pořádku přijali. Během několika hodin vás budeme kontaktovat a domluvíme podrobnosti.
-      </p>
-      <button
-        type="button"
-        id="order-reset-btn"
-        class="px-5 py-2 rounded-full text-xs font-bold text-ink bg-black/5 hover:bg-black/10 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
-      >
-        Odeslat další poptávku
-      </button>
+      <p class="text-base text-ink-muted">Děkujeme, brzy se vám ozveme.</p>
     </div>
-
   </div>
 </section>
 
 <script>
   function setupOrderForm() {
-    const form = document.getElementById("contact-order-form") as HTMLFormElement | null;
-    if (!form || form.dataset.initialized) return;
-    form.dataset.initialized = "true";
+    const fm = document.getElementById("fm") as HTMLFormElement | null;
+    const ok = document.getElementById("ok") as HTMLElement | null;
+    const pocetInput = document.getElementById("pocet-input") as HTMLInputElement | null;
+    const pocetPlus = document.getElementById("pocet-plus");
+    const pocetMinus = document.getElementById("pocet-minus");
 
-    let count = 1;
-    const decBtn = document.getElementById("order-btn-dec") as HTMLButtonElement | null;
-    const incBtn = document.getElementById("order-btn-inc") as HTMLButtonElement | null;
-    const countDisplay = document.getElementById("order-count");
-    const success = document.getElementById("order-success-state");
-    const submitBtn = document.getElementById("order-submit-btn");
-    const resetBtn = document.getElementById("order-reset-btn");
+    if (!fm || !ok || fm.dataset.initialized) return;
+    fm.dataset.initialized = "true";
 
-    const update = () => {
-      if (countDisplay) countDisplay.textContent = String(count);
-      if (decBtn) decBtn.disabled = count <= 1;
-    };
+    pocetPlus?.addEventListener("click", () => {
+      if (!pocetInput) return;
+      const val = parseInt(pocetInput.value, 10) || 1;
+      pocetInput.value = String(val + 1);
+    });
 
-    incBtn?.addEventListener("click", () => {
-      if (count < 8) {
-        count++;
-        update();
+    pocetMinus?.addEventListener("click", () => {
+      if (!pocetInput) return;
+      const val = parseInt(pocetInput.value, 10) || 1;
+      if (val > 1) {
+        pocetInput.value = String(val - 1);
       }
     });
 
-    decBtn?.addEventListener("click", () => {
-      if (count > 1) {
-        count--;
-        update();
-      }
+    fm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      fm.classList.add("hidden");
+      ok.classList.remove("hidden");
     });
-
-    if (form && success) {
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        if (submitBtn) {
-          submitBtn.setAttribute("disabled", "true");
-          submitBtn.textContent = "Odesílám...";
-        }
-
-        setTimeout(() => {
-          form.classList.add("hidden");
-          success.classList.remove("hidden");
-        }, 500);
-      });
-    }
-
-    if (resetBtn && form && success) {
-      resetBtn.addEventListener("click", () => {
-        form.reset();
-        count = 1;
-        update();
-        form.classList.remove("hidden");
-        success.classList.add("hidden");
-        if (submitBtn) {
-          submitBtn.removeAttribute("disabled");
-          submitBtn.textContent = "Odeslat poptávku";
-        }
-      });
-    }
   }
 
   if (document.readyState === "loading") {
@@ -220,4 +158,3 @@ const { pricing } = SITE_CONFIG;
   }
   document.addEventListener("astro:page-load", setupOrderForm);
 </script>
-

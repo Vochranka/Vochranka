@@ -1,129 +1,48 @@
 ---
-import { SITE_CONFIG } from "@/data/siteConfig";
-
-const { name, pricing } = SITE_CONFIG;
-
 const faqs = [
   {
     q: "Kolik to stojí?",
-    a: `Kompletní sada ${name} (tísňové tlačítko, hlasitá siréna, centrála a 3M magnetická destička) stojí ${pricing.basePriceFormatted} jednorázově a máte v ní 1. rok provozu zcela zdarma. Od druhého roku se platí pouze ${pricing.monthlyPriceFormatted} měsíčně (${pricing.yearlyRenewalPriceFormatted} ročně), což pokrývá neomezené tísňové SMS, nepřetržitý 24/7 dohled a českou technickou podporu.`,
+    a: "Sada stojí 2 990 Kč a první rok provozu je v ceně. Od druhého roku platíte 999 Kč ročně.",
   },
   {
     q: "Můžu si systém nejdřív vyzkoušet?",
-    a: `Ano, nabízíme ${pricing.trialDays}denní bezplatnou zkušební lhůtu s garancí vrácení celé částky. Po doručení si systém můžete přímo ve vašem salónu otestovat. Pokud by vám z jakéhokoliv důvodu nevyhovoval, jednoduše nám jej pošlete zpět. V Praze navíc nabízíme osobní předvedení přímo u vás.`,
+    a: "Ano, máte 14 dní na vyzkoušení a osobní předvedení.",
   },
   {
     q: "Co se stane po stisknutí tlačítka?",
-    a: "Po podržení tlačítka na 2 vteřiny se okamžitě spustí pronikavá siréna přímo v místnosti, která spolehlivě odstraší útočníka či neukázněného zákazníka. Současně systém během 2 vteřin odešle tichou nouzovou SMS zprávu s přesným označením a adresou salónu až na 3 vámi zvolená telefonní čísla.",
+    a: "Rozezní se hlasitá siréna a odešlou se nouzové SMS zprávy. Sirénu ztišíte dvojitým kliknutím.",
   },
   {
-    q: "Potřebuji montáž?",
-    a: "Ne. Žádné vrtání do zdi ani natahování kabelů. Centrálu a sirénu pouze zasunete do běžné zásuvky a tlačítko magneticky přicvaknete na kovový rám stolu, křesla, nebo na přiloženou samolepicí 3M podložku.",
+    q: "Potřebuju montáž?",
+    a: "Ne. Sirénu a centrálu zasunete do zásuvky, spárují se samy a tlačítko přicvaknete na kov.",
   },
 ];
 ---
 
-<section id="faq" class="py-20 sm:py-28 lg:py-32 px-4 sm:px-8 lg:px-12 bg-white border-t border-black/10 select-none">
-  <div class="max-w-4xl mx-auto text-left">
-    
-    <!-- Heading -->
-    <div class="mb-12 sm:mb-16">
-      <h2 class="font-heading font-black text-4xl sm:text-6xl lg:text-[4.2rem] text-ink tracking-tight mb-2">
-        Často kladené otázky
-      </h2>
-      <p class="text-xs sm:text-sm text-black/60 max-w-md font-normal leading-relaxed">
-        Vše, co potřebujete vědět před pořízením Vochránky.
-      </p>
-    </div>
+<section id="faq" class="bg-white select-none py-16 sm:py-24 px-6 sm:px-[5.5%]" aria-label="Často kladené otázky">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-4xl sm:text-6xl lg:text-[76px] font-bold text-ink tracking-tight mb-6">
+      Často kladené otázky
+    </h2>
+    <p class="text-[15px] text-ink-muted max-w-[56ch] leading-relaxed mb-12">
+      Rychlé odpovědi na nejčastější dotazy. Máte jiný dotaz? <a href="#footer-kontakt" class="underline underline-offset-4 decoration-ink-muted hover:text-brown transition-colors">Napište nám</a>
+    </p>
 
-    <!-- Accordion List matching the mock-up -->
-    <div class="border-t border-black/15 divide-y divide-black/15">
+    <div class="border-b border-line">
       {
-        faqs.map((faq, index) => (
-          <div class="faq-item">
-            <button
-              type="button"
-              class="faq-btn w-full py-5 sm:py-6 text-left flex items-center justify-between gap-4 cursor-pointer select-none group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded-sm"
-              aria-expanded="false"
-              aria-controls={`faq-ans-${index}`}
-            >
-              <span class="font-heading font-bold text-base sm:text-xl text-ink tracking-tight group-hover:text-accent transition-colors">
-                {faq.q}
-              </span>
-              <span class="faq-icon text-xl sm:text-2xl font-light text-black/60 transition-transform duration-200 shrink-0" aria-hidden="true">
-                +
-              </span>
-            </button>
-
-            <div
-              id={`faq-ans-${index}`}
-              class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out"
-            >
-              <div class="overflow-hidden">
-                <p class="text-xs sm:text-sm text-black/70 leading-relaxed pb-6 pr-6 font-normal">
-                  {faq.a}
-                </p>
-              </div>
-            </div>
-          </div>
+        faqs.map((faq) => (
+          <details class="border-t border-line py-5 sm:py-6 group">
+            <summary class="cursor-pointer list-none flex justify-between items-center text-xl sm:text-2xl lg:text-[32px] font-medium tracking-tight text-ink">
+              <span>{faq.q}</span>
+              <span class="text-2xl font-light text-ink select-none ml-4 transition-transform group-open:hidden">+</span>
+              <span class="text-2xl font-light text-ink select-none ml-4 transition-transform hidden group-open:inline">–</span>
+            </summary>
+            <p class="mt-3.5 text-sm sm:text-[15px] text-ink-muted max-w-[60ch] leading-relaxed">
+              {faq.a}
+            </p>
+          </details>
         ))
       }
     </div>
-
   </div>
 </section>
-
-<script>
-  function setupFaq() {
-    const faqContainer = document.getElementById("faq");
-    if (!faqContainer || faqContainer.dataset.initialized) return;
-    faqContainer.dataset.initialized = "true";
-
-    const items = faqContainer.querySelectorAll(".faq-item");
-
-    items.forEach((item) => {
-      const btn = item.querySelector<HTMLButtonElement>(".faq-btn");
-      const content = item.querySelector<HTMLElement>(".faq-content");
-      const icon = item.querySelector<HTMLElement>(".faq-icon");
-      if (!btn || !content || !icon) return;
-
-      btn.addEventListener("click", () => {
-        const isExpanded = btn.getAttribute("aria-expanded") === "true";
-
-        items.forEach((other) => {
-          if (other !== item) {
-            const otherBtn = other.querySelector<HTMLButtonElement>(".faq-btn");
-            const otherContent = other.querySelector<HTMLElement>(".faq-content");
-            const otherIcon = other.querySelector<HTMLElement>(".faq-icon");
-            if (otherBtn && otherContent && otherIcon) {
-              otherBtn.setAttribute("aria-expanded", "false");
-              otherContent.classList.remove("grid-rows-[1fr]");
-              otherContent.classList.add("grid-rows-[0fr]");
-              otherIcon.textContent = "+";
-            }
-          }
-        });
-
-        if (!isExpanded) {
-          btn.setAttribute("aria-expanded", "true");
-          content.classList.remove("grid-rows-[0fr]");
-          content.classList.add("grid-rows-[1fr]");
-          icon.textContent = "−";
-        } else {
-          btn.setAttribute("aria-expanded", "false");
-          content.classList.remove("grid-rows-[1fr]");
-          content.classList.add("grid-rows-[0fr]");
-          icon.textContent = "+";
-        }
-      });
-    });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupFaq);
-  } else {
-    setupFaq();
-  }
-  document.addEventListener("astro:page-load", setupFaq);
-</script>
-

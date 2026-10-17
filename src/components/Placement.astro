@@ -1,113 +1,105 @@
 ---
-interface PlacementOption {
-  title: string;
-  desc: string;
-  image: string;
-  alt: string;
-  align: "left" | "right-shifted" | "reversed";
-}
-
-const placementOptions: PlacementOption[] = [
-  {
-    title: "Na kovový rám",
-    desc: "Drží samo na silný neodymový magnet. Nahmatáte ho poslepu pod masérským stolem nebo kosmetickým křeslem.",
-    image: "/button-under-table.jpg",
-    alt: "Tísňové tlačítko magneticky přichycené na kovový rám stolu",
-    align: "left",
-  },
-  {
-    title: "Do kapsy",
-    desc: "Díky kompaktním a tenkým rozměrům padne přesně do kapsy zástěry, pláště nebo kalhot. Ochrana stále s vámi.",
-    image: "/button-pocket.jpg",
-    alt: "Diskrétní nošení tísňového tlačítka v kapse zástěry",
-    align: "right-shifted",
-  },
-  {
-    title: "Pod pult nebo stůl",
-    desc: "Na přiloženou samolepicí 3M destičku drží jako přibité na dřevěném, skleněném i laminátovém povrchu recepce.",
-    image: "/button-under-reception.jpg",
-    alt: "Umístění tlačítka pod pult recepce",
-    align: "reversed",
-  },
-];
 ---
 
-<section id="umisteni" class="py-20 sm:py-28 lg:py-32 px-6 sm:px-10 lg:px-14 bg-white select-none" aria-labelledby="placement-heading">
-  <div class="max-w-5xl mx-auto">
-    
-    <!-- Section Heading -->
-    <div class="text-left mb-16 sm:mb-24">
-      <h2 id="placement-heading" class="font-heading font-black text-4xl sm:text-6xl lg:text-[4.2rem] text-ink tracking-tight leading-[1.08]">
-        Nespočet<br />
-        možností kam<br />
-        tlačítko umístit
-      </h2>
+<section
+  id="umisteni"
+  class="bg-white select-none py-16 sm:py-24 lg:py-28 px-6 sm:px-[5.5%] pb-24"
+  aria-label="Možnosti umístění"
+>
+  <div class="max-w-7xl mx-auto">
+    <div>
+      <!-- Row 1: Na kovový rám & Do kapsy na stejném řádku -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-4 items-stretch"
+      >
+        <!-- 1. Foto: Na kovový rám -->
+        <div class="relative aspect-square md:col-span-1 overflow-hidden group order-1">
+          <img
+            src="/button-under-table.jpg"
+            alt="Tlačítko na kovovém rámu"
+            class="w-full h-full object-cover"
+            loading="lazy"
+            width="400"
+            height="400"
+          />
+        </div>
+
+        <!-- 2. Text: Na kovový rám (posunutý víc nahoru) -->
+        <div class="py-6 sm:py-8 md:pt-4 md:pb-6 md:pl-7 md:pr-4 md:col-span-1 self-start order-2">
+          <h3
+            class="text-2xl sm:text-3xl lg:text-[34px] font-medium text-ink tracking-tight leading-none mb-4"
+          >
+            Na kovový rám
+          </h3>
+          <p class="text-[13px] text-neutral-600 max-w-[44ch] leading-relaxed">
+            Drží samo na magnet. Nahmatáte ho poslepu a jedním stiskem
+            aktivujete sirénu i SMS poplach.
+          </p>
+        </div>
+
+        <!-- 3. Text: Do kapsy (nalevo od fotky, dole, odsazení zprava) -->
+        <div
+          class="py-6 sm:py-8 md:pb-4 md:pt-6 md:pr-7 md:pl-4 md:col-span-1 self-end text-left md:text-right order-4 md:order-3"
+        >
+          <h3
+            class="text-2xl sm:text-3xl lg:text-[34px] font-medium text-ink tracking-tight leading-none mb-4"
+          >
+            Do kapsy
+          </h3>
+          <p class="text-[13px] text-neutral-600 max-w-[44ch] leading-relaxed md:ml-auto">
+            Díky kompaktním rozměrům padne přesně do kapsy zástěry nebo kalhot.
+          </p>
+        </div>
+
+        <!-- 4. Foto: Do kapsy (úplně doprava) -->
+        <div class="relative aspect-square md:col-span-1 overflow-hidden group order-3 md:order-4">
+          <img
+            src="/button-pocket.jpg"
+            alt="Tlačítko v kapse"
+            class="w-full h-full object-cover"
+            loading="lazy"
+            width="400"
+            height="400"
+          />
+        </div>
+      </div>
+
+      <!-- Row 2: Pod pult nebo stůl (fotka přesně uprostřed, posunuto níže) -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-[3fr_2fr_3fr] items-stretch mt-8 sm:mt-12 lg:mt-16"
+      >
+        <!-- Text: Pod pult nebo stůl (hned vlevo vedle vycentrované fotky) -->
+        <div
+          class="py-6 sm:py-8 md:py-0 md:pr-8 self-center order-2 md:order-1 text-left md:text-right"
+        >
+          <h3
+            class="text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] font-medium text-ink tracking-tight leading-none mb-4"
+          >
+            Pod pult nebo stůl
+          </h3>
+          <p class="text-[13px] text-neutral-600 max-w-[40ch] leading-relaxed md:ml-auto">
+            Na nalepovací kovové destičce drží jako přibité, ale kdykoliv ho
+            můžete sundat.
+          </p>
+        </div>
+
+        <!-- Foto: Pod pultem (přesně uprostřed řádku) -->
+        <div
+          class="relative aspect-square overflow-hidden group order-1 md:order-2"
+        >
+          <img
+            src="/button-under-reception.jpg"
+            alt="Tlačítko pod pultem"
+            class="w-full h-full object-cover"
+            loading="lazy"
+            width="400"
+            height="400"
+          />
+        </div>
+
+        <!-- Prázdný pravý blok pro symetrické vycentrování fotky -->
+        <div class="hidden md:block order-3"></div>
+      </div>
     </div>
-
-    <!-- Staggered 3-Item Layout matching mock-up exactly -->
-    <div class="space-y-16 sm:space-y-24">
-      {
-        placementOptions.map((item) => {
-          const isReversed = item.align === "reversed";
-          const isShifted = item.align === "right-shifted";
-
-          return (
-            <div
-              class:list={[
-                "flex items-center gap-6 sm:gap-10 max-w-2xl",
-                isReversed ? "flex-col-reverse sm:flex-row" : "flex-col sm:flex-row",
-                isShifted && "sm:ml-auto",
-              ]}
-            >
-              {isReversed ? (
-                <>
-                  <div class="text-left">
-                    <h3 class="font-heading font-black text-xl sm:text-2xl text-ink tracking-tight mb-2">
-                      {item.title}
-                    </h3>
-                    <p class="text-xs sm:text-sm text-black/70 leading-relaxed font-normal">
-                      {item.desc}
-                    </p>
-                  </div>
-                  <div class="w-44 sm:w-56 md:w-64 aspect-square rounded-2xl overflow-hidden bg-black/5 shadow-md shrink-0">
-                    <img
-                      src={item.image}
-                      alt={item.alt}
-                      class="w-full h-full object-cover"
-                      loading="lazy"
-                      width="1024"
-                      height="1024"
-                    />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div class="w-44 sm:w-56 md:w-64 aspect-square rounded-2xl overflow-hidden bg-black/5 shadow-md shrink-0">
-                    <img
-                      src={item.image}
-                      alt={item.alt}
-                      class="w-full h-full object-cover"
-                      loading="lazy"
-                      width="1024"
-                      height="1024"
-                    />
-                  </div>
-                  <div class="text-left">
-                    <h3 class="font-heading font-black text-xl sm:text-2xl text-ink tracking-tight mb-2">
-                      {item.title}
-                    </h3>
-                    <p class="text-xs sm:text-sm text-black/70 leading-relaxed font-normal">
-                      {item.desc}
-                    </p>
-                  </div>
-                </>
-              )}
-            </div>
-          );
-        })
-      }
-    </div>
-
   </div>
 </section>
-

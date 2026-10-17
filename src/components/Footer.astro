@@ -1,50 +1,38 @@
 ---
-import { SITE_CONFIG } from "@/data/siteConfig";
 
-const { name, contact, navLinks } = SITE_CONFIG;
 ---
 
-<footer class="py-16 sm:py-24 px-6 sm:px-10 lg:px-14 bg-white border-t border-black/10 select-none">
-  <div class="max-w-7xl mx-auto">
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
-      
-      <!-- Brand & Mission -->
-      <div class="text-left max-w-sm">
-        <h3 class="font-heading font-black text-2xl sm:text-3xl text-ink tracking-tight mb-2">
-          {name}
-        </h3>
-        <p class="text-xs text-black/60 leading-relaxed font-normal">
-          Diskrétní bezpečnostní systém pro masérky, kosmetičky a ordinace. Pro pocit klidu a bezpečí při každém pracovním dni.
-        </p>
-      </div>
-
-      <!-- Contacts & Links -->
-      <div class="flex flex-wrap items-center gap-6 sm:gap-10 text-xs font-medium text-black/70">
-        <a href={contact.emailHref} class="hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded-sm">
-          {contact.email}
-        </a>
-        <a href={contact.phoneHref} class="hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded-sm">
-          {contact.phone}
-        </a>
-        <span>
-          {contact.address}
-        </span>
-      </div>
-
-    </div>
-
-    <!-- Bottom Copyright & Navigation -->
-    <div class="mt-12 pt-6 border-t border-black/5 flex flex-col sm:flex-row items-start sm:items-center justify-between text-[11px] text-black/40 gap-4">
-      <p>© {new Date().getFullYear()} {name}. Všechna práva vyhrazena.</p>
-      <nav class="flex items-center gap-6" aria-label="Patičková navigace">
-        {
-          navLinks.map((link) => (
-            <a href={link.href} class="hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded-sm">
-              {link.label}
-            </a>
-          ))
-        }
-      </nav>
-    </div>
+<footer
+  class="pt-24 sm:pt-28 pb-10 px-6 sm:px-[5.5%] flex flex-wrap justify-between gap-8 text-[13px] bg-white select-none"
+>
+  <div
+    class="w-full text-4xl sm:text-5xl lg:text-[60px] font-extrabold uppercase tracking-tight leading-none text-ink"
+  >
+    Vochranka
   </div>
+
+  <p class="max-w-[46ch] text-ink-muted leading-relaxed">
+    Bezpečnostní systém navržen s empatií pro sólo masérky, kosmetičky,
+    terapeutky. Pro klid při každém klientském setkání.
+  </p>
+
+  <p id="footer-kontakt" class="max-w-[46ch] text-ink-muted leading-relaxed scroll-mt-28">
+    <a
+      href="mailto:info@vochranka.cz"
+      class="underline underline-offset-4 decoration-line hover:text-brown transition-colors"
+      >info@vochranka.cz</a
+    ><br />
+    Praha, Středočeský kraj ~ Osobní zkoušky po domluvě<br />
+    <a
+      href="https://instagram.com/vochranka.cz"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="underline underline-offset-4 decoration-line hover:text-brown transition-colors"
+      >@vochranka.cz</a
+    >
+  </p>
+
+  <p class="w-full pt-8 text-xs text-ink-faint border-t border-line mt-4">
+    © 2026 Vochranka. Všechna práva vyhrazena.
+  </p>
 </footer>

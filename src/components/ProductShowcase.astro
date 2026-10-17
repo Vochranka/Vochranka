@@ -1,84 +1,212 @@
 ---
-import { ArrowRight } from "lucide-astro";
+
 ---
 
-<section id="vyuziti" class="py-20 sm:py-28 lg:py-32 px-6 sm:px-10 lg:px-14 bg-white select-none" aria-labelledby="showcase-heading">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-      
-      <!-- LEFT COLUMN: All-caps bold stacked heading & copy -->
-      <div class="lg:col-span-5 flex flex-col items-start text-left">
-        <h2 id="showcase-heading" class="font-heading font-black text-4xl sm:text-5xl lg:text-[3.8rem] text-ink tracking-tight uppercase leading-[1.04] mb-8">
-          OKAMŽITÁ<br />
-          <span class="inline-flex items-center">
-            POMOC
-            <span class="inline-block w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-card-bg border border-black/10 shadow-xs ml-2 align-middle shrink-0" aria-hidden="true">
-              <span class="block w-full h-full rounded-full border-2 border-white"></span>
-            </span>
-          </span><br />
-          NA JEDNO<br />
-          STISKNUTÍ
-        </h2>
+<section
+  id="vyuziti"
+  class="bg-white select-none py-16 sm:py-24 lg:py-28 px-6 sm:px-[5.5%]"
+  aria-label="K čemu slouží"
+>
+  <div
+    class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-stretch"
+  >
+    <!-- Left text block -->
+    <div class="lg:col-span-5 flex flex-col justify-between gap-10">
+      <h2
+        class="text-4xl sm:text-5xl lg:text-[68px] font-bold text-ink uppercase leading-[1.02] tracking-tight"
+      >
+        Okamžitá<br />
+        pomoc<br />
+        na dvě<br />
+        kliknutí
+      </h2>
 
-        <div class="space-y-4 max-w-sm text-xs sm:text-sm text-black/70 leading-relaxed mb-8">
-          <div>
-            <strong class="font-bold text-ink block text-sm">2 s Podržíte</strong>
-            <p>Rozezní se pronikavá odstrašující siréna a systém okamžitě odešle nouzovou SMS rodině nebo kolegům.</p>
-          </div>
-          <div>
-            <strong class="font-bold text-ink block text-sm">2x Kliknete</strong>
-            <p>Nebezpečí pominulo nebo šlo o omyl? Dvojitým kliknutím sirénu kdykoliv ihned ztišíte.</p>
-          </div>
+      <div>
+        <div class="mb-5 text-[13px] leading-relaxed max-w-[34ch] text-ink">
+          <strong class="block text-[15px] font-bold text-ink mb-1.5"
+            >Stisknete 2×</strong
+          >
+          <p class="text-neutral-600">
+            Rozezní se hlasitá siréna a okamžitě se odesílají nouzové SMS
+            zprávy.
+          </p>
         </div>
 
+        <div class="mb-8 text-[13px] leading-relaxed max-w-[34ch] text-ink">
+          <strong class="block text-[15px] font-bold text-ink mb-1.5"
+            >Podržíte 2 s</strong
+          >
+          <p class="text-neutral-600">
+            Nebezpečí pominulo nebo to byl omyl? <br /> Sirénu ztišíte opět pomocí
+            tlačítka.
+          </p>
+        </div>
+        <!-- --
         <a
-          href="#cenik"
-          class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-black hover:bg-black/85 active:scale-95 transition-all duration-200 cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+          href="#instalace"
+          class="inline-block rounded-full px-7 py-3.5 bg-ink text-white font-medium text-sm hover:bg-neutral-800 active:scale-95 transition-all shadow-sm"
+          Jak to funguje
+          -->
+      </div>
+    </div>
+
+    <!-- Right visual media block -->
+    <div class="lg:col-span-7 relative pr-0 sm:pr-12 pb-0 sm:pb-8">
+      <div
+        class="rounded-lg overflow-hidden aspect-[4/3] bg-neutral-100 shadow-lg border border-line relative group"
+      >
+        <video
+          id="v"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          class="w-full h-full object-cover cursor-pointer"
+          aria-label="Ukázka použití Vochranky"
         >
-          <span>Objednat sadu</span>
-          <ArrowRight class="w-3.5 h-3.5" />
-        </a>
+          <source src="/vochranka-video-optimized.mp4" type="video/mp4" />
+        </video>
+        <!-- Subtle bottom gradient to frame video and button -->
+        <div
+          class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/55 via-black/20 to-transparent pointer-events-none"
+        >
+        </div>
+
+        <!-- Integrated sound toggle button (responsive size) -->
+        <button
+          id="video-sound-toggle"
+          type="button"
+          class="absolute bottom-2.5 sm:bottom-5 left-1/2 -translate-x-1/2 z-20 inline-flex items-center gap-1.5 sm:gap-2.5 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-full bg-white text-ink text-[11px] sm:text-sm font-semibold shadow-xl sm:shadow-2xl border border-black/10 hover:bg-neutral-50 hover:scale-105 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
+          aria-label="Zapnout zvuk videa"
+        >
+          <span
+            id="sound-icon-bg"
+            class="flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-ink text-white"
+          >
+            <svg
+              id="sound-icon-muted"
+              class="w-3 h-3 sm:w-3.5 sm:h-3.5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+            <svg
+              id="sound-icon-unmuted"
+              class="w-3 h-3 sm:w-3.5 sm:h-3.5 hidden"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+          </span>
+          <span id="sound-text">Zapnout zvuk</span>
+        </button>
       </div>
 
-      <!-- RIGHT COLUMN: Image collage matching the mock-up exactly -->
-      <div class="lg:col-span-7 relative flex items-center justify-center">
-        <!-- Main centerpiece image: Hand holding button next to phone -->
-        <div class="relative w-full max-w-[520px] aspect-[4/3] rounded-3xl overflow-hidden shadow-xl bg-black/5 border border-black/5">
-          <img
-            src="/showcase-hand-phone.png"
-            alt="Použití tísňového tlačítka Vochránka a SMS notifikace v telefonu"
-            class="w-full h-full object-cover"
-            loading="lazy"
-            width="520"
-            height="390"
-          />
-        </div>
-
-        <!-- Top-right overlapping small thumbnail card (Pocket) -->
-        <div class="absolute -top-3 sm:-top-5 -right-1 sm:-right-3 w-28 sm:w-36 md:w-40 aspect-square rounded-2xl overflow-hidden shadow-lg border-2 border-white hidden sm:block">
-          <img
-            src="/button-pocket.jpg"
-            alt="Diskrétní nošení tísňového tlačítka v kapse"
-            class="w-full h-full object-cover"
-            loading="lazy"
-            width="1024"
-            height="1024"
-          />
-        </div>
-
-        <!-- Bottom-right overlapping small thumbnail card (Reception) -->
-        <div class="absolute -bottom-3 sm:-bottom-5 -right-1 sm:-right-3 w-28 sm:w-36 md:w-40 aspect-square rounded-2xl overflow-hidden shadow-lg border-2 border-white hidden sm:block">
-          <img
-            src="/button-under-reception.jpg"
-            alt="Tísňové tlačítko pod stolem recepce"
-            class="w-full h-full object-cover"
-            loading="lazy"
-            width="1024"
-            height="1024"
-          />
-        </div>
+      <!-- 
+      Small overlapping card 1: Pocket 
+      <div
+        class="hidden sm:block absolute right-0 top-[6%] w-[25%] aspect-[1.25] rounded-md border-4 border-white shadow-xl overflow-hidden bg-neutral-200"
+      >
+        <img
+          src="/button-pocket.jpg"
+          alt="Tlačítko v kapse"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          width="200"
+          height="160"
+        />
       </div>
 
+      Small overlapping card 2: Reception 
+      <div
+        class="hidden sm:block absolute right-0 bottom-0 w-[25%] aspect-[1.1] rounded-md border-4 border-white shadow-xl overflow-hidden bg-neutral-200"
+      >
+        <img
+          src="/button-under-reception.jpg"
+          alt="Tlačítko pod stolem"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          width="200"
+          height="180"
+        />
+      </div>
+      -->
     </div>
   </div>
 </section>
+
+<script>
+  function setupShowcaseVideo() {
+    const video = document.getElementById("v") as HTMLVideoElement | null;
+    const soundBtn = document.getElementById("video-sound-toggle");
+    const soundIconBg = document.getElementById("sound-icon-bg");
+    const iconMuted = document.getElementById("sound-icon-muted");
+    const iconUnmuted = document.getElementById("sound-icon-unmuted");
+    const soundText = document.getElementById("sound-text");
+
+    if (!video || video.dataset.initialized) return;
+    video.dataset.initialized = "true";
+
+    function updateSoundUI() {
+      if (!video || !soundBtn) return;
+      const isMuted = video.muted;
+      if (iconMuted && iconUnmuted && soundText) {
+        if (isMuted) {
+          iconMuted.classList.remove("hidden");
+          iconUnmuted.classList.add("hidden");
+          soundText.textContent = "Zapnout zvuk";
+          soundBtn.className = "absolute bottom-2.5 sm:bottom-5 left-1/2 -translate-x-1/2 z-20 inline-flex items-center gap-1.5 sm:gap-2.5 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-full bg-white text-ink text-[11px] sm:text-sm font-semibold shadow-xl sm:shadow-2xl border border-black/10 hover:bg-neutral-50 hover:scale-105 active:scale-95 transition-all cursor-pointer whitespace-nowrap";
+          if (soundIconBg) soundIconBg.className = "flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-ink text-white";
+          soundBtn.setAttribute("aria-label", "Zapnout zvuk videa");
+        } else {
+          iconMuted.classList.add("hidden");
+          iconUnmuted.classList.remove("hidden");
+          soundText.textContent = "Ztlumit zvuk";
+          soundBtn.className = "absolute bottom-2.5 sm:bottom-5 left-1/2 -translate-x-1/2 z-20 inline-flex items-center gap-1.5 sm:gap-2.5 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-full bg-ink text-white text-[11px] sm:text-sm font-semibold shadow-xl sm:shadow-2xl border border-white/20 hover:bg-neutral-800 hover:scale-105 active:scale-95 transition-all cursor-pointer whitespace-nowrap";
+          if (soundIconBg) soundIconBg.className = "flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white text-ink";
+          soundBtn.setAttribute("aria-label", "Ztlumit zvuk videa");
+        }
+      }
+    }
+
+    function toggleSound(e?: Event) {
+      if (e) e.stopPropagation();
+      if (!video) return;
+      video.muted = !video.muted;
+      if (!video.muted && video.paused) {
+        video.play().catch(() => {});
+      }
+      updateSoundUI();
+    }
+
+    video.addEventListener("click", () => toggleSound());
+    if (soundBtn) {
+      soundBtn.addEventListener("click", toggleSound);
+    }
+
+    updateSoundUI();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupShowcaseVideo);
+  } else {
+    setupShowcaseVideo();
+  }
+  document.addEventListener("astro:page-load", setupShowcaseVideo);
+</script>
