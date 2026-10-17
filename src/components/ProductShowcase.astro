@@ -2,32 +2,54 @@
 import { ArrowRight } from "lucide-astro";
 ---
 
-<section id="vyuziti" class="py-20 sm:py-28 lg:py-32 px-6 sm:px-10 lg:px-14 bg-white select-none" aria-labelledby="showcase-heading">
+<section
+  id="vyuziti"
+  class="py-20 sm:py-28 lg:py-32 px-6 sm:px-10 lg:px-14 bg-white select-none"
+  aria-labelledby="showcase-heading"
+>
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-      
       <!-- LEFT COLUMN: All-caps bold stacked heading & copy -->
       <div class="lg:col-span-5 flex flex-col items-start text-left">
-        <h2 id="showcase-heading" class="font-heading font-black text-4xl sm:text-5xl lg:text-[3.8rem] text-ink tracking-tight uppercase leading-[1.04] mb-8">
+        <h2
+          id="showcase-heading"
+          class="font-heading font-black text-4xl sm:text-5xl lg:text-[3.8rem] text-ink tracking-tight uppercase leading-[1.04] mb-8"
+        >
           OKAMŽITÁ<br />
           <span class="inline-flex items-center">
             POMOC
-            <span class="inline-block w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-card-bg border border-black/10 shadow-xs ml-2 align-middle shrink-0" aria-hidden="true">
-              <span class="block w-full h-full rounded-full border-2 border-white"></span>
+            <span
+              class="inline-block w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-card-bg border border-black/10 shadow-xs ml-2 align-middle shrink-0"
+              aria-hidden="true"
+            >
+              <span
+                class="block w-full h-full rounded-full border-2 border-white"
+              ></span>
             </span>
           </span><br />
           NA JEDNO<br />
           STISKNUTÍ
         </h2>
 
-        <div class="space-y-4 max-w-sm text-xs sm:text-sm text-black/70 leading-relaxed mb-8">
+        <div
+          class="space-y-4 max-w-sm text-xs sm:text-sm text-black/70 leading-relaxed mb-8"
+        >
           <div>
-            <strong class="font-bold text-ink block text-sm">2 s Podržíte</strong>
-            <p>Rozezní se pronikavá odstrašující siréna a systém okamžitě odešle nouzovou SMS rodině nebo kolegům.</p>
+            <strong class="font-bold text-ink block text-sm"
+              >2 s Podržíte</strong
+            >
+            <p>
+              Rozezní se pronikavá odstrašující siréna a systém okamžitě odešle
+              nouzovou SMS rodině nebo kolegům.
+            </p>
           </div>
           <div>
-            <strong class="font-bold text-ink block text-sm">2x Kliknete</strong>
-            <p>Nebezpečí pominulo nebo šlo o omyl? Dvojitým kliknutím sirénu kdykoliv ihned ztišíte.</p>
+            <strong class="font-bold text-ink block text-sm">2x Kliknete</strong
+            >
+            <p>
+              Nebezpečí pominulo nebo šlo o omyl? Dvojitým kliknutím sirénu
+              kdykoliv ihned ztišíte.
+            </p>
           </div>
         </div>
 
@@ -43,9 +65,11 @@ import { ArrowRight } from "lucide-astro";
       <!-- RIGHT COLUMN: Image collage matching the mock-up exactly -->
       <div class="lg:col-span-7 relative flex items-center justify-center">
         <!-- Main centerpiece image: Hand holding button next to phone -->
-        <div class="relative w-full max-w-[520px] aspect-[4/3] rounded-3xl overflow-hidden shadow-xl bg-black/5 border border-black/5">
+        <div
+          class="relative w-full max-w-[520px] aspect-[4/3] rounded-3xl overflow-hidden shadow-xl bg-black/5 border border-black/5"
+        >
           <img
-            src="/showcase-hand-phone.png"
+            src="/button-pocket.jpg"
             alt="Použití tísňového tlačítka Vochránka a SMS notifikace v telefonu"
             class="w-full h-full object-cover"
             loading="lazy"
@@ -55,7 +79,9 @@ import { ArrowRight } from "lucide-astro";
         </div>
 
         <!-- Top-right overlapping small thumbnail card (Pocket) -->
-        <div class="absolute -top-3 sm:-top-5 -right-1 sm:-right-3 w-28 sm:w-36 md:w-40 aspect-square rounded-2xl overflow-hidden shadow-lg border-2 border-white hidden sm:block">
+        <div
+          class="absolute -top-3 sm:-top-5 -right-1 sm:-right-3 w-28 sm:w-36 md:w-40 aspect-square rounded-2xl overflow-hidden shadow-lg border-2 border-white hidden sm:block"
+        >
           <img
             src="/button-pocket.jpg"
             alt="Diskrétní nošení tísňového tlačítka v kapse"
@@ -66,11 +92,13 @@ import { ArrowRight } from "lucide-astro";
           />
         </div>
 
-        <!-- Bottom-right overlapping small thumbnail card (Reception) -->
-        <div class="absolute -bottom-3 sm:-bottom-5 -right-1 sm:-right-3 w-28 sm:w-36 md:w-40 aspect-square rounded-2xl overflow-hidden shadow-lg border-2 border-white hidden sm:block">
+        <!-- Bottom-right overlapping small thumbnail card (Reception / Desk) -->
+        <div
+          class="absolute -bottom-3 sm:-bottom-5 -right-1 sm:-right-3 w-28 sm:w-36 md:w-40 aspect-square rounded-2xl overflow-hidden shadow-lg border-2 border-white hidden sm:block"
+        >
           <img
-            src="/button-under-reception.jpg"
-            alt="Tísňové tlačítko pod stolem recepce"
+            src="/button_underdesk.jpg"
+            alt="Tísňové tlačítko pod deskou stolu či recepce"
             class="w-full h-full object-cover"
             loading="lazy"
             width="1024"
@@ -78,7 +106,6 @@ import { ArrowRight } from "lucide-astro";
           />
         </div>
       </div>
-
     </div>
   </div>
 </section>
