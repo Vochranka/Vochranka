@@ -2,9 +2,9 @@
 
 @theme {
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Ubuntu', sans-serif;
-  --font-display: 'Ubuntu', sans-serif;
-  --font-mono: 'Courier New', Courier, ui-monospace, Menlo, Monaco, Consolas, monospace;
+  --font-heading: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+
 
   /* Custom Color Palette */
   --color-canvas: #F9F8F6;
