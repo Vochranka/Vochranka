@@ -1,5 +1,19 @@
+# Build & Dependencies
 node_modules/
 dist/
 .astro/
+
+# Environment Variables
+.env
+.env.production
+.env.local
+*.env
+
+# System & Editor
 .DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
 *.log

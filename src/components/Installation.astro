@@ -1,0 +1,80 @@
+---
+import { ArrowRight } from "lucide-astro";
+import { SITE_CONFIG } from "@/data/siteConfig";
+
+const steps = SITE_CONFIG.installationSteps;
+const guarantees = SITE_CONFIG.guarantees;
+---
+
+<section
+  id="instalace"
+  class="py-20 sm:py-28 lg:py-32 px-6 sm:px-10 lg:px-14 bg-white border-t border-black/10 select-none"
+  aria-label="Instalace a garance"
+>
+  <div class="max-w-5xl mx-auto">
+    
+    <!-- 1. TOP PART: The 3 steps (Left-aligned, stacked, separated by thin divider lines) -->
+    <div class="text-left">
+      {
+        steps.map((step, idx) => (
+          <div
+            class:list={[
+              "py-5 sm:py-6 first:pt-0",
+              idx < steps.length - 1 && "border-b border-black/15",
+            ]}
+          >
+            <h3 class="font-heading font-black text-3xl sm:text-4xl lg:text-[2.85rem] text-ink tracking-tight leading-none mb-3">
+              {step.title}
+            </h3>
+            <p class="font-sans text-xs sm:text-sm md:text-base text-black/70 leading-relaxed font-normal">
+              {step.line1}<br />
+              {step.line2}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- 2. MIDDLE PART: Centered isolated 3D button matching user screenshot exactly -->
+    <div class="my-14 sm:my-20 md:my-24 flex items-center justify-center">
+      <div class="relative w-64 sm:w-80 md:w-96 aspect-square flex items-center justify-center">
+        <!-- Soft circular ambient shadow underneath button -->
+        <div class="absolute inset-6 rounded-full bg-black/5 blur-3xl -z-10 pointer-events-none" aria-hidden="true"></div>
+        <img
+          src="/button1xxx.png"
+          alt="Diskrétní tísňové tlačítko Vochránka"
+          class="w-full h-full object-contain filter drop-shadow-[0_20px_45px_rgba(0,0,0,0.07)] hover:scale-105 transition-transform duration-300"
+          loading="lazy"
+          width="800"
+          height="800"
+        />
+      </div>
+    </div>
+
+    <!-- 3. BOTTOM PART: The 3 guarantees (Right-aligned, stacked, separated by thin divider lines) -->
+    <div class="border-t border-black/15 divide-y divide-black/15 text-right">
+      {
+        guarantees.map((item) => (
+          <div class="py-4 sm:py-5">
+            <p class="font-heading font-black text-3xl sm:text-4xl lg:text-[3.1rem] text-ink tracking-tight leading-none">
+              {item}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- 4. Giant Full-Width "OBJEDNAT SADU" Banner -->
+    <div class="mt-16 sm:mt-24 pt-8 border-t border-black/10 text-left">
+      <a
+        href="#cenik"
+        class="group flex items-center justify-between font-heading font-black text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tighter text-ink hover:text-accent transition-colors duration-200 select-none uppercase leading-none pb-4 border-b-2 sm:border-b-4 border-black group-hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+        aria-label="Přejít k objednání sady Vochránka"
+      >
+        <span>OBJEDNAT SADU</span>
+        <ArrowRight class="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 stroke-[2.5] transform group-hover:translate-x-3 transition-transform duration-200" />
+      </a>
+    </div>
+
+  </div>
+</section>

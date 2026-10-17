@@ -1,0 +1,112 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import StatsBar from "../components/StatsBar.astro";
+import ProductShowcase from "../components/ProductShowcase.astro";
+import AlwaysWithinReach from "../components/AlwaysWithinReach.astro";
+import Placement from "../components/Placement.astro";
+import Installation from "../components/Installation.astro";
+import Pricing from "../components/Pricing.astro";
+import OrderForm from "../components/OrderForm.astro";
+import Faq from "../components/Faq.astro";
+import Footer from "../components/Footer.astro";
+import { ArrowRight, Shield } from "lucide-astro";
+import { SITE_CONFIG } from "@/data/siteConfig";
+
+const { brandName, pricing } = SITE_CONFIG;
+---
+
+<Layout>
+  <!-- Fixed Navbar -->
+  <Navbar />
+
+  <!-- Main Landing Page Content matching the mock-up -->
+  <main class="w-full overflow-x-hidden">
+    <!-- 1. Hero: OBTĚŽOVAL VÁS NĚKDO V ORDINACI? (s rotujícím místem) -->
+    <Hero />
+
+    <!-- 2. Stats Bar: 2 s | 24/7 | 14 dní -->
+    <StatsBar />
+
+    <!-- 3. OKAMŽITÁ POMOC NA JEDNO STISKNUTÍ -->
+    <ProductShowcase />
+
+    <!-- 4. VŽDY NA DOSAH (Panoramic dark section) -->
+    <AlwaysWithinReach />
+
+    <!-- 5. Nespočet možností kam tlačítko umístit (Staggered photo cards) -->
+    <Placement />
+
+    <!-- 6. Zapojit / Přicvaknout / Otestovat & OBJEDNAT SADU -->
+    <Installation />
+
+    <!-- 7. Ceník (3 pricing cards) -->
+    <Pricing />
+
+    <!-- 8. Mám zájem (Contact & order form) -->
+    <OrderForm />
+
+    <!-- 9. Často kladené otázky (Minimalist accordion) -->
+    <Faq />
+  </main>
+
+  <!-- 10. Footer -->
+  <Footer />
+
+  <!-- Mobile Sticky Bottom CTA Bar -->
+  <div
+    id="mobile-sticky-bar"
+    class="fixed bottom-0 left-0 right-0 z-40 p-3 bg-white/95 backdrop-blur-md border-t border-black/10 shadow-xl transform translate-y-full transition-transform duration-300 md:hidden flex items-center justify-between gap-3"
+    aria-label="Rychlé objednání na mobilu"
+  >
+    <div class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center shrink-0">
+        <Shield class="w-4 h-4 fill-white/20" />
+      </div>
+      <div>
+        <p class="text-xs font-bold text-ink leading-tight">
+          Sada {brandName}
+        </p>
+        <p class="text-[11px] font-semibold text-black/60">
+          {pricing.basePriceFormatted} <span class="font-normal text-black/40">• {pricing.trialDays} dní záruka</span>
+        </p>
+      </div>
+    </div>
+
+    <a
+      href="#kontakt"
+      class="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full bg-black text-white text-xs font-bold shadow-md hover:bg-black/80 active:scale-95 transition-all shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+    >
+      <span>Objednat</span>
+      <ArrowRight class="w-3.5 h-3.5" />
+    </a>
+  </div>
+</Layout>
+
+<script>
+  function setupStickyBar() {
+    const stickyBar = document.getElementById("mobile-sticky-bar");
+    if (!stickyBar || stickyBar.dataset.initialized) return;
+    stickyBar.dataset.initialized = "true";
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (window.scrollY > 450) {
+          stickyBar.classList.remove("translate-y-full");
+        } else {
+          stickyBar.classList.add("translate-y-full");
+        }
+      },
+      { passive: true },
+    );
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupStickyBar);
+  } else {
+    setupStickyBar();
+  }
+  document.addEventListener("astro:page-load", setupStickyBar);
+</script>

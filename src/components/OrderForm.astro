@@ -1,0 +1,223 @@
+---
+import { Check, Plus, Minus } from "lucide-astro";
+import { SITE_CONFIG } from "@/data/siteConfig";
+
+const { pricing } = SITE_CONFIG;
+---
+
+<section id="kontakt" class="py-20 sm:py-28 lg:py-32 px-6 sm:px-10 lg:px-14 bg-white border-t border-black/10 select-none">
+  <div class="max-w-5xl mx-auto text-left">
+    
+    <!-- Heading -->
+    <div class="mb-10 sm:mb-14">
+      <h2 class="font-heading font-black text-4xl sm:text-6xl lg:text-[4.2rem] text-ink tracking-tight mb-2">
+        Mám zájem
+      </h2>
+      <p class="text-xs sm:text-sm text-black/60 max-w-md font-normal leading-relaxed">
+        Zanechte nám kontakt. Obratem se vám ozveme a doladíme nastavení kontaktů a doručení sady.
+      </p>
+    </div>
+
+    <!-- Form: 2-column grid matching mock-up -->
+    <form
+      id="contact-order-form"
+      class="space-y-6 max-w-3xl"
+      data-base-price={pricing.basePrice}
+      data-extra-price={pricing.extraButtonPrice}
+    >
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
+        <!-- Jméno -->
+        <div class="border-b border-black/20 focus-within:border-ink transition-colors pb-2">
+          <label for="order-name" class="block text-xs font-bold text-black/50 uppercase tracking-wider mb-1">
+            Jméno a příjmení
+          </label>
+          <input
+            type="text"
+            id="order-name"
+            name="name"
+            placeholder="Jana Nováková"
+            autocomplete="name"
+            required
+            class="w-full bg-transparent text-sm sm:text-base text-ink font-medium placeholder-black/30 focus:outline-none"
+          />
+        </div>
+
+        <!-- Telefon nebo e-mail -->
+        <div class="border-b border-black/20 focus-within:border-ink transition-colors pb-2">
+          <label for="order-contact" class="block text-xs font-bold text-black/50 uppercase tracking-wider mb-1">
+            Telefon nebo e-mail
+          </label>
+          <input
+            type="text"
+            id="order-contact"
+            name="contact"
+            placeholder="+420 777 123 456 nebo jana@salon.cz"
+            autocomplete="email"
+            required
+            class="w-full bg-transparent text-sm sm:text-base text-ink font-medium placeholder-black/30 focus:outline-none"
+          />
+        </div>
+
+        <!-- Město -->
+        <div class="border-b border-black/20 focus-within:border-ink transition-colors pb-2">
+          <label for="order-city" class="block text-xs font-bold text-black/50 uppercase tracking-wider mb-1">
+            Město / Salón
+          </label>
+          <input
+            type="text"
+            id="order-city"
+            name="city"
+            placeholder="Praha 2, Studio Relax"
+            autocomplete="address-level2"
+            required
+            class="w-full bg-transparent text-sm sm:text-base text-ink font-medium placeholder-black/30 focus:outline-none"
+          />
+        </div>
+
+        <!-- Počet tlačítek Counter -->
+        <div class="border-b border-black/20 pb-2 flex items-center justify-between">
+          <div>
+            <label class="block text-xs font-bold text-black/50 uppercase tracking-wider mb-1">
+              Počet tlačítek
+            </label>
+            <span class="text-xs text-black/60">
+              V sadě
+            </span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              id="order-btn-dec"
+              disabled
+              class="w-7 h-7 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-ink cursor-pointer active:scale-90 transition-all disabled:opacity-30 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+              aria-label="Odebrat tlačítko"
+            >
+              <Minus class="w-3 h-3" />
+            </button>
+            <span id="order-count" class="w-5 text-center font-bold text-sm text-ink" aria-live="polite">1</span>
+            <button
+              type="button"
+              id="order-btn-inc"
+              class="w-7 h-7 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-ink cursor-pointer active:scale-90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+              aria-label="Přidat tlačítko"
+            >
+              <Plus class="w-3 h-3" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action & disclaimer -->
+      <div class="pt-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <button
+          type="submit"
+          id="order-submit-btn"
+          class="inline-flex items-center justify-center px-8 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-black hover:bg-black/85 active:scale-95 transition-all duration-200 cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+        >
+          <span>Odeslat poptávku</span>
+        </button>
+        <span class="text-[11px] text-black/45 leading-tight">
+          Nezávazné odeslání. Ozveme se vám do 2 hodin v pracovní dny.
+        </span>
+      </div>
+    </form>
+
+    <!-- Success Feedback State -->
+    <div
+      id="order-success-state"
+      class="hidden max-w-xl py-8 text-left animate-fade-in"
+      role="alert"
+    >
+      <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center mb-4">
+        <Check class="w-6 h-6 stroke-[3]" />
+      </div>
+      <h3 class="font-heading font-black text-2xl sm:text-3xl text-ink mb-2">
+        Děkujeme za poptávku!
+      </h3>
+      <p class="text-xs sm:text-sm text-black/70 leading-relaxed mb-6">
+        Vaši zprávu jsme v pořádku přijali. Během několika hodin vás budeme kontaktovat a domluvíme podrobnosti.
+      </p>
+      <button
+        type="button"
+        id="order-reset-btn"
+        class="px-5 py-2 rounded-full text-xs font-bold text-ink bg-black/5 hover:bg-black/10 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+      >
+        Odeslat další poptávku
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function setupOrderForm() {
+    const form = document.getElementById("contact-order-form") as HTMLFormElement | null;
+    if (!form || form.dataset.initialized) return;
+    form.dataset.initialized = "true";
+
+    let count = 1;
+    const decBtn = document.getElementById("order-btn-dec") as HTMLButtonElement | null;
+    const incBtn = document.getElementById("order-btn-inc") as HTMLButtonElement | null;
+    const countDisplay = document.getElementById("order-count");
+    const success = document.getElementById("order-success-state");
+    const submitBtn = document.getElementById("order-submit-btn");
+    const resetBtn = document.getElementById("order-reset-btn");
+
+    const update = () => {
+      if (countDisplay) countDisplay.textContent = String(count);
+      if (decBtn) decBtn.disabled = count <= 1;
+    };
+
+    incBtn?.addEventListener("click", () => {
+      if (count < 8) {
+        count++;
+        update();
+      }
+    });
+
+    decBtn?.addEventListener("click", () => {
+      if (count > 1) {
+        count--;
+        update();
+      }
+    });
+
+    if (form && success) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (submitBtn) {
+          submitBtn.setAttribute("disabled", "true");
+          submitBtn.textContent = "Odesílám...";
+        }
+
+        setTimeout(() => {
+          form.classList.add("hidden");
+          success.classList.remove("hidden");
+        }, 500);
+      });
+    }
+
+    if (resetBtn && form && success) {
+      resetBtn.addEventListener("click", () => {
+        form.reset();
+        count = 1;
+        update();
+        form.classList.remove("hidden");
+        success.classList.add("hidden");
+        if (submitBtn) {
+          submitBtn.removeAttribute("disabled");
+          submitBtn.textContent = "Odeslat poptávku";
+        }
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupOrderForm);
+  } else {
+    setupOrderForm();
+  }
+  document.addEventListener("astro:page-load", setupOrderForm);
+</script>
+

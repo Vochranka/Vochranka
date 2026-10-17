@@ -1,0 +1,113 @@
+---
+interface PlacementOption {
+  title: string;
+  desc: string;
+  image: string;
+  alt: string;
+  align: "left" | "right-shifted" | "reversed";
+}
+
+const placementOptions: PlacementOption[] = [
+  {
+    title: "Na kovový rám",
+    desc: "Drží samo na silný neodymový magnet. Nahmatáte ho poslepu pod masérským stolem nebo kosmetickým křeslem.",
+    image: "/button-under-table.jpg",
+    alt: "Tísňové tlačítko magneticky přichycené na kovový rám stolu",
+    align: "left",
+  },
+  {
+    title: "Do kapsy",
+    desc: "Díky kompaktním a tenkým rozměrům padne přesně do kapsy zástěry, pláště nebo kalhot. Ochrana stále s vámi.",
+    image: "/button-pocket.jpg",
+    alt: "Diskrétní nošení tísňového tlačítka v kapse zástěry",
+    align: "right-shifted",
+  },
+  {
+    title: "Pod pult nebo stůl",
+    desc: "Na přiloženou samolepicí 3M destičku drží jako přibité na dřevěném, skleněném i laminátovém povrchu recepce.",
+    image: "/button-under-reception.jpg",
+    alt: "Umístění tlačítka pod pult recepce",
+    align: "reversed",
+  },
+];
+---
+
+<section id="umisteni" class="py-20 sm:py-28 lg:py-32 px-6 sm:px-10 lg:px-14 bg-white select-none" aria-labelledby="placement-heading">
+  <div class="max-w-5xl mx-auto">
+    
+    <!-- Section Heading -->
+    <div class="text-left mb-16 sm:mb-24">
+      <h2 id="placement-heading" class="font-heading font-black text-4xl sm:text-6xl lg:text-[4.2rem] text-ink tracking-tight leading-[1.08]">
+        Nespočet<br />
+        možností kam<br />
+        tlačítko umístit
+      </h2>
+    </div>
+
+    <!-- Staggered 3-Item Layout matching mock-up exactly -->
+    <div class="space-y-16 sm:space-y-24">
+      {
+        placementOptions.map((item) => {
+          const isReversed = item.align === "reversed";
+          const isShifted = item.align === "right-shifted";
+
+          return (
+            <div
+              class:list={[
+                "flex items-center gap-6 sm:gap-10 max-w-2xl",
+                isReversed ? "flex-col-reverse sm:flex-row" : "flex-col sm:flex-row",
+                isShifted && "sm:ml-auto",
+              ]}
+            >
+              {isReversed ? (
+                <>
+                  <div class="text-left">
+                    <h3 class="font-heading font-black text-xl sm:text-2xl text-ink tracking-tight mb-2">
+                      {item.title}
+                    </h3>
+                    <p class="text-xs sm:text-sm text-black/70 leading-relaxed font-normal">
+                      {item.desc}
+                    </p>
+                  </div>
+                  <div class="w-44 sm:w-56 md:w-64 aspect-square rounded-2xl overflow-hidden bg-black/5 shadow-md shrink-0">
+                    <img
+                      src={item.image}
+                      alt={item.alt}
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                      width="1024"
+                      height="1024"
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div class="w-44 sm:w-56 md:w-64 aspect-square rounded-2xl overflow-hidden bg-black/5 shadow-md shrink-0">
+                    <img
+                      src={item.image}
+                      alt={item.alt}
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                      width="1024"
+                      height="1024"
+                    />
+                  </div>
+                  <div class="text-left">
+                    <h3 class="font-heading font-black text-xl sm:text-2xl text-ink tracking-tight mb-2">
+                      {item.title}
+                    </h3>
+                    <p class="text-xs sm:text-sm text-black/70 leading-relaxed font-normal">
+                      {item.desc}
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+          );
+        })
+      }
+    </div>
+
+  </div>
+</section>
+

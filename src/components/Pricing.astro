@@ -1,0 +1,97 @@
+---
+import { ArrowRight } from "lucide-astro";
+import { SITE_CONFIG } from "@/data/siteConfig";
+
+const { pricing } = SITE_CONFIG;
+
+const pricingCards = [
+  {
+    price: pricing.basePriceFormatted,
+    period: "/ první rok",
+    badge: "1. rok provozu zdarma",
+    desc: "Kompletní sada: 1× tísňové tlačítko, 1× hlasitá siréna, 1× centrála, 1× magnetická 3M podložka.",
+    cta: "Objednat",
+    link: "#kontakt",
+    featured: true,
+  },
+  {
+    price: pricing.monthlyPriceFormatted,
+    period: "/ měsíčně (od 2. roku)",
+    badge: `${pricing.yearlyRenewalPriceFormatted} ročně`,
+    desc: "Platí se až od druhého roku. Zahrnuje neomezené nouzové SMS rodině, 24/7 monitoring i technickou podporu.",
+    cta: null,
+    link: null,
+    featured: false,
+  },
+  {
+    price: pricing.extraButtonPriceFormatted,
+    period: "/ další tlačítko",
+    badge: "jednorázově",
+    desc: "Přídavné tlačítko do další místnosti, na recepci nebo do kapsy zástěry. 1. rok provozu bez dalších poplatků.",
+    cta: null,
+    link: null,
+    featured: false,
+  },
+];
+---
+
+<section id="cenik" class="py-20 sm:py-28 lg:py-32 px-6 sm:px-10 lg:px-14 bg-white border-t border-black/10 select-none">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Section Header -->
+    <div class="text-left mb-12 sm:mb-16">
+      <h2 class="font-heading font-black text-4xl sm:text-6xl lg:text-[4.2rem] text-ink tracking-tight mb-2">
+        Ceník
+      </h2>
+      <p class="text-xs sm:text-sm text-black/60 max-w-md font-normal">
+        Jednoduché a férové ceny bez skrytých poplatků a složitých smluv.
+      </p>
+    </div>
+
+    <!-- 3 Cards Horizontal Grid matching mock-up -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+      {
+        pricingCards.map((card) => (
+          <div class="bg-card-bg rounded-3xl p-6 sm:p-8 border border-black/5 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-shadow duration-300">
+            <div>
+              <!-- Price & Period -->
+              <div class="flex items-baseline flex-wrap gap-x-2 gap-y-1 mb-2">
+                <span class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-ink tracking-tight">
+                  {card.price}
+                </span>
+                <span class="text-xs sm:text-sm text-black/50 font-medium">
+                  {card.period}
+                </span>
+              </div>
+
+              <!-- Badge / Tag -->
+              <div class="mb-4">
+                <span class="inline-block text-[11px] font-bold text-black/50 uppercase tracking-wider">
+                  {card.badge}
+                </span>
+              </div>
+
+              <!-- Description -->
+              <p class="text-xs sm:text-sm text-black/70 leading-relaxed font-normal">
+                {card.desc}
+              </p>
+            </div>
+
+            <!-- CTA button if present -->
+            {card.cta && (
+              <div class="mt-8 pt-6 border-t border-black/5">
+                <a
+                  href="#kontakt"
+                  class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-black hover:bg-black/80 active:scale-95 transition-all duration-200 shadow-xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+                >
+                  <span>{card.cta}</span>
+                </a>
+              </div>
+            )}
+          </div>
+        ))
+      }
+    </div>
+
+  </div>
+</section>
