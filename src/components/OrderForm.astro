@@ -1,160 +1,277 @@
 ---
+/**
+ * OrderForm.astro
+ * 
+ * Component for the "Mám zájem" order & contact form (Right column of Frame #5:2).
+ * Positioned more to the right with lg:items-end.
+ */
 
+import { SITE_CONFIG } from "@/data/siteConfig";
+
+const { contactSubtitle } = SITE_CONFIG;
 ---
 
-<section
+<div
   id="kontakt"
-  class="bg-white select-none pt-4 sm:pt-6 lg:pt-8 pb-16 sm:pb-24 px-6 sm:px-[5.5%]"
-  aria-label="Kontakt"
+  class="w-full flex flex-col items-start scroll-mt-24 pt-10 lg:pt-0 lg:pl-8 xl:pl-14"
 >
-  <div class="max-w-7xl mx-auto">
+  <div class="w-full max-w-[480px]">
     <h2
-      class="text-4xl sm:text-6xl lg:text-[76px] font-bold text-ink tracking-tight mb-4 sm:mb-6"
+      class="text-4xl sm:text-5xl lg:text-[68px] xl:text-[76px] font-normal text-ink tracking-tight leading-[0.95] mb-4 sm:mb-6"
     >
       Mám zájem
     </h2>
-    <p class="text-[15px] text-ink-muted max-w-[56ch] leading-relaxed mb-8 sm:mb-10">
-      Zanechte nám na sebe kontakt. My se vám obratem ozveme a dokončíme spolu
-      potřebnou konfiguraci před odesláním.
+    <p
+      class="text-[15px] text-ink-muted leading-relaxed mb-8 sm:mb-10"
+    >
+      {contactSubtitle}
     </p>
 
+    <!-- Order / Contact Form -->
     <form
-      id="fm"
-      class="grid grid-cols-1 md:grid-cols-2 gap-x-10 max-w-[900px]"
+      id="pricing-contact-form"
+      class="flex flex-col border-t border-line"
+      novalidate
     >
-      <label
-        class="block border-b border-line py-3.5 sm:py-4 text-[13px] text-ink focus-within:border-brown transition-colors"
+      <!-- Field 1: Jméno -->
+      <div
+        class="border-b border-line py-3.5 sm:py-4 group focus-within:border-ink transition-colors"
       >
-        <span class="block text-ink-muted text-xs mb-1">Jméno</span>
+        <label
+          for="order-name"
+          class="block text-[13px] text-ink-muted mb-1 group-focus-within:text-ink transition-colors"
+        >
+          Jméno
+        </label>
         <input
-          name="jmeno"
+          id="order-name"
+          name="name"
+          type="text"
           required
           autocomplete="name"
-          class="block w-full border-0 bg-transparent text-xl sm:text-2xl font-medium tracking-tight text-ink outline-none mt-1"
+          placeholder="Vaše jméno nebo název provozu"
+          class="block w-full border-0 bg-transparent text-xl sm:text-2xl font-medium tracking-tight text-ink placeholder:text-neutral-400 outline-none"
         />
-      </label>
+      </div>
 
-      <label
-        class="block border-b border-line py-3.5 sm:py-4 text-[13px] text-ink focus-within:border-brown transition-colors"
+      <!-- Field 2: E-mail nebo telefon -->
+      <div
+        class="border-b border-line py-3.5 sm:py-4 group focus-within:border-ink transition-colors"
       >
-        <span class="block text-ink-muted text-xs mb-1"
-          >E-mail nebo telefon</span
+        <label
+          for="order-contact"
+          class="block text-[13px] text-ink-muted mb-1 group-focus-within:text-ink transition-colors"
         >
+          E-mail nebo telefon
+        </label>
         <input
-          name="kontakt"
+          id="order-contact"
+          name="contact"
+          type="text"
           required
           autocomplete="email"
-          class="block w-full border-0 bg-transparent text-xl sm:text-2xl font-medium tracking-tight text-ink outline-none mt-1"
+          placeholder="např. jan@salon.cz nebo 777 123 456"
+          class="block w-full border-0 bg-transparent text-xl sm:text-2xl font-medium tracking-tight text-ink placeholder:text-neutral-400 outline-none"
         />
-      </label>
+      </div>
 
-      <label
-        class="block border-b border-line md:border-transparent py-3.5 sm:py-4 text-[13px] text-ink focus-within:border-brown transition-colors"
-      >
-        <span class="block text-ink-muted text-xs mb-1">Město</span>
-        <input
-          name="mesto"
-          autocomplete="address-level2"
-          class="block w-full border-0 bg-transparent text-xl sm:text-2xl font-medium tracking-tight text-ink outline-none mt-1"
-        />
-      </label>
-
+      <!-- Field 3: Město -->
       <div
-        class="block border-b border-transparent py-3.5 sm:py-4 text-[13px] text-ink focus-within:border-brown transition-colors"
+        class="border-b border-line py-3.5 sm:py-4 group focus-within:border-ink transition-colors"
       >
-        <label for="pocet-input" class="block text-ink-muted text-xs mb-1 cursor-pointer">
-          Počet tlačítek
+        <label
+          for="order-city"
+          class="block text-[13px] text-ink-muted mb-1 group-focus-within:text-ink transition-colors"
+        >
+          Město
         </label>
-        <div class="flex items-center justify-between mt-1">
+        <input
+          id="order-city"
+          name="city"
+          type="text"
+          autocomplete="address-level2"
+          placeholder="např. Praha, Brno..."
+          class="block w-full border-0 bg-transparent text-xl sm:text-2xl font-medium tracking-tight text-ink placeholder:text-neutral-400 outline-none"
+        />
+      </div>
+
+      <!-- Field 4: Počet tlačítek -->
+      <div class="border-b border-line py-3.5 sm:py-4 flex items-center justify-between">
+        <div>
+          <label
+            for="buttons-count-input"
+            class="block text-[13px] text-ink-muted mb-0.5 cursor-pointer"
+          >
+            Počet tlačítek
+          </label>
+          <span class="text-xs text-ink-muted block">
+            1 v základní sadě, další za 699 Kč
+          </span>
+        </div>
+        <div class="flex items-center gap-3">
+          <button
+            id="btn-decrement"
+            type="button"
+            class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-ink hover:bg-neutral-100 active:scale-90 transition-all cursor-pointer text-lg font-medium select-none"
+            aria-label="Snížit počet tlačítek"
+          >
+            −
+          </button>
           <input
-            id="pocet-input"
-            name="pocet"
+            id="buttons-count-input"
+            name="buttonsCount"
             type="number"
             min="1"
+            max="20"
             value="1"
-            class="w-20 border-0 bg-transparent text-xl sm:text-2xl font-medium tracking-tight text-ink outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            readonly
+            class="w-12 text-center border-0 bg-transparent text-2xl font-medium text-ink outline-none select-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            aria-label="Vybraný počet tlačítek"
           />
-          <div class="flex items-center gap-2">
-            <button
-              id="pocet-minus"
-              type="button"
-              class="w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink hover:bg-neutral-100 active:scale-90 transition-all cursor-pointer select-none text-base font-medium"
-              aria-label="Snížit počet tlačítek"
-            >
-              –
-            </button>
-            <button
-              id="pocet-plus"
-              type="button"
-              class="w-8 h-8 rounded-full bg-ink text-white flex items-center justify-center hover:bg-neutral-800 active:scale-90 transition-all cursor-pointer select-none text-base font-medium shadow-xs"
-              aria-label="Zvýšit počet tlačítek"
-            >
-              +
-            </button>
-          </div>
+          <button
+            id="btn-increment"
+            type="button"
+            class="w-9 h-9 rounded-full bg-ink text-white flex items-center justify-center hover:bg-neutral-800 active:scale-90 transition-all cursor-pointer text-lg font-medium select-none shadow-xs"
+            aria-label="Zvýšit počet tlačítek"
+          >
+            +
+          </button>
         </div>
       </div>
 
+      <!-- Submit Row -->
       <div
-        class="col-span-full pt-6 mt-2 flex items-center gap-4 sm:gap-6 text-[12px] sm:text-[13px]"
+        class="pt-7 sm:pt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
       >
         <button
           type="submit"
-          class="inline-block rounded-full px-7 py-3.5 bg-ink text-white font-medium text-sm hover:opacity-85 active:scale-95 transition-all shadow-sm cursor-pointer shrink-0"
+          class="inline-flex items-center justify-center rounded-full px-8 py-3.5 bg-ink text-white font-medium text-sm hover:opacity-85 active:scale-95 transition-all shadow-sm cursor-pointer shrink-0 select-none"
         >
           Odeslat
         </button>
-        <span class="text-ink-muted max-w-[42ch] leading-snug">
-          Nezávazně. Rádi vám vše předvedeme nebo zodpovíme dotazy!
-        </span>
+        <p
+          class="text-[13px] text-ink-muted leading-relaxed max-w-[40ch]"
+        >
+          Nezávazně. Rádi vám vše předvedeme nebo zodpovíme dotazy.
+        </p>
       </div>
     </form>
 
-    <div id="ok" class="hidden py-8" role="status">
-      <h3 class="text-3xl sm:text-5xl font-bold tracking-tight text-ink mb-2">
-        Odesláno!
+    <!-- Success Message -->
+    <div
+      id="pricing-form-success"
+      class="hidden py-12 animate-fade-in"
+      role="status"
+      aria-live="polite"
+    >
+      <div
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-100 text-emerald-800 mb-4"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 13l4 4L19 7"></path>
+        </svg>
+      </div>
+      <h3 class="text-2xl sm:text-4xl font-bold tracking-tight text-ink mb-2">
+        Poptávka byla odeslána!
       </h3>
-      <p class="text-base text-ink-muted">Děkujeme, brzy se vám ozveme.</p>
+      <p class="text-sm text-ink-muted max-w-[44ch] mb-6">
+        Děkujeme za váš zájem. Brzy se vám ozveme na uvedený kontakt a domluvíme
+        konfiguraci sady.
+      </p>
+      <button
+        id="btn-reset-form"
+        type="button"
+        class="text-xs underline text-ink-muted hover:text-ink cursor-pointer select-none"
+      >
+        Poslat další zprávu
+      </button>
     </div>
   </div>
-</section>
+</div>
 
 <script>
-  function setupOrderForm() {
-    const fm = document.getElementById("fm") as HTMLFormElement | null;
-    const ok = document.getElementById("ok") as HTMLElement | null;
-    const pocetInput = document.getElementById("pocet-input") as HTMLInputElement | null;
-    const pocetPlus = document.getElementById("pocet-plus");
-    const pocetMinus = document.getElementById("pocet-minus");
+  function setupPricingAndContact() {
+    const form = document.getElementById("pricing-contact-form") as HTMLFormElement | null;
+    const successBox = document.getElementById("pricing-form-success");
+    const countInput = document.getElementById("buttons-count-input") as HTMLInputElement | null;
+    const btnIncrement = document.getElementById("btn-increment");
+    const btnDecrement = document.getElementById("btn-decrement");
+    const btnReset = document.getElementById("btn-reset-form");
+    const nameInput = document.getElementById("order-name") as HTMLInputElement | null;
+    const contactCtaButtons = document.querySelectorAll<HTMLButtonElement>('[data-action="focus-contact"]');
 
-    if (!fm || !ok || fm.dataset.initialized) return;
-    fm.dataset.initialized = "true";
+    if (!form || form.dataset.bound === "true") return;
+    form.dataset.bound = "true";
 
-    pocetPlus?.addEventListener("click", () => {
-      if (!pocetInput) return;
-      const val = parseInt(pocetInput.value, 10) || 1;
-      pocetInput.value = String(val + 1);
-    });
-
-    pocetMinus?.addEventListener("click", () => {
-      if (!pocetInput) return;
-      const val = parseInt(pocetInput.value, 10) || 1;
-      if (val > 1) {
-        pocetInput.value = String(val - 1);
+    // Stepper buttons
+    btnIncrement?.addEventListener("click", () => {
+      if (!countInput) return;
+      const current = parseInt(countInput.value, 10) || 1;
+      if (current < 20) {
+        countInput.value = String(current + 1);
       }
     });
 
-    fm.addEventListener("submit", (e) => {
+    btnDecrement?.addEventListener("click", () => {
+      if (!countInput) return;
+      const current = parseInt(countInput.value, 10) || 1;
+      if (current > 1) {
+        countInput.value = String(current - 1);
+      }
+    });
+
+    // "Mám zájem" button in pricing card scrolls and focuses contact form
+    contactCtaButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const contactSection = document.getElementById("kontakt");
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        setTimeout(() => {
+          nameInput?.focus();
+        }, 400);
+      });
+    });
+
+    // Form submission handling
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
-      fm.classList.add("hidden");
-      ok.classList.remove("hidden");
+
+      const nameVal = (document.getElementById("order-name") as HTMLInputElement)?.value.trim();
+      const contactVal = (document.getElementById("order-contact") as HTMLInputElement)?.value.trim();
+
+      if (!nameVal || !contactVal) {
+        alert("Prosím vyplňte jméno a e-mail nebo telefon.");
+        return;
+      }
+
+      form.classList.add("hidden");
+      successBox?.classList.remove("hidden");
+    });
+
+    // Reset button to submit another request
+    btnReset?.addEventListener("click", () => {
+      form.reset();
+      if (countInput) countInput.value = "1";
+      successBox?.classList.add("hidden");
+      form.classList.remove("hidden");
     });
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupOrderForm);
+    document.addEventListener("DOMContentLoaded", setupPricingAndContact);
   } else {
-    setupOrderForm();
+    setupPricingAndContact();
   }
-  document.addEventListener("astro:page-load", setupOrderForm);
+  document.addEventListener("astro:page-load", setupPricingAndContact);
 </script>

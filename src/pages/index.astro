@@ -38,11 +38,28 @@ import MobileStickyBar from "../components/MobileStickyBar.astro";
     <!-- 6. Zapojit / Přicvaknout / Otestovat & OBJEDNAT SADU -->
     <Installation />
 
-    <!-- 7. Ceník (3 pricing cards) -->
-    <Pricing />
+    <!-- 7. Ceník + Kontakt -->
+    <section
+      id="cenik"
+      class="bg-white select-none py-16 sm:py-24 lg:py-28 px-6 sm:px-[5.5%] border-t border-line/60"
+      aria-label="Ceník a kontakt"
+    >
+      <div class="max-w-7xl mx-auto relative">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 items-start"
+        >
+          <Pricing />
+          <OrderForm />
+        </div>
 
-    <!-- 8. Mám zájem (Contact & order form) -->
-    <OrderForm />
+        <!-- Svislá dělicí čára přesně uprostřed -->
+        <div
+          class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-line -translate-x-1/2"
+          aria-hidden="true"
+        >
+        </div>
+      </div>
+    </section>
 
     <!-- 9. Často kladené otázky (Minimalist accordion) -->
     <Faq />

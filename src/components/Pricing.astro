@@ -1,102 +1,65 @@
 ---
+/**
+ * Pricing.astro
+ * 
+ * Component for the "Ceník" section (Left column of Frame #5:2).
+ * Positioned on the left side with comfortable width and padding.
+ */
 
+import { SITE_CONFIG } from "@/data/siteConfig";
+
+const { pricingTiers, pricingSubtitle } = SITE_CONFIG;
 ---
 
-<section
-  id="cenik"
-  class="bg-white select-none py-16 sm:py-24 px-6 sm:px-[5.5%]"
-  aria-label="Ceník"
->
-  <div class="max-w-7xl mx-auto">
+<div class="w-full flex flex-col items-start lg:pr-8 xl:pr-14">
+  <div class="w-full max-w-[500px] lg:ml-auto">
     <h2
-      class="text-4xl sm:text-6xl lg:text-[76px] font-bold text-ink tracking-tight mb-6"
+      class="text-4xl sm:text-5xl lg:text-[68px] xl:text-[76px] font-bold text-ink tracking-tight leading-[0.95] mb-4 sm:mb-6"
     >
       Ceník
     </h2>
-    <p class="text-[15px] text-neutral-600 max-w-[56ch] leading-relaxed mb-12">
-      Žádné pronájmy ani montážní poplatky. Osobní předvedení. 14 dní na
-      vyzkoušení.
+    <p
+      class="text-[15px] text-ink-muted leading-relaxed mb-8 sm:mb-10"
+    >
+      {pricingSubtitle}
     </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-      <!-- Box 1 -->
-      <div
-        class="bg-box rounded-lg p-7 sm:p-8 flex flex-col justify-between gap-3.5 min-h-[340px]"
-      >
-        <div>
-          <div
-            class="text-3xl sm:text-4xl lg:text-[50px] font-medium text-ink tracking-tight leading-none mb-3.5"
-          >
-            2 990 Kč <span
-              class="text-sm sm:text-base font-normal tracking-normal text-ink-muted"
-              >/ jednorázově</span
-            >
-          </div>
-          <strong class="block text-base font-bold text-ink mb-2"
-            >1. rok provozu zdarma</strong
-          >
-          <p class="text-[13px] text-ink-muted leading-relaxed">
-            Kompletní fyzická sada Vochranka + 1. rok provozu bez dalších
-            poplatků.
-          </p>
-        </div>
-        <div class="pt-4">
-          <a
-            href="#kontakt"
-            class="inline-block rounded-full px-6 py-3 bg-ink text-white font-medium text-sm hover:opacity-85 active:scale-95 transition-all shadow-sm"
-          >
-            Mám zájem
-          </a>
-        </div>
-      </div>
+    <!-- Pricing Cards Stack -->
+    <div class="space-y-3.5 sm:space-y-4">
+      {
+        pricingTiers.map((tier) => (
+          <div class="bg-box rounded-lg p-5 sm:p-6 lg:p-7 flex flex-col justify-between gap-3 transition-transform hover:-translate-y-0.5">
+            <div>
+              <div class="flex items-baseline gap-2 flex-wrap mb-2.5">
+                <span class="text-3xl sm:text-4xl lg:text-[42px] font-medium text-ink tracking-tight leading-none">
+                  {tier.price}
+                </span>
+                <span class="text-sm text-ink-muted font-normal tracking-normal">
+                  {tier.period}
+                </span>
+              </div>
+              <h3 class="text-base font-bold text-ink leading-snug mb-1.5">
+                {tier.title}
+              </h3>
+              <p class="text-[13px] text-ink-muted leading-relaxed">
+                {tier.description}
+              </p>
+            </div>
 
-      <!-- Box 2 -->
-      <div
-        class="bg-box rounded-lg p-7 sm:p-8 flex flex-col justify-between gap-3.5 min-h-[340px]"
-      >
-        <div>
-          <div
-            class="text-3xl sm:text-4xl lg:text-[50px] font-medium text-ink tracking-tight leading-none mb-3.5"
-          >
-            83 Kč <span
-              class="text-xs sm:text-sm font-normal tracking-normal text-ink-muted"
-              >/ měsíčně (999 Kč ročně)</span
-            >
+            {tier.hasCta && (
+              <div class="pt-2">
+                <button
+                  type="button"
+                  data-action="focus-contact"
+                  class="inline-flex items-center justify-center rounded-full px-6 py-2.5 bg-ink text-white font-medium text-sm hover:opacity-85 active:scale-95 transition-all shadow-xs cursor-pointer select-none"
+                >
+                  {tier.ctaText || "Mám zájem"}
+                </button>
+              </div>
+            )}
           </div>
-          <strong class="block text-base font-bold text-ink mb-2"
-            >Provoz od 2. roku</strong
-          >
-          <p class="text-[13px] text-ink-muted leading-relaxed">
-            Platí se až od druhého roku provozu – méně než jedno kafe měsíčně.
-            Zahrnuje tísňové SMS rodině, 24/7 monitoring a nepřetržitou
-            technickou podporu.
-          </p>
-        </div>
-      </div>
-
-      <!-- Box 3 -->
-      <div
-        class="bg-box rounded-lg p-7 sm:p-8 flex flex-col justify-between gap-3.5 min-h-[340px]"
-      >
-        <div>
-          <div
-            class="text-3xl sm:text-4xl lg:text-[50px] font-medium text-ink tracking-tight leading-none mb-3.5"
-          >
-            699 Kč <span
-              class="text-sm sm:text-base font-normal tracking-normal text-ink-muted"
-              >/ další tlačítko</span
-            >
-          </div>
-          <strong class="block text-base font-bold text-ink mb-2"
-            >Potřebujete více tlačítek?</strong
-          >
-          <p class="text-[13px] text-ink-muted leading-relaxed">
-            Každé další tlačítko stojí jednorázově 699 Kč s 1. rokem provozu
-            zdarma. Po uplynutí prvního roku je poplatek za provoz pro
-            přidružené tlačítko pouze 499 Kč.
-          </p>
-        </div>
-      </div>
+        ))
+      }
     </div>
   </div>
-</section>
+</div>

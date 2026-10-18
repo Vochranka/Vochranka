@@ -30,6 +30,38 @@ export const SITE_CONFIG = {
     trialDays: 14,
   },
 
+  pricingSubtitle: "Žádné pronájmy ani montážní poplatky. Osobní předvedení. 14 dní na vyzkoušení.",
+  contactSubtitle: "Zanechte nám na sebe kontakt. My se vám obratem ozveme a dokončíme spolu potřebnou konfiguraci před odesláním.",
+
+  pricingTiers: [
+    {
+      id: "starter",
+      price: "2 990 Kč",
+      period: " / první rok",
+      title: "1. rok provozu zdarma",
+      description: "Kompletní fyzická sada Vochranka + 1. rok provozu bez dalších poplatků.",
+      hasCta: true,
+      ctaText: "Mám zájem",
+      ctaHref: "#kontakt",
+    },
+    {
+      id: "renewal",
+      price: "83 Kč",
+      period: " / měsíčně (999 Kč ročně)",
+      title: "Provoz od 2. roku",
+      description: "Platí se až od druhého roku provozu – méně než jedno kafe měsíčně. Zahrnuje tísňové SMS rodině, 24/7 monitoring a nepřetržitou technickou podporu.",
+      hasCta: false,
+    },
+    {
+      id: "extra-button",
+      price: "699 Kč",
+      period: " / další tlačítko",
+      title: "Potřebujete více tlačítek?",
+      description: "Každé další tlačítko stojí jednorázově 699 Kč s 1. rokem provozu zdarma. Po uplynutí prvního roku je poplatek za provoz pro přidružené tlačítko pouze 499 Kč.",
+      hasCta: false,
+    },
+  ],
+
   navLinks: [
     { label: "K čemu slouží", href: "#vyuziti" },
     { label: "Umístění", href: "#umisteni" },
