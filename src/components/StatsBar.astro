@@ -4,7 +4,10 @@ import { SITE_CONFIG } from "@/data/siteConfig";
 const stats = SITE_CONFIG.stats;
 ---
 
-<section class="bg-white py-6 sm:py-8 px-[5.5%] select-none" aria-label="Klíčové parametry">
+<section
+  class="bg-white py-6 sm:py-8 px-[5.5%] select-none"
+  aria-label="Klíčové parametry"
+>
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
       {
@@ -13,13 +16,10 @@ const stats = SITE_CONFIG.stats;
             <span class="text-3xl sm:text-4xl lg:text-[46px] font-medium text-ink tracking-tight leading-none mb-8">
               {stat.value}
             </span>
-            <p class="text-[13px] text-ink-muted leading-snug">
-              {stat.label}
-            </p>
+            <p class="text-[15px] text-ink-muted leading-snug">{stat.label}</p>
           </div>
         ))
       }
     </div>
   </div>
 </section>
-
