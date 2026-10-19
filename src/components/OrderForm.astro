@@ -1,45 +1,48 @@
 ---
 /**
  * OrderForm.astro
- * 
- * Component for the "Mám zájem" order & contact form (Right column of Frame #5:2).
- * Positioned more to the right with lg:items-end.
+ *
+ * Right column of the pricing section matching the new design template:
+ * - Title: "Mám zájem"
+ * - Subtitle: "Zanechte nám na sebe kontakt. My se vám obratem ozveme a dokončíme spolu potřebnou konfiguraci před odesláním."
+ * - Minimal bottom-border fields:
+ *   - Jméno (placeholder: Vaše jméno nebo název provozu)
+ *   - E-mail nebo telefon (placeholder: např. jan@salon.cz nebo 777 123 456)
+ *   - Město (placeholder: např. Praha, Brno...)
+ *   - Počet tlačítek (stepper: - / 1 / +)
+ * - Submit button "Odeslat" (black pill) + note "Nezávazně. Rádi vám vše předvedeme nebo zodpovíme dotazy."
  */
-
-import { SITE_CONFIG } from "@/data/siteConfig";
-
-const { contactSubtitle } = SITE_CONFIG;
 ---
 
 <div
   id="kontakt"
-  class="w-full flex flex-col items-start scroll-mt-24 pt-10 lg:pt-0 lg:pl-8 xl:pl-14"
+  class="w-full flex flex-col items-start scroll-mt-24 pt-12 lg:pt-0 lg:pl-10 xl:pl-16"
 >
   <div class="w-full max-w-[480px]">
+    <!-- Section Heading -->
     <h2
-      class="text-4xl sm:text-5xl lg:text-[68px] xl:text-[76px] font-normal text-ink tracking-tight leading-[0.95] mb-4 sm:mb-6"
+      class="text-5xl sm:text-6xl lg:text-[76px] font-bold text-ink tracking-tight leading-[0.95] mb-4"
     >
       Mám zájem
     </h2>
+
+    <!-- Subtitle -->
     <p
-      class="text-[15px] text-ink-muted leading-relaxed mb-8 sm:mb-10"
+      class="text-[15px] sm:text-base text-neutral-600 leading-relaxed max-w-[44ch] mb-8 sm:mb-10"
     >
-      {contactSubtitle}
+      Zanechte nám na sebe kontakt. My se vám obratem ozveme a dokončíme spolu
+      potřebnou konfiguraci před odesláním.
     </p>
 
     <!-- Order / Contact Form -->
-    <form
-      id="pricing-contact-form"
-      class="flex flex-col border-t border-line"
-      novalidate
-    >
+    <form id="pricing-contact-form" class="flex flex-col" novalidate>
       <!-- Field 1: Jméno -->
       <div
-        class="border-b border-line py-3.5 sm:py-4 group focus-within:border-ink transition-colors"
+        class="border-b border-line pb-3.5 sm:pb-4 pt-1 mb-4 sm:mb-5 group focus-within:border-ink transition-colors"
       >
         <label
           for="order-name"
-          class="block text-[13px] text-ink-muted mb-1 group-focus-within:text-ink transition-colors"
+          class="block text-xs sm:text-[13px] text-neutral-500 font-normal mb-1"
         >
           Jméno
         </label>
@@ -50,17 +53,17 @@ const { contactSubtitle } = SITE_CONFIG;
           required
           autocomplete="name"
           placeholder="Vaše jméno nebo název provozu"
-          class="block w-full border-0 bg-transparent text-xl sm:text-2xl font-medium tracking-tight text-ink placeholder:text-neutral-400 outline-none"
+          class="block w-full border-0 bg-transparent text-lg sm:text-xl md:text-[22px] font-normal text-ink placeholder:text-neutral-500 outline-none p-0"
         />
       </div>
 
       <!-- Field 2: E-mail nebo telefon -->
       <div
-        class="border-b border-line py-3.5 sm:py-4 group focus-within:border-ink transition-colors"
+        class="border-b border-line pb-3.5 sm:pb-4 pt-1 mb-4 sm:mb-5 group focus-within:border-ink transition-colors"
       >
         <label
           for="order-contact"
-          class="block text-[13px] text-ink-muted mb-1 group-focus-within:text-ink transition-colors"
+          class="block text-xs sm:text-[13px] text-neutral-500 font-normal mb-1"
         >
           E-mail nebo telefon
         </label>
@@ -71,17 +74,17 @@ const { contactSubtitle } = SITE_CONFIG;
           required
           autocomplete="email"
           placeholder="např. jan@salon.cz nebo 777 123 456"
-          class="block w-full border-0 bg-transparent text-xl sm:text-2xl font-medium tracking-tight text-ink placeholder:text-neutral-400 outline-none"
+          class="block w-full border-0 bg-transparent text-lg sm:text-xl md:text-[22px] font-normal text-ink placeholder:text-neutral-500 outline-none p-0"
         />
       </div>
 
       <!-- Field 3: Město -->
       <div
-        class="border-b border-line py-3.5 sm:py-4 group focus-within:border-ink transition-colors"
+        class="border-b border-line pb-3.5 sm:pb-4 pt-1 mb-4 sm:mb-5 group focus-within:border-ink transition-colors"
       >
         <label
           for="order-city"
-          class="block text-[13px] text-ink-muted mb-1 group-focus-within:text-ink transition-colors"
+          class="block text-xs sm:text-[13px] text-neutral-500 font-normal mb-1"
         >
           Město
         </label>
@@ -91,20 +94,22 @@ const { contactSubtitle } = SITE_CONFIG;
           type="text"
           autocomplete="address-level2"
           placeholder="např. Praha, Brno..."
-          class="block w-full border-0 bg-transparent text-xl sm:text-2xl font-medium tracking-tight text-ink placeholder:text-neutral-400 outline-none"
+          class="block w-full border-0 bg-transparent text-lg sm:text-xl md:text-[22px] font-normal text-ink placeholder:text-neutral-500 outline-none p-0"
         />
       </div>
 
       <!-- Field 4: Počet tlačítek -->
-      <div class="border-b border-line py-3.5 sm:py-4 flex items-center justify-between">
+      <div
+        class="border-b border-line pb-4 sm:pb-5 pt-1 mb-6 sm:mb-7 flex items-center justify-between"
+      >
         <div>
           <label
             for="buttons-count-input"
-            class="block text-[13px] text-ink-muted mb-0.5 cursor-pointer"
+            class="block text-xs sm:text-[13px] text-neutral-600 font-normal"
           >
             Počet tlačítek
           </label>
-          <span class="text-xs text-ink-muted block">
+          <span class="text-xs text-neutral-500 block mt-0.5">
             1 v základní sadě, další za 699 Kč
           </span>
         </div>
@@ -112,7 +117,7 @@ const { contactSubtitle } = SITE_CONFIG;
           <button
             id="btn-decrement"
             type="button"
-            class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-ink hover:bg-neutral-100 active:scale-90 transition-all cursor-pointer text-lg font-medium select-none"
+            class="w-9 h-9 rounded-full border border-neutral-300 flex items-center justify-center text-ink text-xl font-light hover:bg-neutral-100 active:scale-90 transition-all cursor-pointer select-none"
             aria-label="Snížit počet tlačítek"
           >
             −
@@ -125,13 +130,13 @@ const { contactSubtitle } = SITE_CONFIG;
             max="20"
             value="1"
             readonly
-            class="w-12 text-center border-0 bg-transparent text-2xl font-medium text-ink outline-none select-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            class="w-8 text-center border-0 bg-transparent text-xl sm:text-2xl font-normal text-ink outline-none select-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             aria-label="Vybraný počet tlačítek"
           />
           <button
             id="btn-increment"
             type="button"
-            class="w-9 h-9 rounded-full bg-ink text-white flex items-center justify-center hover:bg-neutral-800 active:scale-90 transition-all cursor-pointer text-lg font-medium select-none shadow-xs"
+            class="w-9 h-9 rounded-full bg-ink text-white flex items-center justify-center text-xl font-light hover:bg-neutral-800 active:scale-90 transition-all cursor-pointer select-none shadow-xs"
             aria-label="Zvýšit počet tlačítek"
           >
             +
@@ -140,17 +145,15 @@ const { contactSubtitle } = SITE_CONFIG;
       </div>
 
       <!-- Submit Row -->
-      <div
-        class="pt-7 sm:pt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
-      >
+      <div class="pt-2 flex items-center gap-5 sm:gap-6">
         <button
           type="submit"
-          class="inline-flex items-center justify-center rounded-full px-8 py-3.5 bg-ink text-white font-medium text-sm hover:opacity-85 active:scale-95 transition-all shadow-sm cursor-pointer shrink-0 select-none"
+          class="inline-flex items-center justify-center rounded-full px-8 py-3.5 bg-ink text-white font-medium text-sm sm:text-[15px] hover:opacity-90 active:scale-95 transition-all shadow-xs cursor-pointer shrink-0 select-none"
         >
           Odeslat
         </button>
         <p
-          class="text-[13px] text-ink-muted leading-relaxed max-w-[40ch]"
+          class="text-xs sm:text-[13px] text-neutral-600 leading-snug max-w-[28ch] sm:max-w-[32ch]"
         >
           Nezávazně. Rádi vám vše předvedeme nebo zodpovíme dotazy.
         </p>
@@ -201,14 +204,16 @@ const { contactSubtitle } = SITE_CONFIG;
 
 <script>
   function setupPricingAndContact() {
-    const form = document.getElementById("pricing-contact-form") as HTMLFormElement | null;
+    const form = document.getElementById(
+      "pricing-contact-form"
+    ) as HTMLFormElement | null;
     const successBox = document.getElementById("pricing-form-success");
-    const countInput = document.getElementById("buttons-count-input") as HTMLInputElement | null;
+    const countInput = document.getElementById(
+      "buttons-count-input"
+    ) as HTMLInputElement | null;
     const btnIncrement = document.getElementById("btn-increment");
     const btnDecrement = document.getElementById("btn-decrement");
     const btnReset = document.getElementById("btn-reset-form");
-    const nameInput = document.getElementById("order-name") as HTMLInputElement | null;
-    const contactCtaButtons = document.querySelectorAll<HTMLButtonElement>('[data-action="focus-contact"]');
 
     if (!form || form.dataset.bound === "true") return;
     form.dataset.bound = "true";
@@ -230,25 +235,16 @@ const { contactSubtitle } = SITE_CONFIG;
       }
     });
 
-    // "Mám zájem" button in pricing card scrolls and focuses contact form
-    contactCtaButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const contactSection = document.getElementById("kontakt");
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-        setTimeout(() => {
-          nameInput?.focus();
-        }, 400);
-      });
-    });
-
     // Form submission handling
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const nameVal = (document.getElementById("order-name") as HTMLInputElement)?.value.trim();
-      const contactVal = (document.getElementById("order-contact") as HTMLInputElement)?.value.trim();
+      const nameVal = (
+        document.getElementById("order-name") as HTMLInputElement
+      )?.value.trim();
+      const contactVal = (
+        document.getElementById("order-contact") as HTMLInputElement
+      )?.value.trim();
 
       if (!nameVal || !contactVal) {
         alert("Prosím vyplňte jméno a e-mail nebo telefon.");

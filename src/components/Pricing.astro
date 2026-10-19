@@ -1,65 +1,257 @@
 ---
 /**
  * Pricing.astro
- * 
- * Component for the "Ceník" section (Left column of Frame #5:2).
- * Positioned on the left side with comfortable width and padding.
+ *
+ * Left column of the pricing section matching the new design template:
+ * - Title: "Ceník"
+ * - Subtitle: "Žádné pronájmy ani montáž zdarma. Osobní předvedení. 14 dní na vyzkoušení."
+ * - Badge: "[-50 %] Nabídka pro prvních 100 klientů"
+ * - Card 1: 2 990 Kč (5 980 Kč / první rok) [-50 %], Ušetříte 2 990 Kč, 1. rok provozu zdarma, + Co je v sadě
+ * - Card 2: Provoz od 2. roku [-50 %], 83 Kč / měsíčně 167 Kč, 999 Kč ročně (původně 1 998 Kč), + Co je v ceně
+ * - Footer note: Potřebujete více tlačítek?
  */
-
-import { SITE_CONFIG } from "@/data/siteConfig";
-
-const { pricingTiers, pricingSubtitle } = SITE_CONFIG;
 ---
 
-<div class="w-full flex flex-col items-start lg:pr-8 xl:pr-14">
-  <div class="w-full max-w-[500px] lg:ml-auto">
+<div class="w-full flex flex-col items-start lg:pr-10 xl:pr-16">
+  <div class="w-full max-w-[480px] lg:ml-auto">
+    <!-- Section Heading -->
     <h2
-      class="text-4xl sm:text-5xl lg:text-[68px] xl:text-[76px] font-bold text-ink tracking-tight leading-[0.95] mb-4 sm:mb-6"
+      class="text-5xl sm:text-6xl lg:text-[76px] font-bold text-ink tracking-tight leading-[0.95] mb-4"
     >
       Ceník
     </h2>
-    <p
-      class="text-[15px] text-ink-muted leading-relaxed mb-8 sm:mb-10"
-    >
-      {pricingSubtitle}
+
+    <!-- Subtitle -->
+    <p class="text-[15px] sm:text-base text-neutral-600 leading-relaxed max-w-[42ch] mb-6">
+      Žádné pronájmy ani montáž zdarma. Osobní předvedení.<br class="hidden sm:inline" />
+      14 dní na vyzkoušení.
     </p>
 
-    <!-- Pricing Cards Stack -->
-    <div class="space-y-3.5 sm:space-y-4">
-      {
-        pricingTiers.map((tier) => (
-          <div class="bg-box rounded-lg p-5 sm:p-6 lg:p-7 flex flex-col justify-between gap-3 transition-transform hover:-translate-y-0.5">
-            <div>
-              <div class="flex items-baseline gap-2 flex-wrap mb-2.5">
-                <span class="text-3xl sm:text-4xl lg:text-[42px] font-medium text-ink tracking-tight leading-none">
-                  {tier.price}
-                </span>
-                <span class="text-sm text-ink-muted font-normal tracking-normal">
-                  {tier.period}
-                </span>
-              </div>
-              <h3 class="text-base font-bold text-ink leading-snug mb-1.5">
-                {tier.title}
-              </h3>
-              <p class="text-[13px] text-ink-muted leading-relaxed">
-                {tier.description}
-              </p>
-            </div>
+    <!-- Top Promo Badge: Nabídka pro prvních 100 klientů -->
+    <div
+      class="inline-flex items-center gap-2 rounded-full border border-neutral-900 pl-1 pr-3.5 py-1 mb-5 select-none"
+    >
+      <span
+        class="rounded-full bg-ink text-white font-bold text-[11px] sm:text-xs px-2.5 py-0.5 tracking-tight"
+      >
+        -50 %
+      </span>
+      <span class="text-xs sm:text-[13px] font-medium text-ink">
+        Nabídka pro prvních 100 klientů
+      </span>
+    </div>
 
-            {tier.hasCta && (
-              <div class="pt-2">
-                <button
-                  type="button"
-                  data-action="focus-contact"
-                  class="inline-flex items-center justify-center rounded-full px-6 py-2.5 bg-ink text-white font-medium text-sm hover:opacity-85 active:scale-95 transition-all shadow-xs cursor-pointer select-none"
-                >
-                  {tier.ctaText || "Mám zájem"}
-                </button>
-              </div>
-            )}
+    <!-- Pricing Cards Stack -->
+    <div class="space-y-4 sm:space-y-5">
+      <!-- Card 1: Základní sada (White card with black border) -->
+      <div
+        class="relative bg-white rounded-2xl border-[1.5px] border-neutral-900 p-6 sm:p-7 shadow-xs"
+      >
+        <!-- Price row + -50% badge -->
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <div class="flex items-baseline gap-2 sm:gap-2.5 flex-wrap">
+              <span
+                class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-ink tracking-tight leading-none"
+              >
+                2 990 Kč
+              </span>
+              <span
+                class="text-base sm:text-lg text-neutral-400 line-through font-normal"
+              >
+                5 980 Kč
+              </span>
+              <span class="text-xs sm:text-[13px] text-neutral-500 font-normal">
+                / první rok
+              </span>
+            </div>
+            <p class="text-xs sm:text-[13px] font-bold text-neutral-900 mt-2">
+              Ušetříte 2 990 Kč
+            </p>
           </div>
-        ))
-      }
+          <span
+            class="inline-flex items-center justify-center rounded-full bg-[#FF4747] text-white text-[12px] font-bold px-2.5 py-0.5 tracking-tight shrink-0 shadow-xs"
+          >
+            -50 %
+          </span>
+        </div>
+
+        <!-- Description -->
+        <h3 class="text-base sm:text-[17px] font-bold text-ink mt-5">
+          1. rok provozu zdarma
+        </h3>
+        <p
+          class="text-xs sm:text-[13px] text-neutral-600 mt-1.5 leading-relaxed max-w-[38ch]"
+        >
+          Kompletní fyzická sada Vochranka + 1. rok provozu bez dalších poplatků.
+        </p>
+
+        <!-- Toggle: Co je v sadě -->
+        <div class="mt-5">
+          <button
+            type="button"
+            class="accordion-toggle inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3.5 py-1 text-xs sm:text-[13px] font-medium text-ink hover:bg-neutral-50 active:scale-95 transition-all cursor-pointer select-none"
+            aria-expanded="false"
+            aria-controls="co-je-v-sade-list"
+          >
+            <span class="toggle-icon text-sm font-light leading-none">+</span>
+            <span>Co je v sadě</span>
+          </button>
+          <div
+            id="co-je-v-sade-list"
+            class="hidden pt-3 mt-3 border-t border-line/60 text-xs sm:text-[13px] text-neutral-600 space-y-1.5 animate-fade-in"
+          >
+            <div class="flex items-center gap-2 text-ink">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>1× Diskrétní tísňové tlačítko s magnetem</span>
+            </div>
+            <div class="flex items-center gap-2 text-ink">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>1× Hlasitá siréna do zásuvky</span>
+            </div>
+            <div class="flex items-center gap-2 text-ink">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>1× GSM centrála se záložní baterií</span>
+            </div>
+            <div class="flex items-center gap-2 text-ink">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>1× Samolepicí kovová 3M podložka</span>
+            </div>
+            <div class="flex items-center gap-2 text-ink">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>1. rok provozu, neomezené SMS a 24/7 monitoring</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Provoz od 2. roku (Light gray card) -->
+      <div class="relative bg-[#F5F5F5] rounded-2xl p-6 sm:p-7">
+        <!-- Top row: Heading + -50% badge -->
+        <div class="flex items-center justify-between gap-3 mb-3">
+          <h3 class="text-base sm:text-[17px] font-bold text-ink">
+            Provoz od 2. roku
+          </h3>
+          <span
+            class="inline-flex items-center justify-center rounded-full bg-[#FF4747] text-white text-[12px] font-bold px-2.5 py-0.5 tracking-tight shrink-0 shadow-xs"
+          >
+            -50 %
+          </span>
+        </div>
+
+        <!-- Price row -->
+        <div class="flex items-baseline gap-2 flex-wrap">
+          <span
+            class="text-3xl sm:text-4xl lg:text-[44px] font-bold text-ink tracking-tight leading-none"
+          >
+            83 Kč
+          </span>
+          <span class="text-xs sm:text-[13px] text-neutral-500 font-normal">
+            / měsíčně
+          </span>
+          <span
+            class="text-base sm:text-lg text-neutral-400 line-through font-normal ml-0.5"
+          >
+            167 Kč
+          </span>
+        </div>
+        <p class="text-xs sm:text-[13px] text-neutral-500 mt-1">
+          999 Kč ročně (původně 1 998 Kč)
+        </p>
+
+        <!-- Divider line -->
+        <div class="border-t border-neutral-300/80 my-4"></div>
+
+        <!-- Description -->
+        <p
+          class="text-xs sm:text-[13px] text-neutral-600 leading-relaxed max-w-[40ch]"
+        >
+          Platí se až od druhého roku provozu – méně než jedno kafe měsíčně.
+        </p>
+
+        <!-- Toggle: Co je v ceně -->
+        <div class="mt-4 sm:mt-5">
+          <button
+            type="button"
+            class="accordion-toggle inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-transparent px-3.5 py-1 text-xs sm:text-[13px] font-medium text-ink hover:bg-white active:scale-95 transition-all cursor-pointer select-none"
+            aria-expanded="false"
+            aria-controls="co-je-v-cene-list"
+          >
+            <span class="toggle-icon text-sm font-light leading-none">+</span>
+            <span>Co je v ceně</span>
+          </button>
+          <div
+            id="co-je-v-cene-list"
+            class="hidden pt-3 mt-3 border-t border-line/60 text-xs sm:text-[13px] text-neutral-600 space-y-1.5 animate-fade-in"
+          >
+            <div class="flex items-center gap-2 text-ink">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Neomezené nouzové SMS až na 3 zvolená telefonní čísla</span>
+            </div>
+            <div class="flex items-center gap-2 text-ink">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Nepřetržitý 24/7 monitoring provozu a dostupnosti centrály</span>
+            </div>
+            <div class="flex items-center gap-2 text-ink">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Předplacená datová SIM karta v centrále</span>
+            </div>
+            <div class="flex items-center gap-2 text-ink">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Zákaznická a technická podpora v ČR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Below Card 2: Potřebujete více tlačítek? -->
+    <div class="mt-6 sm:mt-7">
+      <h4 class="text-sm sm:text-[15px] font-bold text-ink mb-1">
+        Potřebujete více tlačítek?
+      </h4>
+      <p
+        class="text-xs sm:text-[13px] text-neutral-600 leading-relaxed max-w-[42ch]"
+      >
+        Každé další tlačítko stojí jednorázově 699 Kč s 1. rokem provozu zdarma.
+      </p>
     </div>
   </div>
 </div>
+
+<script>
+  function setupPricingAccordions() {
+    const buttons = document.querySelectorAll<HTMLButtonElement>(".accordion-toggle");
+
+    buttons.forEach((btn) => {
+      if (btn.dataset.bound === "true") return;
+      btn.dataset.bound = "true";
+
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("aria-controls");
+        if (!targetId) return;
+        const target = document.getElementById(targetId);
+        const icon = btn.querySelector<HTMLElement>(".toggle-icon");
+        if (!target) return;
+
+        const isExpanded = btn.getAttribute("aria-expanded") === "true";
+        if (isExpanded) {
+          btn.setAttribute("aria-expanded", "false");
+          target.classList.add("hidden");
+          if (icon) icon.textContent = "+";
+        } else {
+          btn.setAttribute("aria-expanded", "true");
+          target.classList.remove("hidden");
+          if (icon) icon.textContent = "−";
+        }
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupPricingAccordions);
+  } else {
+    setupPricingAccordions();
+  }
+  document.addEventListener("astro:page-load", setupPricingAccordions);
+</script>
