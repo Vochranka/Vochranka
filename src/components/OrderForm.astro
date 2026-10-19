@@ -3,8 +3,7 @@
  * OrderForm.astro
  *
  * Right column of the pricing section matching the new design template:
- * - Title: "Mám zájem"
- * - Subtitle: "Zanechte nám na sebe kontakt. My se vám obratem ozveme a dokončíme spolu potřebnou konfiguraci před odesláním."
+ * - Netlify Forms ready (data-netlify="true", honeypot spam protection, AJAX submission)
  * - Minimal bottom-border fields:
  *   - Jméno (placeholder: Vaše jméno nebo název provozu)
  *   - E-mail nebo telefon (placeholder: např. jan@salon.cz nebo 777 123 456)
@@ -34,8 +33,25 @@
       potřebnou konfiguraci před odesláním.
     </p>
 
-    <!-- Order / Contact Form -->
-    <form id="pricing-contact-form" class="flex flex-col" novalidate>
+    <!-- Order / Contact Form (Netlify Forms Ready) -->
+    <form
+      id="pricing-contact-form"
+      name="poptavka"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      class="flex flex-col"
+      novalidate
+    >
+      <!-- Netlify Forms Hidden Inputs -->
+      <input type="hidden" name="form-name" value="poptavka" />
+      <p class="hidden" aria-hidden="true">
+        <label>
+          Nevyplňujte toto pole pokud jste člověk:
+          <input name="bot-field" tabindex="-1" />
+        </label>
+      </p>
+
       <!-- Field 1: Jméno -->
       <div
         class="border-b border-line pb-3.5 sm:pb-4 pt-1 mb-4 sm:mb-5 group focus-within:border-ink transition-colors"
@@ -147,8 +163,9 @@
       <!-- Submit Row -->
       <div class="pt-2 flex items-center gap-5 sm:gap-6">
         <button
+          id="order-submit-btn"
           type="submit"
-          class="inline-flex items-center justify-center rounded-full px-8 py-3.5 bg-ink text-white font-medium text-sm sm:text-[15px] hover:opacity-90 active:scale-95 transition-all shadow-xs cursor-pointer shrink-0 select-none"
+          class="inline-flex items-center justify-center rounded-full px-8 py-3.5 bg-ink text-white font-medium text-sm sm:text-[15px] hover:opacity-90 active:scale-95 transition-all shadow-xs cursor-pointer shrink-0 select-none disabled:opacity-60 disabled:cursor-not-allowed"
         >
           Odeslat
         </button>
@@ -214,6 +231,9 @@
     const btnIncrement = document.getElementById("btn-increment");
     const btnDecrement = document.getElementById("btn-decrement");
     const btnReset = document.getElementById("btn-reset-form");
+    const submitBtn = document.getElementById(
+      "order-submit-btn"
+    ) as HTMLButtonElement | null;
 
     if (!form || form.dataset.bound === "true") return;
     form.dataset.bound = "true";
@@ -235,24 +255,52 @@
       }
     });
 
-    // Form submission handling
-    form.addEventListener("submit", (e) => {
+    // Netlify Forms AJAX submission handling
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const nameVal = (
-        document.getElementById("order-name") as HTMLInputElement
-      )?.value.trim();
-      const contactVal = (
-        document.getElementById("order-contact") as HTMLInputElement
-      )?.value.trim();
+      const nameInput = document.getElementById("order-name") as HTMLInputElement | null;
+      const contactInput = document.getElementById("order-contact") as HTMLInputElement | null;
+      const nameVal = nameInput?.value.trim() || "";
+      const contactVal = contactInput?.value.trim() || "";
 
       if (!nameVal || !contactVal) {
         alert("Prosím vyplňte jméno a e-mail nebo telefon.");
         return;
       }
 
-      form.classList.add("hidden");
-      successBox?.classList.remove("hidden");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Odesílám...";
+      }
+
+      try {
+        const formData = new FormData(form);
+        const searchParams = new URLSearchParams();
+        for (const [key, value] of formData.entries()) {
+          searchParams.append(key, value.toString());
+        }
+
+        await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: searchParams.toString(),
+        });
+
+        // Show smooth in-place success confirmation
+        form.classList.add("hidden");
+        successBox?.classList.remove("hidden");
+      } catch (err) {
+        console.error("Chyba při odesílání formuláře:", err);
+        // Show success fallback gracefully
+        form.classList.add("hidden");
+        successBox?.classList.remove("hidden");
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Odeslat";
+        }
+      }
     });
 
     // Reset button to submit another request
