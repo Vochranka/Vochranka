@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; */
-  --font-sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
 
