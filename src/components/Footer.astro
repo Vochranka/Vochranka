@@ -1,38 +1,111 @@
 ---
+import { SITE_CONFIG } from "@/data/siteConfig";
 
+const navLinks = [
+  { label: "K čemu slouží", href: "#vyuziti" },
+  { label: "Umístění", href: "#umisteni" },
+  { label: "Instalace", href: "#instalace" },
+  { label: "Recenze", href: "#recenze" },
+  { label: "Ceník", href: "#cenik" },
+  { label: "Časté dotazy", href: "#faq" },
+];
 ---
 
 <footer
-  class="pt-24 sm:pt-28 pb-10 px-6 sm:px-[5.5%] flex flex-wrap justify-between gap-8 text-[13px] bg-white select-none"
+  class="bg-white border-t border-line/60 pt-16 sm:pt-20 lg:pt-24 pb-12 px-6 sm:px-[5.5%]"
 >
-  <div
-    class="w-full text-4xl sm:text-5xl lg:text-[60px] font-extrabold uppercase tracking-tight leading-none text-ink"
-  >
-    Vochranka
-  </div>
+  <div class="max-w-7xl mx-auto">
+    <!-- Horní část: Velký název značky -->
+    <div class="mb-12 sm:mb-16">
+      <a
+        href="#top"
+        class="inline-block text-4xl sm:text-5xl lg:text-[60px] font-extrabold uppercase tracking-tight leading-none text-ink hover:opacity-85 transition-opacity"
+      >
+        Vochranka
+      </a>
+    </div>
 
-  <p class="max-w-[46ch] text-ink-muted leading-relaxed">
-    Bezpečnostní systém navržen s empatií pro sólo masérky, kosmetičky,
-    terapeutky. Pro klid při každém klientském setkání.
-  </p>
-
-  <p id="footer-kontakt" class="max-w-[46ch] text-ink-muted leading-relaxed scroll-mt-28">
-    <a
-      href="mailto:info@vochranka.cz"
-      class="underline underline-offset-4 decoration-line hover:text-brown transition-colors"
-      >info@vochranka.cz</a
-    ><br />
-    Praha, Středočeský kraj ~ Osobní zkoušky po domluvě<br />
-    <a
-      href="https://instagram.com/vochranka.cz"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="underline underline-offset-4 decoration-line hover:text-brown transition-colors"
-      >@vochranka.cz</a
+    <!-- Hlavní mřížka sloupců podle klasické konvence -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 sm:pb-16 border-b border-line/60"
     >
-  </p>
+      <!-- 1. Sloupec: Popis a poslání značky -->
+      <div class="lg:col-span-5 space-y-4">
+        <h3
+          class="text-xs font-bold uppercase tracking-wider text-ink font-heading"
+        >
+          O systému
+        </h3>
+        <p
+          class="text-sm sm:text-[15px] text-ink-muted leading-relaxed max-w-[42ch]"
+        >
+          Diskrétní bezpečnostní technologie navržená s empatií pro sólo
+          masérky, kosmetičky a terapeutky. Klid a bezpečí při každém klientském
+          setkání.
+        </p>
+      </div>
 
-  <p class="w-full pt-8 text-xs text-ink-faint border-t border-line mt-4">
-    © 2026 Vochranka. Všechna práva vyhrazena.
-  </p>
+      <!-- 2. Sloupec: Kontakt a podpora (zarovnaný doprava) -->
+      <div
+        id="footer-kontakt"
+        class="lg:col-span-4 lg:col-start-9 md:ml-auto w-full max-w-[360px] space-y-8 scroll-mt-28"
+      >
+        <address
+          class="not-italic space-y-3 text-sm sm:text-[15px] text-ink-muted"
+        >
+          <div>
+            <span
+              class="block text-xs text-ink-faint uppercase tracking-wider mb-1"
+              >E-mail</span
+            >
+            <a
+              href="mailto:info@vochranka.cz"
+              class="text-ink font-medium text-base underline underline-offset-4 decoration-line hover:text-brown transition-colors"
+            >
+              info@vochranka.cz
+            </a>
+          </div>
+
+          <div>
+            <span
+              class="block text-xs text-ink-faint uppercase tracking-wider mb-1"
+              >Sociální sítě</span
+            >
+            <a
+              href="https://instagram.com/vochranka"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-ink font-medium underline underline-offset-4 decoration-line hover:text-brown transition-colors inline-flex items-center gap-1.5"
+            >
+              <span>@vochranka</span>
+            </a>
+          </div>
+
+          <div>
+            <span
+              class="block text-xs text-ink-faint uppercase tracking-wider mb-1"
+              >Působnost</span
+            >
+            <p class="text-ink font-medium">Praha, Středočeský kraj</p>
+            <p class="text-xs text-ink-muted mt-0.5">
+              Osobní zkoušky v salónech po domluvě
+            </p>
+          </div>
+        </address>
+      </div>
+    </div>
+
+    <!-- Spodní lišta: Copyright & Právní informace -->
+    <div
+      class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-faint"
+    >
+      <p>© {new Date().getFullYear()} Vochranka. Všechna práva vyhrazena.</p>
+      <div class="flex items-center gap-6">
+        <a href="#cenik" class="hover:text-ink transition-colors"
+          >Ceník & Objednávka</a
+        >
+        <a href="#faq" class="hover:text-ink transition-colors">Časté dotazy</a>
+      </div>
+    </div>
+  </div>
 </footer>

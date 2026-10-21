@@ -1,0 +1,254 @@
+---
+interface Review {
+  name: string;
+  role: string;
+  rating: number;
+  quote: string;
+}
+
+const reviews: Review[] = [
+  {
+    name: "Lenka M.",
+    role: "Masérka, Praha 2 • Studio Relax & Tělo",
+    rating: 5,
+    quote:
+      "„Pracuji sama do večerních hodin. Tlačítko mám přímo zespodu rámu lehátka, nahmatám ho poslepu. Už jen to vědomí, že stačí podržet a manželovi pípne SMS a v salonu začne řvát siréna, mi dává neuvěřitelný klid.“",
+  },
+  {
+    name: "Jana V.",
+    role: "Kosmetička, Brno • Beauty by Jana",
+    rating: 5,
+    quote:
+      "„Nedávno mi do salonu vešel dost podezřelý chlap. Byla jsem moc ráda, že mám Vochranku hned u ruky. Naštěstí odešel, ale ten pocit bezpečí je k nezaplacení. Doporučuji všem.“",
+  },
+  {
+    name: "MUDr. Klára S.",
+    role: "Praktická lékařka, Plzeň • Ordinace pro dospělé",
+    rating: 5,
+    quote:
+      "„V ordinaci bývám se sestrou často samy a pacienti bývají občas agresivní. Tlačítko pod stolem nám dává jistotu, že pomoc zavoláme do dvou vteřin bez toho, aby si toho kdokoli v místnosti všiml.“",
+  },
+  {
+    name: "Petra H.",
+    role: "Kadeřnice, Ostrava • Salon Glamour",
+    rating: 5,
+    quote:
+      "„Instalaci jsem zvládla za tři minuty bez jakéhokoliv vrtání. Siréna je opravdu odstrašující a možnost mít tlačítko magnetem hned po ruce na kovovém stolku je geniální řešení.“",
+  },
+  {
+    name: "Martina K.",
+    role: "Majitelka butiku, Praha 1 • Fashion Corner",
+    rating: 5,
+    quote:
+      "„Mít v obchodě diskrétní tlačítko napojené na telefon manžela byl pro mě zásadní důvod pořízení. Perfektní zpracování a naprostá spolehlivost.“",
+  },
+  {
+    name: "Bc. Andrea T.",
+    role: "Fyzioterapeutka, Liberec • FyzioCare",
+    rating: 5,
+    quote:
+      "„Po jedné nepříjemné zkušenosti s problematickým klientem jsem hledala rychlé řešení. Vochranka splnila všechna očekávání – jednoduché, nenápadné a stoprocentně funkční.“",
+  },
+];
+---
+
+<section
+  id="recenze"
+  class="relative bg-white py-16 sm:py-24 lg:py-28 px-6 sm:px-[5.5%] border-t border-line/60"
+  aria-label="Proč si nás lidé pořizují"
+>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <!-- LEVÝ SLOUPEC: "Proč si nás lidé pořizují" (VOCHRANKU MÁ 1 OSOBA zatím zakomentováno) -->
+      <div class="lg:col-span-4 xl:col-span-3.5 flex flex-col justify-center text-left">
+        <!-- ZATÍM ZAKOMENTOVÁNO: VOCHRANKU MÁ 1 OSOBA
+        <h3
+          class="font-heading font-black text-ink text-3xl sm:text-4xl lg:text-[42px] xl:text-[48px] uppercase tracking-tight leading-[0.98]"
+        >
+          Vochranku má
+        </h3>
+        <span
+          class="font-heading font-black text-[#8B5CF6] text-7xl sm:text-8xl lg:text-[110px] xl:text-[124px] leading-none my-1 sm:my-2.5 select-none"
+        >
+          1
+        </span>
+        <h3
+          class="font-heading font-black text-ink text-3xl sm:text-4xl lg:text-[42px] xl:text-[48px] uppercase tracking-tight leading-[0.98]"
+        >
+          Osoba
+        </h3>
+        -->
+
+        <h2
+          class="font-heading font-bold text-ink text-[clamp(30px,5.4vw,26px)] sm:text-3xl lg:text-4xl xl:text-6xl tracking-tight leading-tight whitespace-nowrap lg:whitespace-normal lg:max-w-[8ch]"
+        >
+          Proč si nás lidé pořizují
+        </h2>
+      </div>
+
+      <!-- PRAVÝ SLOUPEC: HORIZONTÁLNÍ TRACK RECENZÍ -->
+      <div class="lg:col-span-8 xl:col-span-8.5 min-w-0">
+        <!-- Horizontální rolovací dráha (Desktop i Mobil) -->
+        <div
+          id="reviews-slider"
+          class="flex gap-5 sm:gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory py-2 px-1 cursor-grab active:cursor-grabbing scroll-smooth select-none"
+          tabindex="0"
+          role="region"
+          aria-label="Seznam recenzí"
+        >
+          {
+            reviews.map((rev) => (
+              <article
+                class="w-[290px] sm:w-[360px] lg:w-[410px] shrink-0 snap-start bg-box rounded-xl p-6 sm:p-8 lg:p-9 border border-line/60 flex flex-col justify-between transition-transform duration-200 hover:-translate-y-0.5"
+              >
+                <!-- Horní část: Hvězdičky + Citace -->
+                <div>
+                  <!-- 5 černých hvězdiček podle předlohy -->
+                  <div class="flex items-center gap-1 mb-5 sm:mb-6 text-ink" aria-label="Hodnocení 5 z 5 hvězdiček">
+                    {Array.from({ length: rev.rating }).map(() => (
+                      <svg
+                        class="w-4 h-4 sm:w-[17px] sm:h-[17px] fill-ink shrink-0"
+                        viewBox="0 0 20 20"
+                        aria-hidden="true"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+
+                  <!-- Text recenze -->
+                  <p class="font-sans italic text-ink/90 text-[14px] sm:text-[15px] leading-relaxed select-text">
+                    {rev.quote}
+                  </p>
+                </div>
+
+                <!-- Spodní část: Oddělovač + Autor -->
+                <div>
+                  <div class="w-full h-px bg-line/60 my-5 sm:my-6" aria-hidden="true" />
+                  <p class="font-heading font-bold text-ink text-[15px] sm:text-[16px] leading-tight select-text">
+                    {rev.name}
+                  </p>
+                  <p class="font-sans text-xs sm:text-[13px] text-ink-muted mt-1 select-text">
+                    {rev.role}
+                  </p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- SPODNÍ LIŠTA: "⇄ TAŽENÍM POSUŇTE DÁL" a navigační šipky (samostatný řádek mřížky pod kartami) -->
+      <div class="lg:col-span-8 lg:col-start-5 xl:col-span-8.5 xl:col-start-5 flex items-center justify-between sm:justify-end gap-4 px-1 select-none">
+        <!-- Tlačítka pro klikání na desktopu / mobilu -->
+        <div class="flex items-center gap-2 order-2 sm:order-1">
+          <button
+            id="reviews-prev-btn"
+            type="button"
+            class="w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink-muted hover:text-ink hover:border-ink transition-colors cursor-pointer focus:outline-none"
+            aria-label="Předchozí recenze"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button
+            id="reviews-next-btn"
+            type="button"
+            class="w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink-muted hover:text-ink hover:border-ink transition-colors cursor-pointer focus:outline-none"
+            aria-label="Další recenze"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Nápověda "TAŽENÍM POSUŇTE DÁL" přesně podle fotky -->
+        <button
+          id="reviews-drag-hint"
+          type="button"
+          class="flex items-center gap-2 text-[11px] sm:text-xs font-heading font-medium tracking-wider uppercase text-neutral-400 hover:text-neutral-600 transition-colors cursor-pointer order-1 sm:order-2"
+        >
+          <svg
+            class="w-4 h-4 text-neutral-400 shrink-0"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M7 16l-4-4m0 0l4-4m-4 4h18m-4 4l4-4m0 0l-4-4" />
+          </svg>
+          <span>Tažením posuňte dál</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupReviewsSlider() {
+    const slider = document.getElementById("reviews-slider");
+    const prevBtn = document.getElementById("reviews-prev-btn");
+    const nextBtn = document.getElementById("reviews-next-btn");
+    const dragHint = document.getElementById("reviews-drag-hint");
+
+    if (!slider) return;
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    // Mouse drag-to-scroll na počítači
+    slider.addEventListener("mousedown", (e) => {
+      isDown = true;
+      slider.classList.add("cursor-grabbing");
+      slider.classList.remove("cursor-grab");
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+
+    const endDrag = () => {
+      if (!isDown) return;
+      isDown = false;
+      slider.classList.remove("cursor-grabbing");
+      slider.classList.add("cursor-grab");
+    };
+
+    slider.addEventListener("mouseleave", endDrag);
+    slider.addEventListener("mouseup", endDrag);
+
+    slider.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 1.4; // Rychlost posunu
+      slider.scrollLeft = scrollLeft - walk;
+    });
+
+    // Výpočet posunu o šířku jedné karty
+    const getScrollStep = () => {
+      const card = slider.querySelector("article");
+      return card ? card.offsetWidth + 24 : 360;
+    };
+
+    prevBtn?.addEventListener("click", () => {
+      slider.scrollBy({ left: -getScrollStep(), behavior: "smooth" });
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      slider.scrollBy({ left: getScrollStep(), behavior: "smooth" });
+    });
+
+    dragHint?.addEventListener("click", () => {
+      slider.scrollBy({ left: getScrollStep(), behavior: "smooth" });
+    });
+  }
+
+  // Inicializace po načtení a při Astro přechodech
+  setupReviewsSlider();
+  document.addEventListener("astro:page-load", setupReviewsSlider);
+</script>
