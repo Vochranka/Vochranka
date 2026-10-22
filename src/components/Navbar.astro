@@ -21,7 +21,7 @@
       id="main-navbar"
       class="pointer-events-auto w-full flex items-center justify-between text-[17px] font-semibold tracking-tight select-none rounded-full px-5 sm:px-8 py-3 sm:py-3.5 transition-all duration-300 bg-transparent text-white border border-transparent shadow-none"
     >
-      <a href="#top" class="uppercase hover:opacity-80 transition-opacity shrink-0">
+      <a href="/" class="uppercase hover:opacity-80 transition-opacity shrink-0">
         VOCHRANKA
       </a>
 
@@ -29,16 +29,17 @@
         class="hidden md:flex items-center gap-6 text-[14px] font-normal"
         aria-label="Hlavní navigace"
       >
-        <a href="#vyuziti" class="hover:underline underline-offset-4">K čemu slouží</a>
-        <a href="#umisteni" class="hover:underline underline-offset-4">Umístění</a>
-        <a href="#instalace" class="hover:underline underline-offset-4">Instalace</a>
-        <a href="#cenik" class="hover:underline underline-offset-4">Ceník</a>
-        <a href="#faq" class="hover:underline underline-offset-4">Časté dotazy</a>
+        <a href="/#vyuziti" class="hover:underline underline-offset-4">K čemu slouží</a>
+        <a href="/#umisteni" class="hover:underline underline-offset-4">Umístění</a>
+        <a href="/#instalace" class="hover:underline underline-offset-4">Instalace</a>
+        <a href="/#cenik" class="hover:underline underline-offset-4">Ceník</a>
+        <a href="/#faq" class="hover:underline underline-offset-4">Časté dotazy</a>
+        <a href="/o-nas" class="hover:underline underline-offset-4">O nás</a>
       </nav>
 
       <!-- Desktop CTA -->
       <a
-        href="#cenik"
+        href="/#cenik"
         class="hidden md:inline-block underline underline-offset-4 text-[15px] font-medium hover:opacity-80 transition-opacity shrink-0"
       >
         Objednat sadu
@@ -48,7 +49,7 @@
       <button
         id="mobile-menu-toggle"
         type="button"
-        class="md:hidden p-2 -mr-1.5 rounded-full hover:bg-black/5 active:scale-95 transition-all cursor-pointer focus:outline-none"
+        class="md:hidden p-2 -mr-1.5 rounded-full text-white hover:bg-white/10 active:scale-95 transition-all cursor-pointer focus:outline-none"
         aria-label="Otevřít navigaci"
         aria-expanded="false"
       >
@@ -92,39 +93,45 @@
     >
       <nav class="flex flex-col text-[16px] font-medium divide-y divide-line/40 py-1">
         <a
-          href="#vyuziti"
+          href="/#vyuziti"
           class="mobile-nav-link py-3 text-ink hover:text-brown transition-colors"
         >
           K čemu slouží
         </a>
         <a
-          href="#umisteni"
+          href="/#umisteni"
           class="mobile-nav-link py-3 text-ink hover:text-brown transition-colors"
         >
           Umístění
         </a>
         <a
-          href="#instalace"
+          href="/#instalace"
           class="mobile-nav-link py-3 text-ink hover:text-brown transition-colors"
         >
           Instalace
         </a>
         <a
-          href="#cenik"
+          href="/#cenik"
           class="mobile-nav-link py-3 text-ink hover:text-brown transition-colors"
         >
           Ceník
         </a>
         <a
-          href="#faq"
+          href="/#faq"
           class="mobile-nav-link py-3 text-ink hover:text-brown transition-colors"
         >
           Časté dotazy
         </a>
+        <a
+          href="/o-nas"
+          class="mobile-nav-link py-3 text-ink hover:text-brown transition-colors"
+        >
+          O nás
+        </a>
       </nav>
 
       <a
-        href="#cenik"
+        href="/#cenik"
         class="mobile-nav-link mt-4 block w-full py-3.5 text-center font-bold text-sm text-white bg-ink rounded-full hover:bg-neutral-800 active:scale-95 transition-all shadow-sm"
       >
         Objednat sadu
@@ -168,6 +175,10 @@
           "border-line",
           "shadow-md",
         );
+        if (toggleBtn) {
+          toggleBtn.classList.remove("text-white", "hover:bg-white/10");
+          toggleBtn.classList.add("text-ink", "hover:bg-black/5");
+        }
       } else {
         navbar.classList.remove(
           "bg-white/50",
@@ -185,6 +196,10 @@
           "border-transparent",
           "shadow-none",
         );
+        if (toggleBtn) {
+          toggleBtn.classList.add("text-white", "hover:bg-white/10");
+          toggleBtn.classList.remove("text-ink", "hover:bg-black/5");
+        }
       }
     }
 

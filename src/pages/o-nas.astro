@@ -1,0 +1,216 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import MobileStickyBar from "../components/MobileStickyBar.astro";
+---
+
+<Layout
+  title="O nás | Vochránka – Bezpečnostní systém"
+  description="Příběh Vochránky: proč jsme vytvořili diskrétní tísňové tlačítko pro lidi pracující o samotě v salonech, ordinacích a večerkách."
+>
+  <!-- Global Floating Navigation -->
+  <Navbar />
+
+  <main class="w-full overflow-x-hidden">
+    <!-- 1. Hero sekce O nás -->
+    <section
+      class="relative w-full min-h-[60vh] lg:min-h-[68vh] flex flex-col justify-end select-none bg-black text-white px-6 sm:px-[5.5%] pb-12 sm:pb-16 pt-36 sm:pt-40"
+    >
+      <!-- Background Image & Dark Overlay -->
+      <div class="absolute inset-0 w-full h-full z-0 overflow-hidden">
+        <img
+          src="/button_underdesk.jpg"
+          alt="Diskrétní tísňové tlačítko Vochránka"
+          class="w-full h-full object-cover object-[center_35%]"
+          loading="eager"
+          fetchpriority="high"
+          width="1024"
+          height="1024"
+        />
+        <div class="absolute inset-0 bg-black/65 pointer-events-none"></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none"
+        >
+        </div>
+      </div>
+
+      <div class="relative z-10 w-full max-w-7xl mx-auto">
+        <span
+          class="block text-xs sm:text-sm font-bold uppercase tracking-widest text-[#E07A5F] mb-3"
+        >
+          Příběh české Vochránky
+        </span>
+        <h1
+          class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white uppercase leading-[0.98] max-w-4xl mb-6"
+        >
+          Nikdo by se v práci<br />
+          neměl cítit bezbranný
+        </h1>
+        <p
+          class="text-white/85 text-base sm:text-lg lg:text-xl max-w-2xl leading-relaxed"
+        >
+          Vytvořili jsme Vochránku, aby měli lidé pracující o samotě jistotu, že
+          pomoc je vždy na dosah jediného stisku – diskrétně, spolehlivě a bez
+          zbytečných smluv.
+        </p>
+      </div>
+    </section>
+
+    <!-- 2. Příběh: Proč Vochránka vznikla -->
+    <section class="bg-white py-16 sm:py-24 px-6 sm:px-[5.5%]">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <div class="lg:col-span-5">
+            <h2
+              class="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink uppercase tracking-tight leading-tight"
+            >
+              Proč jsme Vochránku vytvořili
+            </h2>
+            <div class="w-16 h-1 bg-ink mt-5"></div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-6 text-neutral-600 text-base sm:text-[17px] leading-relaxed">
+            <p>
+              Každý den v Česku tisíce lidí otevírají své kosmetické salony, kadeřnictví,
+              ordinace, kavárny nebo večerky. Velmi často jsou na celé provozovně úplně sami.
+              Když se zákazník začne chovat divně, dotěrně nebo agresivně, telefon bývá
+              v kabelce, na nabíječce nebo v zázemí.
+            </p>
+            <p>
+              Vzít telefon do ruky a vytáčet tísňovou linku přímo před problémovým
+              člověkem navíc situaci často jen vyhrotí. Člověk potřebuje možnost přivolat
+              pomoc <strong class="text-ink font-semibold">okamžitě, poslepu a bez toho, aby si toho kdokoliv všiml</strong>.
+            </p>
+            <p>
+              Klasické bezpečnostní agentury však nabízejí jen složité ústředny s kódovými
+              klávesnicemi, vyžadují vrtání do zdí a nutí lidi do víceletých smluv
+              s drahými měsíčními poplatky. Věděli jsme, že to jde udělat lépe.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Naše tři pilíře -->
+    <section class="bg-box py-16 sm:py-24 px-6 sm:px-[5.5%] border-y border-line/60">
+      <div class="max-w-7xl mx-auto">
+        <div class="max-w-3xl mb-12 sm:mb-16">
+          <span class="text-xs font-bold uppercase tracking-wider text-ink-muted">
+            Naše hodnoty
+          </span>
+          <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink uppercase tracking-tight leading-tight mt-2"
+          >
+            Tři věci, za kterými si stojíme
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <!-- Pilíř 1 -->
+          <div
+            class="bg-white rounded-2xl p-7 sm:p-9 border border-line/60 flex flex-col justify-between"
+          >
+            <div>
+              <span class="text-3xl lg:text-4xl font-bold text-[#E07A5F] block mb-4">
+                01
+              </span>
+              <h3 class="text-xl sm:text-2xl font-bold text-ink tracking-tight mb-3">
+                Diskrétnost na prvním místě
+              </h3>
+              <p class="text-sm sm:text-[15px] text-neutral-600 leading-relaxed">
+                Žádné odemykání mobilu ani hledání aplikace. Tlačítko pod stolem,
+                pultem nebo v kapse nahmatáte za vteřinu poslepu. Podržením
+                spustíte odstrašující sirénu a odešlete tichou SMS rodině.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pilíř 2 -->
+          <div
+            class="bg-white rounded-2xl p-7 sm:p-9 border border-line/60 flex flex-col justify-between"
+          >
+            <div>
+              <span class="text-3xl lg:text-4xl font-bold text-ink block mb-4">
+                02
+              </span>
+              <h3 class="text-xl sm:text-2xl font-bold text-ink tracking-tight mb-3">
+                Férové podmínky bez pastí
+              </h3>
+              <p class="text-sm sm:text-[15px] text-neutral-600 leading-relaxed">
+                Žádné vázací smlouvy na léta ani skryté poplatky. Kompletní fyzická
+                sada je vaše, 1. rok provozu máte zdarma a od druhého roku platíte
+                jen 83 Kč měsíčně za neomezené SMS a nepřetržitý monitoring.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pilíř 3 -->
+          <div
+            class="bg-white rounded-2xl p-7 sm:p-9 border border-line/60 flex flex-col justify-between"
+          >
+            <div>
+              <span class="text-3xl lg:text-4xl font-bold text-[#74A869] block mb-4">
+                03
+              </span>
+              <h3 class="text-xl sm:text-2xl font-bold text-ink tracking-tight mb-3">
+                České zázemí a osobní přístup
+              </h3>
+              <p class="text-sm sm:text-[15px] text-neutral-600 leading-relaxed">
+                Každou sadu před odesláním osobně testujeme a konfigurujeme v ČR.
+                Po domluvě rádi přijedeme k vám do salonu či ordinace na osobní
+                zkoušku a dáváme 14 dní na vyzkoušení s garancí vrácení peněz.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Zázemí a osobní zkoušky -->
+    <section class="bg-white py-16 sm:py-24 px-6 sm:px-[5.5%]">
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="rounded-3xl bg-neutral-900 text-white p-8 sm:p-14 lg:p-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10"
+        >
+          <div class="max-w-2xl space-y-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#E07A5F]">
+              Kde působíme
+            </span>
+            <h2
+              class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight uppercase leading-tight"
+            >
+              Praha, Středočeský kraj a celá ČR
+            </h2>
+            <p class="text-neutral-300 text-base sm:text-lg leading-relaxed">
+              Vochránku odesíláme kompletně spárovanou a připravenou po celé ČR.
+              V Praze a Středočeském kraji nabízíme po domluvě také možnost osobního
+              předvedení a vyzkoušení přímo u vás na provozovně.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 shrink-0 w-full sm:w-auto">
+            <a
+              href="/#kontakt"
+              class="inline-block text-center rounded-full px-8 py-4 bg-white text-ink font-semibold text-sm hover:bg-neutral-100 active:scale-95 transition-all shadow-md"
+            >
+              Domluvit předvedení
+            </a>
+            <a
+              href="/#cenik"
+              class="inline-block text-center rounded-full px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 active:scale-95 transition-all"
+            >
+              Objednat sadu
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <Footer />
+
+  <!-- Mobile Sticky Bar -->
+  <MobileStickyBar />
+</Layout>
