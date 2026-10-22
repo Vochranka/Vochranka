@@ -80,8 +80,8 @@ export const SITE_CONFIG = {
   ],
   stats: [
     {
-      value: "2 s",
-      label: "Podržením spustíte sirénu",
+      value: "1. rok",
+      label: "Provozu zdarma",
     },
     {
       value: "24/7",
@@ -89,7 +89,7 @@ export const SITE_CONFIG = {
     },
     {
       value: "14 dní",
-      label: "Na vyzkoušení, osobní předvedení",
+      label: "Na vrácení peněz",
     },
   ],
 

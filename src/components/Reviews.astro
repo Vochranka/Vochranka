@@ -61,24 +61,6 @@ const reviews: Review[] = [
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
       <!-- LEVÝ SLOUPEC: "Proč si nás lidé pořizují" (VOCHRANKU MÁ 1 OSOBA zatím zakomentováno) -->
       <div class="lg:col-span-4 xl:col-span-3.5 flex flex-col justify-center text-left">
-        <!-- ZATÍM ZAKOMENTOVÁNO: VOCHRANKU MÁ 1 OSOBA
-        <h3
-          class="font-heading font-black text-ink text-3xl sm:text-4xl lg:text-[42px] xl:text-[48px] uppercase tracking-tight leading-[0.98]"
-        >
-          Vochranku má
-        </h3>
-        <span
-          class="font-heading font-black text-[#8B5CF6] text-7xl sm:text-8xl lg:text-[110px] xl:text-[124px] leading-none my-1 sm:my-2.5 select-none"
-        >
-          1
-        </span>
-        <h3
-          class="font-heading font-black text-ink text-3xl sm:text-4xl lg:text-[42px] xl:text-[48px] uppercase tracking-tight leading-[0.98]"
-        >
-          Osoba
-        </h3>
-        -->
-
         <h2
           class="font-heading font-bold text-ink text-[clamp(30px,5.4vw,26px)] sm:text-3xl lg:text-4xl xl:text-6xl tracking-tight leading-tight whitespace-nowrap lg:whitespace-normal lg:max-w-[8ch]"
         >
@@ -103,19 +85,6 @@ const reviews: Review[] = [
               >
                 <!-- Horní část: Hvězdičky + Citace -->
                 <div>
-                  <!-- 5 černých hvězdiček podle předlohy -->
-                  <div class="flex items-center gap-1 mb-5 sm:mb-6 text-ink" aria-label="Hodnocení 5 z 5 hvězdiček">
-                    {Array.from({ length: rev.rating }).map(() => (
-                      <svg
-                        class="w-4 h-4 sm:w-[17px] sm:h-[17px] fill-ink shrink-0"
-                        viewBox="0 0 20 20"
-                        aria-hidden="true"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-
                   <!-- Text recenze -->
                   <p class="font-sans italic text-ink/90 text-[14px] sm:text-[15px] leading-relaxed select-text">
                     {rev.quote}
@@ -180,9 +149,7 @@ const reviews: Review[] = [
             stroke-linejoin="round"
             aria-hidden="true"
           >
-            <path d="M7 16l-4-4m0 0l4-4m-4 4h18m-4 4l4-4m0 0l-4-4" />
           </svg>
-          <span>Tažením posuňte dál</span>
         </button>
       </div>
     </div>

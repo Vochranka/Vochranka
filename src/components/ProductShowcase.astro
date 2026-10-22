@@ -10,52 +10,63 @@
   <div class="max-w-7xl mx-auto">
     <!-- Top Heading -->
     <h2
-      class="text-center text-3xl sm:text-[clamp(28px,4.5vw,72px)] font-bold text-ink uppercase tracking-tight leading-[1.1] sm:leading-none sm:whitespace-nowrap md:-translate-x-8 lg:-translate-x-12"
+      class="text-center text-2xl sm:text-[clamp(24px,3.8vw,52px)] lg:text-[clamp(38px,4.2vw,68px)] xl:text-[72px] font-bold text-ink uppercase tracking-tight leading-none sm:whitespace-nowrap w-full md:-translate-x-6 lg:-translate-x-10 xl:-translate-x-12"
     >
       Okamžitá pomoc na jedno stisknutí
     </h2>
 
-    <!-- How it works: 3-column layout (Left: Kliknete 2× | Center: Button Image | Right: Podržíte 2 s) -->
-    <div
-      class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-8 md:gap-10 lg:gap-12 mt-12 sm:mt-16 lg:mt-20 max-w-5xl mx-auto md:-translate-x-10 lg:-translate-x-16"
+    <p
+      class="mt-10 sm:mt-14 lg:mt-18 text-neutral-600 text-center text-[15px] sm:text-base md:text-[17px] leading-relaxed max-w-2xl mx-auto"
     >
-      <!-- Left: Kliknete 2× -->
-      <div
-        class="order-2 md:order-1 text-left md:-translate-x-2 lg:-translate-x-3"
-      >
+      Jste sami ve svém salonu, kavárně či večerce a zákazník se začne chovat
+      divně? Podržením tlačítka spustíte <span class="text-[#E07A5F] font-bold"
+        >výstražnou sirénu</span
+      > a pošlete <span class="text-[#74A869] font-bold">nouzovou SMS</span>.
+    </p>
+
+    <!-- How it works: 3-column layout stretching to match the plane of the stats boxes -->
+    <div
+      class="w-full grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-8 md:gap-12 lg:gap-16 mt-8 sm:mt-12 lg:mt-14"
+    >
+      <!-- Left: Podržíte 1 s -->
+      <div class="order-2 md:order-1 text-left flex flex-col justify-center">
         <strong
-          class="block text-2xl sm:text-3xl lg:text-[34px] font-bold text-ink tracking-tight mb-2 sm:mb-3"
+          class="block text-2xl sm:text-3xl lg:text-[34px] xl:text-[36px] font-bold text-ink tracking-tight mb-2 sm:mb-3"
         >
           Podržíte 1 s
         </strong>
-        <p class="text-[15px] leading-relaxed text-neutral-600 max-w-[34ch]">
+        <p
+          class="text-[15px] sm:text-base leading-relaxed text-neutral-600 max-w-[34ch]"
+        >
           Rozezní se hlasitá siréna a okamžitě se odesílají nouzové SMS zprávy.
         </p>
       </div>
 
       <!-- Center: Button Image -->
-      <div class="order-1 md:order-2 flex justify-center py-4 md:py-0">
+      <div
+        class="order-1 md:order-2 flex justify-center items-center py-4 md:py-0"
+      >
         <img
           src="/button1xxx.png"
           alt="Tlačítko Vochranka"
-          class="w-[200px] sm:w-[240px] md:w-[270px] lg:w-[320px] max-w-full h-auto object-contain drop-shadow-[0_24px_30px_rgba(0,0,0,0.12)] select-none pointer-events-none md:translate-x-4 lg:translate-x-7"
+          class="w-[200px] sm:w-[240px] md:w-[270px] lg:w-[320px] max-w-full h-auto object-contain drop-shadow-[0_24px_30px_rgba(0,0,0,0.12)] select-none pointer-events-none"
           loading="lazy"
           width="320"
           height="320"
         />
       </div>
 
-      <!-- Right: Podržíte 2 s -->
+      <!-- Right: Kliknete 2× -->
       <div
-        class="order-3 md:order-3 text-left md:text-right md:translate-x-6 lg:translate-x-10"
+        class="order-3 md:order-3 text-left md:text-right flex flex-col md:items-end justify-center"
       >
         <strong
-          class="block text-2xl sm:text-3xl lg:text-[34px] font-bold text-ink tracking-tight mb-2 sm:mb-3"
+          class="block text-2xl sm:text-3xl lg:text-[34px] xl:text-[36px] font-bold text-ink tracking-tight mb-2 sm:mb-3"
         >
           Kliknete 2×
         </strong>
         <p
-          class="text-[15px] leading-relaxed text-neutral-600 max-w-[34ch] md:ml-auto"
+          class="text-[15px] sm:text-base leading-relaxed text-neutral-600 max-w-[34ch] md:ml-auto"
         >
           Nebezpečí pominulo nebo to byl omyl? Sirénu ztišíte opět pomocí
           tlačítka.
