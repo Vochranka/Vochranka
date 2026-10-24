@@ -27,8 +27,8 @@
     </div>
   </div>
 
-  <!-- Content Container -->
-  <div class="relative z-10 w-full">
+  <!-- Content Container: Heading Top Left -->
+  <div class="relative z-10 w-full pointer-events-none">
     <h2
       class="text-6xl sm:text-7xl lg:text-[104px] font-bold text-white leading-[0.98] tracking-tight"
     >
@@ -37,18 +37,22 @@
     </h2>
   </div>
 
+  <!-- Center Text directly above the button on the counter -->
   <div
-    class="relative z-10 self-end max-w-[380px] text-right flex flex-col items-end gap-5"
+    class="absolute left-1/2 top-[55%] sm:top-[63%] -translate-x-1/2 -translate-y-full z-10 text-center pointer-events-none px-4 w-full sm:w-auto max-w-none"
   >
-    <p class="text-[17px] leading-relaxed text-white/90">
-      Nespočet možností, kam svoje tlačítko umístit.
-      <!-- Drží samo na magnet, v kapse i pod pultem. Jedním stiskem aktivujete
-      sirénu i SMS poplach. -->
+    <p
+      class="font-semibold text-lg md:text-xl lg:text-[22px] leading-relaxed text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] tracking-tight whitespace-nowrap"
+    >
+      Nespočet možností umístění svého tlačítka
     </p>
+  </div>
 
+  <!-- Bottom CTA Button -->
+  <div class="relative z-10 self-end">
     <a
       href="#cenik"
-      class="inline-block rounded-full px-6 py-3 bg-white text-ink font-medium text-sm hover:bg-neutral-100 active:scale-95 transition-all shadow-md"
+      class="inline-block rounded-full px-6 py-3 bg-white text-ink font-medium text-sm hover:bg-neutral-100 active:scale-95 transition-all shadow-md cursor-pointer"
     >
       Objednat sadu
     </a>

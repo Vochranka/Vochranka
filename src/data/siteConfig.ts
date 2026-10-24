@@ -10,10 +10,10 @@ export const SITE_CONFIG = {
   metaDescription: "Diskrétní bezdrátové tísňové tlačítko pod stůl a pult. Hlasitá odstrašující siréna na místě a tichá nouzová SMS rodině či blízkám do 2 vteřin. Bez vrtání a kabelů.",
 
   contact: {
-    phone: "+420 777 123 456",
-    phoneHref: "tel:+420777123456",
-    email: "info@vochranka.cz",
-    emailHref: "mailto:info@vochranka.cz",
+    phone: "+420 776 170 139",
+    phoneHref: "tel:+420776170139",
+    email: "anicka@vochranka.cz",
+    emailHref: "mailto:anicka@vochranka.cz",
     address: "Praha, ČR",
     addressDetail: "Osobní zkoušky po domluvě",
   },
@@ -90,7 +90,7 @@ export const SITE_CONFIG = {
     },
     {
       value: "14 dní",
-      label: "Na vrácení peněz",
+      label: "Na vyzkoušení",
     },
   ],
 

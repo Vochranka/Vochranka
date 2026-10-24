@@ -8,46 +8,11 @@ interface Review {
 
 const reviews: Review[] = [
   {
-    name: "Lenka M.",
-    role: "Masérka, Praha 2 • Studio Relax & Tělo",
+    name: "Terka",
+    role: "Fyzioterapie - Strakonice",
     rating: 5,
     quote:
-      "„Pracuji sama do večerních hodin. Tlačítko mám přímo zespodu rámu lehátka, nahmatám ho poslepu. Už jen to vědomí, že stačí podržet a manželovi pípne SMS a v salonu začne řvát siréna, mi dává neuvěřitelný klid.“",
-  },
-  {
-    name: "Jana V.",
-    role: "Kosmetička, Brno • Beauty by Jana",
-    rating: 5,
-    quote:
-      "„Nedávno mi do salonu vešel dost podezřelý chlap. Byla jsem moc ráda, že mám Vochranku hned u ruky. Naštěstí odešel, ale ten pocit bezpečí je k nezaplacení. Doporučuji všem.“",
-  },
-  {
-    name: "MUDr. Klára S.",
-    role: "Praktická lékařka, Plzeň • Ordinace pro dospělé",
-    rating: 5,
-    quote:
-      "„V ordinaci bývám se sestrou často samy a pacienti bývají občas agresivní. Tlačítko pod stolem nám dává jistotu, že pomoc zavoláme do dvou vteřin bez toho, aby si toho kdokoli v místnosti všiml.“",
-  },
-  {
-    name: "Petra H.",
-    role: "Kadeřnice, Ostrava • Salon Glamour",
-    rating: 5,
-    quote:
-      "„Instalaci jsem zvládla za tři minuty bez jakéhokoliv vrtání. Siréna je opravdu odstrašující a možnost mít tlačítko magnetem hned po ruce na kovovém stolku je geniální řešení.“",
-  },
-  {
-    name: "Martina K.",
-    role: "Majitelka butiku, Praha 1 • Fashion Corner",
-    rating: 5,
-    quote:
-      "„Mít v obchodě diskrétní tlačítko napojené na telefon manžela byl pro mě zásadní důvod pořízení. Perfektní zpracování a naprostá spolehlivost.“",
-  },
-  {
-    name: "Bc. Andrea T.",
-    role: "Fyzioterapeutka, Liberec • FyzioCare",
-    rating: 5,
-    quote:
-      "„Po jedné nepříjemné zkušenosti s problematickým klientem jsem hledala rychlé řešení. Vochranka splnila všechna očekávání – jednoduché, nenápadné a stoprocentně funkční.“",
+      "„V salonu pracuji často do večera sama. Tlačítko mám zespodu stolu na magnetu, takže o něm nikdo neví. Naštěstí jsem ho nemusela použít naostro, ale ten klid za to rozhodně stojí.“",
   },
 ];
 ---
@@ -107,51 +72,55 @@ const reviews: Review[] = [
         </div>
       </div>
 
-      <!-- SPODNÍ LIŠTA: "⇄ TAŽENÍM POSUŇTE DÁL" a navigační šipky (samostatný řádek mřížky pod kartami) -->
-      <div class="lg:col-span-8 lg:col-start-5 xl:col-span-8.5 xl:col-start-5 flex items-center justify-between sm:justify-end gap-4 px-1 select-none">
-        <!-- Tlačítka pro klikání na desktopu / mobilu -->
-        <div class="flex items-center gap-2 order-2 sm:order-1">
-          <button
-            id="reviews-prev-btn"
-            type="button"
-            class="w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink-muted hover:text-ink hover:border-ink transition-colors cursor-pointer focus:outline-none"
-            aria-label="Předchozí recenze"
-          >
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </button>
-          <button
-            id="reviews-next-btn"
-            type="button"
-            class="w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink-muted hover:text-ink hover:border-ink transition-colors cursor-pointer focus:outline-none"
-            aria-label="Další recenze"
-          >
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
-        </div>
+      <!-- SPODNÍ LIŠTA: "⇄ TAŽENÍM POSUŇTE DÁL" a navigační šipky (pokud je více recenzí) -->
+      {
+        reviews.length > 1 && (
+          <div class="lg:col-span-8 lg:col-start-5 xl:col-span-8.5 xl:col-start-5 flex items-center justify-between sm:justify-end gap-4 px-1 select-none">
+            {/* Tlačítka pro klikání na desktopu / mobilu */}
+            <div class="flex items-center gap-2 order-2 sm:order-1">
+              <button
+                id="reviews-prev-btn"
+                type="button"
+                class="w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink-muted hover:text-ink hover:border-ink transition-colors cursor-pointer focus:outline-none"
+                aria-label="Předchozí recenze"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button
+                id="reviews-next-btn"
+                type="button"
+                class="w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink-muted hover:text-ink hover:border-ink transition-colors cursor-pointer focus:outline-none"
+                aria-label="Další recenze"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
 
-        <!-- Nápověda "TAŽENÍM POSUŇTE DÁL" přesně podle fotky -->
-        <button
-          id="reviews-drag-hint"
-          type="button"
-          class="flex items-center gap-2 text-[11px] sm:text-xs font-heading font-medium tracking-wider uppercase text-neutral-400 hover:text-neutral-600 transition-colors cursor-pointer order-1 sm:order-2"
-        >
-          <svg
-            class="w-4 h-4 text-neutral-400 shrink-0"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-          </svg>
-        </button>
-      </div>
+            {/* Nápověda "TAŽENÍM POSUŇTE DÁL" */}
+            <button
+              id="reviews-drag-hint"
+              type="button"
+              class="flex items-center gap-2 text-[11px] sm:text-xs font-heading font-medium tracking-wider uppercase text-neutral-400 hover:text-neutral-600 transition-colors cursor-pointer order-1 sm:order-2"
+            >
+              <svg
+                class="w-4 h-4 text-neutral-400 shrink-0"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+              </svg>
+            </button>
+          </div>
+        )
+      }
     </div>
   </div>
 </section>
