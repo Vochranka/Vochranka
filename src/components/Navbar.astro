@@ -21,7 +21,10 @@
       id="main-navbar"
       class="pointer-events-auto w-full flex items-center justify-between text-[17px] font-semibold tracking-tight select-none rounded-full px-5 sm:px-8 py-3 sm:py-3.5 transition-all duration-300 bg-transparent text-white border border-transparent shadow-none"
     >
-      <a href="/" class="uppercase hover:opacity-80 transition-opacity shrink-0">
+      <a
+        href="/"
+        class="uppercase hover:opacity-80 transition-opacity shrink-0"
+      >
         VOCHRANKA
       </a>
 
@@ -29,11 +32,18 @@
         class="hidden md:flex items-center gap-6 text-[14px] font-normal"
         aria-label="Hlavní navigace"
       >
-        <a href="/#vyuziti" class="hover:underline underline-offset-4">K čemu slouží</a>
-        <a href="/#umisteni" class="hover:underline underline-offset-4">Umístění</a>
-        <a href="/#instalace" class="hover:underline underline-offset-4">Instalace</a>
+        <a href="/#vyuziti" class="hover:underline underline-offset-4">Funkce</a
+        >
+        <a href="/#umisteni" class="hover:underline underline-offset-4"
+          >Umístění</a
+        >
+        <a href="/#instalace" class="hover:underline underline-offset-4"
+          >Instalace</a
+        >
         <a href="/#cenik" class="hover:underline underline-offset-4">Ceník</a>
-        <a href="/#faq" class="hover:underline underline-offset-4">Časté dotazy</a>
+        <a href="/#kontakt" class="hover:underline underline-offset-4"
+          >Kontakt</a
+        >
         <a href="/o-nas" class="hover:underline underline-offset-4">O nás</a>
       </nav>
 
@@ -91,12 +101,14 @@
       aria-modal="true"
       aria-label="Mobilní navigace"
     >
-      <nav class="flex flex-col text-[16px] font-medium divide-y divide-line/40 py-1">
+      <nav
+        class="flex flex-col text-[16px] font-medium divide-y divide-line/40 py-1"
+      >
         <a
           href="/#vyuziti"
           class="mobile-nav-link py-3 text-ink hover:text-brown transition-colors"
         >
-          K čemu slouží
+          Funkce
         </a>
         <a
           href="/#umisteni"
@@ -117,10 +129,10 @@
           Ceník
         </a>
         <a
-          href="/#faq"
+          href="/#kontakt"
           class="mobile-nav-link py-3 text-ink hover:text-brown transition-colors"
         >
-          Časté dotazy
+          Kontakt
         </a>
         <a
           href="/o-nas"
@@ -215,8 +227,16 @@
       menuBackdrop?.classList.remove("opacity-0", "pointer-events-none");
       menuBackdrop?.classList.add("opacity-100", "pointer-events-auto");
 
-      menuDropdown?.classList.remove("opacity-0", "scale-95", "pointer-events-none");
-      menuDropdown?.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+      menuDropdown?.classList.remove(
+        "opacity-0",
+        "scale-95",
+        "pointer-events-none",
+      );
+      menuDropdown?.classList.add(
+        "opacity-100",
+        "scale-100",
+        "pointer-events-auto",
+      );
     }
 
     function closeMenu() {
@@ -231,8 +251,16 @@
       menuBackdrop?.classList.add("opacity-0", "pointer-events-none");
       menuBackdrop?.classList.remove("opacity-100", "pointer-events-auto");
 
-      menuDropdown?.classList.add("opacity-0", "scale-95", "pointer-events-none");
-      menuDropdown?.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+      menuDropdown?.classList.add(
+        "opacity-0",
+        "scale-95",
+        "pointer-events-none",
+      );
+      menuDropdown?.classList.remove(
+        "opacity-100",
+        "scale-100",
+        "pointer-events-auto",
+      );
     }
 
     function toggleMenu() {
@@ -258,7 +286,9 @@
       }
     });
 
-    window.addEventListener("scroll", updateNavbarAppearance, { passive: true });
+    window.addEventListener("scroll", updateNavbarAppearance, {
+      passive: true,
+    });
     updateNavbarAppearance();
   }
 

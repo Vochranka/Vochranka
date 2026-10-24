@@ -63,11 +63,12 @@ export const SITE_CONFIG = {
   ],
 
   navLinks: [
-    { label: "K čemu slouží", href: "#vyuziti" },
+    { label: "Funkce", href: "#vyuziti" },
     { label: "Umístění", href: "#umisteni" },
     { label: "Instalace", href: "#instalace" },
     { label: "Ceník", href: "#cenik" },
-    { label: "Časté dotazy", href: "#faq" },
+    { label: "Kontakt", href: "#kontakt" },
+    { label: "O nás", href: "/o-nas" },
   ],
 
   heroPlaces: [
