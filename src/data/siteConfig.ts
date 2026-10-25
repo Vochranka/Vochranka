@@ -12,8 +12,8 @@ export const SITE_CONFIG = {
   contact: {
     phone: "+420 776 170 139",
     phoneHref: "tel:+420776170139",
-    email: "anicka@vochranka.cz",
-    emailHref: "mailto:anicka@vochranka.cz",
+    email: "info@vochranka.cz",
+    emailHref: "mailto:info@vochranka.cz",
     address: "Praha, ČR",
     addressDetail: "Osobní zkoušky po domluvě",
   },
