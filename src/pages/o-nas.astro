@@ -5,8 +5,8 @@ import Footer from "../components/Footer.astro";
 ---
 
 <Layout
-  title="O nás | Vochránka – Bezpečnostní systém"
-  description="Kdo za tím stojí a proč jsme vytvořili Vochránku – diskrétní tísňové tlačítko pro lidi pracující o samotě."
+  title="O nás | Vochranka – Bezpečnostní systém"
+  description="Kdo stojí za Vochránkou a proč jsme vytvořili bezdrátové tísňové tlačítko pro lékaře, kosmetičky, personál večerek a všechny pracující o samotě."
 >
   <!-- Global Floating Navigation (stejná jako v indexu) -->
   <Navbar />
@@ -40,13 +40,16 @@ import Footer from "../components/Footer.astro";
             <div class="flex flex-col gap-[18px] w-full max-w-[390px]">
               <!-- Fotka (#38:14) -->
               <div
-                class="w-full h-[310px] sm:h-[330px] lg:h-[350px] bg-[#EEEDEA] rounded-[28px] flex items-center justify-center select-none border border-black/[0.02]"
+                class="w-full h-[310px] sm:h-[330px] lg:h-[350px] bg-[#EEEDEA] rounded-[28px] overflow-hidden select-none border border-black/[0.04]"
               >
-                <span
-                  class="font-heading font-normal text-[14px] text-[#6B6661] select-none"
-                >
-                  [FOTKA – VY]
-                </span>
+                <img
+                  src="/anicka.avif"
+                  alt="Anička"
+                  class="w-full h-full object-cover object-center"
+                  loading="lazy"
+                  width="390"
+                  height="350"
+                />
               </div>
               <!-- Popis (#38:16) -->
               <div class="flex flex-col gap-[6px]">
@@ -94,8 +97,7 @@ import Footer from "../components/Footer.astro";
                       stroke-linejoin="round"
                     >
                       <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
-                      ></path>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                     </svg>
                     <span>anicka@vochranka.cz</span>
                   </a>
@@ -114,6 +116,8 @@ import Footer from "../components/Footer.astro";
                   alt="Chiheb"
                   class="w-full h-full object-cover object-center"
                   loading="lazy"
+                  width="390"
+                  height="350"
                 />
               </div>
               <!-- Popis (#38:22) -->
@@ -162,8 +166,7 @@ import Footer from "../components/Footer.astro";
                       stroke-linejoin="round"
                     >
                       <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
-                      ></path>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                     </svg>
                     <span>chiheb@vochranka.cz</span>
                   </a>
@@ -172,55 +175,56 @@ import Footer from "../components/Footer.astro";
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- 3. Oddělovač (#38:25) -->
-        <div class="w-full pt-[72px] lg:pt-[120px]">
-          <div class="w-full h-[1px] bg-[#DEDBD8]"></div>
-        </div>
+      <!-- 3. Oddělovač (#38:25) -->
+      <div class="w-full pt-[72px] lg:pt-[120px]">
+        <div class="w-full h-[1px] bg-[#DEDBD8]"></div>
+      </div>
 
-        <!-- 4. Proč jsme to vytvořili (#38:27) -->
-        <div class="w-full pt-[48px] lg:pt-[74px] flex flex-col gap-[36px]">
-          <!-- Nadpis sekce (#38:28) -->
-          <h2
-            class="font-heading font-extrabold text-[32px] sm:text-[44px] lg:text-[58px] leading-[0.9] tracking-[-0.05em] text-[#2A211D] max-w-[900px]"
-          >
-            PROČ VZNIKLA
-          </h2>
-
-          <!-- Texty (#38:29) -->
-          <div class="flex flex-col gap-[26px] max-w-[1050px]">
-            <p
-              class="text-justify font-sans font-normal text-[17px] sm:text-[20px] leading-[1.55] text-[#6B6661]"
-            >
-              Jednou jsme se bavili s kamarádem, který hledal řešení pro svojí
-              partnerku působící jako fyzioterapeutka ve svém studiu. Občas se
-              jí stalo, že se klienti chovali divně až vulgárně. Proto jsme
-              vymysleli Vochranku. Pak nám došlo, že toto není jediné odvětví,
-              kde se ženy, ale i muži cítí v provozovně o samotě s klientem nebo
-              v noci nekomfortně.
-            </p>
-            <p
-              class="text-justify font-sans font-normal text-[17px] sm:text-[20px] leading-[1.55] text-[#6B6661]"
-            >
-              Chceme, aby se ženy i muži pracující sami cítili v klidu, měli
-              jistotu a pocit bezpečí při každém směně. V maserském sálonu, v
-              kavárně, ve večerce, na recepci nebo kdekoli jinde.
-            </p>
-          </div>
-        </div>
-
-        <!-- 5. Tlačítko (#38:32) -->
-        <div
-          class="w-full pt-[36px] lg:pt-[51px] flex justify-center items-center"
+      <!-- 4. Proč jsme to vytvořili (#38:27) -->
+      <div class="w-full pt-[48px] lg:pt-[74px] flex flex-col gap-[36px]">
+        <!-- Nadpis sekce (#38:28) -->
+        <h2
+          class="font-heading font-extrabold text-[32px] sm:text-[44px] lg:text-[58px] leading-[0.9] tracking-[-0.05em] text-[#2A211D] max-w-[900px]"
         >
-          <!-- Tlačítko – Chci bezpečí (#38:33) -->
-          <a
-            href="/#cenik"
-            class="inline-flex items-center justify-center px-[34px] py-[15px] bg-white text-[#2A211D] font-heading font-medium text-[17px] rounded-[26px] shadow-[0px_4px_24px_0px_rgba(0,0,0,0.08)] hover:shadow-[0px_8px_32px_0px_rgba(0,0,0,0.12)] hover:scale-[1.02] active:scale-[0.98] transition-all border border-black/5"
+          PROČ VZNIKLA
+        </h2>
+
+        <!-- Texty (#38:29) -->
+        <div class="flex flex-col gap-[26px] max-w-[1050px]">
+          <p
+            class="text-justify font-sans font-normal text-[17px] sm:text-[20px] leading-[1.55] text-[#6B6661]"
           >
-            Chci bezpečí
-          </a>
+            Jednou jsme se bavili s kamarádem, který hledal řešení pro svojí
+            partnerku působící jako fyzioterapeutka ve svém studiu. Občas se jí
+            stalo, že se klienti chovali divně až vulgárně. Proto jsme vymysleli
+            Vochranku. Pak nám došlo, že podobné situace se netýkají jen tohoto
+            odvětví. I v mnoha dalších profesích se ženy i muži mohou dostat do
+            situací, kdy se při práci o samotě s klientem nebo během nočních
+            směn necítí bezpečně.
+          </p>
+          <p
+            class="text-justify font-sans font-normal text-[17px] sm:text-[20px] leading-[1.55] text-[#6B6661]"
+          >
+            Chceme, aby se ženy i muži pracující sami cítili v klidu, měli
+            jistotu a pocit bezpečí při každém směně. V maserském sálonu, v
+            kavárně, ve večerce, na recepci nebo kdekoli jinde.
+          </p>
         </div>
+      </div>
+
+      <!-- 5. Tlačítko (#38:32) -->
+      <div
+        class="w-full pt-[36px] lg:pt-[51px] flex justify-center items-center"
+      >
+        <!-- Tlačítko – Chci bezpečí (#38:33) -->
+        <a
+          href="/#cenik"
+          class="inline-flex items-center justify-center px-[34px] py-[15px] bg-white text-[#2A211D] font-heading font-medium text-[17px] rounded-[26px] shadow-[0px_4px_24px_0px_rgba(0,0,0,0.08)] hover:shadow-[0px_8px_32px_0px_rgba(0,0,0,0.12)] hover:scale-[1.02] active:scale-[0.98] transition-all border border-black/5"
+        >
+          Chci bezpečí
+        </a>
       </div>
     </section>
   </main>
