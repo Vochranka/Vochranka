@@ -13,18 +13,18 @@ Pro koho a kam je systém určen:
 
 Jak systém funguje:
 1. Stisknutí tlačítka: Diskrétní bezdrátové tlačítko umístěné pod stolem, na pultu nebo v kapse vyšle signál.
-2. Okamžitá siréna: Hlasitá vnitřní siréna (120 dB) zapojená do zásuvky vyleká a zažene útočníka. Ztiší se dvojitým kliknutím na tlačítko.
+2. Okamžitá siréna: Hlasitá vnitřní siréna (110 dB) zapojená do zásuvky vyleká a zažene útočníka. Ztiší se dvojitým kliknutím na tlačítko.
 3. Nouzové SMS: Centrála okamžitě rozešle nouzové SMS zprávy s upozorněním předem nastaveným kontaktům (kolegové, rodina, ochranka).
 
 Technické parametry:
-- Hlasitost sirény: 120 dB
-- Připojení: Samostatný 4G LTE modul se SIM kartou (nevyžaduje Wi-Fi ani připojení k internetu uživatele)
+- Hlasitost sirény: 110 dB
+- Připojení: Wi-Fi síť
 - Tlačítko: Bezdrátové s magnetickým držákem, výdrž baterie až 2 roky
 - Napájení centrály a sirény: Standardní 230V zásuvka
 
 Ceník a podmínky:
-- Cena: 2 990 Kč (včetně kompletní sady: tlačítko, siréna, centrála a 1. rok provozu se SIM kartou bez dalších poplatků).
-- Od 2. roku: 83 Kč měsíčně za provoz SIM karty a systému.
+- Cena: 2 990 Kč (včetně kompletní sady: tlačítko, siréna, centrála a 1. rok provozu bez dalších poplatků).
+- Od 2. roku: 83 Kč měsíčně za provoz a monitoring systému (999 Kč ročně).
 - Zkušební doba: 14denní záruka vrácení peněz (možnost nepoškozené zařízení vrátit a získat plnou částku zpět).
 - Doprava: Dodání po celé České republice.
 

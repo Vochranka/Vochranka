@@ -102,6 +102,7 @@
           muted
           loop
           playsinline
+          webkit-playsinline
           preload="auto"
           class="w-full h-full object-cover cursor-pointer"
           aria-label="Video ukázka použití Vochranky"
@@ -173,6 +174,10 @@
     if (!video || video.dataset.initialized) return;
     video.dataset.initialized = "true";
 
+    video.muted = true;
+    video.defaultMuted = true;
+    video.play().catch(() => {});
+
     function updateSoundUI() {
       if (!video || !soundBtn) return;
       const isMuted = video.muted;
@@ -211,7 +216,12 @@
       updateSoundUI();
     }
 
-    video.addEventListener("click", () => toggleSound());
+    // Kliknutí na video ho na 1. kliknutí okamžitě spustí (se ztlumeným zvukem)
+    video.addEventListener("click", () => {
+      if (!video) return;
+      video.play().catch(() => {});
+    });
+
     if (soundBtn) {
       soundBtn.addEventListener("click", toggleSound);
     }

@@ -1,15 +1,5 @@
 ---
 import { SITE_CONFIG } from "@/data/siteConfig";
-
-const navLinks = [
-  { label: "K čemu slouží", href: "/#vyuziti" },
-  { label: "Umístění", href: "/#umisteni" },
-  { label: "Instalace", href: "/#instalace" },
-  { label: "Recenze", href: "/#recenze" },
-  { label: "Ceník", href: "/#cenik" },
-  { label: "Časté dotazy", href: "/#faq" },
-  { label: "O nás", href: "/o-nas" },
-];
 ---
 
 <footer
@@ -94,11 +84,10 @@ const navLinks = [
       class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-faint"
     >
       <p>© {new Date().getFullYear()} Vochranka. Všechna práva vyhrazena.</p>
-      <div class="flex items-center gap-6">
-        <a href="#cenik" class="hover:text-ink transition-colors"
-          >Ceník & Objednávka</a
-        >
-        <a href="#faq" class="hover:text-ink transition-colors">Časté dotazy</a>
+      <div class="flex items-center gap-2 sm:gap-3 text-ink-faint">
+        <span>{SITE_CONFIG.company.name}</span>
+        <span aria-hidden="true">•</span>
+        <span>IČO: {SITE_CONFIG.company.ico}</span>
       </div>
     </div>
   </div>

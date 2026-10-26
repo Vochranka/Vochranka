@@ -8,10 +8,10 @@ export const SITE_CONFIG = {
   brandName: "Vochranka",
   siteUrl: "https://vochranka.cz",
   metaTitle: "Vochranka | Bezpečnostní systém",
-  metaDescription: "Bezpečnostní systém. Hlasitá odstrašující siréna na místě a tichá nouzová SMS rodině či blízkám do 2 vteřin. Bez vrtání a kabelů, 1. rok provozu zdarma, 14 dní na vyzkoušení.",
+  metaDescription: "Bezpečnostní systém. Hlasitá odstrašující siréna na místě a tichá nouzová SMS rodině či blízkým do 2 vteřin. Bez vrtání a kabelů, 1. rok provozu zdarma, 14 dní na vyzkoušení.",
   ogTitle: "Vochranka –  Bezpečnostní systém",
   ogDescription:
-    "Jedno stisknutí a rozezní se siréna i rozesílájí se SMS blízkým. Bezpečnostní tlačítko pro masérky, kosmetičky, večerky, kavárny a ordinace.",
+    "Jedno stisknutí a rozezní se siréna i rozesílají se SMS blízkým. Bezpečnostní tlačítko pro masérky, kosmetičky, večerky, kavárny a ordinace.",
 
   contact: {
     phone: "+420 776 170 139",
@@ -20,6 +20,10 @@ export const SITE_CONFIG = {
     emailHref: "mailto:info@vochranka.cz",
     address: "Praha, ČR",
     addressDetail: "Osobní zkoušky po domluvě",
+  },
+  company: {
+    name: "Vochranka s.r.o.",
+    ico: "12345678",
   },
 
   pricing: {
@@ -95,30 +99,6 @@ export const SITE_CONFIG = {
     {
       value: "14 dní",
       label: "Na vyzkoušení",
-    },
-  ],
-
-  guarantees: [
-    "Žádné pronájmy",
-    "Žádné montážní poplatky",
-    "14 dní na vyzkoušení",
-  ],
-
-  installationSteps: [
-    {
-      title: "Zapojit",
-      line1: "Zasuňte sirénu a centrálu do zásuvky.",
-      line2: "Samy se ihned spárují.",
-    },
-    {
-      title: "Přicvaknout",
-      line1: "Tlačítko přilne přímo na povrch, nebo",
-      line2: "na kovovou podložku.",
-    },
-    {
-      title: "Otestovat",
-      line1: "Podržením vyzkoušíte sirénu i",
-      line2: "funkčnost doručení SMS zpráv.",
     },
   ],
 } as const;
