@@ -12,7 +12,7 @@ interface Props {
 const {
   title = SITE_CONFIG.metaTitle,
   description = SITE_CONFIG.metaDescription,
-  image = "/button_underdesk.avif",
+  image = "/button_underdesk.jpg",
   type = "website",
 } = Astro.props;
 
@@ -20,6 +20,14 @@ const siteUrl = SITE_CONFIG.siteUrl || "https://vochranka.cz";
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).toString();
 const ogImageUrl = new URL(image, siteUrl).toString();
 const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+
+const ogImageType = ogImageUrl.endsWith(".png")
+  ? "image/png"
+  : ogImageUrl.endsWith(".webp")
+  ? "image/webp"
+  : ogImageUrl.endsWith(".avif")
+  ? "image/avif"
+  : "image/jpeg";
 
 // Schema.org Structured Data (JSON-LD)
 const schemaOrg = {
@@ -221,22 +229,24 @@ const schemaOrg = {
     <link rel="alternate" hreflang="cs" href={canonicalURL} />
     <link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
-    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp, iMessage dle ogp.me standardu) -->
+    <meta property="og:site_name" content="Vochranka" />
     <meta property="og:type" content={type} />
+    <meta property="og:locale" content="cs_CZ" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:secure_url" content={ogImageUrl} />
+    <meta property="og:image:type" content={ogImageType} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
       content="Vochranka – Diskrétní bezdrátové tísňové tlačítko se sirénou a SMS"
     />
-    <meta property="og:site_name" content="Vochranka" />
-    <meta property="og:locale" content="cs_CZ" />
 
-    <!-- Twitter Cards -->
+    <!-- Twitter Cards (X.com) -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
@@ -244,8 +254,11 @@ const schemaOrg = {
     <meta name="twitter:image" content={ogImageUrl} />
     <meta
       name="twitter:image:alt"
-      content="Vochranka – Diskrétní tísňové tlačítko"
+      content="Vochranka – Diskrétní bezdrátové tísňové tlačítko se sirénou a SMS"
     />
+
+    <!-- AI vyhledávače & Agentic Browsing (standard llmstxt.org v2) -->
+    <link rel="describedby" href="/llms.txt" />
 
     <!-- Strukturovaná data JSON-LD (Schema.org) pro Google a AI vyhledávače -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
