@@ -18,7 +18,7 @@ const { contact } = SITE_CONFIG;
 
 <div
   id="kontakt"
-  class="w-full flex flex-col items-center lg:items-start scroll-mt-2 sm:scroll-mt-4 pt-4 sm:pt-6 lg:pt-0 lg:pl-8 xl:pl-14"
+  class="w-full flex flex-col items-center lg:items-start scroll-mt-2 sm:scroll-mt-4 pt-4 sm:pt-6 lg:pt-0 lg:pl-14 xl:pl-24"
 >
   <div class="w-full max-w-[460px]">
     <!-- Section Heading -->
@@ -207,7 +207,9 @@ const { contact } = SITE_CONFIG;
             <rect width="20" height="16" x="2" y="4" rx="2"></rect>
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
           </svg>
-          <span class="font-medium underline underline-offset-4 decoration-line">
+          <span
+            class="font-medium underline underline-offset-4 decoration-line"
+          >
             {contact.email}
           </span>
         </a>
@@ -229,7 +231,9 @@ const { contact } = SITE_CONFIG;
               d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
             ></path>
           </svg>
-          <span class="font-medium underline underline-offset-4 decoration-line">
+          <span
+            class="font-medium underline underline-offset-4 decoration-line"
+          >
             {contact.phone}
           </span>
         </a>
@@ -281,17 +285,17 @@ const { contact } = SITE_CONFIG;
 <script>
   function setupPricingAndContact() {
     const form = document.getElementById(
-      "pricing-contact-form"
+      "pricing-contact-form",
     ) as HTMLFormElement | null;
     const successBox = document.getElementById("pricing-form-success");
     const countInput = document.getElementById(
-      "buttons-count-input"
+      "buttons-count-input",
     ) as HTMLInputElement | null;
     const btnIncrement = document.getElementById("btn-increment");
     const btnDecrement = document.getElementById("btn-decrement");
     const btnReset = document.getElementById("btn-reset-form");
     const submitBtn = document.getElementById(
-      "order-submit-btn"
+      "order-submit-btn",
     ) as HTMLButtonElement | null;
 
     if (!form || form.dataset.bound === "true") return;
@@ -318,8 +322,12 @@ const { contact } = SITE_CONFIG;
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const nameInput = document.getElementById("order-name") as HTMLInputElement | null;
-      const contactInput = document.getElementById("order-contact") as HTMLInputElement | null;
+      const nameInput = document.getElementById(
+        "order-name",
+      ) as HTMLInputElement | null;
+      const contactInput = document.getElementById(
+        "order-contact",
+      ) as HTMLInputElement | null;
       const nameVal = nameInput?.value.trim() || "";
       const contactVal = contactInput?.value.trim() || "";
 
