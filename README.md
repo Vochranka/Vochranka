@@ -1,4 +1,4 @@
-# Vochránka Web
+# Vochranka Web
 
 Moderní webová prezentace postavená na frameworku [Astro](https://astro.build/) a [Tailwind CSS v4](https://tailwindcss.com/).
 

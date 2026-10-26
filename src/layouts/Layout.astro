@@ -5,23 +5,253 @@ import { SITE_CONFIG } from "@/data/siteConfig";
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: "website" | "article";
 }
 
 const {
   title = SITE_CONFIG.metaTitle,
   description = SITE_CONFIG.metaDescription,
+  image = "/button_underdesk.avif",
+  type = "website",
 } = Astro.props;
+
+const siteUrl = SITE_CONFIG.siteUrl || "https://vochranka.cz";
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).toString();
+const ogImageUrl = new URL(image, siteUrl).toString();
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+
+// Schema.org Structured Data (JSON-LD)
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: `${siteUrl}/`,
+      name: "Vochranka",
+      description:
+        "Diskrétní bezdrátové tísňové tlačítko se sirénou a SMS pro lidi pracující o samotě.",
+      inLanguage: "cs-CZ",
+    },
+    {
+      "@type": ["LocalBusiness", "SecurityService"],
+      "@id": `${siteUrl}/#organization`,
+      name: "Vochranka",
+      slogan: "Diskrétní bezdrátové tísňové tlačítko se sirénou a SMS",
+      url: `${siteUrl}/`,
+      logo: `${siteUrl}/button3.avif`,
+      image: `${siteUrl}/button_underdesk.avif`,
+      description:
+        "Český dodavatel diskrétních bezdrátových tísňových tlačítek pro ordinace, salony, maserky,  večerky a kanceláře. Okamžitá siréna a nouzové SMS bez nutnosti montáže a vrtání.",
+      telephone: SITE_CONFIG.contact.phone,
+      email: SITE_CONFIG.contact.email,
+      priceRange: `${SITE_CONFIG.pricing.basePriceFormatted}`,
+      currenciesAccepted: "CZK",
+      paymentAccepted: "Bankovní převod, Online platba kartou, Hotovost",
+      knowsAbout: [
+        "Tísňové tlačítko",
+        "Bezdrátový bezpečnostní alarm",
+        "Ochrana osamocených pracovníků",
+        "Zabezpečení lékařských ordinací",
+        "Zabezpečení kosmetických a kadeřnických salonů",
+        "Zabezpečení nočních prodejen a večerek",
+        "Nouzová SMS upozornění",
+      ],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Praha",
+        addressCountry: "CZ",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 50.0755,
+        longitude: 14.4378,
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "Česká republika",
+      },
+    },
+    ...(isHome
+      ? [
+          {
+            "@type": "Product",
+            "@id": `${siteUrl}/#product`,
+            name: "Vochranka – Bezdrátové tísňové tlačítko se sirénou a nouzovými SMS",
+            description:
+              "Kompletní bezpečnostní sada pro pracovníky pracující o samotě: diskrétní bezdrátové tlačítko s magnetem, hlasitá siréna do zásuvky, centrála a 1. rok provozu bez poplatků.",
+            image: `${siteUrl}/button_underdesk.avif`,
+            brand: {
+              "@type": "Brand",
+              name: "Vochranka",
+            },
+            category: "Bezpečnostní systémy a tísňové hlásiče",
+            audience: {
+              "@type": "Audience",
+              audienceType:
+                "lékaři, zdravotnický personál, kosmetičky, personál večerek a lidé pracující o samotě",
+            },
+            additionalProperty: [
+              {
+                "@type": "PropertyValue",
+                name: "Hlasitost sirény",
+                value: "120 dB",
+              },
+              {
+                "@type": "PropertyValue",
+                name: "Záložní baterie centrály",
+                value: "6–8 hodin provozu při výpadku elektřiny",
+              },
+              {
+                "@type": "PropertyValue",
+                name: "Připojení k síti",
+                value: "4G LTE / GSM SIM karta",
+              },
+              {
+                "@type": "PropertyValue",
+                name: "Způsob montáže",
+                value: "Bez vrtání, do zásuvky, magnetické uchycení",
+              },
+            ],
+            offers: {
+              "@type": "Offer",
+              price: String(SITE_CONFIG.pricing.basePrice),
+              priceCurrency: "CZK",
+              priceValidUntil: "2026-12-31",
+              availability: "https://schema.org/InStock",
+              url: `${siteUrl}/#cenik`,
+              itemCondition: "https://schema.org/NewCondition",
+              seller: {
+                "@type": "Organization",
+                name: "Vochranka",
+              },
+              hasMerchantReturnPolicy: {
+                "@type": "MerchantReturnPolicy",
+                applicableCountry: "CZ",
+                returnPolicyCategory:
+                  "https://schema.org/MerchantReturnFiniteReturnWindow",
+                merchantReturnDays: 14,
+                returnMethod: "https://schema.org/ReturnByMail",
+                returnFees: "https://schema.org/FreeReturn",
+              },
+              shippingDetails: {
+                "@type": "OfferShippingDetails",
+                shippingRate: {
+                  "@type": "MonetaryAmount",
+                  value: "0",
+                  currency: "CZK",
+                },
+                shippingDestination: {
+                  "@type": "DefinedRegion",
+                  addressCountry: "CZ",
+                },
+              },
+            },
+          },
+          {
+            "@type": "FAQPage",
+            "@id": `${siteUrl}/#faq`,
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Kolik to stojí?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Nynější cena pro našich prvních 100 klientů je 2 990 Kč a první rok provozu je v ceně. Od druhého roku budete platit za provoz 83 Kč měsíčně.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Můžu si systém vyzkoušet?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Ano, máte možnost do 14 dnů zařízení nepoškozené vrátit. My vám obratem pošleme zaplacenou částku zpět.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Co se stane po stisknutí tlačítka?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Rozezní se hlasitá siréna a odešlou se nouzové SMS zprávy. Sirénu ztišíte dvojitým kliknutím.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Potřebuju montáž?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Ne. Sirénu a centrálu zasunete do zásuvky, spárují se samy a tlačítko přicvaknete.",
+                },
+              },
+            ],
+          },
+        ]
+      : []),
+  ],
+};
 ---
 
 <!doctype html>
-<html lang="cs">
+<html lang="cs" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Primární SEO meta tagy -->
     <title>{title}</title>
+    <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta name="author" content="Vochranka" />
+    <meta
+      name="keywords"
+      content="tísňové tlačítko, bezdrátové tísňové tlačítko, tísňové tlačítko pro samotné pracovníky, tísňové tlačítko do ordinace, tísňové tlačítko do salonu, bezpečnostní alarm, nouzová SMS, siréna bez montáže, SOS tlačítko, Vochranka, Praha, Česká republika"
+    />
+
+    <!-- GEO / Geotargeting meta tagy pro Českou republiku -->
+    <meta name="geo.region" content="CZ" />
+    <meta name="geo.placename" content="Praha, Česká republika" />
+    <meta name="geo.position" content="50.0755;14.4378" />
+    <meta name="ICBM" content="50.0755, 14.4378" />
+    <link rel="alternate" hreflang="cs" href={canonicalURL} />
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Vochranka – Diskrétní bezdrátové tísňové tlačítko se sirénou a SMS"
+    />
+    <meta property="og:site_name" content="Vochranka" />
+    <meta property="og:locale" content="cs_CZ" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta
+      name="twitter:image:alt"
+      content="Vochranka – Diskrétní tísňové tlačítko"
+    />
+
+    <!-- Strukturovaná data JSON-LD (Schema.org) pro Google a AI vyhledávače -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
 
     <!-- Google Fonts: Inter Tight & Plus Jakarta Sans with full Czech/Latin-Extended support -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -1,0 +1,28 @@
+# robots.txt for Vochranka (https://vochranka.cz)
+
+# Obecné vyhledávače (Google, Seznam, Bing)
+User-agent: *
+Allow: /
+
+# AI vyhledávače a citační roboti (ChatGPT Search, Perplexity, Claude, Gemini)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Sitemaps & LLM standard
+Sitemap: https://vochranka.cz/sitemap.xml
+

@@ -1,0 +1,39 @@
+# Vochranka
+
+> Diskrétní bezdrátové tísňové tlačítko se sirénou a nouzovými SMS zprávami pro lidi pracující o samotě v České republice.
+
+Vochranka je český bezpečnostní systém určený pro okamžité přivolání pomoci a odstrašení útočníka v rizikových situacích. Systém funguje na jedno stisknutí bez nutnosti složité montáže, vrtání nebo IT nastavování.
+
+## Pro koho je Vochranka určena
+- Lékařské ordinace a zdravotní střediska (lékaři, zubaři, zdravotní sestry).
+- Kosmetické, masážní a kadeřnické salony.
+- Noční prodejny, večerky, recepce a bary.
+- Samostatní pracovníci v kancelářích nebo obchodech.
+
+## Jak systém funguje
+1. **Stisknutí tlačítka**: Diskrétní bezdrátové tlačítko umístěné pod stolem, na pultu nebo v kapse vyšle signál.
+2. **Okamžitá siréna**: Hlasitá vnitřní siréna (120 dB) zapojená do zásuvky vyleká a zažene útočníka. Ztiší se dvojitým kliknutím na tlačítko.
+3. **Nouzové SMS**: Centrála okamžitě rozešle nouzové SMS zprávy s upozorněním předem nastaveným kontaktům (kolegové, rodina, ochranka).
+4. **Záložní napájení**: Centrála má vestavěnou záložní baterii, která udrží systém v provozu 6–8 hodin i při výpadku elektrického proudu.
+
+## Technické parametry
+- Hlasitost sirény: 120 dB
+- Připojení: Samostatný 4G LTE modul se SIM kartou (nevyžaduje Wi-Fi ani připojení k internetu uživatele)
+- Tlačítko: Bezdrátové s magnetickým držákem, výdrž baterie až 2 roky
+- Napájení centrály a sirény: Standardní 230V zásuvka + záložní baterie 6–8 hodin
+
+## Ceník a podmínky
+- Cena: 2 990 Kč (včetně kompletní sady: tlačítko, siréna, centrála a 1. rok provozu se SIM kartou bez dalších poplatků).
+- Od 2. roku: 83 Kč měsíčně za provoz SIM karty a systému.
+- Zkušební doba: 14denní záruka vrácení peněz (možnost nepoškozené zařízení vrátit a získat plnou částku zpět).
+- Doprava: Dodání po celé České republice.
+
+## Odkazy
+- [Hlavní stránka](https://vochranka.cz/): Přehled produktu, technické detaily a objednávka.
+- [O nás](https://vochranka.cz/o-nas): Příběh vzniku Vochranky, mise a hodnoty.
+
+## Kontakt
+- Web: https://vochranka.cz
+- E-mail: info@vochranka.cz
+- Telefon: +420 774 929 119
+- Lokalita: Praha, Česká republika

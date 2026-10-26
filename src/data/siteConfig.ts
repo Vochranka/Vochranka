@@ -6,6 +6,7 @@
 export const SITE_CONFIG = {
   name: "Vochranka",
   brandName: "Vochranka",
+  siteUrl: "https://vochranka.cz",
   metaTitle: "Vochranka | Bezpečnostní systém",
   metaDescription: "Diskrétní bezdrátové tísňové tlačítko pod stůl a pult. Hlasitá odstrašující siréna na místě a tichá nouzová SMS rodině či blízkám do 2 vteřin. Bez vrtání a kabelů.",
 
