@@ -8,7 +8,11 @@ export const SITE_CONFIG = {
   brandName: "Vochranka",
   siteUrl: "https://vochranka.cz",
   metaTitle: "Vochranka | Bezpečnostní systém",
-  metaDescription: "Diskrétní bezdrátové tísňové tlačítko pod stůl a pult. Hlasitá odstrašující siréna na místě a tichá nouzová SMS rodině či blízkám do 2 vteřin. Bez vrtání a kabelů.",
+  metaDescription: "Bezpečnostní systém. Hlasitá odstrašující siréna na místě a tichá nouzová SMS rodině či blízkám do 2 vteřin. Bez vrtání a kabelů, 1. rok provozu zdarma, 14 dní na vyzkoušení.",
+  metaDescriptionShort: "Bezpečnostní systém. Tlačítko spouštící hlasitou sirénu a odesílající nouzové SMS",
+  ogTitle: "Vochranka –  Bezpečnostní systém",
+  ogDescription:
+    "Jedno stisknutí a rozezní se siréna i rozesílájí se SMS blízkým. Bezpečnostní tlačítko pro masérky, kosmetičky, večerky, kavárny a ordinace.",
 
   contact: {
     phone: "+420 776 170 139",

@@ -7,11 +7,15 @@ interface Props {
   description?: string;
   image?: string;
   type?: "website" | "article";
+  ogTitle?: string;
+  ogDescription?: string;
 }
 
 const {
   title = SITE_CONFIG.metaTitle,
   description = SITE_CONFIG.metaDescription,
+  ogTitle = SITE_CONFIG.ogTitle,
+  ogDescription = SITE_CONFIG.ogDescription,
   image = "/button_underdesk.jpg",
   type = "website",
 } = Astro.props;
@@ -24,10 +28,10 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
 const ogImageType = ogImageUrl.endsWith(".png")
   ? "image/png"
   : ogImageUrl.endsWith(".webp")
-  ? "image/webp"
-  : ogImageUrl.endsWith(".avif")
-  ? "image/avif"
-  : "image/jpeg";
+    ? "image/webp"
+    : ogImageUrl.endsWith(".avif")
+      ? "image/avif"
+      : "image/jpeg";
 
 // Schema.org Structured Data (JSON-LD)
 const schemaOrg = {
@@ -249,8 +253,8 @@ const schemaOrg = {
     <!-- Twitter Cards (X.com) -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalURL} />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta
       name="twitter:image:alt"
