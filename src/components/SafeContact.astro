@@ -1,0 +1,108 @@
+---
+interface Props {
+  type: "email" | "phone";
+  user?: string;
+  domain?: string;
+  prefix?: string;
+  number?: string;
+  class?: string;
+  textClass?: string;
+}
+
+const {
+  type,
+  user = "info",
+  domain = "vochranka.cz",
+  prefix = "+420",
+  number = "776 170 139",
+  class: className = "",
+  textClass = "",
+} = Astro.props;
+
+// Obrácený text pro ochranu proti scraperům (v surovém HTML není čitelný email ani telefon)
+const fullDisplay =
+  type === "email" ? `${user}@${domain}` : `${prefix} ${number}`;
+const reversed = fullDisplay.split("").reverse().join("");
+
+const dataAttr =
+  type === "email"
+    ? { "data-safe-type": "email", "data-u": user, "data-d": domain }
+    : {
+        "data-safe-type": "phone",
+        "data-p": prefix,
+        "data-n": number.replace(/\s+/g, ""),
+      };
+---
+
+<a
+  href="#"
+  class={`safe-contact-link cursor-pointer ${className}`}
+  {...dataAttr}
+>
+  <slot />
+  <span
+    class={`safe-contact-text inline-block ${textClass}`}
+    style="unicode-bidi: bidi-override; direction: rtl;"
+  >{reversed}</span>
+</a>
+
+<script>
+  function initSafeContacts() {
+    const links =
+      document.querySelectorAll<HTMLAnchorElement>(".safe-contact-link");
+
+    links.forEach((link) => {
+      if (link.dataset.bound === "true") return;
+      link.dataset.bound = "true";
+
+      const type = link.dataset.safeType;
+      let targetHref = "";
+      let normalText = "";
+
+      if (type === "email") {
+        const u = link.dataset.u || "";
+        const d = link.dataset.d || "";
+        if (u && d) {
+          normalText = `${u}@${d}`;
+          targetHref = `mailto:${normalText}`;
+        }
+      } else if (type === "phone") {
+        const p = link.dataset.p || "";
+        const n = link.dataset.n || "";
+        if (n) {
+          const formatted = n.replace(/(\d{3})(\d{3})(\d{3})/, "$1 $2 $3");
+          normalText = p ? `${p} ${formatted}` : formatted;
+          targetHref = `tel:${p}${n}`;
+        }
+      }
+
+      if (normalText) {
+        const textSpan = link.querySelector<HTMLElement>(".safe-contact-text");
+        if (textSpan) {
+          textSpan.textContent = normalText;
+          textSpan.removeAttribute("style");
+        }
+      }
+
+      // Aktivace reálného href až při interakci (najetí myší, dotyk, focus, klik)
+      // Tím se zabrání scrapování i headless boty, kteří čekají na načtení stránky
+      const activate = () => {
+        if (targetHref && link.getAttribute("href") !== targetHref) {
+          link.setAttribute("href", targetHref);
+        }
+      };
+
+      link.addEventListener("pointerenter", activate, { passive: true });
+      link.addEventListener("touchstart", activate, { passive: true });
+      link.addEventListener("focus", activate, { passive: true });
+      link.addEventListener("click", activate);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSafeContacts);
+  } else {
+    initSafeContacts();
+  }
+  document.addEventListener("astro:page-load", initSafeContacts);
+</script>

@@ -1,5 +1,6 @@
 ---
 import { SITE_CONFIG } from "@/data/siteConfig";
+import SafeContact from "./SafeContact.astro";
 ---
 
 <footer
@@ -40,12 +41,12 @@ import { SITE_CONFIG } from "@/data/siteConfig";
               class="block text-xs text-ink-faint uppercase tracking-wider mb-1"
               >E-mail</span
             >
-            <a
-              href={`mailto:${SITE_CONFIG.contact.email}`}
+            <SafeContact
+              type="email"
+              user="info"
+              domain="vochranka.cz"
               class="text-brown font-medium text-base underline underline-offset-4 decoration-line hover:text-black transition-colors"
-            >
-              {SITE_CONFIG.contact.email}
-            </a>
+            />
           </div>
 
           <div>
@@ -53,12 +54,12 @@ import { SITE_CONFIG } from "@/data/siteConfig";
               class="block text-xs text-ink-faint uppercase tracking-wider mb-1"
               >Telefon</span
             >
-            <a
-              href={SITE_CONFIG.contact.phoneHref}
+            <SafeContact
+              type="phone"
+              prefix="+420"
+              number="776 170 139"
               class="text-brown font-medium text-base underline underline-offset-4 decoration-line hover:text-black transition-colors"
-            >
-              {SITE_CONFIG.contact.phone}
-            </a>
+            />
           </div>
 
           <div>
