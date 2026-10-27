@@ -217,6 +217,7 @@
 
     function openMenu() {
       isMenuOpen = true;
+      document.body.style.overflow = "hidden";
       toggleBtn?.setAttribute("aria-expanded", "true");
       toggleBtn?.setAttribute("aria-label", "Zavřít navigaci");
       iconHamburger?.classList.add("hidden");
@@ -241,6 +242,7 @@
 
     function closeMenu() {
       isMenuOpen = false;
+      document.body.style.overflow = "";
       toggleBtn?.setAttribute("aria-expanded", "false");
       toggleBtn?.setAttribute("aria-label", "Otevřít navigaci");
       iconHamburger?.classList.remove("hidden");

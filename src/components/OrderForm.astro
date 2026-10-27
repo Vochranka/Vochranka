@@ -252,6 +252,53 @@ const { contact } = SITE_CONFIG;
           Poslat další zprávu
         </button>
       </div>
+
+      <!-- Error Message -->
+      <div
+        id="pricing-form-error"
+        class="hidden py-8 sm:py-10 animate-fade-in"
+        role="alert"
+        aria-live="assertive"
+      >
+        <div
+          class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-red-100 text-red-800 mb-4"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+            ></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink mb-2">
+          Odeslání se nezdařilo
+        </h3>
+        <p class="text-sm text-neutral-600 max-w-[44ch] mb-6 leading-relaxed">
+          Omlouváme se, nastala chyba při odesílání. Zavolejte nám přímo na{" "}
+          <a
+            href="tel:+420776170139"
+            class="font-bold underline text-ink hover:text-brown"
+          >
+            +420 776 170 139
+          </a>{" "}
+          nebo to zkuste znovu.
+        </p>
+        <button
+          id="btn-retry-form"
+          type="button"
+          class="inline-flex items-center justify-center rounded-full px-5 py-2 border border-neutral-300 text-xs font-medium text-ink hover:bg-neutral-50 active:scale-95 transition-all cursor-pointer select-none"
+        >
+          Zkusit znovu
+        </button>
+      </div>
     </div>
 
     <!-- Přímý kontakt (zarovnán dolů k úrovni konce středové čáry, bez horní linky) -->
@@ -318,12 +365,14 @@ const { contact } = SITE_CONFIG;
       "pricing-contact-form",
     ) as HTMLFormElement | null;
     const successBox = document.getElementById("pricing-form-success");
+    const errorBox = document.getElementById("pricing-form-error");
     const countInput = document.getElementById(
       "buttons-count-input",
     ) as HTMLInputElement | null;
     const btnIncrement = document.getElementById("btn-increment");
     const btnDecrement = document.getElementById("btn-decrement");
     const btnReset = document.getElementById("btn-reset-form");
+    const btnRetry = document.getElementById("btn-retry-form");
     const submitBtn = document.getElementById(
       "order-submit-btn",
     ) as HTMLButtonElement | null;
@@ -446,26 +495,37 @@ const { contact } = SITE_CONFIG;
           searchParams.append(key, value.toString());
         }
 
-        await fetch("/", {
+        const res = await fetch("/", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: searchParams.toString(),
         });
 
+        if (!res.ok) {
+          throw new Error(`Odeslání selhalo: HTTP ${res.status}`);
+        }
+
         // Show smooth in-place success confirmation
         form.classList.add("hidden");
+        errorBox?.classList.add("hidden");
         successBox?.classList.remove("hidden");
       } catch (err) {
         console.error("Chyba při odesílání formuláře:", err);
-        // Show success fallback gracefully
         form.classList.add("hidden");
-        successBox?.classList.remove("hidden");
+        successBox?.classList.add("hidden");
+        errorBox?.classList.remove("hidden");
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = "Odeslat";
         }
       }
+    });
+
+    // Retry button to return to form after error
+    btnRetry?.addEventListener("click", () => {
+      errorBox?.classList.add("hidden");
+      form.classList.remove("hidden");
     });
 
     // Reset button to submit another request
@@ -479,6 +539,7 @@ const { contact } = SITE_CONFIG;
       cityError?.classList.add("hidden");
       if (countInput) countInput.value = "1";
       successBox?.classList.add("hidden");
+      errorBox?.classList.add("hidden");
       form.classList.remove("hidden");
     });
   }

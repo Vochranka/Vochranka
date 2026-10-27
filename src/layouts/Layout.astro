@@ -14,11 +14,14 @@ interface Props {
 const {
   title = SITE_CONFIG.metaTitle,
   description = SITE_CONFIG.metaDescription,
-  ogTitle = SITE_CONFIG.ogTitle,
-  ogDescription = SITE_CONFIG.ogDescription,
+  ogTitle,
+  ogDescription,
   image = "/button_underdesk.jpg",
   type = "website",
 } = Astro.props;
+
+const effectiveOgTitle = ogTitle || title;
+const effectiveOgDescription = ogDescription || description;
 
 const siteUrl = SITE_CONFIG.siteUrl || "https://vochranka.cz";
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).toString();
@@ -236,8 +239,8 @@ const schemaOrg = {
     <meta property="og:type" content={type} />
     <meta property="og:locale" content="cs_CZ" />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={effectiveOgTitle} />
+    <meta property="og:description" content={effectiveOgDescription} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:secure_url" content={ogImageUrl} />
     <meta property="og:image:type" content={ogImageType} />
@@ -251,8 +254,8 @@ const schemaOrg = {
     <!-- Twitter Cards (X.com) -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalURL} />
-    <meta name="twitter:title" content={ogTitle} />
-    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:title" content={effectiveOgTitle} />
+    <meta name="twitter:description" content={effectiveOgDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta
       name="twitter:image:alt"

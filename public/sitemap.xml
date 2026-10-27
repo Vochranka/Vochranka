@@ -10,11 +10,11 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vochranka.cz/" />
   </url>
   <url>
-    <loc>https://vochranka.cz/o-nas</loc>
+    <loc>https://vochranka.cz/o-nas/</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="cs" href="https://vochranka.cz/o-nas" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vochranka.cz/o-nas" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://vochranka.cz/o-nas/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vochranka.cz/o-nas/" />
   </url>
 </urlset>

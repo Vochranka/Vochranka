@@ -22,8 +22,8 @@ export const SITE_CONFIG = {
     addressDetail: "Osobní zkoušky po domluvě",
   },
   company: {
-    name: "Vochranka s.r.o.",
-    ico: "12345678",
+    name: "CompuSoft.cz, s.r.o.",
+    ico: "CZ27207820",
   },
 
   pricing: {

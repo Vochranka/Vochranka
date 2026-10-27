@@ -104,7 +104,7 @@ const reviews: Review[] = [
             <button
               id="reviews-drag-hint"
               type="button"
-              class="flex items-center gap-2 text-[11px] sm:text-xs font-heading font-medium tracking-wider uppercase text-neutral-400 hover:text-neutral-600 transition-colors cursor-pointer order-1 sm:order-2"
+              class="flex items-center gap-1.5 text-[11px] sm:text-xs font-heading font-medium tracking-wider uppercase text-neutral-400 hover:text-neutral-600 transition-colors cursor-pointer order-1 sm:order-2"
             >
               <svg
                 class="w-4 h-4 text-neutral-400 shrink-0"
@@ -116,7 +116,10 @@ const reviews: Review[] = [
                 stroke-linejoin="round"
                 aria-hidden="true"
               >
+                <path d="M8 7 3 12l5 5"></path>
+                <path d="m16 7 5 5-5 5"></path>
               </svg>
+              <span>Tažením posuňte dál</span>
             </button>
           </div>
         )
