@@ -17,3 +17,9 @@ Thumbs.db
 !.vscode/settings.json
 .idea/
 *.log
+
+#AI agents
+.agent/
+.agents/
+.impeccable/
+
