@@ -1,0 +1,193 @@
+---
+interface Review {
+  name: string;
+  role: string;
+  rating: number;
+  quote: string;
+}
+
+const reviews: Review[] = [
+  {
+    name: "Terka",
+    role: "Fyzioterapie - Strakonice",
+    rating: 5,
+    quote:
+      "„V salonu pracuji často do večera sama. Tlačítko mám zespodu stolu na magnetu, takže o něm nikdo neví. Naštěstí jsem ho nemusela použít naostro, ale ten klid za to rozhodně stojí.“",
+  },
+];
+---
+
+<section
+  id="recenze"
+  class="relative bg-white py-16 sm:py-24 lg:py-28 px-6 sm:px-[5.5%] border-t border-line/60"
+  aria-label="Proč si nás lidé pořizují"
+>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <!-- LEVÝ SLOUPEC: "Proč si nás lidé pořizují" (VOCHRANKU MÁ 1 OSOBA zatím zakomentováno) -->
+      <div class="lg:col-span-4 xl:col-span-3.5 flex flex-col justify-center text-left">
+        <h2
+          class="font-heading font-bold text-ink text-3xl lg:text-4xl xl:text-6xl tracking-tight leading-tight whitespace-nowrap lg:whitespace-normal lg:max-w-[8ch]"
+        >
+          Proč si nás lidé pořizují
+        </h2>
+      </div>
+
+      <!-- PRAVÝ SLOUPEC: HORIZONTÁLNÍ TRACK RECENZÍ -->
+      <div class="lg:col-span-8 xl:col-span-8.5 min-w-0">
+        <!-- Horizontální rolovací dráha (Desktop i Mobil) -->
+        <div
+          id="reviews-slider"
+          class="flex gap-5 sm:gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory py-2 px-1 cursor-grab active:cursor-grabbing scroll-smooth select-none"
+          tabindex="0"
+          role="region"
+          aria-label="Seznam recenzí"
+        >
+          {
+            reviews.map((rev) => (
+              <article
+                class="w-[290px] sm:w-[360px] lg:w-[410px] shrink-0 snap-start bg-box rounded-xl p-6 sm:p-8 lg:p-9 border border-line/60 flex flex-col justify-between transition-transform duration-200 hover:-translate-y-0.5"
+              >
+                <!-- Horní část: Hvězdičky + Citace -->
+                <div>
+                  <!-- Text recenze -->
+                  <p class="font-sans italic text-ink/90 text-[14px] sm:text-[15px] leading-relaxed select-text">
+                    {rev.quote}
+                  </p>
+                </div>
+
+                <!-- Spodní část: Oddělovač + Autor -->
+                <div>
+                  <div class="w-full h-px bg-line/60 my-5 sm:my-6" aria-hidden="true" />
+                  <p class="font-heading font-bold text-ink text-[15px] sm:text-[16px] leading-tight select-text">
+                    {rev.name}
+                  </p>
+                  <p class="font-sans text-xs sm:text-[13px] text-ink-muted mt-1 select-text">
+                    {rev.role}
+                  </p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- SPODNÍ LIŠTA: "⇄ TAŽENÍM POSUŇTE DÁL" a navigační šipky (pokud je více recenzí) -->
+      {
+        reviews.length > 1 && (
+          <div class="lg:col-span-8 lg:col-start-5 xl:col-span-8.5 xl:col-start-5 flex items-center justify-between sm:justify-end gap-4 px-1 select-none">
+            {/* Tlačítka pro klikání na desktopu / mobilu */}
+            <div class="flex items-center gap-2 order-2 sm:order-1">
+              <button
+                id="reviews-prev-btn"
+                type="button"
+                class="w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink-muted hover:text-ink hover:border-ink transition-colors cursor-pointer focus:outline-none"
+                aria-label="Předchozí recenze"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button
+                id="reviews-next-btn"
+                type="button"
+                class="w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink-muted hover:text-ink hover:border-ink transition-colors cursor-pointer focus:outline-none"
+                aria-label="Další recenze"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            {/* Nápověda "TAŽENÍM POSUŇTE DÁL" */}
+            <button
+              id="reviews-drag-hint"
+              type="button"
+              class="flex items-center gap-1.5 text-[11px] sm:text-xs font-heading font-medium tracking-wider uppercase text-neutral-400 hover:text-neutral-600 transition-colors cursor-pointer order-1 sm:order-2"
+            >
+              <svg
+                class="w-4 h-4 text-neutral-400 shrink-0"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M8 7 3 12l5 5"></path>
+                <path d="m16 7 5 5-5 5"></path>
+              </svg>
+              <span>Tažením posuňte dál</span>
+            </button>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupReviewsSlider() {
+    const slider = document.getElementById("reviews-slider");
+    const prevBtn = document.getElementById("reviews-prev-btn");
+    const nextBtn = document.getElementById("reviews-next-btn");
+    const dragHint = document.getElementById("reviews-drag-hint");
+
+    if (!slider) return;
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    // Mouse drag-to-scroll na počítači
+    slider.addEventListener("mousedown", (e) => {
+      isDown = true;
+      slider.classList.add("cursor-grabbing");
+      slider.classList.remove("cursor-grab");
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+
+    const endDrag = () => {
+      if (!isDown) return;
+      isDown = false;
+      slider.classList.remove("cursor-grabbing");
+      slider.classList.add("cursor-grab");
+    };
+
+    slider.addEventListener("mouseleave", endDrag);
+    slider.addEventListener("mouseup", endDrag);
+
+    slider.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 1.4; // Rychlost posunu
+      slider.scrollLeft = scrollLeft - walk;
+    });
+
+    // Výpočet posunu o šířku jedné karty
+    const getScrollStep = () => {
+      const card = slider.querySelector("article");
+      return card ? card.offsetWidth + 24 : 360;
+    };
+
+    prevBtn?.addEventListener("click", () => {
+      slider.scrollBy({ left: -getScrollStep(), behavior: "smooth" });
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      slider.scrollBy({ left: getScrollStep(), behavior: "smooth" });
+    });
+
+    dragHint?.addEventListener("click", () => {
+      slider.scrollBy({ left: getScrollStep(), behavior: "smooth" });
+    });
+  }
+
+  // Inicializace po načtení a při Astro přechodech
+  setupReviewsSlider();
+  document.addEventListener("astro:page-load", setupReviewsSlider);
+</script>

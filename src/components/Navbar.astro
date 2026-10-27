@@ -1,0 +1,303 @@
+---
+
+---
+
+<!-- Mobile Menu Backdrop -->
+<div
+  id="mobile-menu-backdrop"
+  class="md:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300"
+  aria-hidden="true"
+>
+</div>
+
+<!-- Sticky / Floating Navigation Container -->
+<div
+  id="navbar-container"
+  class="fixed top-2.5 sm:top-3.5 left-3 right-3 sm:left-6 sm:right-6 z-50 pointer-events-none"
+>
+  <div class="w-full max-w-7xl mx-auto">
+    <!-- Top Navbar Header (constant size and position, no jump on scroll, rounded-full pill) -->
+    <header
+      id="main-navbar"
+      class="pointer-events-auto w-full flex items-center justify-between text-[17px] font-semibold tracking-tight select-none rounded-full px-5 sm:px-8 py-3 sm:py-3.5 transition-all duration-300 bg-transparent text-white border border-transparent shadow-none"
+    >
+      <a
+        href="/"
+        class="uppercase hover:opacity-80 transition-opacity shrink-0"
+      >
+        VOCHRANKA
+      </a>
+
+      <nav
+        class="hidden md:flex items-center gap-6 text-[14px] font-normal"
+        aria-label="Hlavní navigace"
+      >
+        <a href="/#vyuziti" class="hover:underline underline-offset-4">Funkce</a
+        >
+        <a href="/#umisteni" class="hover:underline underline-offset-4"
+          >Umístění</a
+        >
+        <a href="/#instalace" class="hover:underline underline-offset-4"
+          >Instalace</a
+        >
+        <a href="/#cenik" class="hover:underline underline-offset-4">Ceník</a>
+        <a href="/#kontakt" class="hover:underline underline-offset-4"
+          >Kontakt</a
+        >
+        <a href="/o-nas" class="hover:underline underline-offset-4">O nás</a>
+      </nav>
+
+      <!-- Desktop CTA -->
+      <a
+        href="/#cenik"
+        class="hidden md:inline-block underline underline-offset-4 text-[15px] font-medium hover:opacity-80 transition-opacity shrink-0"
+      >
+        Objednat sadu
+      </a>
+
+      <!-- Mobile Hamburger Button (stays on top bar, flips icon) -->
+      <button
+        id="mobile-menu-toggle"
+        type="button"
+        class="md:hidden p-2 -mr-1.5 rounded-full text-white hover:bg-white/10 active:scale-95 transition-all cursor-pointer focus:outline-none"
+        aria-label="Otevřít navigaci"
+        aria-expanded="false"
+      >
+        <svg
+          id="menu-icon-hamburger"
+          class="w-6 h-6 stroke-current transition-transform duration-200"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg
+          id="menu-icon-close"
+          class="w-6 h-6 stroke-current transition-transform duration-200 hidden"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Mobile Secondary Rounded Navigation Block (appears under top bar with a gap) -->
+    <div
+      id="mobile-menu-dropdown"
+      class="md:hidden pointer-events-none mt-2.5 sm:mt-3 p-5 sm:p-6 rounded-3xl bg-white/80 backdrop-blur-xl text-ink shadow-2xl border border-black/10 opacity-0 scale-95 transition-all duration-200 origin-top max-h-[80vh] overflow-y-auto"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Mobilní navigace"
+    >
+      <nav
+        class="flex flex-col text-[16px] font-medium divide-y divide-line/40 py-1"
+      >
+        <a
+          href="/#vyuziti"
+          class="mobile-nav-link py-3 text-ink hover:text-brown transition-colors"
+        >
+          Funkce
+        </a>
+        <a
+          href="/#umisteni"
+          class="mobile-nav-link py-3 text-ink hover:text-brown transition-colors"
+        >
+          Umístění
+        </a>
+        <a
+          href="/#instalace"
+          class="mobile-nav-link py-3 text-ink hover:text-brown transition-colors"
+        >
+          Instalace
+        </a>
+        <a
+          href="/#cenik"
+          class="mobile-nav-link py-3 text-ink hover:text-brown transition-colors"
+        >
+          Ceník
+        </a>
+        <a
+          href="/#kontakt"
+          class="mobile-nav-link py-3 text-ink hover:text-brown transition-colors"
+        >
+          Kontakt
+        </a>
+        <a
+          href="/o-nas"
+          class="mobile-nav-link py-3 text-ink hover:text-brown transition-colors"
+        >
+          O nás
+        </a>
+      </nav>
+
+      <a
+        href="/#cenik"
+        class="mobile-nav-link mt-4 block w-full py-3.5 text-center font-bold text-sm text-white bg-ink rounded-full hover:bg-neutral-800 active:scale-95 transition-all shadow-sm"
+      >
+        Objednat sadu
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupNavbar() {
+    const navbar = document.getElementById("main-navbar");
+    const toggleBtn = document.getElementById("mobile-menu-toggle");
+    const menuDropdown = document.getElementById("mobile-menu-dropdown");
+    const menuBackdrop = document.getElementById("mobile-menu-backdrop");
+    const iconHamburger = document.getElementById("menu-icon-hamburger");
+    const iconClose = document.getElementById("menu-icon-close");
+    const navLinks = document.querySelectorAll(".mobile-nav-link");
+
+    if (!navbar || navbar.dataset.initialized) return;
+    navbar.dataset.initialized = "true";
+
+    let isMenuOpen = false;
+
+    function updateNavbarAppearance() {
+      if (!navbar) return;
+      const isScrolled = window.scrollY > 40;
+      if (isScrolled || isMenuOpen) {
+        navbar.classList.add(
+          "bg-white/50",
+          "text-ink",
+          "backdrop-blur-xl",
+          "border-black/10",
+          "shadow-sm",
+        );
+        navbar.classList.remove(
+          "bg-transparent",
+          "text-white",
+          "border-transparent",
+          "shadow-none",
+          "bg-white/95",
+          "border-line",
+          "shadow-md",
+        );
+        if (toggleBtn) {
+          toggleBtn.classList.remove("text-white", "hover:bg-white/10");
+          toggleBtn.classList.add("text-ink", "hover:bg-black/5");
+        }
+      } else {
+        navbar.classList.remove(
+          "bg-white/50",
+          "text-ink",
+          "backdrop-blur-xl",
+          "border-black/10",
+          "shadow-sm",
+          "bg-white/95",
+          "border-line",
+          "shadow-md",
+        );
+        navbar.classList.add(
+          "bg-transparent",
+          "text-white",
+          "border-transparent",
+          "shadow-none",
+        );
+        if (toggleBtn) {
+          toggleBtn.classList.add("text-white", "hover:bg-white/10");
+          toggleBtn.classList.remove("text-ink", "hover:bg-black/5");
+        }
+      }
+    }
+
+    function openMenu() {
+      isMenuOpen = true;
+      document.body.style.overflow = "hidden";
+      toggleBtn?.setAttribute("aria-expanded", "true");
+      toggleBtn?.setAttribute("aria-label", "Zavřít navigaci");
+      iconHamburger?.classList.add("hidden");
+      iconClose?.classList.remove("hidden");
+
+      updateNavbarAppearance();
+
+      menuBackdrop?.classList.remove("opacity-0", "pointer-events-none");
+      menuBackdrop?.classList.add("opacity-100", "pointer-events-auto");
+
+      menuDropdown?.classList.remove(
+        "opacity-0",
+        "scale-95",
+        "pointer-events-none",
+      );
+      menuDropdown?.classList.add(
+        "opacity-100",
+        "scale-100",
+        "pointer-events-auto",
+      );
+    }
+
+    function closeMenu() {
+      isMenuOpen = false;
+      document.body.style.overflow = "";
+      toggleBtn?.setAttribute("aria-expanded", "false");
+      toggleBtn?.setAttribute("aria-label", "Otevřít navigaci");
+      iconHamburger?.classList.remove("hidden");
+      iconClose?.classList.add("hidden");
+
+      updateNavbarAppearance();
+
+      menuBackdrop?.classList.add("opacity-0", "pointer-events-none");
+      menuBackdrop?.classList.remove("opacity-100", "pointer-events-auto");
+
+      menuDropdown?.classList.add(
+        "opacity-0",
+        "scale-95",
+        "pointer-events-none",
+      );
+      menuDropdown?.classList.remove(
+        "opacity-100",
+        "scale-100",
+        "pointer-events-auto",
+      );
+    }
+
+    function toggleMenu() {
+      if (isMenuOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    toggleBtn?.addEventListener("click", toggleMenu);
+    menuBackdrop?.addEventListener("click", closeMenu);
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        closeMenu();
+      });
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isMenuOpen) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("scroll", updateNavbarAppearance, {
+      passive: true,
+    });
+    updateNavbarAppearance();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupNavbar);
+  } else {
+    setupNavbar();
+  }
+  document.addEventListener("astro:page-load", setupNavbar);
+</script>

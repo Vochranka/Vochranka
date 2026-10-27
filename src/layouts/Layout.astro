@@ -1,75 +1,283 @@
 ---
+import "../styles/global.css";
+import { SITE_CONFIG } from "@/data/siteConfig";
+
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: "website" | "article";
+  ogTitle?: string;
+  ogDescription?: string;
 }
 
 const {
-  title = "Vochranka | Diskrétní tísňové tlačítko pro sólo salóny a masérky",
-  description = "Bezpečí a klid při práci o samotě. Nenápadné tlačítko pod lehátko či stůl, odstrašující siréna a okamžitá tichá SMS rodině. Bez vrtání a kabelů.",
+  title = SITE_CONFIG.metaTitle,
+  description = SITE_CONFIG.metaDescription,
+  ogTitle,
+  ogDescription,
+  image = "/button_underdesk.jpg",
+  type = "website",
 } = Astro.props;
+
+const effectiveOgTitle = ogTitle || title;
+const effectiveOgDescription = ogDescription || description;
+
+const siteUrl = SITE_CONFIG.siteUrl || "https://vochranka.cz";
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).toString();
+const ogImageUrl = new URL(image, siteUrl).toString();
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+
+const ogImageType = ogImageUrl.endsWith(".png")
+  ? "image/png"
+  : ogImageUrl.endsWith(".webp")
+    ? "image/webp"
+    : ogImageUrl.endsWith(".avif")
+      ? "image/avif"
+      : "image/jpeg";
+
+// Schema.org Structured Data (JSON-LD)
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: `${siteUrl}/`,
+      name: "Vochranka",
+      description:
+        "Diskrétní bezdrátové tísňové tlačítko se sirénou a SMS pro lidi pracující o samotě.",
+      inLanguage: "cs-CZ",
+    },
+    {
+      "@type": ["LocalBusiness", "SecurityService"],
+      "@id": `${siteUrl}/#organization`,
+      name: "Vochranka",
+      slogan: "Diskrétní bezdrátové tísňové tlačítko se sirénou a SMS",
+      url: `${siteUrl}/`,
+      logo: `${siteUrl}/button3.avif`,
+      image: `${siteUrl}/button_underdesk.avif`,
+      description:
+        "Český dodavatel diskrétních bezdrátových tísňových tlačítek pro ordinace, salony, masérky, večerky a kanceláře. Okamžitá siréna a nouzové SMS bez nutnosti montáže a vrtání.",
+      priceRange: `${SITE_CONFIG.pricing.basePriceFormatted}`,
+      currenciesAccepted: "CZK",
+      paymentAccepted: "Bankovní převod, Online platba kartou, Hotovost",
+      knowsAbout: [
+        "Tísňové tlačítko",
+        "Bezdrátový bezpečnostní alarm",
+        "Ochrana osamocených pracovníků",
+        "Zabezpečení masážních a fyzioterapeutických salonů",
+        "Zabezpečení kosmetických a kadeřnických studií",
+        "Zabezpečení trafik, večerek a nočních prodejen",
+        "Zabezpečení kaváren, bister a barů",
+        "Zabezpečení lékařských ordinací",
+        "Nouzová SMS upozornění",
+      ],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Praha",
+        addressCountry: "CZ",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 50.0755,
+        longitude: 14.4378,
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "Česká republika",
+      },
+    },
+    ...(isHome
+      ? [
+          {
+            "@type": "Product",
+            "@id": `${siteUrl}/#product`,
+            name: "Vochranka – Bezdrátové tísňové tlačítko se sirénou a nouzovými SMS",
+            description:
+              "Kompletní bezpečnostní sada pro pracovníky pracující o samotě: diskrétní bezdrátové tlačítko s magnetem, hlasitá siréna do zásuvky, centrála a 1. rok provozu bez poplatků.",
+            image: `${siteUrl}/button_underdesk.avif`,
+            brand: {
+              "@type": "Brand",
+              name: "Vochranka",
+            },
+            category: "Bezpečnostní systémy a tísňové hlásiče",
+            audience: {
+              "@type": "Audience",
+              audienceType:
+                "masérky, fyzioterapeutky, kosmetičky, personál trafik a večerek, obsluha kaváren, lékaři a všichni lidé pracující o samotě",
+            },
+            additionalProperty: [
+              {
+                "@type": "PropertyValue",
+                name: "Hlasitost sirény",
+                value: "110 dB",
+              },
+              {
+                "@type": "PropertyValue",
+                name: "Připojení k síti",
+                value: "WiFi",
+              },
+              {
+                "@type": "PropertyValue",
+                name: "Způsob montáže",
+                value: "Bez vrtání, do zásuvky, magnetické uchycení",
+              },
+            ],
+            offers: {
+              "@type": "Offer",
+              price: String(SITE_CONFIG.pricing.basePrice),
+              priceCurrency: "CZK",
+              priceValidUntil: "2026-12-31",
+              availability: "https://schema.org/InStock",
+              url: `${siteUrl}/#cenik`,
+              itemCondition: "https://schema.org/NewCondition",
+              seller: {
+                "@type": "Organization",
+                name: "Vochranka",
+              },
+              hasMerchantReturnPolicy: {
+                "@type": "MerchantReturnPolicy",
+                applicableCountry: "CZ",
+                returnPolicyCategory:
+                  "https://schema.org/MerchantReturnFiniteReturnWindow",
+                merchantReturnDays: 14,
+                returnMethod: "https://schema.org/ReturnByMail",
+                returnFees: "https://schema.org/FreeReturn",
+              },
+              shippingDetails: {
+                "@type": "OfferShippingDetails",
+                shippingRate: {
+                  "@type": "MonetaryAmount",
+                  value: "0",
+                  currency: "CZK",
+                },
+                shippingDestination: {
+                  "@type": "DefinedRegion",
+                  addressCountry: "CZ",
+                },
+              },
+            },
+          },
+          {
+            "@type": "FAQPage",
+            "@id": `${siteUrl}/#faq`,
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Kolik to stojí?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Nynější cena pro našich prvních 100 klientů je 2 990 Kč a první rok provozu je v ceně. Od druhého roku budete platit za provoz 83 Kč měsíčně.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Můžu si systém vyzkoušet?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Ano, máte možnost do 14 dnů zařízení nepoškozené vrátit. My vám obratem pošleme zaplacenou částku zpět.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Co se stane po stisknutí tlačítka?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Rozezní se hlasitá siréna a odešlou se nouzové SMS zprávy. Sirénu ztišíte dvojitým kliknutím.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Potřebuju montáž?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Ne. Sirénu a centrálu zasunete do zásuvky, spárují se samy a tlačítko přicvaknete.",
+                },
+              },
+            ],
+          },
+        ]
+      : []),
+  ],
+};
 ---
 
 <!doctype html>
-<html lang="cs" class="scroll-smooth">
+<html lang="cs" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#ffffff" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
 
-    <!-- Primary Meta Tags -->
+    <!-- Primární SEO meta tagy -->
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://vochranka.cz" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta name="author" content="Vochranka" />
+    <meta
+      name="keywords"
+      content="tísňové tlačítko, bezdrátové tísňové tlačítko, tísňové tlačítko pro masérky, tísňové tlačítko do kavárny, tísňové tlačítko do trafiky, tísňové tlačítko do ordinace, tísňové tlačítko do salonu, bezpečnostní alarm, nouzová SMS, siréna bez montáže, SOS tlačítko pro samotné pracovníky, Vochranka, Praha, Česká republika"
+    />
 
-    <!-- Open Graph / Facebook / Instagram -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://vochranka.cz" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://vochranka.cz/og-vochranka.jpg" />
+    <!-- GEO / Geotargeting meta tagy pro Českou republiku -->
+    <meta name="geo.region" content="CZ" />
+    <meta name="geo.placename" content="Praha, Česká republika" />
+    <meta name="geo.position" content="50.0755;14.4378" />
+    <meta name="ICBM" content="50.0755, 14.4378" />
+    <link rel="alternate" hreflang="cs" href={canonicalURL} />
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp, iMessage dle ogp.me standardu) -->
+    <meta property="og:site_name" content="Vochranka" />
+    <meta property="og:type" content={type} />
+    <meta property="og:locale" content="cs_CZ" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={effectiveOgTitle} />
+    <meta property="og:description" content={effectiveOgDescription} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:secure_url" content={ogImageUrl} />
+    <meta property="og:image:type" content={ogImageType} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Vochranka – Diskrétní bezdrátové tísňové tlačítko se sirénou a SMS"
+    />
 
-    <!-- Fonts preconnect -->
+    <!-- Twitter Cards (X.com) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={effectiveOgTitle} />
+    <meta name="twitter:description" content={effectiveOgDescription} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta
+      name="twitter:image:alt"
+      content="Vochranka – Diskrétní bezdrátové tísňové tlačítko se sirénou a SMS"
+    />
+
+    <!-- AI vyhledávače & Agentic Browsing (standard llmstxt.org v2) -->
+    <link rel="describedby" href="/llms.txt" />
+
+    <!-- Strukturovaná data JSON-LD (Schema.org) pro Google a AI vyhledávače -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+
+    <!-- Google Fonts: Inter Tight & Plus Jakarta Sans with full Czech/Latin-Extended support -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap&subset=latin,latin-ext"
       rel="stylesheet"
     />
-
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org/",
-        "@type": "Product",
-        "name": "Vochranka - Tísňové tlačítko pro privátní salóny",
-        "image": "https://vochranka.cz/og-vochranka.jpg",
-        "description": "Diskrétní bezdrátové tísňové tlačítko pod stůl a masérské lehátko pro sólo pracující ženy se sirénou a tichou nouzovou SMS.",
-        "brand": {
-          "@type": "Brand",
-          "name": "Vochranka"
-        },
-        "offers": {
-          "@type": "Offer",
-          "url": "https://vochranka.cz",
-          "priceCurrency": "CZK",
-          "price": "2990",
-          "availability": "https://schema.org/InStock",
-          "priceValidUntil": "2027-12-31"
-        }
-      }
-    </script>
   </head>
   <body
-    class="min-h-screen bg-zinc-50 text-zinc-950 selection:bg-zinc-200 selection:text-zinc-900 font-sans antialiased overflow-x-hidden"
+    class="flex min-h-screen flex-col bg-canvas text-ink antialiased selection:bg-accent selection:text-white"
   >
     <slot />
   </body>

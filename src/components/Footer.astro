@@ -1,0 +1,95 @@
+---
+import { SITE_CONFIG } from "@/data/siteConfig";
+import SafeContact from "./SafeContact.astro";
+---
+
+<footer
+  class="bg-white border-t border-line/60 pt-16 sm:py-20 lg:pt-24 pb-12 px-6 sm:px-[5.5%]"
+>
+  <div class="max-w-7xl mx-auto">
+    <!-- Hlavní mřížka sloupců -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 sm:pb-16 border-b border-line/60 items-center"
+    >
+      <!-- 1. Sloupec: Značka a poslání (na mobilu doleva, na desktopu do středu sloupce) -->
+      <div class="lg:col-span-6 flex flex-col items-start lg:items-center justify-center">
+        <div class="flex flex-col items-start space-y-2">
+          <a
+            href="/"
+            class="inline-block text-4xl sm:text-5xl lg:text-[60px] font-extrabold uppercase tracking-tight leading-none text-ink hover:opacity-85 transition-opacity text-left"
+          >
+            Vochranka
+          </a>
+          <h3
+            class="text-xs font-bold uppercase tracking-wider text-brown font-heading text-left pl-0 sm:pl-[10px]"
+          >
+            Přinášíme klid a bezpečí
+          </h3>
+        </div>
+      </div>
+
+      <!-- 2. Sloupec: Kontakt a podpora (zarovnaný doprava) -->
+      <div
+        id="footer-kontakt"
+        class="lg:col-span-4 lg:col-start-9 md:ml-auto w-full max-w-[360px] space-y-8 scroll-mt-28"
+      >
+        <address
+          class="not-italic space-y-3 text-sm sm:text-[15px] text-ink-muted"
+        >
+          <div>
+            <span
+              class="block text-xs text-ink-faint uppercase tracking-wider mb-1"
+              >E-mail</span
+            >
+            <SafeContact
+              type="email"
+              user="info"
+              domain="vochranka.cz"
+              class="text-brown font-medium text-base underline underline-offset-4 decoration-line hover:text-black transition-colors"
+            />
+          </div>
+
+          <div>
+            <span
+              class="block text-xs text-ink-faint uppercase tracking-wider mb-1"
+              >Telefon</span
+            >
+            <SafeContact
+              type="phone"
+              prefix="+420"
+              number="776 170 139"
+              class="text-brown font-medium text-base underline underline-offset-4 decoration-line hover:text-black transition-colors"
+            />
+          </div>
+
+          <div>
+            <span
+              class="block text-xs text-ink-faint uppercase tracking-wider mb-1"
+              >Sociální sítě</span
+            >
+            <a
+              href="https://instagram.com/vochranka"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-brown font-medium underline underline-offset-4 decoration-line hover:text-black transition-colors inline-flex items-center gap-1.5"
+            >
+              <span>@vochranka</span>
+            </a>
+          </div>
+        </address>
+      </div>
+    </div>
+
+    <!-- Spodní lišta: Copyright & Právní informace -->
+    <div
+      class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-faint"
+    >
+      <p>© {new Date().getFullYear()} Vochranka. Všechna práva vyhrazena.</p>
+      <div class="flex items-center gap-2 sm:gap-3 text-ink-faint">
+        <span>{SITE_CONFIG.company.name}</span>
+        <span aria-hidden="true">•</span>
+        <span>IČO: {SITE_CONFIG.company.ico}</span>
+      </div>
+    </div>
+  </div>
+</footer>

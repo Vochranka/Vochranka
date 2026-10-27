@@ -1,0 +1,60 @@
+---
+
+---
+
+<section
+  id="umisteni"
+  class="relative w-full h-[60vh] min-h-[60vh] flex flex-col justify-between overflow-hidden bg-black text-white py-6 sm:py-8 px-6 sm:px-[5.5%]"
+  aria-label="Umístění tlačítka"
+>
+  <!-- Background Image with Gradient Overlays -->
+  <div class="absolute inset-0 w-full h-full z-0 overflow-hidden">
+    <img
+      src="/button_coffeeshop.avif"
+      alt="Diskrétní bezdrátové tísňové tlačítko na kovovém rámu stolu"
+      class="w-full h-full object-cover object-[center_45%]"
+      loading="lazy"
+      width="1024"
+      height="600"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/20 to-transparent pointer-events-none"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"
+    >
+    </div>
+  </div>
+
+  <!-- Content Container: Heading Top Left -->
+  <div class="relative z-10 w-full pointer-events-none">
+    <h2
+      class="text-6xl sm:text-7xl lg:text-[104px] font-bold text-white leading-[0.98] tracking-tight"
+    >
+      Vždy<br />
+      na dosah
+    </h2>
+  </div>
+
+  <!-- Center Text directly above the button on the counter -->
+  <div
+    class="absolute left-1/2 top-[55%] sm:top-[63%] -translate-x-1/2 -translate-y-full z-10 text-center pointer-events-none px-4 w-full sm:w-auto max-w-none"
+  >
+    <p
+      class="font-bold text-lg md:text-xl lg:text-[22px] leading-relaxed text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] uppercase whitespace-nowrap"
+    >
+      PŘIPRAVENO PRO JAKÝKOLIV PROSTOR
+    </p>
+  </div>
+
+  <!-- Bottom CTA Button -->
+  <div class="relative z-10 self-end">
+    <a
+      href="#cenik"
+      class="inline-block rounded-full px-6 py-3 bg-white text-ink font-medium text-sm hover:bg-neutral-100 active:scale-95 transition-all shadow-md cursor-pointer"
+    >
+      Objednat sadu
+    </a>
+  </div>
+</section>

@@ -1,11 +1,13 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
+  site: 'https://vochranka.cz',
   server: {
-    host: true, // Automaticky otevře server pro celou lokální síť (místo psaní --host)
-    port: 4322, // Můžete si vynutit konkrétní port, pokud chcete
-  }
+    host: true,
+  },
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

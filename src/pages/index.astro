@@ -2,87 +2,75 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
+import StatsBar from "../components/StatsBar.astro";
 import ProductShowcase from "../components/ProductShowcase.astro";
-import PlugAndPlay from "../components/PlugAndPlay.astro";
-import Faq from "../components/Faq.astro";
+import AlwaysWithinReach from "../components/AlwaysWithinReach.astro";
+import Placement from "../components/Placement.astro";
+import Installation from "../components/Installation.astro";
+import Pricing from "../components/Pricing.astro";
 import OrderForm from "../components/OrderForm.astro";
+import Reviews from "../components/Reviews.astro";
+import Faq from "../components/Faq.astro";
 import Footer from "../components/Footer.astro";
-import { ArrowRight, ShieldCheck } from "lucide-astro";
+import MobileStickyBar from "../components/MobileStickyBar.astro";
 ---
 
-<Layout
-  title="Vochranka | Diskrétní tísňové tlačítko pro masérky, kosmetičky a sólo salóny"
-  description="Diskrétní bezdrátové tísňové tlačítko pod stůl a masérské lehátko. Hlasitá odstrašující siréna na místě a tichá nouzová SMS rodině do 2 vteřin. Bez vrtání a kabelů."
->
-  <!-- Navigation bar -->
+<Layout>
+  <!-- Global Sticky / Fixed Navigation -->
   <Navbar />
 
-  <!-- Main landing page content -->
-  <main>
-    <!-- 1. Hero Section (Představení produktu s videem a hesly) -->
+  <!-- Main Landing Page Content matching the mock-up -->
+  <main class="w-full overflow-x-hidden">
+    <!-- 1. Hero: OBTĚŽOVAL VÁS NĚKDO V ORDINACI? (s rotujícím místem) -->
     <Hero />
 
-    <!-- 2. K čemu produkt je & Kde se využívá (s interaktivním tlačítkem napravo) -->
+    <!-- 2. Stats Bar: 2 s | 24/7 | 14 dní -->
+    <StatsBar />
+
+    <!-- 3. OKAMŽITÁ POMOC NA JEDNO STISKNUTÍ -->
     <ProductShowcase />
 
-    <!-- 3. Rychlá instalace za 2 minuty & Kam se dá tlačítko dát (Magnet pod stůl, v kapse, potají) -->
-    <PlugAndPlay />
+    <!-- 4. VŽDY NA DOSAH (Panoramic dark section) -->
+    <AlwaysWithinReach />
 
-    <!-- 4. Časté dotazy a odpovědi (FAQ) -->
+    <!-- 5. Nespočet možností kam tlačítko umístit (Staggered photo cards) -->
+    <Placement />
+
+    <!-- 6. Zapojit / Přicvaknout / Otestovat & OBJEDNAT SADU -->
+    <Installation />
+
+    <!-- 7. Recenze (Proč si nás lidé pořizují) -->
+    <Reviews />
+
+    <!-- 8. Ceník + Kontakt -->
+    <section
+      class="bg-white py-16 sm:py-20 lg:py-24 px-6 sm:px-[5.5%] border-t border-line/60"
+      aria-label="Ceník a kontakt"
+    >
+      <div class="max-w-7xl mx-auto relative w-full">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 items-stretch"
+        >
+          <Pricing />
+          <OrderForm />
+        </div>
+
+        <!-- Svislá dělicí čára přesně uprostřed -->
+        <div
+          class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-line -translate-x-1/2"
+          aria-hidden="true"
+        >
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Často kladené otázky (Minimalist accordion) -->
     <Faq />
-
-    <!-- 5. Nezávazná objednávka s kalkulátorem ceny vlevo & Přímé kontakty vpravo -->
-    <OrderForm />
   </main>
 
-  <!-- Footer -->
+  <!-- 10. Footer -->
   <Footer />
 
-  <!-- Mobile Sticky Conversion Bar (Visible only on mobile scroll) -->
-  <div
-    id="mobile-sticky-bar"
-    class="fixed bottom-0 left-0 right-0 z-40 p-3 bg-white/95 backdrop-blur-md border-t border-zinc-200 shadow-xl transform translate-y-full transition-transform duration-300 md:hidden flex items-center justify-between gap-3"
-  >
-    <div class="flex items-center gap-2">
-      <div
-        class="w-8 h-8 rounded-lg bg-zinc-100 text-zinc-900 border border-zinc-200 flex items-center justify-center shrink-0"
-      >
-        <ShieldCheck class="w-4 h-4" />
-      </div>
-      <div>
-        <p class="text-xs font-bold text-zinc-950 leading-tight">
-          Sada Vochranka
-        </p>
-        <p class="text-[11px] font-semibold text-zinc-950">
-          2 990 Kč <span class="font-normal text-zinc-500">• 14 dní záruka</span>
-        </p>
-      </div>
-    </div>
-
-    <a
-      href="#kontakt"
-      class="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full bg-zinc-950 text-white text-xs font-semibold shadow-md hover:bg-zinc-800 active:scale-95 transition-all shrink-0"
-    >
-      <span>Objednat</span>
-      <ArrowRight class="w-3.5 h-3.5" />
-    </a>
-  </div>
+  <!-- 11. Mobile Sticky Bottom CTA Bar 
+  <MobileStickyBar />-->
 </Layout>
-
-<script>
-  // Show mobile sticky CTA after scrolling past hero
-  const stickyBar = document.getElementById("mobile-sticky-bar");
-  if (stickyBar) {
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (window.scrollY > 450) {
-          stickyBar.classList.remove("translate-y-full");
-        } else {
-          stickyBar.classList.add("translate-y-full");
-        }
-      },
-      { passive: true },
-    );
-  }
-</script>

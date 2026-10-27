@@ -1,0 +1,25 @@
+---
+import { SITE_CONFIG } from "@/data/siteConfig";
+
+const stats = SITE_CONFIG.stats;
+---
+
+<section
+  class="bg-white pt-2 sm:pt-3 pb-6 sm:pb-8 px-[5.5%] -mt-2 sm:-mt-3 relative z-10"
+  aria-label="Klíčové parametry"
+>
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      {
+        stats.map((stat) => (
+          <div class="bg-box rounded-[8px] p-7 sm:p-8 flex flex-col justify-between min-h-[140px] sm:min-h-[160px]">
+            <span class="text-3xl sm:text-4xl lg:text-[46px] font-medium text-ink tracking-tight leading-none mb-8">
+              {stat.value}
+            </span>
+            <p class="text-[15px] text-ink-muted leading-snug">{stat.label}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

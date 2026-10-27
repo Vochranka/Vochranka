@@ -1,0 +1,41 @@
+# Vochranka
+
+> Diskrétní bezdrátové tísňové tlačítko se sirénou a nouzovými SMS zprávami. Vzniklo pro ženy i muže pracující o samotě, aby se cítili v klidu a měli jistotu a pocit bezpečí při každé směně.
+
+Vochranka je český bezpečnostní systém určený pro okamžité přivolání pomoci a odstrašení útočníka či problémového zákazníka. Celý projekt vznikl původně jako řešení pro kamarádku – fyzioterapeutku a masérku ve vlastním studiu, která čelila nevhodnému a vulgárnímu chování klientů. Systém funguje na jedno diskrétní stisknutí bez nutnosti složité montáže, vrtání nebo IT nastavování.
+
+Pro koho a kam je systém určen:
+- Salony a studia: Masérky, fyzioterapeutky, kosmetičky, kadeřnice, tatéři.
+- Trafiky, večerky a noční prodejny: Obsluha v pozdních hodinách a na rizikových místech.
+- Kavárny, bistra a bary: Personál a baristi otevírající nebo zavírající podnik o samotě.
+- Lékařské a zubní ordinace: Lékaři a zdravotní sestry při jednání s agresivními pacienty.
+- Recepce a kanceláře: Samostatní pracovníci jednající s veřejností.
+
+Jak systém funguje:
+1. Stisknutí tlačítka: Diskrétní bezdrátové tlačítko umístěné pod stolem, na pultu nebo v kapse vyšle signál.
+2. Okamžitá siréna: Hlasitá vnitřní siréna (110 dB) zapojená do zásuvky vyleká a zažene útočníka. Ztiší se dvojitým kliknutím na tlačítko.
+3. Nouzové SMS: Centrála okamžitě rozešle nouzové SMS zprávy s upozorněním předem nastaveným kontaktům (kolegové, rodina, ochranka).
+
+Technické parametry:
+- Hlasitost sirény: 110 dB
+- Připojení: Wi-Fi síť
+- Tlačítko: Bezdrátové s magnetickým držákem, výdrž baterie až 2 roky
+- Napájení centrály a sirény: Standardní 230V zásuvka
+
+Ceník a podmínky:
+- Cena: 2 990 Kč (včetně kompletní sady: tlačítko, siréna, centrála a 1. rok provozu bez dalších poplatků).
+- Od 2. roku: 83 Kč měsíčně za provoz a monitoring systému (999 Kč ročně).
+- Zkušební doba: 14denní záruka vrácení peněz (možnost nepoškozené zařízení vrátit a získat plnou částku zpět).
+- Doprava: Dodání po celé České republice.
+
+Kontakt:
+- Web: https://vochranka.cz
+- Kontaktní formulář: https://vochranka.cz/#kontakt
+- Lokalita: Praha, Česká republika
+
+## Webové stránky
+- [Hlavní stránka](https://vochranka.cz/): Přehled tísňového tlačítka, technické parametry, ceník a objednávkový formulář
+- [O nás](https://vochranka.cz/o-nas): Příběh vzniku Vochranky, mise a představení týmu
+
+## Volitelné zdroje
+- [Sitemap](https://vochranka.cz/sitemap.xml): Kompletní XML mapa stránek pro vyhledávače

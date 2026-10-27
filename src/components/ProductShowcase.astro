@@ -1,0 +1,238 @@
+---
+// ProductShowcase.astro - Okamžitá pomoc na jedno stisknutí
+---
+
+<section
+  id="vyuziti"
+  class="relative bg-white py-16 sm:py-24 lg:py-28 px-6 sm:px-[5.5%] overflow-hidden"
+  aria-label="K čemu slouží"
+>
+  <div class="max-w-7xl mx-auto">
+    <!-- Top Heading -->
+    <h2
+      class="text-center text-[clamp(24px,6.5vw,32px)] sm:text-[clamp(19px,4.3vw,62px)] font-bold text-ink uppercase tracking-tight leading-tight sm:leading-none sm:whitespace-nowrap w-full"
+    >
+      Okamžitá pomoc <span class="block sm:inline">na jedno stisknutí</span>
+    </h2>
+
+    <p
+      class="mt-10 sm:mt-14 lg:mt-18 text-neutral-600 text-center text-[15px] sm:text-base md:text-[17px] leading-relaxed max-w-2xl mx-auto"
+    >
+      Jste sami ve svém salonu, kavárně či večerce a zákazník se začne chovat
+      divně? Podržením tlačítka spustíte <span class="text-black font-bold"
+        >výstražnou sirénu</span
+      > a pošlete <strong>nouzovou SMS</strong>.
+    </p>
+
+    <!-- How it works: 3-column layout stretching to match the plane of the stats boxes -->
+    <div
+      class="w-full grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-8 md:gap-12 lg:gap-16 mt-8 sm:mt-12 lg:mt-14"
+    >
+      <!-- Left: Podržíte 1 s -->
+      <div class="order-2 md:order-1 text-left flex flex-col justify-center">
+        <h3
+          class="text-2xl sm:text-3xl lg:text-[34px] xl:text-[36px] font-bold text-ink tracking-tight mb-2 sm:mb-3"
+        >
+          Podržíte 1&nbsp;s
+        </h3>
+        <p
+          class="text-[15px] sm:text-base leading-relaxed text-neutral-600 max-w-[34ch]"
+        >
+          Rozezní se hlasitá siréna a okamžitě se odesílají nouzové SMS zprávy.
+        </p>
+      </div>
+
+      <!-- Center: Button Image -->
+      <div
+        class="order-1 md:order-2 flex justify-center items-center py-4 md:py-0"
+      >
+        <img
+          src="/button2.avif"
+          alt="Bezdrátové tísňové tlačítko Vochranka – detailní pohled"
+          class="w-[200px] sm:w-[240px] md:w-[270px] lg:w-[320px] max-w-full h-auto object-contain drop-shadow-[0_24px_30px_rgba(0,0,0,0.12)] select-none pointer-events-none"
+          loading="lazy"
+          width="320"
+          height="320"
+        />
+      </div>
+
+      <!-- Right: Kliknete 2× -->
+      <div
+        class="order-3 md:order-3 text-left md:text-right flex flex-col md:items-end justify-center"
+      >
+        <h3
+          class="text-2xl sm:text-3xl lg:text-[34px] xl:text-[36px] font-bold text-ink tracking-tight mb-2 sm:mb-3"
+        >
+          Kliknete 2×
+        </h3>
+        <p
+          class="text-[15px] sm:text-base leading-relaxed text-neutral-600 max-w-[34ch] md:ml-auto"
+        >
+          Nebezpečí pominulo nebo to byl omyl? Sirénu ztišíte opět pomocí
+          tlačítka.
+        </p>
+      </div>
+    </div>
+
+    <!-- Video Showcase with giant backdrop typography "VIDEO" & "UKÁZKA" -->
+    <div class="relative mt-14 sm:mt-20 lg:mt-24 py-12 sm:py-20 lg:py-24">
+      <!-- Giant background word "VIDEO" at top-left -->
+      <span
+        class="absolute left-0 top-0 text-[clamp(60px,17vw,280px)] font-extrabold uppercase leading-[0.8] tracking-[-0.07em] text-ink select-none pointer-events-none whitespace-nowrap z-0"
+        aria-hidden="true"
+      >
+        Video
+      </span>
+
+      <!-- Giant background word "UKÁZKA" at bottom-right -->
+      <span
+        class="absolute right-0 bottom-0 text-[clamp(60px,17vw,280px)] font-extrabold uppercase leading-[0.8] tracking-[-0.07em] text-ink select-none pointer-events-none whitespace-nowrap z-0"
+        aria-hidden="true"
+      >
+        Ukázka
+      </span>
+
+      <!-- Centered Video Box -->
+      <div
+        class="relative z-10 w-[94%] sm:w-[84%] lg:w-[68%] mx-auto aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-900 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.35)] group"
+      >
+        <video
+          id="showcase-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          webkit-playsinline
+          preload="auto"
+          class="w-full h-full object-cover cursor-pointer"
+          aria-label="Video ukázka použití Vochranky"
+        >
+          <source src="/vochranka_video.webm" type="video/webm" />
+        </video>
+
+        <!-- Subtle sound toggle pill button -->
+        <button
+          id="video-sound-toggle"
+          type="button"
+          class="absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 z-20 inline-flex items-center gap-1.5 sm:gap-2.5 px-3.5 py-1.5 sm:px-5 sm:py-2 rounded-full bg-white/95 hover:bg-white text-ink text-xs sm:text-sm font-semibold shadow-xl border border-black/10 hover:scale-105 active:scale-95 transition-all cursor-pointer whitespace-nowrap select-none backdrop-blur-xs"
+          aria-label="Zapnout zvuk videa"
+        >
+          <span
+            id="sound-icon-bg"
+            class="flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-ink text-white"
+          >
+            <svg
+              id="sound-icon-muted"
+              class="w-3 h-3 sm:w-3.5 sm:h-3.5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+            <svg
+              id="sound-icon-unmuted"
+              class="w-3 h-3 sm:w-3.5 sm:h-3.5 hidden"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path
+                d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"
+              ></path>
+            </svg>
+          </span>
+          <span id="sound-text">Zapnout zvuk</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupShowcaseVideo() {
+    const video = document.getElementById(
+      "showcase-video",
+    ) as HTMLVideoElement | null;
+    const soundBtn = document.getElementById("video-sound-toggle");
+    const soundIconBg = document.getElementById("sound-icon-bg");
+    const iconMuted = document.getElementById("sound-icon-muted");
+    const iconUnmuted = document.getElementById("sound-icon-unmuted");
+    const soundText = document.getElementById("sound-text");
+
+    if (!video || video.dataset.initialized) return;
+    video.dataset.initialized = "true";
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.play().catch(() => {});
+
+    function updateSoundUI() {
+      if (!video || !soundBtn) return;
+      const isMuted = video.muted;
+      if (iconMuted && iconUnmuted && soundText) {
+        if (isMuted) {
+          iconMuted.classList.remove("hidden");
+          iconUnmuted.classList.add("hidden");
+          soundText.textContent = "Zapnout zvuk";
+          soundBtn.className =
+            "absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 z-20 inline-flex items-center gap-1.5 sm:gap-2.5 px-3.5 py-1.5 sm:px-5 sm:py-2 rounded-full bg-white/95 hover:bg-white text-ink text-xs sm:text-sm font-semibold shadow-xl border border-black/10 hover:scale-105 active:scale-95 transition-all cursor-pointer whitespace-nowrap select-none backdrop-blur-xs";
+          if (soundIconBg)
+            soundIconBg.className =
+              "flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-ink text-white";
+          soundBtn.setAttribute("aria-label", "Zapnout zvuk videa");
+        } else {
+          iconMuted.classList.add("hidden");
+          iconUnmuted.classList.remove("hidden");
+          soundText.textContent = "Ztlumit zvuk";
+          soundBtn.className =
+            "absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 z-20 inline-flex items-center gap-1.5 sm:gap-2.5 px-3.5 py-1.5 sm:px-5 sm:py-2 rounded-full bg-ink text-white text-xs sm:text-sm font-semibold shadow-xl border border-white/20 hover:bg-neutral-800 hover:scale-105 active:scale-95 transition-all cursor-pointer whitespace-nowrap select-none";
+          if (soundIconBg)
+            soundIconBg.className =
+              "flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white text-ink";
+          soundBtn.setAttribute("aria-label", "Ztlumit zvuk videa");
+        }
+      }
+    }
+
+    function toggleSound(e?: Event) {
+      if (e) e.stopPropagation();
+      if (!video) return;
+      video.muted = !video.muted;
+      if (!video.muted && video.paused) {
+        video.play().catch(() => {});
+      }
+      updateSoundUI();
+    }
+
+    // Kliknutí na video ho na 1. kliknutí okamžitě spustí (se ztlumeným zvukem)
+    video.addEventListener("click", () => {
+      if (!video) return;
+      video.play().catch(() => {});
+    });
+
+    if (soundBtn) {
+      soundBtn.addEventListener("click", toggleSound);
+    }
+
+    updateSoundUI();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupShowcaseVideo);
+  } else {
+    setupShowcaseVideo();
+  }
+  document.addEventListener("astro:page-load", setupShowcaseVideo);
+</script>

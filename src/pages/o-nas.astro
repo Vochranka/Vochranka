@@ -1,0 +1,239 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import SafeContact from "../components/SafeContact.astro";
+---
+
+<Layout
+  title="O nás | Vochranka – Bezpečnostní systém"
+  description="Kdo stojí za Vochránkou a proč jsme vytvořili bezdrátové tísňové tlačítko pro lékaře, kosmetičky, personál večerek a všechny pracující o samotě."
+>
+  <!-- Global Floating Navigation (stejná jako v indexu) -->
+  <Navbar />
+
+  <main class="w-full">
+    <!-- 1. Tmavá úvodní Hero sekce O nás -->
+    <section
+      class="relative w-full bg-[#2A211D] text-white pt-28 sm:pt-30 lg:pt-34 pb-8 lg:pb-12 px-5 sm:px-10 xl:px-[170px]"
+    >
+      <div class="w-full max-w-[1440px] mx-auto flex flex-col gap-4">
+        <!-- Nadpis (#38:11) -->
+        <h1
+          class="font-semibold text-[44px] sm:text-[70px] lg:text-[60px] leading-[0.92] tracking-[-0.05em] text-white max-w-[900px]"
+        >
+          Kdo za Vochrankou stojí
+        </h1>
+      </div>
+    </section>
+
+    <!-- 2. Světlá sekce: Tým & Příběh podle Figmy -->
+    <section
+      class="w-full bg-white text-[#2A211D] px-5 sm:px-10 xl:px-[170px] py-16 lg:py-24"
+    >
+      <div class="w-full max-w-[1440px] mx-auto flex flex-col">
+        <!-- Tým (#38:12) -->
+        <div class="w-full flex justify-center">
+          <div
+            class="flex flex-col sm:flex-row gap-8 sm:gap-16 lg:gap-28 items-center sm:items-start justify-center"
+          >
+            <!-- Osoba 1 (#38:13) -->
+            <div class="flex flex-col gap-[18px] w-full max-w-[390px]">
+              <!-- Fotka (#38:14) -->
+              <div
+                class="w-full h-[310px] sm:h-[330px] lg:h-[350px] bg-[#EEEDEA] rounded-[28px] overflow-hidden select-none border border-black/[0.04]"
+              >
+                <img
+                  src="/anicka.avif"
+                  alt="Anička"
+                  class="w-full h-full object-cover object-center"
+                  loading="lazy"
+                  width="390"
+                  height="350"
+                />
+              </div>
+              <!-- Popis (#38:16) -->
+              <div class="flex flex-col gap-[6px]">
+                <h2
+                  class="font-heading font-bold text-[24px] sm:text-[26px] tracking-[-0.03em] text-[#2A211D]"
+                >
+                  Anička
+                </h2>
+                <p
+                  class="font-sans font-normal text-[15px] sm:text-[16px] text-[#6B6661]"
+                >
+                  Spoluzakladatelka
+                </p>
+                <div class="flex flex-col gap-1.5 pt-2 text-sm text-[#2A211D]">
+                  <SafeContact
+                    type="phone"
+                    prefix="+420"
+                    number="776 170 139"
+                    class="hover:text-brown transition-colors inline-flex items-center gap-2"
+                  >
+                    <svg
+                      class="w-4 h-4 text-[#A2623A] shrink-0"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                      ></path>
+                    </svg>
+                  </SafeContact>
+                  <SafeContact
+                    type="email"
+                    user="anicka"
+                    domain="vochranka.cz"
+                    class="hover:text-brown transition-colors inline-flex items-center gap-2"
+                  >
+                    <svg
+                      class="w-4 h-4 text-[#A2623A] shrink-0"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                  </SafeContact>
+                </div>
+              </div>
+            </div>
+
+            <!-- Osoba 2 (#38:19) -->
+            <div class="flex flex-col gap-[18px] w-full max-w-[390px]">
+              <!-- Fotka (#38:20) -->
+              <div
+                class="w-full h-[310px] sm:h-[330px] lg:h-[350px] bg-[#EEEDEA] rounded-[28px] overflow-hidden select-none border border-black/[0.04]"
+              >
+                <img
+                  src="/chiheb.avif"
+                  alt="Chiheb"
+                  class="w-full h-full object-cover object-center"
+                  loading="lazy"
+                  width="390"
+                  height="350"
+                />
+              </div>
+              <!-- Popis (#38:22) -->
+              <div class="flex flex-col gap-[6px]">
+                <h2
+                  class="font-heading font-bold text-[24px] sm:text-[26px] tracking-[-0.03em] text-[#2A211D]"
+                >
+                  Chiheb
+                </h2>
+                <p
+                  class="font-sans font-normal text-[15px] sm:text-[16px] text-[#6B6661]"
+                >
+                  Spoluzakladatel
+                </p>
+                <div class="flex flex-col gap-1.5 pt-2 text-sm text-[#2A211D]">
+                  <SafeContact
+                    type="phone"
+                    prefix="+420"
+                    number="776 170 139"
+                    class="hover:text-brown transition-colors inline-flex items-center gap-2"
+                  >
+                    <svg
+                      class="w-4 h-4 text-[#A2623A] shrink-0"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                      ></path>
+                    </svg>
+                  </SafeContact>
+                  <SafeContact
+                    type="email"
+                    user="chiheb"
+                    domain="vochranka.cz"
+                    class="hover:text-brown transition-colors inline-flex items-center gap-2"
+                  >
+                    <svg
+                      class="w-4 h-4 text-[#A2623A] shrink-0"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                  </SafeContact>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Oddělovač (#38:25) -->
+      <div class="w-full pt-[72px] lg:pt-[120px]">
+        <div class="w-full h-[1px] bg-[#DEDBD8]"></div>
+      </div>
+
+      <!-- 4. Proč jsme to vytvořili (#38:27) -->
+      <div class="w-full pt-[48px] lg:pt-[74px] flex flex-col gap-[36px]">
+        <!-- Nadpis sekce (#38:28) -->
+        <h2
+          class="font-heading font-extrabold text-[32px] sm:text-[44px] lg:text-[58px] leading-[0.9] tracking-[-0.05em] text-[#2A211D] max-w-[900px]"
+        >
+          PROČ VZNIKLA
+        </h2>
+
+        <!-- Texty (#38:29) -->
+        <div class="flex flex-col gap-[26px] max-w-[1050px]">
+          <p
+            class="text-justify font-sans font-normal text-[17px] sm:text-[20px] leading-[1.55] text-[#6B6661]"
+          >
+            Jednou jsme se bavili s kamarádem, který hledal řešení pro svou
+            partnerku působící jako fyzioterapeutka ve svém studiu. Občas se jí
+            stalo, že se klienti chovali divně až vulgárně. Proto jsme vymysleli
+            Vochranku. Pak nám došlo, že podobné situace se netýkají jen tohoto
+            odvětví. I v mnoha dalších profesích se ženy i muži mohou dostat do
+            situací, kdy se při práci o samotě s klientem nebo během nočních
+            směn necítí bezpečně.
+          </p>
+          <p
+            class="text-justify font-sans font-normal text-[17px] sm:text-[20px] leading-[1.55] text-[#6B6661]"
+          >
+            Chceme, aby se ženy i muži pracující sami cítili v klidu, měli
+            jistotu a pocit bezpečí při každé směně. V masérském salonu, v
+            kavárně, ve večerce, na recepci nebo kdekoli jinde.
+          </p>
+        </div>
+      </div>
+
+      <!-- 5. Tlačítko (#38:32) -->
+      <div
+        class="w-full pt-[36px] lg:pt-[51px] flex justify-center items-center"
+      >
+        <!-- Tlačítko – Chci bezpečí (#38:33) -->
+        <a
+          href="/#cenik"
+          class="inline-flex items-center justify-center px-8 py-3.5 bg-ink text-white font-heading font-semibold text-[16px] sm:text-[17px] rounded-full shadow-md hover:bg-neutral-800 hover:scale-[1.02] active:scale-[0.98] transition-all"
+        >
+          Chci bezpečí
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <Footer />
+</Layout>

@@ -1,98 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Custom Color Palette matching design tokens */
+  --color-canvas: #FFFFFF;
+  --color-box: #F5F5F5;
+  --color-card-bg: #F5F5F5;
+  --color-line: #D9D9D9;
+  --color-brown: #A2623A;
+  --color-ink: #332F2F;
+  --color-ink-muted: #666666;
+  --color-ink-faint: #999999;
+  --color-accent: #A2623A;
+  --color-accent-hover: #8B5330;
+  --color-accent-subtle: #FDF8F5;
+}
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
-    color: #09090b;
-    background-color: #fafafa;
+    scroll-padding-top: 5rem;
+    background-color: #FFFFFF;
+    color: var(--color-ink);
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    color: var(--color-ink);
+    background-color: var(--color-canvas);
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  button,
+  input,
+  select,
+  textarea {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+  }
+
   ::selection {
-    background-color: #e4e4e7;
-    color: #09090b;
+    background-color: var(--color-accent);
+    color: #ffffff;
   }
 }
 
-/* Subtle custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: #fafafa;
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #d4d4d8;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #a1a1aa;
-}
-
-/* Glassmorphism utility */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(228, 228, 231, 0.8);
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(228, 228, 231, 0.7);
-}
-
-/* Details summary remove marker */
-details summary::-webkit-details-marker {
+/* Hide scrollbar while preserving smooth scrolling */
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
-
-details summary {
-  list-style: none;
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Jemné technické tečkované oddělovače (malé tečky) */
-.dots-t,
-.tech-dots-t {
-  background-image: radial-gradient(circle, #a1a1aa 0.75px, transparent 1.1px);
-  background-size: 8px 3px;
-  background-repeat: repeat-x;
-  background-position: top left;
-}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-.dots-b,
-.tech-dots-b {
-  background-image: radial-gradient(circle, #a1a1aa 0.75px, transparent 1.1px);
-  background-size: 8px 3px;
-  background-repeat: repeat-x;
-  background-position: bottom left;
-}
-
-.dots-x {
-  background-image: radial-gradient(circle, #a1a1aa 0.75px, transparent 1.1px),
-    radial-gradient(circle, #a1a1aa 0.75px, transparent 1.1px);
-  background-size: 3px 8px, 3px 8px;
-  background-repeat: repeat-y, repeat-y;
-  background-position: left top, right top;
-}
-
-/* Samostatná horizontální linka z drobných teček */
-.tech-dots {
-  width: 100%;
-  height: 4px;
-  background-image: radial-gradient(circle, #a1a1aa 0.75px, transparent 1.1px);
-  background-size: 8px 4px;
-  background-repeat: repeat-x;
-  background-position: center;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
