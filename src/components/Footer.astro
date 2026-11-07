@@ -1,6 +1,7 @@
 ---
 import { SITE_CONFIG } from "@/data/siteConfig";
 import SafeContact from "./SafeContact.astro";
+import Logo from "./Logo.astro";
 ---
 
 <footer
@@ -12,13 +13,16 @@ import SafeContact from "./SafeContact.astro";
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 sm:pb-16 border-b border-line/60 items-center"
     >
       <!-- 1. Sloupec: Značka a poslání (na mobilu doleva, na desktopu do středu sloupce) -->
-      <div class="lg:col-span-6 flex flex-col items-start lg:items-center justify-center">
+      <div
+        class="lg:col-span-6 flex flex-col items-start lg:items-center justify-center"
+      >
         <div class="flex flex-col items-start space-y-2">
           <a
             href="/"
-            class="inline-block text-4xl sm:text-5xl lg:text-[60px] font-extrabold uppercase tracking-tight leading-none text-ink hover:opacity-85 transition-opacity text-left"
+            class="inline-block text-[#2e4731] hover:opacity-85 transition-opacity text-left"
+            aria-label="Vochranka – domovská stránka"
           >
-            Vochranka
+            <Logo class="h-8 sm:h-10 lg:h-12 w-auto" />
           </a>
           <h3
             class="text-xs font-bold uppercase tracking-wider text-brown font-heading text-left pl-0 sm:pl-[10px]"

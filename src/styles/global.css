@@ -17,6 +17,7 @@
   --color-accent: #A2623A;
   --color-accent-hover: #8B5330;
   --color-accent-subtle: #FDF8F5;
+  --color-white: #fffef6
 }
 
 @layer base {
@@ -80,6 +81,7 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;

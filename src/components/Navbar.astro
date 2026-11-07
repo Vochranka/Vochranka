@@ -1,5 +1,5 @@
 ---
-
+import Logo from "./Logo.astro";
 ---
 
 <!-- Mobile Menu Backdrop -->
@@ -23,9 +23,10 @@
     >
       <a
         href="/"
-        class="uppercase hover:opacity-80 transition-opacity shrink-0"
+        class="hover:opacity-80 transition-opacity shrink-0 flex items-center text-[#f4ece2] in-[.scrolled-nav]:text-[#2e4731]"
+        aria-label="Vochranka – domovská stránka"
       >
-        VOCHRANKA
+        <Logo class="h-4 sm:h-[18px] w-auto transition-colors duration-300" />
       </a>
 
       <nav
@@ -172,6 +173,7 @@
       const isScrolled = window.scrollY > 40;
       if (isScrolled || isMenuOpen) {
         navbar.classList.add(
+          "scrolled-nav",
           "bg-white/50",
           "text-ink",
           "backdrop-blur-xl",
@@ -193,6 +195,7 @@
         }
       } else {
         navbar.classList.remove(
+          "scrolled-nav",
           "bg-white/50",
           "text-ink",
           "backdrop-blur-xl",

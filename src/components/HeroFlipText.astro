@@ -11,7 +11,7 @@ const initialPlace = places[0] || "V ORDINACI?";
 
 <span
   id="hero-flip-container"
-  class="relative inline-block overflow-hidden align-baseline h-[1.26em] text-white"
+  class="relative inline-block overflow-hidden align-baseline h-[1.26em] text-[#ffffff]"
   data-places={JSON.stringify(places)}
   aria-live="polite"
 >
@@ -28,7 +28,8 @@ const initialPlace = places[0] || "V ORDINACI?";
     const container = document.getElementById("hero-flip-container");
     const currentSpan = document.getElementById("hero-flip-current");
 
-    if (!container || !currentSpan || container.dataset.initialized === "true") return;
+    if (!container || !currentSpan || container.dataset.initialized === "true")
+      return;
     container.dataset.initialized = "true";
 
     let places: string[] = [];
@@ -58,7 +59,8 @@ const initialPlace = places[0] || "V ORDINACI?";
         // Step 3: Trigger transition back into center
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
-            currentSpan.style.transition = "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease";
+            currentSpan.style.transition =
+              "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease";
             currentSpan.style.transform = "translateY(0)";
             currentSpan.style.opacity = "1";
           });
