@@ -18,9 +18,11 @@ const { contact } = SITE_CONFIG;
 ---
 
 <div
-  id="kontakt"
-  class="w-full h-full flex flex-col items-center lg:items-start scroll-mt-2 sm:scroll-mt-4 pt-4 sm:pt-6 lg:pt-0 lg:pl-18 xl:pl-32"
+  id="mam-zajem"
+  class="w-full h-full flex flex-col items-center lg:items-start scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28 pt-4 sm:pt-6 lg:pt-0 lg:pl-18 xl:pl-32 relative"
 >
+  <!-- Backward compatibility anchor for #kontakt -->
+  <div id="kontakt" class="scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28 absolute top-0 pointer-events-none" aria-hidden="true"></div>
   <div class="w-full max-w-[460px] h-full flex flex-col justify-between">
     <!-- Form and Success Area -->
     <div class="flex-1 flex flex-col justify-start">
@@ -63,7 +65,7 @@ const { contact } = SITE_CONFIG;
         <!-- Field 1: Jméno -->
         <div
           id="wrap-order-name"
-          class="border-b border-line pb-2 sm:pb-2.5 pt-0.5 mb-2.5 sm:mb-3 group focus-within:border-ink transition-colors"
+          class="border-b border-line pb-2 sm:pb-2.5 pt-0.5 mb-2.5 sm:mb-3 group focus-within:border-[#2e4731] transition-colors"
         >
           <div class="flex items-center justify-between mb-0.5">
             <label
@@ -93,7 +95,7 @@ const { contact } = SITE_CONFIG;
         <!-- Field 2: E-mail nebo telefon -->
         <div
           id="wrap-order-contact"
-          class="border-b border-line pb-2 sm:pb-2.5 pt-0.5 mb-2.5 sm:mb-3 group focus-within:border-ink transition-colors"
+          class="border-b border-line pb-2 sm:pb-2.5 pt-0.5 mb-2.5 sm:mb-3 group focus-within:border-[#2e4731] transition-colors"
         >
           <div class="flex items-center justify-between mb-0.5">
             <label
@@ -123,7 +125,7 @@ const { contact } = SITE_CONFIG;
         <!-- Field 3: Město -->
         <div
           id="wrap-order-city"
-          class="border-b border-line pb-2 sm:pb-2.5 pt-0.5 mb-2.5 sm:mb-3 group focus-within:border-ink transition-colors"
+          class="border-b border-line pb-2 sm:pb-2.5 pt-0.5 mb-2.5 sm:mb-3 group focus-within:border-[#2e4731] transition-colors"
         >
           <div class="flex items-center justify-between mb-0.5">
             <label
@@ -188,7 +190,7 @@ const { contact } = SITE_CONFIG;
             <button
               id="btn-increment"
               type="button"
-              class="w-8 h-8 rounded-full bg-ink text-white flex items-center justify-center text-lg font-light hover:bg-neutral-800 active:scale-90 transition-all cursor-pointer select-none shadow-xs"
+              class="w-8 h-8 rounded-full bg-[#2e4731] text-white flex items-center justify-center text-lg font-light hover:bg-[#243827] active:scale-90 transition-all cursor-pointer select-none shadow-xs"
               aria-label="Zvýšit počet tlačítek"
             >
               +
@@ -201,7 +203,7 @@ const { contact } = SITE_CONFIG;
           <button
             id="order-submit-btn"
             type="submit"
-            class="inline-flex items-center justify-center rounded-full px-7 py-3 bg-ink text-white font-medium text-xs sm:text-[14px] hover:opacity-90 active:scale-95 transition-all shadow-xs cursor-pointer shrink-0 select-none disabled:opacity-60 disabled:cursor-not-allowed"
+            class="inline-flex items-center justify-center rounded-full px-7 py-3 bg-[#2e4731] text-white font-medium text-xs sm:text-[14px] hover:bg-[#243827] active:scale-95 transition-all shadow-xs cursor-pointer shrink-0 select-none disabled:opacity-60 disabled:cursor-not-allowed"
           >
             Odeslat
           </button>
@@ -221,7 +223,7 @@ const { contact } = SITE_CONFIG;
         aria-live="polite"
       >
         <div
-          class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-100 text-emerald-800 mb-4"
+          class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#e8f2e8] text-[#2e4731] mb-4"
         >
           <svg
             class="w-6 h-6"

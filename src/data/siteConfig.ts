@@ -50,7 +50,7 @@ export const SITE_CONFIG = {
       description: "Kompletní fyzická sada Vochranka + 1. rok provozu bez dalších poplatků.",
       hasCta: true,
       ctaText: "Mám zájem",
-      ctaHref: "#kontakt",
+      ctaHref: "#mam-zajem",
     },
     {
       id: "renewal",
@@ -75,7 +75,7 @@ export const SITE_CONFIG = {
     { label: "Umístění", href: "#umisteni" },
     { label: "Instalace", href: "#instalace" },
     { label: "Ceník", href: "#cenik" },
-    { label: "Kontakt", href: "#kontakt" },
+    { label: "Kontakt", href: "#mam-zajem" },
     { label: "O nás", href: "/o-nas" },
   ],
 
